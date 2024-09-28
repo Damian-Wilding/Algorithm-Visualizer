@@ -1,0 +1,127 @@
+[gd_scene load_steps=3 format=3 uid="uid://q8nwaondv4gi"]
+
+[ext_resource type="Script" path="res://cube_logic.gd" id="1_8qrdl"]
+[ext_resource type="PackedScene" uid="uid://cjhm0nyng58hr" path="res://sticker.tscn" id="1_y4cpg"]
+
+[node name="CubeLogic" type="Node3D"]
+script = ExtResource("1_8qrdl")
+
+[node name="TopSide" type="Node3D" parent="."]
+
+[node name="TopCenterColor" parent="TopSide" instance=ExtResource("1_y4cpg")]
+
+[node name="A_CornerColor" parent="TopSide" instance=ExtResource("1_y4cpg")]
+
+[node name="B_CornerColor" parent="TopSide" instance=ExtResource("1_y4cpg")]
+
+[node name="C_CornerColor" parent="TopSide" instance=ExtResource("1_y4cpg")]
+
+[node name="D_CornerColor" parent="TopSide" instance=ExtResource("1_y4cpg")]
+
+[node name="A_EdgeColor" parent="TopSide" instance=ExtResource("1_y4cpg")]
+
+[node name="B_EdgeColor" parent="TopSide" instance=ExtResource("1_y4cpg")]
+
+[node name="C_EdgeColor" parent="TopSide" instance=ExtResource("1_y4cpg")]
+
+[node name="D_EdgeColor" parent="TopSide" instance=ExtResource("1_y4cpg")]
+
+[node name="LeftSide" type="Node3D" parent="."]
+
+[node name="LeftCenterColor" parent="LeftSide" instance=ExtResource("1_y4cpg")]
+
+[node name="E_CornerColor" parent="LeftSide" instance=ExtResource("1_y4cpg")]
+
+[node name="F_CornerColor" parent="LeftSide" instance=ExtResource("1_y4cpg")]
+
+[node name="G_CornerColor" parent="LeftSide" instance=ExtResource("1_y4cpg")]
+
+[node name="H_CornerColor" parent="LeftSide" instance=ExtResource("1_y4cpg")]
+
+[node name="E_EdgeColor" parent="LeftSide" instance=ExtResource("1_y4cpg")]
+
+[node name="F_EdgeColor" parent="LeftSide" instance=ExtResource("1_y4cpg")]
+
+[node name="G_EdgeColor" parent="LeftSide" instance=ExtResource("1_y4cpg")]
+
+[node name="H_EdgeColor" parent="LeftSide" instance=ExtResource("1_y4cpg")]
+
+[node name="FrontSide" type="Node3D" parent="."]
+
+[node name="FrontCenterColor" parent="FrontSide" instance=ExtResource("1_y4cpg")]
+
+[node name="I_CornerColor" parent="FrontSide" instance=ExtResource("1_y4cpg")]
+
+[node name="J_CornerColor" parent="FrontSide" instance=ExtResource("1_y4cpg")]
+
+[node name="K_CornerColor" parent="FrontSide" instance=ExtResource("1_y4cpg")]
+
+[node name="L_CornerColor" parent="FrontSide" instance=ExtResource("1_y4cpg")]
+
+[node name="I_EdgeColor" parent="FrontSide" instance=ExtResource("1_y4cpg")]
+
+[node name="J_EdgeColor" parent="FrontSide" instance=ExtResource("1_y4cpg")]
+
+[node name="K_EdgeColor" parent="FrontSide" instance=ExtResource("1_y4cpg")]
+
+[node name="L_EdgeColor" parent="FrontSide" instance=ExtResource("1_y4cpg")]
+
+[node name="RightSide" type="Node3D" parent="."]
+
+[node name="RightCenterColor" parent="RightSide" instance=ExtResource("1_y4cpg")]
+
+[node name="M_CornerColor" parent="RightSide" instance=ExtResource("1_y4cpg")]
+
+[node name="N_CornerColor" parent="RightSide" instance=ExtResource("1_y4cpg")]
+
+[node name="O_CornerColor" parent="RightSide" instance=ExtResource("1_y4cpg")]
+
+[node name="P_CornerColor" parent="RightSide" instance=ExtResource("1_y4cpg")]
+
+[node name="M_EdgeColor" parent="RightSide" instance=ExtResource("1_y4cpg")]
+
+[node name="N_EdgeColor" parent="RightSide" instance=ExtResource("1_y4cpg")]
+
+[node name="O_EdgeColor" parent="RightSide" instance=ExtResource("1_y4cpg")]
+
+[node name="P_EdgeColor" parent="RightSide" instance=ExtResource("1_y4cpg")]
+
+[node name="BackSide" type="Node3D" parent="."]
+
+[node name="BackCenterColor" parent="BackSide" instance=ExtResource("1_y4cpg")]
+
+[node name="Q_CornerColor" parent="BackSide" instance=ExtResource("1_y4cpg")]
+
+[node name="R_CornerColor" parent="BackSide" instance=ExtResource("1_y4cpg")]
+
+[node name="S_CornerColor" parent="BackSide" instance=ExtResource("1_y4cpg")]
+
+[node name="T_CornerColor" parent="BackSide" instance=ExtResource("1_y4cpg")]
+
+[node name="Q_EdgeColor" parent="BackSide" instance=ExtResource("1_y4cpg")]
+
+[node name="R_EdgeColor" parent="BackSide" instance=ExtResource("1_y4cpg")]
+
+[node name="S_EdgeColor" parent="BackSide" instance=ExtResource("1_y4cpg")]
+
+[node name="T_EdgeColor" parent="BackSide" instance=ExtResource("1_y4cpg")]
+
+[node name="BottomSide" type="Node3D" parent="."]
+
+[node name="BottomCenterColor" parent="BottomSide" instance=ExtResource("1_y4cpg")]
+
+[node name="U_CornerColor" parent="BottomSide" instance=ExtResource("1_y4cpg")]
+
+[node name="V_CornerColor" parent="BottomSide" instance=ExtResource("1_y4cpg")]
+
+[node name="W_CornerColor" parent="BottomSide" instance=ExtResource("1_y4cpg")]
+
+[node name="X_CornerColor" parent="BottomSide" instance=ExtResource("1_y4cpg")]
+
+[node name="U_EdgeColor" parent="BottomSide" instance=ExtResource("1_y4cpg")]
+
+[node name="V_EdgeColor" parent="BottomSide" instance=ExtResource("1_y4cpg")]
+
+[node name="W_EdgeColor" parent="BottomSide" instance=ExtResource("1_y4cpg")]
+
+[node name="X_EdgeColor" parent="BottomSide" instance=ExtResource("1_y4cpg")]

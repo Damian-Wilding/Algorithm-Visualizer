@@ -1,0 +1,259 @@
+[gd_scene load_steps=30 format=3 uid="uid://ch0okutfb546s"]
+
+[ext_resource type="ArrayMesh" uid="uid://lt8v6pyqonss" path="res://Assets/CubeParts/Other/Core.res" id="1_amloi"]
+[ext_resource type="Script" path="res://cube.gd" id="1_ojui8"]
+[ext_resource type="ArrayMesh" uid="uid://cwm34yxg7ehjq" path="res://Assets/CubeParts/Corners/CornerWhiteBlueRed.res" id="2_4qxpc"]
+[ext_resource type="ArrayMesh" uid="uid://g27c0byef4ke" path="res://Assets/CubeParts/Centers/CenterYellow.res" id="2_xlkhm"]
+[ext_resource type="ArrayMesh" uid="uid://wvawrts0s0le" path="res://Assets/CubeParts/Corners/CornerWhiteBlueOrange.res" id="3_0hpic"]
+[ext_resource type="ArrayMesh" uid="uid://788k6h132v61" path="res://Assets/CubeParts/Centers/CenterWhite.res" id="3_sj76a"]
+[ext_resource type="ArrayMesh" uid="uid://bxb6m2ypbvohb" path="res://Assets/CubeParts/Centers/CenterGreen.res" id="4_32ebc"]
+[ext_resource type="ArrayMesh" uid="uid://cjqrduuv2kw3b" path="res://Assets/CubeParts/Corners/CornerWhiteGreenRed.res" id="4_rr6s2"]
+[ext_resource type="ArrayMesh" uid="uid://coxxp5lx5em2w" path="res://Assets/CubeParts/Corners/CornerWhiteGreenOrange.res" id="5_6tju5"]
+[ext_resource type="ArrayMesh" uid="uid://blnwrhr10ex2k" path="res://Assets/CubeParts/Centers/CenterBlue.res" id="5_pv0k1"]
+[ext_resource type="ArrayMesh" uid="uid://kt2if0coha1o" path="res://Assets/CubeParts/Edges/EdgeWhiteGreen.res" id="6_25okw"]
+[ext_resource type="ArrayMesh" uid="uid://t8wspql1gsax" path="res://Assets/CubeParts/Centers/CenterRed.res" id="6_ud6ra"]
+[ext_resource type="ArrayMesh" uid="uid://bvhp2ugdu0o2w" path="res://Assets/CubeParts/Edges/EdgeWhiteBlue.res" id="7_gwk8t"]
+[ext_resource type="ArrayMesh" uid="uid://l3mq15qib0v0" path="res://Assets/CubeParts/Centers/CenterOrange.res" id="7_j4huu"]
+[ext_resource type="ArrayMesh" uid="uid://vjsa5xgwmebh" path="res://Assets/CubeParts/Edges/EdgeWhiteRed.res" id="8_bt8s4"]
+[ext_resource type="ArrayMesh" uid="uid://bn60usrq1ax58" path="res://Assets/CubeParts/Corners/CornerYellowGreenRed.res" id="8_us6gn"]
+[ext_resource type="ArrayMesh" uid="uid://cm2x10p01wq1o" path="res://Assets/CubeParts/Corners/CornerYellowGreenOrange.res" id="9_i4vcj"]
+[ext_resource type="ArrayMesh" uid="uid://cyqdvfrxbxlav" path="res://Assets/CubeParts/Edges/EdgeWhiteOrange.res" id="9_mvqjn"]
+[ext_resource type="ArrayMesh" uid="uid://c456ugewpy8l7" path="res://Assets/CubeParts/Corners/CornerYellowBlueRed.res" id="10_fie52"]
+[ext_resource type="ArrayMesh" uid="uid://168jjr2onub7" path="res://Assets/CubeParts/Corners/CornerYellowBlueOrange.res" id="11_fl8b4"]
+[ext_resource type="ArrayMesh" uid="uid://dohpobk5t1nh1" path="res://Assets/CubeParts/Edges/EdgeYellowGreen.res" id="12_8cwgl"]
+[ext_resource type="ArrayMesh" uid="uid://ckgwnavs7lktu" path="res://Assets/CubeParts/Edges/EdgeYellowBlue.res" id="13_wisdp"]
+[ext_resource type="ArrayMesh" uid="uid://dw166n4irtb4v" path="res://Assets/CubeParts/Edges/EdgeGreenRed.res" id="15_n8qur"]
+[ext_resource type="ArrayMesh" uid="uid://caq0q3qk7hnnd" path="res://Assets/CubeParts/Edges/EdgeGreenOrange.res" id="16_imdtd"]
+[ext_resource type="ArrayMesh" uid="uid://b1ov5c1xuyvbe" path="res://Assets/CubeParts/Edges/EdgeBlueRed.res" id="17_qlnw0"]
+[ext_resource type="ArrayMesh" uid="uid://cwuc2wajearb4" path="res://Assets/CubeParts/Edges/EdgeBlueOrange.res" id="18_c8dn6"]
+[ext_resource type="ArrayMesh" uid="uid://co8142203wgid" path="res://Assets/CubeParts/Edges/EdgeYellowRed.res" id="26_3eplq"]
+[ext_resource type="ArrayMesh" uid="uid://d3skodbj7uy06" path="res://Assets/CubeParts/Edges/EdgeYellowOrange.res" id="27_cb1w1"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_mgr0i"]
+
+[node name="Cube" type="Node3D"]
+script = ExtResource("1_ojui8")
+
+[node name="TopLayer" type="Node3D" parent="."]
+
+[node name="CenterTop" type="Node3D" parent="TopLayer"]
+
+[node name="CenterWhite" type="Area3D" parent="TopLayer/CenterTop"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="TopLayer/CenterTop/CenterWhite"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+mesh = ExtResource("3_sj76a")
+
+[node name="EdgeTopFront" type="Node3D" parent="TopLayer"]
+
+[node name="EdgeWhiteGreen" type="Area3D" parent="TopLayer/EdgeTopFront"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="TopLayer/EdgeTopFront/EdgeWhiteGreen"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 3, 3)
+mesh = ExtResource("6_25okw")
+
+[node name="EdgeTopBack" type="Node3D" parent="TopLayer"]
+
+[node name="EdgeWhiteBlue" type="Area3D" parent="TopLayer/EdgeTopBack"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="TopLayer/EdgeTopBack/EdgeWhiteBlue"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 3, -3)
+mesh = ExtResource("7_gwk8t")
+
+[node name="EdgeTopRight" type="Node3D" parent="TopLayer"]
+
+[node name="EdgeWhiteRed" type="Area3D" parent="TopLayer/EdgeTopRight"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="TopLayer/EdgeTopRight/EdgeWhiteRed"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 3, 0)
+mesh = ExtResource("8_bt8s4")
+
+[node name="EdgeTopLeft" type="Node3D" parent="TopLayer"]
+
+[node name="EdgeWhiteOrange" type="Area3D" parent="TopLayer/EdgeTopLeft"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="TopLayer/EdgeTopLeft/EdgeWhiteOrange"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -3, 3, 0)
+mesh = ExtResource("9_mvqjn")
+
+[node name="CornerTopFrontRight" type="Node3D" parent="TopLayer"]
+
+[node name="CornerWhiteGreenRed" type="Area3D" parent="TopLayer/CornerTopFrontRight"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="TopLayer/CornerTopFrontRight/CornerWhiteGreenRed"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 3, 3, 3)
+mesh = ExtResource("4_rr6s2")
+
+[node name="CornerTopFrontLeft" type="Node3D" parent="TopLayer"]
+
+[node name="CornerWhiteGreenOrange" type="Area3D" parent="TopLayer/CornerTopFrontLeft"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="TopLayer/CornerTopFrontLeft/CornerWhiteGreenOrange"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -3, 3, 3)
+mesh = ExtResource("5_6tju5")
+
+[node name="CornerTopBackRight" type="Node3D" parent="TopLayer"]
+
+[node name="CornerWhiteBlueRed" type="Area3D" parent="TopLayer/CornerTopBackRight"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="TopLayer/CornerTopBackRight/CornerWhiteBlueRed"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 3, -3)
+mesh = ExtResource("2_4qxpc")
+
+[node name="CornerTopBackLeft" type="Node3D" parent="TopLayer"]
+
+[node name="CornerWhiteBlueOrange" type="Area3D" parent="TopLayer/CornerTopBackLeft"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="TopLayer/CornerTopBackLeft/CornerWhiteBlueOrange"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3, 3, -3)
+mesh = ExtResource("3_0hpic")
+
+[node name="MiddleLayer" type="Node3D" parent="."]
+
+[node name="Core2" type="Node3D" parent="MiddleLayer"]
+
+[node name="Core" type="Area3D" parent="MiddleLayer/Core2"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MiddleLayer/Core2/Core"]
+mesh = ExtResource("1_amloi")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MiddleLayer/Core2/Core"]
+shape = SubResource("BoxShape3D_mgr0i")
+
+[node name="CenterFront" type="Node3D" parent="MiddleLayer"]
+
+[node name="CenterGreen" type="Area3D" parent="MiddleLayer/CenterFront"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MiddleLayer/CenterFront/CenterGreen"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 3)
+mesh = ExtResource("4_32ebc")
+
+[node name="CenterRight" type="Node3D" parent="MiddleLayer"]
+
+[node name="CenterRed" type="Area3D" parent="MiddleLayer/CenterRight"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MiddleLayer/CenterRight/CenterRed"]
+transform = Transform3D(-4.37114e-08, 1, 4.37114e-08, 0, -4.37114e-08, 1, 1, 4.37114e-08, 1.91069e-15, 3, 0, 0)
+mesh = ExtResource("6_ud6ra")
+
+[node name="CenterLeft" type="Node3D" parent="MiddleLayer"]
+
+[node name="CenterOrange" type="Area3D" parent="MiddleLayer/CenterLeft"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MiddleLayer/CenterLeft/CenterOrange"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -3, 0, 0)
+mesh = ExtResource("7_j4huu")
+
+[node name="CenterBack" type="Node3D" parent="MiddleLayer"]
+
+[node name="CenterBlue" type="Area3D" parent="MiddleLayer/CenterBack"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MiddleLayer/CenterBack/CenterBlue"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, -3)
+mesh = ExtResource("5_pv0k1")
+
+[node name="EdgeFrontRight" type="Node3D" parent="MiddleLayer"]
+
+[node name="EdgeGreenRed" type="Area3D" parent="MiddleLayer/EdgeFrontRight"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MiddleLayer/EdgeFrontRight/EdgeGreenRed"]
+transform = Transform3D(-4.37114e-08, 1, 4.37114e-08, 0, -4.37114e-08, 1, 1, 4.37114e-08, 1.91069e-15, 3, 0, 3)
+mesh = ExtResource("15_n8qur")
+
+[node name="EdgeFrontLeft" type="Node3D" parent="MiddleLayer"]
+
+[node name="EdgeGreenOrange" type="Area3D" parent="MiddleLayer/EdgeFrontLeft"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MiddleLayer/EdgeFrontLeft/EdgeGreenOrange"]
+transform = Transform3D(-4.37114e-08, -1, 4.37114e-08, 0, -4.37114e-08, -1, 1, -4.37114e-08, 1.91069e-15, -3, 0, 3)
+mesh = ExtResource("16_imdtd")
+
+[node name="EdgeBackRight" type="Node3D" parent="MiddleLayer"]
+
+[node name="EdgeBlueRed" type="Area3D" parent="MiddleLayer/EdgeBackRight"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MiddleLayer/EdgeBackRight/EdgeBlueRed"]
+transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, 3, 0, -3)
+mesh = ExtResource("17_qlnw0")
+
+[node name="EdgeBackLeft" type="Node3D" parent="MiddleLayer"]
+
+[node name="EdgeBlueOrange" type="Area3D" parent="MiddleLayer/EdgeBackLeft"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MiddleLayer/EdgeBackLeft/EdgeBlueOrange"]
+transform = Transform3D(-4.37114e-08, -1, -4.37114e-08, 0, -4.37114e-08, 1, -1, 4.37114e-08, 1.91069e-15, -3, 0, -3)
+mesh = ExtResource("18_c8dn6")
+
+[node name="BottomLayer" type="Node3D" parent="."]
+
+[node name="CenterBottom" type="Node3D" parent="BottomLayer"]
+
+[node name="CenterYellow" type="Area3D" parent="BottomLayer/CenterBottom"]
+transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, -3, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="BottomLayer/CenterBottom/CenterYellow"]
+mesh = ExtResource("2_xlkhm")
+
+[node name="EdgeBottomFront" type="Node3D" parent="BottomLayer"]
+
+[node name="EdgeYellowGreen" type="Area3D" parent="BottomLayer/EdgeBottomFront"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="BottomLayer/EdgeBottomFront/EdgeYellowGreen"]
+transform = Transform3D(4.37114e-08, -3.82137e-15, 1, -8.74228e-08, -1, 0, 1, -8.74228e-08, -4.37114e-08, 0, -3, 3)
+mesh = ExtResource("12_8cwgl")
+
+[node name="EdgeBottomBack" type="Node3D" parent="BottomLayer"]
+
+[node name="EdgeYellowBlue" type="Area3D" parent="BottomLayer/EdgeBottomBack"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="BottomLayer/EdgeBottomBack/EdgeYellowBlue"]
+transform = Transform3D(4.37114e-08, -3.82137e-15, -1, -8.74228e-08, -1, 0, -1, 8.74228e-08, -4.37114e-08, 0, -3, -3)
+mesh = ExtResource("13_wisdp")
+
+[node name="EdgeBottomRight" type="Node3D" parent="BottomLayer"]
+
+[node name="EdgeYellowRed" type="Area3D" parent="BottomLayer/EdgeBottomRight"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="BottomLayer/EdgeBottomRight/EdgeYellowRed"]
+transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 3, -3, 0)
+mesh = ExtResource("26_3eplq")
+
+[node name="EdgeBottomLeft" type="Node3D" parent="BottomLayer"]
+
+[node name="EdgeYellowOrange" type="Area3D" parent="BottomLayer/EdgeBottomLeft"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="BottomLayer/EdgeBottomLeft/EdgeYellowOrange"]
+transform = Transform3D(-1, 7.64274e-15, 8.74228e-08, 0, -1, 8.74228e-08, 8.74228e-08, 8.74228e-08, 1, -3, -3, 0)
+mesh = ExtResource("27_cb1w1")
+
+[node name="CornerBottomFrontRight" type="Node3D" parent="BottomLayer"]
+
+[node name="CornerYellowGreenRed" type="Area3D" parent="BottomLayer/CornerBottomFrontRight"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="BottomLayer/CornerBottomFrontRight/CornerYellowGreenRed"]
+transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 3, -3, 3)
+mesh = ExtResource("8_us6gn")
+
+[node name="CornerBottomFrontLeft" type="Node3D" parent="BottomLayer"]
+
+[node name="CornerYellowGreenOrange" type="Area3D" parent="BottomLayer/CornerBottomFrontLeft"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="BottomLayer/CornerBottomFrontLeft/CornerYellowGreenOrange"]
+transform = Transform3D(-4.37114e-08, 8.74228e-08, 1, 0, -1, 8.74228e-08, 1, 3.82137e-15, 4.37114e-08, -3, -3, 3)
+mesh = ExtResource("9_i4vcj")
+
+[node name="CornerBottomBackRight" type="Node3D" parent="BottomLayer"]
+
+[node name="CornerYellowBlueRed" type="Area3D" parent="BottomLayer/CornerBottomBackRight"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="BottomLayer/CornerBottomBackRight/CornerYellowBlueRed"]
+transform = Transform3D(-4.37114e-08, -8.74228e-08, -1, 0, -1, 8.74228e-08, -1, 3.82137e-15, 4.37114e-08, 3, -3, -3)
+mesh = ExtResource("10_fie52")
+
+[node name="CornerBottomBackLeft" type="Node3D" parent="BottomLayer"]
+
+[node name="CornerYellowBlueOrange" type="Area3D" parent="BottomLayer/CornerBottomBackLeft"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="BottomLayer/CornerBottomBackLeft/CornerYellowBlueOrange"]
+transform = Transform3D(-1, 7.64274e-15, 8.74228e-08, 0, -1, 8.74228e-08, 8.74228e-08, 8.74228e-08, 1, -3, -3, -3)
+mesh = ExtResource("11_fl8b4")

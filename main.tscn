@@ -1,3 +1,13 @@
-[gd_scene format=3 uid="uid://b8xr3mfiofesk"]
+[gd_scene load_steps=2 format=3 uid="uid://b8xr3mfiofesk"]
+
+[ext_resource type="PackedScene" uid="uid://ch0okutfb546s" path="res://cube.tscn" id="1_xqvrl"]
 
 [node name="Main" type="Node3D"]
+
+[node name="Cube" parent="." instance=ExtResource("1_xqvrl")]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.886228, -0.204201, 0.415815, 0, 0.897605, 0.440801, -0.46325, -0.39065, 0.795482, 8.05437, 9.39328, 12.8377)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.764966, -0.562716, 0.313332, 0, 0.486488, 0.873687, -0.64407, -0.668341, 0.372147, 5.6825, 11.1453, 10.7101)

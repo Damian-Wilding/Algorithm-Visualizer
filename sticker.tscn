@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cjhm0nyng58hr"]
+
+[ext_resource type="Script" path="res://Sticker.gd" id="1_ugr1b"]
+
+[node name="Sticker" type="Node3D"]
+script = ExtResource("1_ugr1b")
