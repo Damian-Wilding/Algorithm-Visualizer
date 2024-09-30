@@ -1,6 +1,7 @@
 extends Node3D
 
-
+# This dictionary keeps track of every sticker's color. (Capital letter means corner sticker, lowercase letter means edge sticker, and 2 capital letters represent center stickers. This follows the Spef's lettering scheme used in blindfolded Rubik's cube solving.)
+var STICKER_VALUES = {"A":"", "B":"", "C":"", "D":"", "E":"", "F":"", "G":"", "H":"", "I":"", "J":"", "K":"", "L":"", "M":"", "N":"", "O":"", "P":"", "Q":"", "R":"", "S":"", "T":"", "U":"", "V":"", "W":"", "X":"", "a":"", "b":"", "c":"", "d":"", "e":"", "f":"", "g":"", "h":"", "i":"", "j":"", "k":"", "l":"", "m":"", "n":"", "o":"", "p":"", "q":"", "r":"", "s":"", "t":"", "u":"", "v":"", "w":"", "x":"", "TC":"","LC":"", "FC":"", "RC":"", "BC":"", "DC":""}
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	# Assign the right colors to all of the stickers.
@@ -38,6 +39,10 @@ func set_sides_colors(side, center, center_color, first_corner, first_corner_col
 	side.third_edge = third_edge_color
 	side.fourth_edge = fourth_edge_color
 
+# This function takes a dictionary and a list. The dictionary tells us the previous and current color of every sticker on the cube. The list tells us the changes that need to be made to the dictionary.
+func change_selected_stickers(sticker_values, values_to_update):
+	pass
+
 
 # This function takes the current value of every sticker on the provided side and sets the previous color of the sticker to be equal to that value.
 func update_sides_stickers(side):
@@ -62,13 +67,13 @@ func U():
 	# Update the top face stickers.
 	set_sides_colors($TopSide, $TopSide/TopCenterColor, $TopSide/TopCenterColor.LAST_STICKER_COLOR, $TopSide/A_CornerColor, $TopSide/D_CornerColor.LAST_STICKER_COLOR, $TopSide/B_CornerColor, $TopSide/A_CornerColor.LAST_STICKER_COLOR, $TopSide/C_CornerColor, $TopSide/B_CornerColor.LAST_STICKER_COLOR, $TopSide/D_CornerColor, $TopSide/C_CornerColor.LAST_STICKER_COLOR, $TopSide/A_EdgeColor, $TopSide/D_EdgeColor.LAST_STICKER_COLOR, $TopSide/B_EdgeColor, $TopSide/A_EdgeColor.LAST_STICKER_COLOR, $TopSide/C_EdgeColor, $TopSide/B_EdgeColor.LAST_STICKER_COLOR, $TopSide/D_EdgeColor, $TopSide/C_EdgeColor.LAST_STICKER_COLOR)
 	# Update the left face stickers.
-	set_sides_colors($LeftSide, $LeftSide/LeftCenterColor, $LeftSide/LeftCenterColor.LAST_STICKER_COLOR, $LeftSide/E_CornerColor, $FrontSide/I_CornerColor.LAST_STICKER_COLOR, $LeftSide/B_CornerColor, $LeftSide/I_CornerColor.LAST_STICKER_COLOR, $LeftSide/C_CornerColor, $LeftSide/B_CornerColor.LAST_STICKER_COLOR, $LeftSide/D_CornerColor, $LeftSide/C_CornerColor.LAST_STICKER_COLOR, $LeftSide/A_EdgeColor, $LeftSide/D_EdgeColor.LAST_STICKER_COLOR, $LeftSide/B_EdgeColor, $LeftSide/A_EdgeColor.LAST_STICKER_COLOR, $LeftSide/C_EdgeColor, $LeftSide/B_EdgeColor.LAST_STICKER_COLOR, $LeftSide/D_EdgeColor, $LeftSide/C_EdgeColor.LAST_STICKER_COLOR)
+	set_sides_colors($LeftSide, $LeftSide/LeftCenterColor, $LeftSide/LeftCenterColor.LAST_STICKER_COLOR, $LeftSide/E_CornerColor, $FrontSide/I_CornerColor.LAST_STICKER_COLOR, $LeftSide/F_CornerColor, $FrontSide/J_CornerColor.LAST_STICKER_COLOR, $LeftSide/G_CornerColor, $LeftSide/G_CornerColor.LAST_STICKER_COLOR, $LeftSide/H_CornerColor, $LeftSide/H_CornerColor.LAST_STICKER_COLOR, $LeftSide/E_EdgeColor, $FrontSide/I_EdgeColor.LAST_STICKER_COLOR, $LeftSide/F_EdgeColor, $LeftSide/F_EdgeColor.LAST_STICKER_COLOR, $LeftSide/G_EdgeColor, $LeftSide/G_EdgeColor.LAST_STICKER_COLOR, $LeftSide/H_EdgeColor, $LeftSide/H_EdgeColor.LAST_STICKER_COLOR)
 	# Update the front face stickers.
-	set_sides_colors($TopSide, $TopSide/TopCenterColor, $TopSide/TopCenterColor.LAST_STICKER_COLOR, $TopSide/A_CornerColor, $TopSide/D_CornerColor.LAST_STICKER_COLOR, $TopSide/B_CornerColor, $TopSide/A_CornerColor.LAST_STICKER_COLOR, $TopSide/C_CornerColor, $TopSide/B_CornerColor.LAST_STICKER_COLOR, $TopSide/D_CornerColor, $TopSide/C_CornerColor.LAST_STICKER_COLOR, $TopSide/A_EdgeColor, $TopSide/D_EdgeColor.LAST_STICKER_COLOR, $TopSide/B_EdgeColor, $TopSide/A_EdgeColor.LAST_STICKER_COLOR, $TopSide/C_EdgeColor, $TopSide/B_EdgeColor.LAST_STICKER_COLOR, $TopSide/D_EdgeColor, $TopSide/C_EdgeColor.LAST_STICKER_COLOR)
+	set_sides_colors($FrontSide, $FrontSide/FrontCenterColor, $FrontSide/TopCenterColor.LAST_STICKER_COLOR, $FrontSide/I_CornerColor, $RightSide/M_CornerColor.LAST_STICKER_COLOR, $FrontSide/J_CornerColor, $RightSide/N_CornerColor.LAST_STICKER_COLOR, $FrontSide/K_CornerColor, $FrontSide/K_CornerColor.LAST_STICKER_COLOR, $FrontSide/L_CornerColor, $FrontSide/L_CornerColor.LAST_STICKER_COLOR, $FrontSide/I_EdgeColor, $RightSide/M_EdgeColor.LAST_STICKER_COLOR, $FrontSide/J_EdgeColor, $FrontSide/J_EdgeColor.LAST_STICKER_COLOR, $FrontSide/K_EdgeColor, $FrontSide/K_EdgeColor.LAST_STICKER_COLOR, $FrontSide/L_EdgeColor, $FrontSide/L_EdgeColor.LAST_STICKER_COLOR)
 	# Update the right face stickers.
-	set_sides_colors($TopSide, $TopSide/TopCenterColor, $TopSide/TopCenterColor.LAST_STICKER_COLOR, $TopSide/A_CornerColor, $TopSide/D_CornerColor.LAST_STICKER_COLOR, $TopSide/B_CornerColor, $TopSide/A_CornerColor.LAST_STICKER_COLOR, $TopSide/C_CornerColor, $TopSide/B_CornerColor.LAST_STICKER_COLOR, $TopSide/D_CornerColor, $TopSide/C_CornerColor.LAST_STICKER_COLOR, $TopSide/A_EdgeColor, $TopSide/D_EdgeColor.LAST_STICKER_COLOR, $TopSide/B_EdgeColor, $TopSide/A_EdgeColor.LAST_STICKER_COLOR, $TopSide/C_EdgeColor, $TopSide/B_EdgeColor.LAST_STICKER_COLOR, $TopSide/D_EdgeColor, $TopSide/C_EdgeColor.LAST_STICKER_COLOR)
+	set_sides_colors($RightSide, $RightSide/RightCenterColor, $RightSide/RightCenterColor.LAST_STICKER_COLOR, $RightSide/M_CornerColor, $BackSide/Q_CornerColor.LAST_STICKER_COLOR, $RightSide/N_CornerColor, $BackSide/R_CornerColor.LAST_STICKER_COLOR, $RightSide/O_CornerColor, $RightSide/O_CornerColor.LAST_STICKER_COLOR, $RightSide/P_CornerColor, $RightSide/P_CornerColor.LAST_STICKER_COLOR, $RightSide/M_EdgeColor, $BackSide/Q_EdgeColor.LAST_STICKER_COLOR, $RightSide/N_EdgeColor, $RightSide/N_EdgeColor.LAST_STICKER_COLOR, $RightSide/O_EdgeColor, $RightSide/O_EdgeColor.LAST_STICKER_COLOR, $RightSide/P_EdgeColor, $RightSide/P_EdgeColor.LAST_STICKER_COLOR)
 	# Update the back face stickers.
-	set_sides_colors($TopSide, $TopSide/TopCenterColor, $TopSide/TopCenterColor.LAST_STICKER_COLOR, $TopSide/A_CornerColor, $TopSide/D_CornerColor.LAST_STICKER_COLOR, $TopSide/B_CornerColor, $TopSide/A_CornerColor.LAST_STICKER_COLOR, $TopSide/C_CornerColor, $TopSide/B_CornerColor.LAST_STICKER_COLOR, $TopSide/D_CornerColor, $TopSide/C_CornerColor.LAST_STICKER_COLOR, $TopSide/A_EdgeColor, $TopSide/D_EdgeColor.LAST_STICKER_COLOR, $TopSide/B_EdgeColor, $TopSide/A_EdgeColor.LAST_STICKER_COLOR, $TopSide/C_EdgeColor, $TopSide/B_EdgeColor.LAST_STICKER_COLOR, $TopSide/D_EdgeColor, $TopSide/C_EdgeColor.LAST_STICKER_COLOR)
+	set_sides_colors($BackSide, $BackSide/BackCenterColor, $BackSide/BackCenterColor.LAST_STICKER_COLOR, $BackSide/Q_CornerColor, $BackSide/_CornerColor.LAST_STICKER_COLOR, $BackSide/B_CornerColor, $BackSide/A_CornerColor.LAST_STICKER_COLOR, $BackSide/C_CornerColor, $BackSide/B_CornerColor.LAST_STICKER_COLOR, $BackSide/D_CornerColor, $BackSide/C_CornerColor.LAST_STICKER_COLOR, $BackSide/A_EdgeColor, $BackSide/D_EdgeColor.LAST_STICKER_COLOR, $BackSide/B_EdgeColor, $BackSide/A_EdgeColor.LAST_STICKER_COLOR, $BackSide/C_EdgeColor, $BackSide/B_EdgeColor.LAST_STICKER_COLOR, $BackSide/D_EdgeColor, $BackSide/C_EdgeColor.LAST_STICKER_COLOR)
 	
 
 # Turn the top face counter clockwise.
