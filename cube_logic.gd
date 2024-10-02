@@ -478,28 +478,28 @@ func X_CCW():
 	# Update the top face stickers.
 	change_selected_stickers({"A":"S", "B":"T", "C":"Q", "D":"R", "a":"s", "b":"t", "c":"q", "d":"r", "TC":"BC"})
 	# Update the left face stickers.
-	change_selected_stickers({"E":"", "F":"", "G":"", "H":"", "e":"", "f":"", "g":"", "h":""})
+	change_selected_stickers({"E":"H", "F":"E", "G":"F", "H":"G", "e":"h", "f":"e", "g":"f", "h":"g"})
 	# Update the front face stickers.
-	change_selected_stickers({"I":"", "J":"", "K":"", "L":"", "i":"", "j":"", "k":"", "l":"", "FC":""})
+	change_selected_stickers({"I":"A", "J":"B", "K":"C", "L":"D", "i":"a", "j":"b", "k":"c", "l":"d", "FC":"TC"})
 	# Update the right face stickers.
-	change_selected_stickers({"M":"", "N":"", "O":"", "P":"", "m":"", "n":"", "o":"", "p":""})
+	change_selected_stickers({"M":"N", "N":"O", "O":"P", "P":"M", "m":"n", "n":"o", "o":"p", "p":"m"})
 	# Update the back face stickers.
-	change_selected_stickers({"Q":"", "R":"", "S":"", "T":"", "q":"", "r":"", "s":"", "t":"", "BC":""})
+	change_selected_stickers({"Q":"W", "R":"X", "S":"U", "T":"V", "q":"w", "r":"x", "s":"u", "t":"v", "BC":"DC"})
 	# Update the bottom face stickers.
-	change_selected_stickers({"U":"", "V":"", "W":"", "X":"", "u":"", "v":"", "w":"", "x":"", "DC":""})
+	change_selected_stickers({"U":"I", "V":"J", "W":"K", "X":"L", "u":"i", "v":"j", "w":"k", "x":"l", "DC":"FC"})
 	
 # Rotate the entire cube 180 degrees along the x axis by changing every sticker that will change values due to the rotation.
 func X2():
 	# Updating the LAST_STICKER_COLOR value for every sticker on the cube.
 	update_all_stickers()
 	# Update the top face stickers.
-	change_selected_stickers({"A":"", "B":"", "C":"", "D":"", "a":"", "b":"", "c":"", "d":"", "TC":""})
+	change_selected_stickers({"A":"U", "B":"V", "C":"W", "D":"X", "a":"u", "b":"v", "c":"w", "d":"x", "TC":"DC"})
 	# Update the left face stickers.
-	change_selected_stickers({"E":"", "F":"", "G":"", "H":"", "e":"", "f":"", "g":"", "h":""})
+	change_selected_stickers({"E":"G", "F":"H", "G":"E", "H":"F", "e":"g", "f":"h", "g":"e", "h":"f"})
 	# Update the front face stickers.
-	change_selected_stickers({"I":"", "J":"", "K":"", "L":"", "i":"", "j":"", "k":"", "l":"", "FC":""})
+	change_selected_stickers({"I":"S", "J":"T", "K":"Q", "L":"R", "i":"s", "j":"t", "k":"q", "l":"r", "FC":"BC"})
 	# Update the right face stickers.
-	change_selected_stickers({"M":"", "N":"", "O":"", "P":"", "m":"", "n":"", "o":"", "p":""})
+	change_selected_stickers({"M":"O", "N":"P", "O":"M", "P":"N", "m":"o", "n":"p", "o":"m", "p":"n"})
 	# Update the back face stickers.
 	change_selected_stickers({"Q":"", "R":"", "S":"", "T":"", "q":"", "r":"", "s":"", "t":"", "BC":""})
 	# Update the bottom face stickers.
