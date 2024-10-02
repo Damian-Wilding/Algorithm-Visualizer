@@ -1,9 +1,9 @@
 extends Node3D
 
 # This dictionary keeps track of every sticker's color. (Capital letter means corner sticker, lowercase letter means edge sticker, and 2 capital letters represent center stickers. This follows the Spef's lettering scheme used in blindfolded Rubik's cube solving.)
-var STICKER_VALUES = {"A":"", "B":"", "C":"", "D":"", "E":"", "F":"", "G":"", "H":"", "I":"", "J":"", "K":"", "L":"", "M":"", "N":"", "O":"", "P":"", "Q":"", "R":"", "S":"", "T":"", "U":"", "V":"", "W":"", "X":"", "a":"", "b":"", "c":"", "d":"", "e":"", "f":"", "g":"", "h":"", "i":"", "j":"", "k":"", "l":"", "m":"", "n":"", "o":"", "p":"", "q":"", "r":"", "s":"", "t":"", "u":"", "v":"", "w":"", "x":"", "TC":"","LC":"", "FC":"", "RC":"", "BC":"", "DC":""}
+var STICKER_VALUES = {"A":"", "B":"", "C":"", "D":"", "E":"", "F":"", "G":"", "H":"", "I":"", "J":"", "K":"", "L":"", "M":"", "N":"", "O":"", "P":"", "Q":"", "R":"", "S":"", "T":"", "U":"", "V":"", "W":"", "X":"", "a":"", "b":"", "c":"", "d":"", "e":"", "f":"", "g":"", "h":"", "i":"", "j":"", "k":"", "l":"", "m":"", "n":"", "o":"", "p":"", "q":"", "r":"", "s":"", "t":"", "u":"", "v":"", "w":"", "x":"", "UC":"","LC":"", "FC":"", "RC":"", "BC":"", "DC":""}
 # This dictionary is the exact same, but it will be the values of the stickers after the previous turn has been made. (It's used to find the new color to set a sticker to.)
-var PREVIOUS_STICKER_VALUES = {"A":"", "B":"", "C":"", "D":"", "E":"", "F":"", "G":"", "H":"", "I":"", "J":"", "K":"", "L":"", "M":"", "N":"", "O":"", "P":"", "Q":"", "R":"", "S":"", "T":"", "U":"", "V":"", "W":"", "X":"", "a":"", "b":"", "c":"", "d":"", "e":"", "f":"", "g":"", "h":"", "i":"", "j":"", "k":"", "l":"", "m":"", "n":"", "o":"", "p":"", "q":"", "r":"", "s":"", "t":"", "u":"", "v":"", "w":"", "x":"", "TC":"","LC":"", "FC":"", "RC":"", "BC":"", "DC":""}
+var PREVIOUS_STICKER_VALUES = {"A":"", "B":"", "C":"", "D":"", "E":"", "F":"", "G":"", "H":"", "I":"", "J":"", "K":"", "L":"", "M":"", "N":"", "O":"", "P":"", "Q":"", "R":"", "S":"", "T":"", "U":"", "V":"", "W":"", "X":"", "a":"", "b":"", "c":"", "d":"", "e":"", "f":"", "g":"", "h":"", "i":"", "j":"", "k":"", "l":"", "m":"", "n":"", "o":"", "p":"", "q":"", "r":"", "s":"", "t":"", "u":"", "v":"", "w":"", "x":"", "UC":"","LC":"", "FC":"", "RC":"", "BC":"", "DC":""}
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -31,7 +31,7 @@ func _process(delta):
 func set_sides_colors(side, center, corner1, corner2, corner3, corner4, edge1, edge2, edge3, edge4):
 	match side:
 		"T":
-			STICKER_VALUES.TC = center
+			STICKER_VALUES.UC = center
 			STICKER_VALUES.A = corner1
 			STICKER_VALUES.B = corner2
 			STICKER_VALUES.C = corner3
@@ -107,7 +107,7 @@ func change_selected_stickers(sticker_dictionary):
 func update_all_stickers_previous_values_on_side(side):
 	match side:
 		"T":
-			PREVIOUS_STICKER_VALUES.TC = STICKER_VALUES.TC
+			PREVIOUS_STICKER_VALUES.UC = STICKER_VALUES.UC
 			PREVIOUS_STICKER_VALUES.A = STICKER_VALUES.A
 			PREVIOUS_STICKER_VALUES.B = STICKER_VALUES.B
 			PREVIOUS_STICKER_VALUES.C = STICKER_VALUES.C
@@ -459,7 +459,7 @@ func X():
 	# Updating the LAST_STICKER_COLOR value for every sticker on the cube.
 	update_all_stickers()
 	# Update the top face stickers.
-	change_selected_stickers({"A":"I", "B":"J", "C":"K", "D":"L", "a":"i", "b":"j", "c":"k", "d":"l", "TC":"FC"})
+	change_selected_stickers({"A":"I", "B":"J", "C":"K", "D":"L", "a":"i", "b":"j", "c":"k", "d":"l", "UC":"FC"})
 	# Update the left face stickers.
 	change_selected_stickers({"E":"F", "F":"G", "G":"H", "H":"E", "e":"f", "f":"g", "g":"h", "h":"e"})
 	# Update the front face stickers.
@@ -467,7 +467,7 @@ func X():
 	# Update the right face stickers.
 	change_selected_stickers({"M":"P", "N":"M", "O":"N", "P":"O", "m":"p", "n":"m", "o":"n", "p":"o"})
 	# Update the back face stickers.
-	change_selected_stickers({"Q":"C", "R":"D", "S":"A", "T":"B", "q":"c", "r":"d", "s":"a", "t":"b", "BC":"TC"})
+	change_selected_stickers({"Q":"C", "R":"D", "S":"A", "T":"B", "q":"c", "r":"d", "s":"a", "t":"b", "BC":"UC"})
 	# Update the bottom face stickers.
 	change_selected_stickers({"U":"S", "V":"T", "W":"Q", "X":"R", "u":"s", "v":"t", "w":"q", "x":"r", "DC":"BC"})
 	
@@ -476,11 +476,11 @@ func X_CCW():
 	# Updating the LAST_STICKER_COLOR value for every sticker on the cube.
 	update_all_stickers()
 	# Update the top face stickers.
-	change_selected_stickers({"A":"S", "B":"T", "C":"Q", "D":"R", "a":"s", "b":"t", "c":"q", "d":"r", "TC":"BC"})
+	change_selected_stickers({"A":"S", "B":"T", "C":"Q", "D":"R", "a":"s", "b":"t", "c":"q", "d":"r", "UC":"BC"})
 	# Update the left face stickers.
 	change_selected_stickers({"E":"H", "F":"E", "G":"F", "H":"G", "e":"h", "f":"e", "g":"f", "h":"g"})
 	# Update the front face stickers.
-	change_selected_stickers({"I":"A", "J":"B", "K":"C", "L":"D", "i":"a", "j":"b", "k":"c", "l":"d", "FC":"TC"})
+	change_selected_stickers({"I":"A", "J":"B", "K":"C", "L":"D", "i":"a", "j":"b", "k":"c", "l":"d", "FC":"UC"})
 	# Update the right face stickers.
 	change_selected_stickers({"M":"N", "N":"O", "O":"P", "P":"M", "m":"n", "n":"o", "o":"p", "p":"m"})
 	# Update the back face stickers.
@@ -493,7 +493,7 @@ func X2():
 	# Updating the LAST_STICKER_COLOR value for every sticker on the cube.
 	update_all_stickers()
 	# Update the top face stickers.
-	change_selected_stickers({"A":"U", "B":"V", "C":"W", "D":"X", "a":"u", "b":"v", "c":"w", "d":"x", "TC":"DC"})
+	change_selected_stickers({"A":"U", "B":"V", "C":"W", "D":"X", "a":"u", "b":"v", "c":"w", "d":"x", "UC":"DC"})
 	# Update the left face stickers.
 	change_selected_stickers({"E":"G", "F":"H", "G":"E", "H":"F", "e":"g", "f":"h", "g":"e", "h":"f"})
 	# Update the front face stickers.
@@ -501,57 +501,113 @@ func X2():
 	# Update the right face stickers.
 	change_selected_stickers({"M":"O", "N":"P", "O":"M", "P":"N", "m":"o", "n":"p", "o":"m", "p":"n"})
 	# Update the back face stickers.
-	change_selected_stickers({"Q":"", "R":"", "S":"", "T":"", "q":"", "r":"", "s":"", "t":"", "BC":""})
+	change_selected_stickers({"Q":"K", "R":"L", "S":"I", "T":"J", "q":"k", "r":"l", "s":"i", "t":"j", "BC":"FC"})
 	# Update the bottom face stickers.
-	change_selected_stickers({"U":"", "V":"", "W":"", "X":"", "u":"", "v":"", "w":"", "x":"", "DC":""})
+	change_selected_stickers({"U":"A", "V":"B", "W":"C", "X":"D", "u":"a", "v":"b", "w":"c", "x":"d", "DC":"UC"})
 	
 # Rotate the entire cube clockwise along the y axis by changing every sticker that will change values due to the rotation.
 func Y():
-	# Rearrange the stickers to update piece positions.
-	pass
+	# Updating the LAST_STICKER_COLOR value for every sticker on the cube.
+	update_all_stickers()
+	# Update the top face stickers.
+	change_selected_stickers({"A":"D", "B":"A", "C":"B", "D":"C", "a":"d", "b":"a", "c":"b", "d":"c"})
+	# Update the left face stickers.
+	change_selected_stickers({"E":"I", "F":"J", "G":"K", "H":"L", "e":"i", "f":"j", "g":"k", "h":"l", "LC":"FC"})
+	# Update the front face stickers.
+	change_selected_stickers({"I":"M", "J":"N", "K":"O", "L":"P", "i":"m", "j":"n", "k":"o", "l":"p", "FC":"RC"})
+	# Update the right face stickers.
+	change_selected_stickers({"M":"Q", "N":"R", "O":"S", "P":"T", "m":"q", "n":"r", "o":"s", "p":"t", "RC":"BC"})
+	# Update the back face stickers.
+	change_selected_stickers({"Q":"E", "R":"F", "S":"G", "T":"H", "q":"e", "r":"f", "s":"g", "t":"h", "BC":"LC"})
+	# Update the bottom face stickers.
+	change_selected_stickers({"U":"V", "V":"W", "W":"X", "X":"U", "u":"v", "v":"w", "w":"x", "x":"u"})
+#
 	
 # Rotate the entire cube counter clockwise along the y axis by changing every sticker that will change values due to the rotation.
 func Y_CCW():
-	# Rearrange the stickers to update piece positions.
-	pass
+	# Updating the LAST_STICKER_COLOR value for every sticker on the cube.
+	update_all_stickers()
+	# Update the top face stickers.
+	change_selected_stickers({"A":"B", "B":"C", "C":"D", "D":"A", "a":"b", "b":"c", "c":"d", "d":"a"})
+	# Update the left face stickers.
+	change_selected_stickers({"E":"Q", "F":"R", "G":"S", "H":"T", "e":"q", "f":"r", "g":"s", "h":"t", "LC":"BC"})
+	# Update the front face stickers.
+	change_selected_stickers({"I":"E", "J":"F", "K":"G", "L":"H", "i":"e", "j":"f", "k":"g", "l":"h", "FC":"LC"})
+	# Update the right face stickers.
+	change_selected_stickers({"M":"I", "N":"J", "O":"K", "P":"L", "m":"i", "n":"j", "o":"k", "p":"l", "RC":"FC"})
+	# Update the back face stickers.
+	change_selected_stickers({"Q":"M", "R":"N", "S":"O", "T":"P", "q":"m", "r":"n", "s":"o", "t":"p", "BC":"RC"})
+	# Update the bottom face stickers.
+	change_selected_stickers({"U":"X", "V":"U", "W":"V", "X":"W", "u":"x", "v":"u", "w":"v", "x":"w"})
+#
 	
 # Rotate the entire cube 180 degrees along the y axis by changing every sticker that will change values due to the rotation.
 func Y2():
-	# Rearrange the stickers to update piece positions.
-	pass
+	# Updating the LAST_STICKER_COLOR value for every sticker on the cube.
+	update_all_stickers()
+	# Update the top face stickers.
+	change_selected_stickers({"A":"C", "B":"D", "C":"A", "D":"B", "a":"c", "b":"d", "c":"a", "d":"b"})
+	# Update the left face stickers.
+	change_selected_stickers({"E":"M", "F":"N", "G":"O", "H":"P", "e":"m", "f":"n", "g":"o", "h":"p", "LC":"RC"})
+	# Update the front face stickers.
+	change_selected_stickers({"I":"Q", "J":"R", "K":"S", "L":"T", "i":"q", "j":"r", "k":"s", "l":"t", "FC":"BC"})
+	# Update the right face stickers.
+	change_selected_stickers({"M":"E", "N":"F", "O":"G", "P":"H", "m":"e", "n":"f", "o":"g", "p":"h", "RC":"LC"})
+	# Update the back face stickers.
+	change_selected_stickers({"Q":"I", "R":"J", "S":"K", "T":"L", "q":"i", "r":"j", "s":"k", "t":"l", "BC":"FC"})
+	# Update the bottom face stickers.
+	change_selected_stickers({"U":"W", "V":"X", "W":"U", "X":"V", "u":"w", "v":"x", "w":"u", "x":"v"})
 	
 # Rotate the entire cube clockwise along the z axis by changing every sticker that will change values due to the rotation.
 func Z():
-	# Rearrange the stickers to update piece positions.
-	pass
+	# Updating the LAST_STICKER_COLOR value for every sticker on the cube.
+	update_all_stickers()
+	# Update the top face stickers.
+	change_selected_stickers({"A":"H", "B":"E", "C":"F", "D":"G", "a":"h", "b":"e", "c":"f", "d":"g", "UC":"LC"})
+	# Update the left face stickers.
+	change_selected_stickers({"E":"X", "F":"U", "G":"V", "H":"W", "e":"x", "f":"u", "g":"v", "h":"w", "LC":"DC"})
+	# Update the front face stickers.
+	change_selected_stickers({"I":"L", "J":"I", "K":"J", "L":"K", "i":"l", "j":"i", "k":"j", "l":"k"})
+	# Update the right face stickers.
+	change_selected_stickers({"M":"D", "N":"A", "O":"B", "P":"C", "m":"d", "n":"a", "o":"b", "p":"c", "RC":"UC"})
+	# Update the back face stickers.
+	change_selected_stickers({"Q":"R", "R":"S", "S":"T", "T":"Q", "q":"r", "r":"s", "s":"t", "t":"q"})
+	# Update the bottom face stickers.
+	change_selected_stickers({"U":"P", "V":"M", "W":"N", "X":"O", "u":"p", "v":"m", "w":"n", "x":"o", "DC":"RC"})
 	
 # Rotate the entire cube counter clockwise along the z axis by changing every sticker that will change values due to the rotation.
 func Z_CCW():
-	# Rearrange the stickers to update piece positions.
-	pass
+	# Updating the LAST_STICKER_COLOR value for every sticker on the cube.
+	update_all_stickers()
+	# Update the top face stickers.
+	change_selected_stickers({"A":"N", "B":"O", "C":"P", "D":"M", "a":"n", "b":"o", "c":"p", "d":"m", "UC":"RC"})
+	# Update the left face stickers.
+	change_selected_stickers({"E":"B", "F":"C", "G":"D", "H":"A", "e":"b", "f":"c", "g":"d", "h":"a", "LC":"UC"})
+	# Update the front face stickers.
+	change_selected_stickers({"I":"J", "J":"K", "K":"L", "L":"I", "i":"j", "j":"k", "k":"l", "l":"i"})
+	# Update the right face stickers.
+	change_selected_stickers({"M":"V", "N":"W", "O":"X", "P":"U", "m":"v", "n":"w", "o":"x", "p":"u", "RC":"DC"})
+	# Update the back face stickers.
+	change_selected_stickers({"Q":"T", "R":"Q", "S":"R", "T":"S", "q":"t", "r":"q", "s":"r", "t":"s"})
+	# Update the bottom face stickers.
+	change_selected_stickers({"U":"F", "V":"G", "W":"H", "X":"E", "u":"f", "v":"g", "w":"h", "x":"e", "DC":"LC"})
 	
 # Rotate the entire cube 180 degrees along the z axis by changing every sticker that will change values due to the rotation.
 func Z2():
-	# Rearrange the stickers to update piece positions.
-	pass
-
-
-
-#	change_selected_stickers({"":"", "":"", "":"", "":"", "":"", "":"", "":"", "":""})
-#	change_selected_stickers({"":"", "":"", "":""})
-
-# Updating the LAST_STICKER_COLOR value for every sticker on the cube.
+	# Updating the LAST_STICKER_COLOR value for every sticker on the cube.
 	update_all_stickers()
 	# Update the top face stickers.
-	change_selected_stickers({"A":"", "B":"", "C":"", "D":"", "a":"", "b":"", "c":"", "d":"", "TC":""})
+	change_selected_stickers({"A":"W", "B":"X", "C":"U", "D":"V", "a":"w", "b":"x", "c":"u", "d":"v", "UC":"DC"})
 	# Update the left face stickers.
-	change_selected_stickers({"E":"", "F":"", "G":"", "H":"", "e":"", "f":"", "g":"", "h":"", "LC":""})
+	change_selected_stickers({"E":"O", "F":"P", "G":"M", "H":"N", "e":"o", "f":"p", "g":"m", "h":"n", "LC":"RC"})
 	# Update the front face stickers.
-	change_selected_stickers({"I":"", "J":"", "K":"", "L":"", "i":"", "j":"", "k":"", "l":"", "FC":""})
+	change_selected_stickers({"I":"K", "J":"L", "K":"I", "L":"J", "i":"k", "j":"l", "k":"i", "l":"j"})
 	# Update the right face stickers.
-	change_selected_stickers({"M":"", "N":"", "O":"", "P":"", "m":"", "n":"", "o":"", "p":"", "RC":""})
+	change_selected_stickers({"M":"G", "N":"H", "O":"E", "P":"F", "m":"g", "n":"h", "o":"e", "p":"f", "RC":"LC"})
 	# Update the back face stickers.
-	change_selected_stickers({"Q":"", "R":"", "S":"", "T":"", "q":"", "r":"", "s":"", "t":"", "BC":""})
+	change_selected_stickers({"Q":"S", "R":"T", "S":"Q", "T":"R", "q":"s", "r":"t", "s":"q", "t":"r"})
 	# Update the bottom face stickers.
-	change_selected_stickers({"U":"", "V":"", "W":"", "X":"", "u":"", "v":"", "w":"", "x":"", "DC":""})
-#
+	change_selected_stickers({"U":"C", "V":"D", "W":"A", "X":"B", "u":"c", "v":"d", "w":"a", "x":"b", "DC":"UC"})
+
+
+
