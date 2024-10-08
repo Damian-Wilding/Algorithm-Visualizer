@@ -37,6 +37,11 @@ script = ExtResource("1_ojui8")
 
 [node name="CubeLogic" parent="." instance=ExtResource("29_kddsc")]
 
+[node name="TurnTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="HowLongToTurn90Degrees" type="Timer" parent="."]
+
 [node name="Corners" type="Node3D" parent="."]
 
 [node name="ItalianCorner" type="Node3D" parent="Corners"]

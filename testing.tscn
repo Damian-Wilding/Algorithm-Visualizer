@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://bhavddjcw5tpt"]
+
+[ext_resource type="Script" path="res://Testing.gd" id="1_mwamw"]
+[ext_resource type="ArrayMesh" uid="uid://cjqrduuv2kw3b" path="res://Assets/CubeParts/Corners/CornerWhiteGreenRed.res" id="2_6b6of"]
+
+[node name="Testing" type="Node3D"]
+script = ExtResource("1_mwamw")
+
+[node name="Node3D" type="Node3D" parent="."]
+
+[node name="Area3D" type="Area3D" parent="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D/Area3D"]
+transform = Transform3D(0.875, -0.216506, 0.433013, 0.433013, 0.75, -0.5, -0.216506, 0.625, 0.75, 1.5, 1.5, -1.5)
+mesh = ExtResource("2_6b6of")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-0.698171, -0.315448, 0.64269, -0.0218244, 0.906658, 0.421301, -0.715599, 0.280114, -0.639886, 6.66452, 3.54978, -5.7212)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.830858, 0.492707, 0.258677, 0, -0.464842, 0.885394, 0.556484, -0.735637, -0.386218, 2.02466, 3.95161, -4.51309)
+
+[node name="TesterTimer" type="Timer" parent="."]
+wait_time = 0.254
+autostart = true
+
+[connection signal="timeout" from="TesterTimer" to="." method="_on_tester_timer_timeout"]
