@@ -3,10 +3,14 @@ extends Node3D
 var POSITION_SCALER = 3
 # Degrees to rotate is how many degrees the current turn being made is rotating. (In other words, if I'm currently in the middle of a 90 degree turn, then degrees to rotate will be 90.)
 var DEGREES_TO_ROTATE = 90
-# Turn speed is how fast the cube will turn. (5.00 is the slowest (1 turn every 5 seconds) and 0.1 is the fastest (10 turns per second).)
+# This variable is the absolute value of the degrees to rotate. It is used to calculate the turn speed. This is needed because if the DEGREES_TO_ROTATE is negative then it will not work correctly. Basically, if DEGREES_TO_ROTATE is -270, then this will be +90 since it is a 90 degree turn and using -270 to calculate the turning speed would break everything.
+var ABSOLUTE_VALUE_DEGREES_TO_ROTATE = 90
+# Turn speed is how fast the cube will turn. (5.00 is the fastest (5 turns per second) and 0.1 is the slowest (1 turn per 10 seconds).)
 var TURN_SPEED = 1
-# This controls how long it takes the cube to rotate 90 degrees. (Time in seconds.)
-var TIME_TO_TURN = 1.01
+# This controls how long the cube can't be turned for while a turn is being made. (Time in seconds.)
+var TIME_TO_TURN = 1
+# This number keeps track of how much time has passed.
+var ELAPSED_TIME = 0.0
 # This list is going to contain all of the pieces of the cube. (It's empty here, but the pieces will be added in _ready().)
 var ALL_PIECES_LIST = []
 # This list is going to contain all of the pieces that are currently moving.
@@ -34,10 +38,14 @@ func _ready():
 		ALL_PIECES_LIST.append(center.get_child(0).get_child(0))
 	# Finally, add the core.
 	ALL_PIECES_LIST.append($Core/MeshInstance3D)
+	
+	# Make sure the cube timer is stopped so that turns can be made immediately.
+	$TurnTimer.stop()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	print("ready")
 	if Input.is_action_just_released("ui_accept"):
 		U()
 				
@@ -45,18 +53,17 @@ func _process(delta):
 		F()
 	
 	# Have the cube continue to rotate if the timer is running.
-	if $HowLongToTurn90Degrees.is_stopped() == false:
+	if $TurnTimer.is_stopped() == false:
 		# Iterate through all the pieces that need to be turned.
 		for piece in CURRENTLY_MOVING_PIECES:
 			# Rotate the pieces based on the axis rotational velocities.
-			#if CURRENT_AXIS_OF_ROTATION == "Y":
-			#	get_node("Cube").get_node("Corners").get_node(piece).rotation.y = lerp_angle(get_node("Cube").get_node("Corners").get_node(piece).rotation.y, deg_to_rad(DEGREES_TO_ROTATE), delta * deg_to_rad(DEGREES_TO_ROTATE) * TURN_SPEED)
-			#elif CURRENT_AXIS_OF_ROTATION == "X":
-			#	piece.rotation.x = lerp_angle(piece.rotation.x, deg_to_rad(DEGREES_TO_ROTATE), delta * deg_to_rad(DEGREES_TO_ROTATE) * TURN_SPEED)
-			#elif CURRENT_AXIS_OF_ROTATION == "Z":
-			#	piece.rotation.z = lerp_angle(piece.rotation.z, deg_to_rad(DEGREES_TO_ROTATE), delta * deg_to_rad(DEGREES_TO_ROTATE) * TURN_SPEED)
-			#print(piece)
-			pass
+			if CURRENT_AXIS_OF_ROTATION == "Y":
+				piece.rotation.y = lerp_angle(piece.rotation.y, deg_to_rad(DEGREES_TO_ROTATE), delta * TURN_SPEED)
+			elif CURRENT_AXIS_OF_ROTATION == "X":
+				piece.rotation.x = lerp_angle(piece.rotation.x, deg_to_rad(DEGREES_TO_ROTATE), delta * deg_to_rad(DEGREES_TO_ROTATE) * TURN_SPEED)
+			elif CURRENT_AXIS_OF_ROTATION == "Z":
+				piece.rotation.z = lerp_angle(piece.rotation.z, deg_to_rad(DEGREES_TO_ROTATE), delta * deg_to_rad(DEGREES_TO_ROTATE) * TURN_SPEED)
+			print(piece.rotation.y)
 
 
 # This function currently isn't being used. I decided to have cube logic do this instead since I couldn't make this one work correctly.
@@ -176,16 +183,16 @@ func U():
 		$CubeLogic.U()
 		# Change DEGREES_TO_TURN to be 270 since this is a -90 degree turn. (For some reason counterclockwise turns are considered +90 degree turns and clockwise turns are -90 degree turns.)
 		DEGREES_TO_ROTATE += 270
+		# Change ABSOLUTE_VALUE_DEGREES_TO_ROTATE to be 90 since we are making a 90 degree turn.
+		ABSOLUTE_VALUE_DEGREES_TO_ROTATE += 90
 		# Update the axis that the pieces will be turning around.
 		change_axis("Y")
-		# Start the turn timer. (It tells us how long we want the turn to take.)
-		$HowLongToTurn90Degrees.start(TURN_SPEED)
+		# Start the turn timer. (TIME_TO_TURN tells us how long we want the turn to take.)
+		$TurnTimer.start(TURN_SPEED)
 		# Clear all previous pieces from the currently moving parts list.
 		CURRENTLY_MOVING_PIECES.clear()
 		# Find all the pieces on the top face and add them to the currently moving parts list.
 		CURRENTLY_MOVING_PIECES = $CubeLogic.find_pieces_in_layer("U")
-		for thing  in CURRENTLY_MOVING_PIECES:
-			print(thing.name)
 
 # Turn the top face counter clockwise.
 func U_CCW():

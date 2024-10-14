@@ -16,7 +16,7 @@ var core
 func _ready():
 	# Assign the right colors to all of the stickers. (Always starts with the white side on top and the green side in the front.)
 	# White side stickers.
-	set_sides_colors("T", "W", "W", "W", "W", "W", "W", "W", "W", "W")
+	set_sides_colors("U", "W", "W", "W", "W", "W", "W", "W", "W", "W")
 	# Yellow side stickers.						
 	set_sides_colors("D", "Y", "Y", "Y", "Y", "Y", "Y", "Y", "Y", "Y")
 	# Green side stickers.						
@@ -189,7 +189,7 @@ func update_all_stickers_previous_values_on_side(side):
 # This function updates all the stickers on every side by applying update_all_stickers_previous_values_on_side() to each of the 6 sides.
 func update_all_stickers():
 	# call update_all_stickers_previous_values_on_side on each of the 6 sides.
-	update_all_stickers_previous_values_on_side("T")
+	update_all_stickers_previous_values_on_side("U")
 	update_all_stickers_previous_values_on_side("L")
 	update_all_stickers_previous_values_on_side("F")
 	update_all_stickers_previous_values_on_side("R")
@@ -644,6 +644,8 @@ func find_corner_identity(sticker):
 			return(organize_corner_colors("%s%s%s" % [STICKER_VALUES["W"], STICKER_VALUES["O"], STICKER_VALUES["T"]]))
 		"X", "S", "H":
 			return(organize_corner_colors("%s%s%s" % [STICKER_VALUES["X"], STICKER_VALUES["S"], STICKER_VALUES["H"]]))
+		_:
+			print("Find corner identity error")
 			
 # This function will take a string that has 3 letters in it (each corresponding to a specific color.) and tells you the name of the corner that has those 3 colors. (This is a helper function for the find_corner_identity() function.)
 func organize_corner_colors(letters):
@@ -654,18 +656,18 @@ func organize_corner_colors(letters):
 			# Third, check to see if the corner if from the right side layer.
 			if letters.contains("R"):
 				# The corner is the italian (white, green, and red corner).
-				return get_parent().get_node("ItalianCorner")
+				return get_parent().get_node("Corners").get_node("ItalianCorner")
 			# The corner is the irish corner (white, green, orange).
 			else:
-				return get_parent().get_node("IrishCorner")
+				return get_parent().get_node("Corners").get_node("IrishCorner")
 		# The corner contains white and blue. Check to see if the third color is red or orange.
 		else:
 			if letters.contains("R"):
 				# The corner is the usa corner (white, blue, red).
-				return get_parent().get_node("USACorner")
+				return get_parent().get_node("Corners").get_node("USACorner")
 			# The corner is the netherlands corner (white, blue, orange).
 			else:
-				return get_parent().get_node("NetherlandsCorner")
+				return get_parent().get_node("Corners").get_node("NetherlandsCorner")
 	# The corner is from the bottom layer (contains yellow).
 	else:
 		# Second, check to see if the corner is from the front layer.
@@ -673,18 +675,18 @@ func organize_corner_colors(letters):
 			# Third, check to see if the corner if from the right side layer.
 			if letters.contains("R"):
 				# The corner is the bob marley corner (yellow, green, and red corner).
-				return get_parent().get_node("BobMarleyCorner")
+				return get_parent().get_node("Corners").get_node("BobMarleyCorner")
 			# The corner is the sprite corner (yellow, green, orange).
 			else:
-				return get_parent().get_node("SpriteCorner")
+				return get_parent().get_node("Corners").get_node("SpriteCorner")
 		# The corner contains yellow and blue. Check to see if the third color is red or orange.
 		else:
 			if letters.contains("R"):
 				# The corner is the primary corner (yellow, blue, red).
-				return get_parent().get_node("PrimaryCorner")
+				return get_parent().get_node("Corners").get_node("PrimaryCorner")
 			# The corner is the nerf corner (yellow, blue, orange).
 			else:
-				return get_parent().get_node("NerfCorner")
+				return get_parent().get_node("Corners").get_node("NerfCorner")
 
 # This function will find the name of the edge at the edge location you give it. The argument is just one of the edge sticker locations. (It will return the name of the entire edge that is at that sticker location.)
 func find_edge_identity(location):
@@ -734,6 +736,33 @@ func find_edge_identity(location):
 		print("This is an error that should never happen... Check the find_edge_identity() function in cube logic.")
 		return("00")
 		
+# This function will find the center piece that is at the center sticker location you specify as an arguement.
+func find_center_identity(location):
+	# Make a variable to hold the color of the sticker at the location. Find the color by checking the location as a key in STICKER_VALUES
+	var color = STICKER_VALUES[location]
+	# Use a match to convert the color name to the corresponding center piece.
+	match color:
+		"W":
+			# The color is white, so return the white center node.
+			return(get_parent().get_node("Centers").get_node("WhiteCenter"))
+		"O":
+			# The color is orange, so return the orange center node.
+			return(get_parent().get_node("Centers").get_node("OrangeCenter"))
+		"G":
+			# The color is green, so return the green center node.
+			return(get_parent().get_node("Centers").get_node("GreenCenter"))
+		"R":
+			# The color is red, so return the red center node.
+			return(get_parent().get_node("Centers").get_node("RedCenter"))
+		"B":
+			# The color is blue, so return the blue center node.
+			return(get_parent().get_node("Centers").get_node("BlueCenter"))
+		"Y":
+			# The color is yellow, so return the yellow center node.
+			return(get_parent().get_node("Centers").get_node("YellowCenter"))
+		_:
+			print("find center identity error")
+		
 # This function will find all the pieces in a specified layer (arguement), and will return them to you in a list,
 func find_pieces_in_layer(layer):
 	# Make a list to hold all of the pieces.
@@ -748,7 +777,7 @@ func find_pieces_in_layer(layer):
 			for location in LOCATION_LIST[0][1]:
 				pieces.append(find_edge_identity(location))
 			# Finally, add the center to the list.
-			pieces.append(LOCATION_LIST[0][2])
+			pieces.append(find_center_identity(LOCATION_LIST[0][2]))
 		"L":
 			# The layer is the left layer. Go through all the locations on the left side and add those pieces to the list.
 			for location in LOCATION_LIST[1][0]:
