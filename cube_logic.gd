@@ -4,6 +4,8 @@ extends Node3D
 var STICKER_VALUES = {"A":"", "B":"", "C":"", "D":"", "E":"", "F":"", "G":"", "H":"", "I":"", "J":"", "K":"", "L":"", "M":"", "N":"", "O":"", "P":"", "Q":"", "R":"", "S":"", "T":"", "U":"", "V":"", "W":"", "X":"", "a":"", "b":"", "c":"", "d":"", "e":"", "f":"", "g":"", "h":"", "i":"", "j":"", "k":"", "l":"", "m":"", "n":"", "o":"", "p":"", "q":"", "r":"", "s":"", "t":"", "u":"", "v":"", "w":"", "x":"", "UC":"","LC":"", "FC":"", "RC":"", "BC":"", "DC":""}
 # This dictionary is the exact same, but it will be the values of the stickers after the previous turn has been made. (It's used to find the new color to set a sticker to.)
 var PREVIOUS_STICKER_VALUES = {"A":"", "B":"", "C":"", "D":"", "E":"", "F":"", "G":"", "H":"", "I":"", "J":"", "K":"", "L":"", "M":"", "N":"", "O":"", "P":"", "Q":"", "R":"", "S":"", "T":"", "U":"", "V":"", "W":"", "X":"", "a":"", "b":"", "c":"", "d":"", "e":"", "f":"", "g":"", "h":"", "i":"", "j":"", "k":"", "l":"", "m":"", "n":"", "o":"", "p":"", "q":"", "r":"", "s":"", "t":"", "u":"", "v":"", "w":"", "x":"", "UC":"","LC":"", "FC":"", "RC":"", "BC":"", "DC":""}
+# This list just holds all the individual location names in it. There are 6 lists in this list (one for each side) that contain 4 corner locations, 4 edge locations, and 1 center location. (The locations are keys in the sticker_values dictionary.) (each of the 6 lists starts with the 4 corner values together in a list, then the edge values together in a list, and last, the center value that's not in a list.) (ex: [[corner1, corner2, corner3, corner4], [edge1, edge2, edge3, edge4], center] )
+var LOCATION_LIST = [[["A", "B", "C", "D"], ["a", "b", "c", "d"], "UC"], [["E", "F", "G", "H"], ["e", "f", "g", "h"], "LC"], [["I", "J", "K", "L"], ["i", "j", "k", "l"], "FC"], [["M", "N", "O", "P"], ["m", "n", "o", "p"], "RC"], [["Q", "R", "S", "T"], ["q", "r", "s", "t"], "BC"], [["U", "V", "W", "X"], ["u", "v", "w", "x"], "DC"]]
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -106,7 +108,7 @@ func change_selected_stickers(sticker_dictionary):
 # This function takes the current value of every sticker on the provided side and sets the previous color of the sticker to be equal to that value.
 func update_all_stickers_previous_values_on_side(side):
 	match side:
-		"T":
+		"U":
 			PREVIOUS_STICKER_VALUES.UC = STICKER_VALUES.UC
 			PREVIOUS_STICKER_VALUES.A = STICKER_VALUES.A
 			PREVIOUS_STICKER_VALUES.B = STICKER_VALUES.B
@@ -521,7 +523,6 @@ func Y():
 	change_selected_stickers({"Q":"E", "R":"F", "S":"G", "T":"H", "q":"e", "r":"f", "s":"g", "t":"h", "BC":"LC"})
 	# Update the bottom face stickers.
 	change_selected_stickers({"U":"V", "V":"W", "W":"X", "X":"U", "u":"v", "v":"w", "w":"x", "x":"u"})
-#
 	
 # Rotate the entire cube counter clockwise along the y axis by changing every sticker that will change values due to the rotation.
 func Y_CCW():
@@ -539,7 +540,6 @@ func Y_CCW():
 	change_selected_stickers({"Q":"M", "R":"N", "S":"O", "T":"P", "q":"m", "r":"n", "s":"o", "t":"p", "BC":"RC"})
 	# Update the bottom face stickers.
 	change_selected_stickers({"U":"X", "V":"U", "W":"V", "X":"W", "u":"x", "v":"u", "w":"v", "x":"w"})
-#
 	
 # Rotate the entire cube 180 degrees along the y axis by changing every sticker that will change values due to the rotation.
 func Y2():
@@ -610,4 +610,128 @@ func Z2():
 	change_selected_stickers({"U":"C", "V":"D", "W":"A", "X":"B", "u":"c", "v":"d", "w":"a", "x":"b", "DC":"UC"})
 
 
+# This function will tell you the name of the corner that is at the specified location you give it. The argument is the location of the sticker on that corner piece location that is either on the top or bottom face ("A", "B", "C", "D", "U", "V", "W", or "X").
+func find_corner_identity(sticker):
+	# Use the helper function to give us the corner name. The different arguements that it takes, are the sticker locations of all the stickers on the piece.
+	match sticker:
+		"A":
+			return(organize_corner_colors("%s%s%s" % [STICKER_VALUES["A"], STICKER_VALUES["E"], STICKER_VALUES["R"]]))
+		"B":
+			return(organize_corner_colors("%s%s%s" % [STICKER_VALUES["B"], STICKER_VALUES["Q"], STICKER_VALUES["N"]]))
+		"C":
+			return(organize_corner_colors("%s%s%s" % [STICKER_VALUES["C"], STICKER_VALUES["M"], STICKER_VALUES["J"]]))
+		"D":
+			return(organize_corner_colors("%s%s%s" % [STICKER_VALUES["D"], STICKER_VALUES["I"], STICKER_VALUES["F"]]))
+		"U":
+			return(organize_corner_colors("%s%s%s" % [STICKER_VALUES["U"], STICKER_VALUES["G"], STICKER_VALUES["L"]]))
+		"V":
+			return(organize_corner_colors("%s%s%s" % [STICKER_VALUES["V"], STICKER_VALUES["K"], STICKER_VALUES["P"]]))
+		"W":
+			return(organize_corner_colors("%s%s%s" % [STICKER_VALUES["W"], STICKER_VALUES["O"], STICKER_VALUES["T"]]))
+		"X":
+			return(organize_corner_colors("%s%s%s" % [STICKER_VALUES["X"], STICKER_VALUES["S"], STICKER_VALUES["H"]]))
+			
+# This function will take a string that has 3 letters in it (each corresponding to a specific color.) and tells you the name of the corner that has those 3 colors. (This is a helper function for the find_corner_identity() function.)
+func organize_corner_colors(letters):
+	# First, check to see if the corner is from the top or bottom layer.
+	if letters.contains("W"):
+		# Second, check to see if the corner is from the front layer.
+		if letters.contains("G"):
+			# Third, check to see if the corner if from the right side layer.
+			if letters.contains("R"):
+				# The corner is the italian (white, green, and red corner).
+				return $ItalianCorner
+			# The corner is the irish corner (white, green, orange).
+			else:
+				return $IrishCorner
+		# The corner contains white and blue. Check to see if the third color is red or orange.
+		else:
+			if letters.contains("R"):
+				# The corner is the usa corner (white, blue, red).
+				return $USACorner
+			# The corner is the netherlands corner (white, blue, orange).
+			else:
+				return $NetherlandsCorner
+	# The corner is from the bottom layer (contains yellow).
+	else:
+		# Second, check to see if the corner is from the front layer.
+		if letters.contains("G"):
+			# Third, check to see if the corner if from the right side layer.
+			if letters.contains("R"):
+				# The corner is the bob marley corner (yellow, green, and red corner).
+				return $BobMarleyCorner
+			# The corner is the sprite corner (yellow, green, orange).
+			else:
+				return $SpriteCorner
+		# The corner contains yellow and blue. Check to see if the third color is red or orange.
+		else:
+			if letters.contains("R"):
+				# The corner is the primary corner (yellow, blue, red).
+				return $PrimaryCorner
+			# The corner is the nerf corner (yellow, blue, orange).
+			else:
+				return $NerfCorner
 
+
+# This function will find all the pieces in a specified layer (arguement), and will return them to you in a list,
+func find_pieces_in_layer(layer):
+	# Make a list to hold all of the pieces.
+	var pieces = []
+	# Figure out what layer is being used by using a match statement.
+	match layer:
+		"U":
+			# The layer is the top layer. Go through all the locations on the top side and add those pieces to the list.
+			for location in LOCATION_LIST[0][0]:
+				pieces.append(find_corner_identity(location))
+			# Then, find go through all the edges and add them to the list.
+			for location in LOCATION_LIST[0][1]:
+				pieces.append(find_edge_identity(location))
+			# Finally, add the center to the list.
+			pieces.append(LOCATION_LIST[0][2])
+		"L":
+			# The layer is the left layer. Go through all the locations on the left side and add those pieces to the list.
+			for location in LOCATION_LIST[1][0]:
+				pieces.append(find_corner_identity(location))
+			# Then, find go through all the edges and add them to the list.
+			for location in LOCATION_LIST[1][1]:
+				pieces.append(find_edge_identity(location))
+			# Finally, add the center to the list.
+			pieces.append(LOCATION_LIST[1][2])
+		"F":
+			# The layer is the front layer. Go through all the locations on the front side and add those pieces to the list.
+			for location in LOCATION_LIST[2][0]:
+				pieces.append(find_corner_identity(location))
+			# Then, find go through all the edges and add them to the list.
+			for location in LOCATION_LIST[2][1]:
+				pieces.append(find_edge_identity(location))
+			# Finally, add the center to the list.
+			pieces.append(LOCATION_LIST[2][2])
+		"R":
+			# The layer is the right layer. Go through all the locations on the right side and add those pieces to the list.
+			for location in LOCATION_LIST[3][0]:
+				pieces.append(find_corner_identity(location))
+			# Then, find go through all the edges and add them to the list.
+			for location in LOCATION_LIST[3][1]:
+				pieces.append(find_edge_identity(location))
+			# Finally, add the center to the list.
+			pieces.append(LOCATION_LIST[3][2])
+		"B":
+			# The layer is the back layer. Go through all the locations on the back side and add those pieces to the list.
+			for location in LOCATION_LIST[4][0]:
+				pieces.append(find_corner_identity(location))
+			# Then, find go through all the edges and add them to the list.
+			for location in LOCATION_LIST[4][1]:
+				pieces.append(find_edge_identity(location))
+			# Finally, add the center to the list.
+			pieces.append(LOCATION_LIST[4][2])
+		"D":
+			# The layer is the bottom layer. Go through all the locations on the bottom side and add those pieces to the list.
+			for location in LOCATION_LIST[5][0]:
+				pieces.append(find_corner_identity(location))
+			# Then, find go through all the edges and add them to the list.
+			for location in LOCATION_LIST[5][1]:
+				pieces.append(find_edge_identity(location))
+			# Finally, add the center to the list.
+			pieces.append(LOCATION_LIST[5][2])
+	# Now return the list of parts that has been made.
+	return(pieces)

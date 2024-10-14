@@ -45,6 +45,7 @@ one_shot = true
 [node name="Corners" type="Node3D" parent="."]
 
 [node name="ItalianCorner" type="Node3D" parent="Corners"]
+metadata/_edit_group_ = true
 
 [node name="CornerWhiteGreenRed" type="Area3D" parent="Corners/ItalianCorner"]
 
@@ -53,6 +54,7 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 3, 3, 
 mesh = ExtResource("4_rr6s2")
 
 [node name="IrishCorner" type="Node3D" parent="Corners"]
+metadata/_edit_group_ = true
 
 [node name="CornerWhiteGreenOrange" type="Area3D" parent="Corners/IrishCorner"]
 
@@ -61,6 +63,7 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -3, 3,
 mesh = ExtResource("5_6tju5")
 
 [node name="USACorner" type="Node3D" parent="Corners"]
+metadata/_edit_group_ = true
 
 [node name="CornerWhiteBlueRed" type="Area3D" parent="Corners/USACorner"]
 
@@ -69,6 +72,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 3, -3)
 mesh = ExtResource("2_4qxpc")
 
 [node name="NetherlandCorner" type="Node3D" parent="Corners"]
+metadata/_edit_group_ = true
 
 [node name="CornerWhiteBlueOrange" type="Area3D" parent="Corners/NetherlandCorner"]
 
@@ -77,6 +81,7 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3, 3,
 mesh = ExtResource("3_0hpic")
 
 [node name="BobMarleyCorner" type="Node3D" parent="Corners"]
+metadata/_edit_group_ = true
 
 [node name="CornerYellowGreenRed" type="Area3D" parent="Corners/BobMarleyCorner"]
 
@@ -85,6 +90,7 @@ transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 3, -3,
 mesh = ExtResource("8_us6gn")
 
 [node name="SpriteCorner" type="Node3D" parent="Corners"]
+metadata/_edit_group_ = true
 
 [node name="CornerYellowGreenOrange" type="Area3D" parent="Corners/SpriteCorner"]
 
@@ -93,6 +99,7 @@ transform = Transform3D(-4.37114e-08, 8.74228e-08, 1, 0, -1, 8.74228e-08, 1, 3.8
 mesh = ExtResource("9_i4vcj")
 
 [node name="PrimaryCorner" type="Node3D" parent="Corners"]
+metadata/_edit_group_ = true
 
 [node name="CornerYellowBlueRed" type="Area3D" parent="Corners/PrimaryCorner"]
 
@@ -101,6 +108,7 @@ transform = Transform3D(-4.37114e-08, -8.74228e-08, -1, 0, -1, 8.74228e-08, -1, 
 mesh = ExtResource("10_fie52")
 
 [node name="NerfCorner" type="Node3D" parent="Corners"]
+metadata/_edit_group_ = true
 
 [node name="CornerYellowBlueOrange" type="Area3D" parent="Corners/NerfCorner"]
 
@@ -111,6 +119,7 @@ mesh = ExtResource("11_fl8b4")
 [node name="Edges" type="Node3D" parent="."]
 
 [node name="EdgeTopFront" type="Node3D" parent="Edges"]
+metadata/_edit_group_ = true
 
 [node name="EdgeWhiteGreen" type="Area3D" parent="Edges/EdgeTopFront"]
 
@@ -119,6 +128,7 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 3, 
 mesh = ExtResource("6_25okw")
 
 [node name="EdgeTopBack" type="Node3D" parent="Edges"]
+metadata/_edit_group_ = true
 
 [node name="EdgeWhiteBlue" type="Area3D" parent="Edges/EdgeTopBack"]
 
@@ -127,6 +137,7 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 3, 
 mesh = ExtResource("7_gwk8t")
 
 [node name="EdgeTopRight" type="Node3D" parent="Edges"]
+metadata/_edit_group_ = true
 
 [node name="EdgeWhiteRed" type="Area3D" parent="Edges/EdgeTopRight"]
 
@@ -135,6 +146,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 3, 0)
 mesh = ExtResource("8_bt8s4")
 
 [node name="EdgeTopLeft" type="Node3D" parent="Edges"]
+metadata/_edit_group_ = true
 
 [node name="EdgeWhiteOrange" type="Area3D" parent="Edges/EdgeTopLeft"]
 
@@ -143,6 +155,7 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -3, 3,
 mesh = ExtResource("9_mvqjn")
 
 [node name="EdgeFrontRight" type="Node3D" parent="Edges"]
+metadata/_edit_group_ = true
 
 [node name="EdgeGreenRed" type="Area3D" parent="Edges/EdgeFrontRight"]
 
@@ -151,6 +164,7 @@ transform = Transform3D(-4.37114e-08, 1, 4.37114e-08, 0, -4.37114e-08, 1, 1, 4.3
 mesh = ExtResource("15_n8qur")
 
 [node name="EdgeFrontLeft" type="Node3D" parent="Edges"]
+metadata/_edit_group_ = true
 
 [node name="EdgeGreenOrange" type="Area3D" parent="Edges/EdgeFrontLeft"]
 
@@ -159,6 +173,7 @@ transform = Transform3D(-4.37114e-08, -1, 4.37114e-08, 0, -4.37114e-08, -1, 1, -
 mesh = ExtResource("16_imdtd")
 
 [node name="EdgeBackRight" type="Node3D" parent="Edges"]
+metadata/_edit_group_ = true
 
 [node name="EdgeBlueRed" type="Area3D" parent="Edges/EdgeBackRight"]
 
@@ -167,6 +182,7 @@ transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, 
 mesh = ExtResource("17_qlnw0")
 
 [node name="EdgeBackLeft" type="Node3D" parent="Edges"]
+metadata/_edit_group_ = true
 
 [node name="EdgeBlueOrange" type="Area3D" parent="Edges/EdgeBackLeft"]
 
@@ -175,6 +191,7 @@ transform = Transform3D(-4.37114e-08, -1, -4.37114e-08, 0, -4.37114e-08, 1, -1, 
 mesh = ExtResource("18_c8dn6")
 
 [node name="EdgeBottomFront" type="Node3D" parent="Edges"]
+metadata/_edit_group_ = true
 
 [node name="EdgeYellowGreen" type="Area3D" parent="Edges/EdgeBottomFront"]
 
@@ -183,6 +200,7 @@ transform = Transform3D(4.37114e-08, -3.82137e-15, 1, -8.74228e-08, -1, 0, 1, -8
 mesh = ExtResource("12_8cwgl")
 
 [node name="EdgeBottomBack" type="Node3D" parent="Edges"]
+metadata/_edit_group_ = true
 
 [node name="EdgeYellowBlue" type="Area3D" parent="Edges/EdgeBottomBack"]
 
@@ -191,6 +209,7 @@ transform = Transform3D(4.37114e-08, -3.82137e-15, -1, -8.74228e-08, -1, 0, -1, 
 mesh = ExtResource("13_wisdp")
 
 [node name="EdgeBottomRight" type="Node3D" parent="Edges"]
+metadata/_edit_group_ = true
 
 [node name="EdgeYellowRed" type="Area3D" parent="Edges/EdgeBottomRight"]
 
@@ -199,6 +218,7 @@ transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 3, -3,
 mesh = ExtResource("26_3eplq")
 
 [node name="EdgeBottomLeft" type="Node3D" parent="Edges"]
+metadata/_edit_group_ = true
 
 [node name="EdgeYellowOrange" type="Area3D" parent="Edges/EdgeBottomLeft"]
 
@@ -209,6 +229,7 @@ mesh = ExtResource("27_cb1w1")
 [node name="Centers" type="Node3D" parent="."]
 
 [node name="WhiteCenter" type="Node3D" parent="Centers"]
+metadata/_edit_group_ = true
 
 [node name="CenterWhite" type="Area3D" parent="Centers/WhiteCenter"]
 
@@ -217,6 +238,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
 mesh = ExtResource("3_sj76a")
 
 [node name="OrangeCenter" type="Node3D" parent="Centers"]
+metadata/_edit_group_ = true
 
 [node name="CenterOrange" type="Area3D" parent="Centers/OrangeCenter"]
 
@@ -225,6 +247,7 @@ transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -3, 0,
 mesh = ExtResource("7_j4huu")
 
 [node name="GreenCenter" type="Node3D" parent="Centers"]
+metadata/_edit_group_ = true
 
 [node name="CenterGreen" type="Area3D" parent="Centers/GreenCenter"]
 
@@ -233,6 +256,7 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 
 mesh = ExtResource("4_32ebc")
 
 [node name="RedCenter" type="Node3D" parent="Centers"]
+metadata/_edit_group_ = true
 
 [node name="CenterRed" type="Area3D" parent="Centers/RedCenter"]
 
@@ -241,6 +265,7 @@ transform = Transform3D(-4.37114e-08, 1, 4.37114e-08, 0, -4.37114e-08, 1, 1, 4.3
 mesh = ExtResource("6_ud6ra")
 
 [node name="BlueCenter" type="Node3D" parent="Centers"]
+metadata/_edit_group_ = true
 
 [node name="CenterBlue" type="Area3D" parent="Centers/BlueCenter"]
 
@@ -249,6 +274,7 @@ transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 
 mesh = ExtResource("5_pv0k1")
 
 [node name="Yellow center" type="Node3D" parent="Centers"]
+metadata/_edit_group_ = true
 
 [node name="CenterYellow" type="Area3D" parent="Centers/Yellow center"]
 transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, -3, 0)
@@ -257,6 +283,7 @@ transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, -3,
 mesh = ExtResource("2_xlkhm")
 
 [node name="Core" type="Area3D" parent="."]
+metadata/_edit_group_ = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Core"]
 mesh = ExtResource("1_amloi")
