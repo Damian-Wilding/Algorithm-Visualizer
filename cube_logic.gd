@@ -6,6 +6,11 @@ var STICKER_VALUES = {"A":"", "B":"", "C":"", "D":"", "E":"", "F":"", "G":"", "H
 var PREVIOUS_STICKER_VALUES = {"A":"", "B":"", "C":"", "D":"", "E":"", "F":"", "G":"", "H":"", "I":"", "J":"", "K":"", "L":"", "M":"", "N":"", "O":"", "P":"", "Q":"", "R":"", "S":"", "T":"", "U":"", "V":"", "W":"", "X":"", "a":"", "b":"", "c":"", "d":"", "e":"", "f":"", "g":"", "h":"", "i":"", "j":"", "k":"", "l":"", "m":"", "n":"", "o":"", "p":"", "q":"", "r":"", "s":"", "t":"", "u":"", "v":"", "w":"", "x":"", "UC":"","LC":"", "FC":"", "RC":"", "BC":"", "DC":""}
 # This list just holds all the individual location names in it. There are 6 lists in this list (one for each side) that contain 4 corner locations, 4 edge locations, and 1 center location. (The locations are keys in the sticker_values dictionary.) (each of the 6 lists starts with the 4 corner values together in a list, then the edge values together in a list, and last, the center value that's not in a list.) (ex: [[corner1, corner2, corner3, corner4], [edge1, edge2, edge3, edge4], center] )
 var LOCATION_LIST = [[["A", "B", "C", "D"], ["a", "b", "c", "d"], "UC"], [["E", "F", "G", "H"], ["e", "f", "g", "h"], "LC"], [["I", "J", "K", "L"], ["i", "j", "k", "l"], "FC"], [["M", "N", "O", "P"], ["m", "n", "o", "p"], "RC"], [["Q", "R", "S", "T"], ["q", "r", "s", "t"], "BC"], [["U", "V", "W", "X"], ["u", "v", "w", "x"], "DC"]]
+# The following 4 variables are shortcuts to the edges, corners, centers, and core child nodes of the cube. They are siblings to this node (cube logic).
+var edges
+var corners
+var centers
+var core
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -22,7 +27,16 @@ func _ready():
 	set_sides_colors("R", "R", "R", "R", "R", "R", "R", "R", "R", "R")
 	# Orange side stickers.						
 	set_sides_colors("L", "O", "O", "O", "O", "O", "O", "O", "O", "O")
-	pass
+	
+	# This is a shortened name for the $Edges node that is a sibling node to this node (cube logic).
+	edges = get_parent().get_node("Edges")
+	# This is a shortened name for the $Corners node that is a sibling node to this node (cube logic).
+	corners = get_parent().get_node("Corners")
+	# This is a shortened name for the $Center node that is a sibling node to this node (cube logic).
+	centers = get_parent().get_node("Centers")
+	# This is a shortened name for the $Core node that is a sibling node to this node (cube logic).
+	core = get_parent().get_node("Core")
+	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -32,7 +46,7 @@ func _process(delta):
 # Set all the sticker's colors on any given side. The first argument is the side, and the rest are the desired colors for each sticker.
 func set_sides_colors(side, center, corner1, corner2, corner3, corner4, edge1, edge2, edge3, edge4):
 	match side:
-		"T":
+		"U":
 			STICKER_VALUES.UC = center
 			STICKER_VALUES.A = corner1
 			STICKER_VALUES.B = corner2
@@ -187,7 +201,7 @@ func update_all_stickers():
 
 # Turn the top face clockwise by changing every sticker that will change values due to the turn.
 func U():
-	# Updating the LAST_STICKER_COLOR value for every sticker on the cube.
+	# Updating the previous value for every sticker on the cube.
 	update_all_stickers()
 	# Update the top face stickers.
 	change_selected_stickers({"A":"D", "B":"A", "C":"B", "D":"C", "a":"d", "b":"a", "c":"b", "d":"c"})
@@ -202,7 +216,7 @@ func U():
 	
 # Turn the top face counter clockwise by changing every sticker that will change values due to the turn.
 func U_CCW():
-	# Updating the LAST_STICKER_COLOR value for every sticker on the cube.
+	# Updating the previous value for every sticker on the cube.
 	update_all_stickers()
 	# Update the top face stickers.
 	change_selected_stickers({"A":"B", "B":"C", "C":"D", "D":"A", "a":"b", "b":"c", "c":"d", "d":"a"})
@@ -217,7 +231,7 @@ func U_CCW():
 	
 # Turn the top face 180 degrees by changing every sticker that will change values due to the turn.
 func U2():
-	# Updating the LAST_STICKER_COLOR value for every sticker on the cube.
+	# Updating the previous value for every sticker on the cube.
 	update_all_stickers()
 	# Update the top face stickers.
 	change_selected_stickers({"A":"C", "B":"D", "C":"A", "D":"B", "a":"c", "b":"d", "c":"a", "d":"b"})
@@ -232,7 +246,7 @@ func U2():
 
 # Turn the bottom face clockwise by changing every sticker that will change values due to the turn.
 func D():
-	# Updating the LAST_STICKER_COLOR value for every sticker on the cube.
+	# Updating the previous value for every sticker on the cube.
 	update_all_stickers()
 	# Update the left face stickers.
 	change_selected_stickers({"G":"S", "H":"T", "g":"s"})
@@ -247,7 +261,7 @@ func D():
 
 # Turn the bottom face counter clockwise by changing every sticker that will change values due to the turn.
 func D_CCW():
-	# Updating the LAST_STICKER_COLOR value for every sticker on the cube.
+	# Updating the previous value for every sticker on the cube.
 	update_all_stickers()
 	# Update the left face stickers.
 	change_selected_stickers({"G":"K", "H":"L", "g":"k"})
@@ -262,7 +276,7 @@ func D_CCW():
 
 # Turn the bottom face 180 degrees by changing every sticker that will change values due to the turn.
 func D2():
-	# Updating the LAST_STICKER_COLOR value for every sticker on the cube.
+	# Updating the previous value for every sticker on the cube.
 	update_all_stickers()
 	# Update the left face stickers.
 	change_selected_stickers({"G":"O", "H":"P", "g":"o"})
@@ -277,7 +291,7 @@ func D2():
 
 # Turn the front face clockwise by changing every sticker that will change values due to the turn.
 func F():
-	# Updating the LAST_STICKER_COLOR value for every sticker on the cube.
+	# Updating the previous value for every sticker on the cube.
 	update_all_stickers()
 	# Update the top face stickers.
 	change_selected_stickers({"C":"F", "D":"G", "c":"f"})
@@ -292,7 +306,7 @@ func F():
 
 # Turn the front face counter clockwise by changing every sticker that will change values due to the turn.
 func F_CCW():
-	# Updating the LAST_STICKER_COLOR value for every sticker on the cube.
+	# Updating the previous value for every sticker on the cube.
 	update_all_stickers()
 	# Update the top face stickers.
 	change_selected_stickers({"C":"P", "D":"M", "c":"p"})
@@ -307,7 +321,7 @@ func F_CCW():
 
 # Turn the front face 180 degrees by changing every sticker that will change values due to the turn.
 func F2():
-	# Updating the LAST_STICKER_COLOR value for every sticker on the cube.
+	# Updating the previous value for every sticker on the cube.
 	update_all_stickers()
 	# Update the top face stickers.
 	change_selected_stickers({"C":"U", "D":"V", "c":"u"})
@@ -322,7 +336,7 @@ func F2():
 
 # Turn the back face clockwise by changing every sticker that will change values due to the turn.
 func B():
-	# Updating the LAST_STICKER_COLOR value for every sticker on the cube.
+	# Updating the previous value for every sticker on the cube.
 	update_all_stickers()
 	# Update the top face stickers.
 	change_selected_stickers({"A":"N", "B":"O", "a":"n"})
@@ -337,7 +351,7 @@ func B():
 
 # Turn the back face counter clockwise by changing every sticker that will change values due to the turn.
 func B_CCW():
-	# Updating the LAST_STICKER_COLOR value for every sticker on the cube.
+	# Updating the previous value for every sticker on the cube.
 	update_all_stickers()
 	# Update the top face stickers.
 	change_selected_stickers({"A":"H", "B":"E", "a":"h"})
@@ -352,7 +366,7 @@ func B_CCW():
 
 # Turn the back face 180 degrees by changing every sticker that will change values due to the turn.
 func B2():
-	# Updating the LAST_STICKER_COLOR value for every sticker on the cube.
+	# Updating the previous value for every sticker on the cube.
 	update_all_stickers()
 	# Update the top face stickers.
 	change_selected_stickers({"A":"W", "B":"X", "a":"w"})
@@ -367,7 +381,7 @@ func B2():
 
 # Turn the right face clockwise by changing every sticker that will change values due to the turn.
 func R():
-	# Updating the LAST_STICKER_COLOR value for every sticker on the cube.
+	# Updating the previous value for every sticker on the cube.
 	update_all_stickers()
 	# Update the top face stickers.
 	change_selected_stickers({"B":"J", "C":"K", "b":"j"})
@@ -382,7 +396,7 @@ func R():
 
 # Turn the right face counter clockwise by changing every sticker that will change values due to the turn.
 func R_CCW():
-	# Updating the LAST_STICKER_COLOR value for every sticker on the cube.
+	# Updating the previous value for every sticker on the cube.
 	update_all_stickers()
 	# Update the top face stickers.
 	change_selected_stickers({"B":"T", "C":"Q", "b":"t"})
@@ -397,7 +411,7 @@ func R_CCW():
 
 # Turn the right face 180 degrees by changing every sticker that will change values due to the turn.
 func R2():
-	# Updating the LAST_STICKER_COLOR value for every sticker on the cube.
+	# Updating the previous value for every sticker on the cube.
 	update_all_stickers()
 	# Update the top face stickers.
 	change_selected_stickers({"B":"V", "C":"W", "b":"v"})
@@ -412,7 +426,7 @@ func R2():
 
 # Turn the left face clockwise by changing every sticker that will change values due to the turn.
 func L():
-	# Updating the LAST_STICKER_COLOR value for every sticker on the cube.
+	# Updating the previous value for every sticker on the cube.
 	update_all_stickers()
 	# Update the top face stickers.
 	change_selected_stickers({"A":"S", "D":"R", "d":"r"})
@@ -427,7 +441,7 @@ func L():
 
 # Turn the left face counter clockwise by changing every sticker that will change values due to the turn.
 func L_CCW():
-	# Updating the LAST_STICKER_COLOR value for every sticker on the cube.
+	# Updating the previous value for every sticker on the cube.
 	update_all_stickers()
 	# Update the top face stickers.
 	change_selected_stickers({"A":"I", "D":"L", "d":"l"})
@@ -442,7 +456,7 @@ func L_CCW():
 
 # Turn the left face 180 degrees by changing every sticker that will change values due to the turn.
 func L2():
-	# Updating the LAST_STICKER_COLOR value for every sticker on the cube.
+	# Updating the previous value for every sticker on the cube.
 	update_all_stickers()
 	# Update the top face stickers.
 	change_selected_stickers({"A":"U", "D":"X", "d":"x"})
@@ -458,7 +472,7 @@ func L2():
 
 # Rotate the entire cube clockwise along the x axis by changing every sticker that will change values due to the rotation.
 func X():
-	# Updating the LAST_STICKER_COLOR value for every sticker on the cube.
+	# Updating the previous value for every sticker on the cube.
 	update_all_stickers()
 	# Update the top face stickers.
 	change_selected_stickers({"A":"I", "B":"J", "C":"K", "D":"L", "a":"i", "b":"j", "c":"k", "d":"l", "UC":"FC"})
@@ -475,7 +489,7 @@ func X():
 	
 # Rotate the entire cube counter clockwise along the X axis by changing every sticker that will change values due to the rotation.
 func X_CCW():
-	# Updating the LAST_STICKER_COLOR value for every sticker on the cube.
+	# Updating the previous value for every sticker on the cube.
 	update_all_stickers()
 	# Update the top face stickers.
 	change_selected_stickers({"A":"S", "B":"T", "C":"Q", "D":"R", "a":"s", "b":"t", "c":"q", "d":"r", "UC":"BC"})
@@ -492,7 +506,7 @@ func X_CCW():
 	
 # Rotate the entire cube 180 degrees along the x axis by changing every sticker that will change values due to the rotation.
 func X2():
-	# Updating the LAST_STICKER_COLOR value for every sticker on the cube.
+	# Updating the previous value for every sticker on the cube.
 	update_all_stickers()
 	# Update the top face stickers.
 	change_selected_stickers({"A":"U", "B":"V", "C":"W", "D":"X", "a":"u", "b":"v", "c":"w", "d":"x", "UC":"DC"})
@@ -509,7 +523,7 @@ func X2():
 	
 # Rotate the entire cube clockwise along the y axis by changing every sticker that will change values due to the rotation.
 func Y():
-	# Updating the LAST_STICKER_COLOR value for every sticker on the cube.
+	# Updating the previous value for every sticker on the cube.
 	update_all_stickers()
 	# Update the top face stickers.
 	change_selected_stickers({"A":"D", "B":"A", "C":"B", "D":"C", "a":"d", "b":"a", "c":"b", "d":"c"})
@@ -526,7 +540,7 @@ func Y():
 	
 # Rotate the entire cube counter clockwise along the y axis by changing every sticker that will change values due to the rotation.
 func Y_CCW():
-	# Updating the LAST_STICKER_COLOR value for every sticker on the cube.
+	# Updating the previous value for every sticker on the cube.
 	update_all_stickers()
 	# Update the top face stickers.
 	change_selected_stickers({"A":"B", "B":"C", "C":"D", "D":"A", "a":"b", "b":"c", "c":"d", "d":"a"})
@@ -543,7 +557,7 @@ func Y_CCW():
 	
 # Rotate the entire cube 180 degrees along the y axis by changing every sticker that will change values due to the rotation.
 func Y2():
-	# Updating the LAST_STICKER_COLOR value for every sticker on the cube.
+	# Updating the previous value for every sticker on the cube.
 	update_all_stickers()
 	# Update the top face stickers.
 	change_selected_stickers({"A":"C", "B":"D", "C":"A", "D":"B", "a":"c", "b":"d", "c":"a", "d":"b"})
@@ -560,7 +574,7 @@ func Y2():
 	
 # Rotate the entire cube clockwise along the z axis by changing every sticker that will change values due to the rotation.
 func Z():
-	# Updating the LAST_STICKER_COLOR value for every sticker on the cube.
+	# Updating the previous value for every sticker on the cube.
 	update_all_stickers()
 	# Update the top face stickers.
 	change_selected_stickers({"A":"H", "B":"E", "C":"F", "D":"G", "a":"h", "b":"e", "c":"f", "d":"g", "UC":"LC"})
@@ -577,7 +591,7 @@ func Z():
 	
 # Rotate the entire cube counter clockwise along the z axis by changing every sticker that will change values due to the rotation.
 func Z_CCW():
-	# Updating the LAST_STICKER_COLOR value for every sticker on the cube.
+	# Updating the previous value for every sticker on the cube.
 	update_all_stickers()
 	# Update the top face stickers.
 	change_selected_stickers({"A":"N", "B":"O", "C":"P", "D":"M", "a":"n", "b":"o", "c":"p", "d":"m", "UC":"RC"})
@@ -594,7 +608,7 @@ func Z_CCW():
 	
 # Rotate the entire cube 180 degrees along the z axis by changing every sticker that will change values due to the rotation.
 func Z2():
-	# Updating the LAST_STICKER_COLOR value for every sticker on the cube.
+	# Updating the previous value for every sticker on the cube.
 	update_all_stickers()
 	# Update the top face stickers.
 	change_selected_stickers({"A":"W", "B":"X", "C":"U", "D":"V", "a":"w", "b":"x", "c":"u", "d":"v", "UC":"DC"})
@@ -610,25 +624,25 @@ func Z2():
 	change_selected_stickers({"U":"C", "V":"D", "W":"A", "X":"B", "u":"c", "v":"d", "w":"a", "x":"b", "DC":"UC"})
 
 
-# This function will tell you the name of the corner that is at the specified location you give it. The argument is the location of the sticker on that corner piece location that is either on the top or bottom face ("A", "B", "C", "D", "U", "V", "W", or "X").
+# This function will tell you the name of the corner that is at the specified location you give it. The argument is the location of a sticker on that corner piece location.
 func find_corner_identity(sticker):
 	# Use the helper function to give us the corner name. The different arguements that it takes, are the sticker locations of all the stickers on the piece.
 	match sticker:
-		"A":
+		"A", "E", "R":
 			return(organize_corner_colors("%s%s%s" % [STICKER_VALUES["A"], STICKER_VALUES["E"], STICKER_VALUES["R"]]))
-		"B":
+		"B", "Q", "N":
 			return(organize_corner_colors("%s%s%s" % [STICKER_VALUES["B"], STICKER_VALUES["Q"], STICKER_VALUES["N"]]))
-		"C":
+		"C", "M", "J":
 			return(organize_corner_colors("%s%s%s" % [STICKER_VALUES["C"], STICKER_VALUES["M"], STICKER_VALUES["J"]]))
-		"D":
+		"D", "I", "F":
 			return(organize_corner_colors("%s%s%s" % [STICKER_VALUES["D"], STICKER_VALUES["I"], STICKER_VALUES["F"]]))
-		"U":
+		"U", "G", "L":
 			return(organize_corner_colors("%s%s%s" % [STICKER_VALUES["U"], STICKER_VALUES["G"], STICKER_VALUES["L"]]))
-		"V":
+		"V", "K", "P":
 			return(organize_corner_colors("%s%s%s" % [STICKER_VALUES["V"], STICKER_VALUES["K"], STICKER_VALUES["P"]]))
-		"W":
+		"W", "O", "T":
 			return(organize_corner_colors("%s%s%s" % [STICKER_VALUES["W"], STICKER_VALUES["O"], STICKER_VALUES["T"]]))
-		"X":
+		"X", "S", "H":
 			return(organize_corner_colors("%s%s%s" % [STICKER_VALUES["X"], STICKER_VALUES["S"], STICKER_VALUES["H"]]))
 			
 # This function will take a string that has 3 letters in it (each corresponding to a specific color.) and tells you the name of the corner that has those 3 colors. (This is a helper function for the find_corner_identity() function.)
@@ -640,18 +654,18 @@ func organize_corner_colors(letters):
 			# Third, check to see if the corner if from the right side layer.
 			if letters.contains("R"):
 				# The corner is the italian (white, green, and red corner).
-				return $ItalianCorner
+				return get_parent().get_node("ItalianCorner")
 			# The corner is the irish corner (white, green, orange).
 			else:
-				return $IrishCorner
+				return get_parent().get_node("IrishCorner")
 		# The corner contains white and blue. Check to see if the third color is red or orange.
 		else:
 			if letters.contains("R"):
 				# The corner is the usa corner (white, blue, red).
-				return $USACorner
+				return get_parent().get_node("USACorner")
 			# The corner is the netherlands corner (white, blue, orange).
 			else:
-				return $NetherlandsCorner
+				return get_parent().get_node("NetherlandsCorner")
 	# The corner is from the bottom layer (contains yellow).
 	else:
 		# Second, check to see if the corner is from the front layer.
@@ -659,20 +673,67 @@ func organize_corner_colors(letters):
 			# Third, check to see if the corner if from the right side layer.
 			if letters.contains("R"):
 				# The corner is the bob marley corner (yellow, green, and red corner).
-				return $BobMarleyCorner
+				return get_parent().get_node("BobMarleyCorner")
 			# The corner is the sprite corner (yellow, green, orange).
 			else:
-				return $SpriteCorner
+				return get_parent().get_node("SpriteCorner")
 		# The corner contains yellow and blue. Check to see if the third color is red or orange.
 		else:
 			if letters.contains("R"):
 				# The corner is the primary corner (yellow, blue, red).
-				return $PrimaryCorner
+				return get_parent().get_node("PrimaryCorner")
 			# The corner is the nerf corner (yellow, blue, orange).
 			else:
-				return $NerfCorner
+				return get_parent().get_node("NerfCorner")
 
-
+# This function will find the name of the edge at the edge location you give it. The argument is just one of the edge sticker locations. (It will return the name of the entire edge that is at that sticker location.)
+func find_edge_identity(location):
+	# Make a string variable that will contain the 2 colors on the edge.
+	var colors = ""
+	# Use a match statement to find out which edge location is being used. Then find the colors at the sticker locations on the piece that has the given sticker location.
+	match location:
+		"a", "q":
+			colors = "%s%s" % [STICKER_VALUES["a"], STICKER_VALUES["q"]]
+		"b", "m":
+			colors = "%s%s" % [STICKER_VALUES["b"], STICKER_VALUES["m"]]
+		"c", "i":
+			colors = "%s%s" % [STICKER_VALUES["c"], STICKER_VALUES["i"]]
+		"d", "e":
+			colors = "%s%s" % [STICKER_VALUES["d"], STICKER_VALUES["e"]]
+		"h", "r":
+			colors = "%s%s" % [STICKER_VALUES["h"], STICKER_VALUES["r"]]
+		"f", "l":
+			colors = "%s%s" % [STICKER_VALUES["f"], STICKER_VALUES["l"]]
+		"n", "t":
+			colors = "%s%s" % [STICKER_VALUES["n"], STICKER_VALUES["t"]]
+		"j", "p":
+			colors = "%s%s" % [STICKER_VALUES["j"], STICKER_VALUES["p"]]
+		"u", "k":
+			colors = "%s%s" % [STICKER_VALUES["u"], STICKER_VALUES["k"]]
+		"v", "o":
+			colors = "%s%s" % [STICKER_VALUES["v"], STICKER_VALUES["o"]]
+		"w", "s":
+			colors = "%s%s" % [STICKER_VALUES["w"], STICKER_VALUES["s"]]
+		"x", "g":
+			colors = "%s%s" % [STICKER_VALUES["x"], STICKER_VALUES["g"]]
+	# Now check if the string is formatted correctly. (Correct format is "W" or "Y" as the first letter. If there is no "W" or "Y", then "G" or "B" should be first.)
+	if colors[0] == "W" or "Y":
+		# The first letter is "W" or "Y" so the string is formatted correctly and the colors string can be returned.
+		return(edges.get_node(colors))
+	elif colors[1] == "W" or "Y":
+		# The second letter is "W" or "Y" so the first and second letter will be swapped so that the string is formatted correctly. Then the string will be returned.
+		return(edges.get_node(colors.reverse()))
+	elif colors[0] == "G" or "B":
+		# The string does not contain "W" or "Y". It has "G" or "B" as the first letter, so it is formatted correctly. The string will be returned.
+		return(edges.get_node(colors))
+	elif colors[1] == "G" or "B":
+		# The string does not contain "W" or "Y". It has "G" or "B" as the second letter so the string will be reversed and then returned.
+		return(edges.get_node(colors.reverse()))
+	else:
+		# this should never happen. If it does, I"m in trouble...
+		print("This is an error that should never happen... Check the find_edge_identity() function in cube logic.")
+		return("00")
+		
 # This function will find all the pieces in a specified layer (arguement), and will return them to you in a list,
 func find_pieces_in_layer(layer):
 	# Make a list to hold all of the pieces.

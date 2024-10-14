@@ -49,14 +49,17 @@ func _process(delta):
 		# Iterate through all the pieces that need to be turned.
 		for piece in CURRENTLY_MOVING_PIECES:
 			# Rotate the pieces based on the axis rotational velocities.
-			if CURRENT_AXIS_OF_ROTATION == "Y":
-				piece.rotation.y = lerp_angle(piece.rotation.y, deg_to_rad(DEGREES_TO_ROTATE), delta * deg_to_rad(DEGREES_TO_ROTATE) * TURN_SPEED)
-			elif CURRENT_AXIS_OF_ROTATION == "X":
-				piece.rotation.x = lerp_angle(piece.rotation.x, deg_to_rad(DEGREES_TO_ROTATE), delta * deg_to_rad(DEGREES_TO_ROTATE) * TURN_SPEED)
-			elif CURRENT_AXIS_OF_ROTATION == "Z":
-				piece.rotation.z = lerp_angle(piece.rotation.z, deg_to_rad(DEGREES_TO_ROTATE), delta * deg_to_rad(DEGREES_TO_ROTATE) * TURN_SPEED)
+			#if CURRENT_AXIS_OF_ROTATION == "Y":
+			#	get_node("Cube").get_node("Corners").get_node(piece).rotation.y = lerp_angle(get_node("Cube").get_node("Corners").get_node(piece).rotation.y, deg_to_rad(DEGREES_TO_ROTATE), delta * deg_to_rad(DEGREES_TO_ROTATE) * TURN_SPEED)
+			#elif CURRENT_AXIS_OF_ROTATION == "X":
+			#	piece.rotation.x = lerp_angle(piece.rotation.x, deg_to_rad(DEGREES_TO_ROTATE), delta * deg_to_rad(DEGREES_TO_ROTATE) * TURN_SPEED)
+			#elif CURRENT_AXIS_OF_ROTATION == "Z":
+			#	piece.rotation.z = lerp_angle(piece.rotation.z, deg_to_rad(DEGREES_TO_ROTATE), delta * deg_to_rad(DEGREES_TO_ROTATE) * TURN_SPEED)
+			#print(piece)
+			pass
 
 
+# This function currently isn't being used. I decided to have cube logic do this instead since I couldn't make this one work correctly.
 # This function will return a list of all the pieces on a selected side. It takes the name of the side as an argument. ("Top", "Left", "Front", "Right", "Back", "Down")
 func get_pieces_on_side(side):
 	# Make a list that will be returned at the end of the function.
@@ -66,10 +69,10 @@ func get_pieces_on_side(side):
 		"Top":
 			# Check all corners and see if they're on the top side.
 			for corner in $Corners.get_children():
-				print(corner.name)
-				print(corner.get_child(0).get_child(0).rotation)
-				print(corner.get_child(0).rotation)
-				print(corner.rotation)
+				#print(corner.name)
+				#print(corner.get_child(0).get_child(0).rotation)
+				#print(corner.get_child(0).rotation)
+				#print(corner.rotation)
 				if corner.get_child(0).get_child(0).position.y == POSITION_SCALER:
 					pieces_list.append(corner)
 			# Check all edges and see if they're on the top side.
@@ -167,18 +170,22 @@ func get_pieces_on_side(side):
 
 # Turn the top face clockwise.
 func U():
-	# Update cube logic.
-	$CubeLogic.U()
-	# Change DEGREES_TO_TURN to be 270 since this is a -90 degree turn. (For some reason counterclockwise turns are considered +90 degree turns and clockwise turns are -90 degree turns.)
-	DEGREES_TO_ROTATE += 270
-	# Update the axis that the pieces will be turning around.
-	change_axis("Y")
-	# Start the turn timer. (It tells us how long we want the turn to take.)
-	$HowLongToTurn90Degrees.start(TURN_SPEED)
-	# Clear all previous pieces from the currently moving parts list.
-	CURRENTLY_MOVING_PIECES.clear()
-	# Find all the pieces on the top face and add them to the currently moving parts list.
-	CURRENTLY_MOVING_PIECES = get_pieces_on_side("Top")
+	# Only do this if the cube isn't currently turning already.
+	if $TurnTimer.is_stopped():
+		# Update cube logic.
+		$CubeLogic.U()
+		# Change DEGREES_TO_TURN to be 270 since this is a -90 degree turn. (For some reason counterclockwise turns are considered +90 degree turns and clockwise turns are -90 degree turns.)
+		DEGREES_TO_ROTATE += 270
+		# Update the axis that the pieces will be turning around.
+		change_axis("Y")
+		# Start the turn timer. (It tells us how long we want the turn to take.)
+		$HowLongToTurn90Degrees.start(TURN_SPEED)
+		# Clear all previous pieces from the currently moving parts list.
+		CURRENTLY_MOVING_PIECES.clear()
+		# Find all the pieces on the top face and add them to the currently moving parts list.
+		CURRENTLY_MOVING_PIECES = $CubeLogic.find_pieces_in_layer("U")
+		for thing  in CURRENTLY_MOVING_PIECES:
+			print(thing.name)
 
 # Turn the top face counter clockwise.
 func U_CCW():
@@ -207,18 +214,20 @@ func D2():
 
 # Turn the front face clockwise.
 func F():
-	# Update cube logic.
-	$CubeLogic.F()
-	# Change DEGREES_TO_TURN to be 270 since this is a -90 degree turn. (For some reason counterclockwise turns are considered +90 degree turns and clockwise turns are -90 degree turns.)
-	DEGREES_TO_ROTATE += 270
-	# Update the axis that the pieces will be turning around.
-	change_axis("Z")
-	# Start the turn timer. (It tells us how long we want the turn to take.)
-	$HowLongToTurn90Degrees.start(TURN_SPEED)
-	# Clear all previous pieces from the currently moving parts list.
-	CURRENTLY_MOVING_PIECES.clear()
-	# Find all the pieces on the front face and add them to the currently moving parts list.
-	CURRENTLY_MOVING_PIECES = get_pieces_on_side("Front")
+	# Only do this if the cube isn't currently turning already.
+	if $TurnTimer.is_stopped():
+		# Update cube logic.
+		$CubeLogic.F()
+		# Change DEGREES_TO_TURN to be 270 since this is a -90 degree turn. (For some reason counterclockwise turns are considered +90 degree turns and clockwise turns are -90 degree turns.)
+		DEGREES_TO_ROTATE += 270
+		# Update the axis that the pieces will be turning around.
+		change_axis("Z")
+		# Start the turn timer. (It tells us how long we want the turn to take.)
+		$HowLongToTurn90Degrees.start(TURN_SPEED)
+		# Clear all previous pieces from the currently moving parts list.
+		CURRENTLY_MOVING_PIECES.clear()
+		# Find all the pieces on the front face and add them to the currently moving parts list.
+		CURRENTLY_MOVING_PIECES = $CubeLogic.find_pieces_in_layer("F")
 	
 # Turn the front face counter clockwise.
 func F_CCW():
@@ -323,7 +332,8 @@ func Z2():
 
 
 func TestingTimer_on_timer_timeout():
-	U()
+	#U()
+	pass
 
 
 # This function will change the axis that all the moving pieces will be moving around.

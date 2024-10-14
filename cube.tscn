@@ -118,111 +118,112 @@ mesh = ExtResource("11_fl8b4")
 
 [node name="Edges" type="Node3D" parent="."]
 
-[node name="EdgeTopFront" type="Node3D" parent="Edges"]
+[node name="WG" type="Node3D" parent="Edges"]
 metadata/_edit_group_ = true
 
-[node name="EdgeWhiteGreen" type="Area3D" parent="Edges/EdgeTopFront"]
+[node name="EdgeWhiteGreen" type="Area3D" parent="Edges/WG"]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Edges/EdgeTopFront/EdgeWhiteGreen"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Edges/WG/EdgeWhiteGreen"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 3, 3)
 mesh = ExtResource("6_25okw")
 
-[node name="EdgeTopBack" type="Node3D" parent="Edges"]
+[node name="WB" type="Node3D" parent="Edges"]
 metadata/_edit_group_ = true
 
-[node name="EdgeWhiteBlue" type="Area3D" parent="Edges/EdgeTopBack"]
+[node name="EdgeWhiteBlue" type="Area3D" parent="Edges/WB"]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Edges/EdgeTopBack/EdgeWhiteBlue"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Edges/WB/EdgeWhiteBlue"]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 3, -3)
 mesh = ExtResource("7_gwk8t")
 
-[node name="EdgeTopRight" type="Node3D" parent="Edges"]
+[node name="WR" type="Node3D" parent="Edges"]
 metadata/_edit_group_ = true
 
-[node name="EdgeWhiteRed" type="Area3D" parent="Edges/EdgeTopRight"]
+[node name="EdgeWhiteRed" type="Area3D" parent="Edges/WR"]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Edges/EdgeTopRight/EdgeWhiteRed"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Edges/WR/EdgeWhiteRed"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 3, 0)
 mesh = ExtResource("8_bt8s4")
 
-[node name="EdgeTopLeft" type="Node3D" parent="Edges"]
+[node name="WO" type="Node3D" parent="Edges"]
 metadata/_edit_group_ = true
 
-[node name="EdgeWhiteOrange" type="Area3D" parent="Edges/EdgeTopLeft"]
+[node name="EdgeWhiteOrange" type="Area3D" parent="Edges/WO"]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Edges/EdgeTopLeft/EdgeWhiteOrange"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Edges/WO/EdgeWhiteOrange"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -3, 3, 0)
 mesh = ExtResource("9_mvqjn")
 
-[node name="EdgeFrontRight" type="Node3D" parent="Edges"]
+[node name="GR" type="Node3D" parent="Edges"]
 metadata/_edit_group_ = true
 
-[node name="EdgeGreenRed" type="Area3D" parent="Edges/EdgeFrontRight"]
+[node name="EdgeGreenRed" type="Area3D" parent="Edges/GR"]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Edges/EdgeFrontRight/EdgeGreenRed"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Edges/GR/EdgeGreenRed"]
 transform = Transform3D(-4.37114e-08, 1, 4.37114e-08, 0, -4.37114e-08, 1, 1, 4.37114e-08, 1.91069e-15, 3, 0, 3)
 mesh = ExtResource("15_n8qur")
 
-[node name="EdgeFrontLeft" type="Node3D" parent="Edges"]
+[node name="GO" type="Node3D" parent="Edges"]
 metadata/_edit_group_ = true
 
-[node name="EdgeGreenOrange" type="Area3D" parent="Edges/EdgeFrontLeft"]
+[node name="EdgeGreenOrange" type="Area3D" parent="Edges/GO"]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Edges/EdgeFrontLeft/EdgeGreenOrange"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Edges/GO/EdgeGreenOrange"]
 transform = Transform3D(-4.37114e-08, -1, 4.37114e-08, 0, -4.37114e-08, -1, 1, -4.37114e-08, 1.91069e-15, -3, 0, 3)
 mesh = ExtResource("16_imdtd")
 
-[node name="EdgeBackRight" type="Node3D" parent="Edges"]
+[node name="BR" type="Node3D" parent="Edges"]
 metadata/_edit_group_ = true
 
-[node name="EdgeBlueRed" type="Area3D" parent="Edges/EdgeBackRight"]
+[node name="EdgeBlueRed" type="Area3D" parent="Edges/BR"]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Edges/EdgeBackRight/EdgeBlueRed"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Edges/BR/EdgeBlueRed"]
 transform = Transform3D(-4.37114e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, -4.37114e-08, 1.91069e-15, 3, 0, -3)
 mesh = ExtResource("17_qlnw0")
 
-[node name="EdgeBackLeft" type="Node3D" parent="Edges"]
+[node name="BO" type="Node3D" parent="Edges"]
 metadata/_edit_group_ = true
 
-[node name="EdgeBlueOrange" type="Area3D" parent="Edges/EdgeBackLeft"]
+[node name="EdgeBlueOrange" type="Area3D" parent="Edges/BO"]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Edges/EdgeBackLeft/EdgeBlueOrange"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Edges/BO/EdgeBlueOrange"]
 transform = Transform3D(-4.37114e-08, -1, -4.37114e-08, 0, -4.37114e-08, 1, -1, 4.37114e-08, 1.91069e-15, -3, 0, -3)
 mesh = ExtResource("18_c8dn6")
 
-[node name="EdgeBottomFront" type="Node3D" parent="Edges"]
+[node name="YG" type="Node3D" parent="Edges"]
 metadata/_edit_group_ = true
 
-[node name="EdgeYellowGreen" type="Area3D" parent="Edges/EdgeBottomFront"]
+[node name="EdgeYellowGreen" type="Area3D" parent="Edges/YG"]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Edges/EdgeBottomFront/EdgeYellowGreen"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Edges/YG/EdgeYellowGreen"]
 transform = Transform3D(4.37114e-08, -3.82137e-15, 1, -8.74228e-08, -1, 0, 1, -8.74228e-08, -4.37114e-08, 0, -3, 3)
 mesh = ExtResource("12_8cwgl")
 
-[node name="EdgeBottomBack" type="Node3D" parent="Edges"]
+[node name="YB" type="Node3D" parent="Edges"]
 metadata/_edit_group_ = true
 
-[node name="EdgeYellowBlue" type="Area3D" parent="Edges/EdgeBottomBack"]
+[node name="EdgeYellowBlue" type="Area3D" parent="Edges/YB"]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Edges/EdgeBottomBack/EdgeYellowBlue"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Edges/YB/EdgeYellowBlue"]
 transform = Transform3D(4.37114e-08, -3.82137e-15, -1, -8.74228e-08, -1, 0, -1, 8.74228e-08, -4.37114e-08, 0, -3, -3)
 mesh = ExtResource("13_wisdp")
 
-[node name="EdgeBottomRight" type="Node3D" parent="Edges"]
+[node name="YR" type="Node3D" parent="Edges"]
 metadata/_edit_group_ = true
 
-[node name="EdgeYellowRed" type="Area3D" parent="Edges/EdgeBottomRight"]
+[node name="EdgeYellowRed" type="Area3D" parent="Edges/YR"]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Edges/EdgeBottomRight/EdgeYellowRed"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Edges/YR/EdgeYellowRed"]
 transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 3, -3, 0)
 mesh = ExtResource("26_3eplq")
 
-[node name="EdgeBottomLeft" type="Node3D" parent="Edges"]
+[node name="YO" type="Node3D" parent="Edges"]
+unique_name_in_owner = true
 metadata/_edit_group_ = true
 
-[node name="EdgeYellowOrange" type="Area3D" parent="Edges/EdgeBottomLeft"]
+[node name="EdgeYellowOrange" type="Area3D" parent="Edges/YO"]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Edges/EdgeBottomLeft/EdgeYellowOrange"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Edges/YO/EdgeYellowOrange"]
 transform = Transform3D(-1, 7.64274e-15, 8.74228e-08, 0, -1, 8.74228e-08, 8.74228e-08, 8.74228e-08, 1, -3, -3, 0)
 mesh = ExtResource("27_cb1w1")
 

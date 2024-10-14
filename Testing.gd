@@ -9,6 +9,11 @@ func _ready():
 	#var iterator = 0
 	#piece.rotation = Vector3(3,2,3)
 	#print(piece.position)
+	var stringman = "10"
+	var tempstring = stringman[0]
+	stringman[0] = stringman[1]
+	stringman[1] = tempstring
+	print(stringman)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
