@@ -22,6 +22,5 @@ transform = Transform3D(0.830858, 0.492707, 0.258677, 0, -0.464842, 0.885394, 0.
 
 [node name="TesterTimer" type="Timer" parent="."]
 wait_time = 0.254
-autostart = true
 
 [connection signal="timeout" from="TesterTimer" to="." method="_on_tester_timer_timeout"]
