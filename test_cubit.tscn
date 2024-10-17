@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://e6qlek6fmdfc"]
+
+[ext_resource type="ArrayMesh" uid="uid://bx4ix71vno2rg" path="res://Assets/CubeParts/Other/testpart.res" id="1_gidbp"]
+
+[node name="MeshInstance3D" type="MeshInstance3D"]
+transform = Transform3D(1000, 0, 0, 0, 1000, 0, 0, 0, 1000, 3, 3, 3)
+mesh = ExtResource("1_gidbp")

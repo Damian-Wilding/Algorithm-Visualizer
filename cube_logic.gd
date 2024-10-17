@@ -719,18 +719,18 @@ func find_edge_identity(location):
 		"x", "g":
 			colors = "%s%s" % [STICKER_VALUES["x"], STICKER_VALUES["g"]]
 	# Now check if the string is formatted correctly. (Correct format is "W" or "Y" as the first letter. If there is no "W" or "Y", then "G" or "B" should be first.)
-	if colors[0] == "W" or "Y":
+	if colors[0] == "W" or colors[0] == "Y":
 		# The first letter is "W" or "Y" so the string is formatted correctly and the colors string can be returned.
 		return(edges.get_node(colors))
-	elif colors[1] == "W" or "Y":
+	elif colors[1] == "W" or colors[1] == "Y":
 		# The second letter is "W" or "Y" so the first and second letter will be swapped so that the string is formatted correctly. Then the string will be returned.
-		return(edges.get_node(colors.reverse()))
-	elif colors[0] == "G" or "B":
+		return(edges.get_node(reverse_string(colors)))
+	elif colors[0] == "G" or colors[0] == "B":
 		# The string does not contain "W" or "Y". It has "G" or "B" as the first letter, so it is formatted correctly. The string will be returned.
 		return(edges.get_node(colors))
-	elif colors[1] == "G" or "B":
+	elif colors[1] == "G" or colors[1] == "B":
 		# The string does not contain "W" or "Y". It has "G" or "B" as the second letter so the string will be reversed and then returned.
-		return(edges.get_node(colors.reverse()))
+		return(edges.get_node(reverse_string(colors)))
 	else:
 		# this should never happen. If it does, I"m in trouble...
 		print("This is an error that should never happen... Check the find_edge_identity() function in cube logic.")
@@ -786,7 +786,7 @@ func find_pieces_in_layer(layer):
 			for location in LOCATION_LIST[1][1]:
 				pieces.append(find_edge_identity(location))
 			# Finally, add the center to the list.
-			pieces.append(LOCATION_LIST[1][2])
+			pieces.append(find_center_identity(LOCATION_LIST[1][2]))
 		"F":
 			# The layer is the front layer. Go through all the locations on the front side and add those pieces to the list.
 			for location in LOCATION_LIST[2][0]:
@@ -795,7 +795,7 @@ func find_pieces_in_layer(layer):
 			for location in LOCATION_LIST[2][1]:
 				pieces.append(find_edge_identity(location))
 			# Finally, add the center to the list.
-			pieces.append(LOCATION_LIST[2][2])
+			pieces.append(find_center_identity(LOCATION_LIST[2][2]))
 		"R":
 			# The layer is the right layer. Go through all the locations on the right side and add those pieces to the list.
 			for location in LOCATION_LIST[3][0]:
@@ -804,7 +804,7 @@ func find_pieces_in_layer(layer):
 			for location in LOCATION_LIST[3][1]:
 				pieces.append(find_edge_identity(location))
 			# Finally, add the center to the list.
-			pieces.append(LOCATION_LIST[3][2])
+			pieces.append(find_center_identity(LOCATION_LIST[3][2]))
 		"B":
 			# The layer is the back layer. Go through all the locations on the back side and add those pieces to the list.
 			for location in LOCATION_LIST[4][0]:
@@ -813,7 +813,7 @@ func find_pieces_in_layer(layer):
 			for location in LOCATION_LIST[4][1]:
 				pieces.append(find_edge_identity(location))
 			# Finally, add the center to the list.
-			pieces.append(LOCATION_LIST[4][2])
+			pieces.append(find_center_identity(LOCATION_LIST[4][2]))
 		"D":
 			# The layer is the bottom layer. Go through all the locations on the bottom side and add those pieces to the list.
 			for location in LOCATION_LIST[5][0]:
@@ -822,6 +822,20 @@ func find_pieces_in_layer(layer):
 			for location in LOCATION_LIST[5][1]:
 				pieces.append(find_edge_identity(location))
 			# Finally, add the center to the list.
-			pieces.append(LOCATION_LIST[5][2])
+			pieces.append(find_center_identity(LOCATION_LIST[5][2]))
+			
 	# Now return the list of parts that has been made.
 	return(pieces)
+	
+	
+# The GDScript documentation says that there is a reverse string function, but at least in the current version, it doesn't work.
+# This function takes the first 2 letters in a string and reverses them then returns the entire string. (I could make make it reverse the whole string, but I have no need for that currently so I'm just sticking with this.
+func reverse_string(word):
+	# First create a temporary variable to hold the first letter in.
+	var temporary_char_holder = word[0]
+	# Next change the first character in the string to be what the second character is.
+	word[0] = word[1]
+	# Then change the second character in the string to be what the temporary variable is.
+	word[1] = temporary_char_holder
+	# Now the first 2 characters have been swapped. Return the result.
+	return(word)

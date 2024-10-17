@@ -49,7 +49,6 @@ autostart = true
 [node name="Corners" type="Node3D" parent="."]
 
 [node name="ItalianCorner" type="Node3D" parent="Corners"]
-metadata/_edit_group_ = true
 
 [node name="CornerWhiteGreenRed" type="Area3D" parent="Corners/ItalianCorner"]
 
