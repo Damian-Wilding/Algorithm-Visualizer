@@ -1,9 +1,12 @@
 extends Node3D
 
 # RADIANS_TO_ROTATE is a dictionary that keeps track of the rotation of each of the 6 layers. (During a normal move, only one of these values will change by 90, 180, or -90 degrees.)
-var RADIANS_TO_ROTATE = {"U": 0, "L": 0, "F": 0, "R": 0, "B": 0, "D": 0}
+#var RADIANS_TO_ROTATE = {"U": 0, "L": 0, "F": 0, "R": 0, "B": 0, "D": 0}		Replaced this dictionary but I'm keeping it as a comment in case I need it.
+var RADIANS_TO_ROTATE = {"ItalianCorner": {"X": 0, "Y": -PI / 2, "Z": 0}, "IrishCorner": {"X": 0, "Y": PI, "Z": 0}, "USACorner": {"X": 0, "Y": 0, "Z": 0}, "NetherlandsCorner": {"X": 0, "Y": PI / 2, "Z": 0}, "BobMarleyCorner": {"X": PI, "Y": 0, "Z": 0}, "SpriteCorner": {"X": 0, "Y": PI / 2, "Z": PI}, "PrimaryCorner": {"X": 0, "Y": -PI / 2, "Z": PI}, "NerfCorner": {"X": 0, "Y": 0, "Z": PI}, "WG": {"X": 0, "Y": -PI / 2, "Z": 0}, "WB": {"X": 0, "Y": PI / 2, "Z": 0}, "WR": {"X": 0, "Y": 0, "Z": 0}, "WO": {"X": 0, "Y": PI, "Z": 0}, "GR": {"X": -PI / 2, "Y": -PI / 2, "Z": 0}, "GO": {"X": PI / 2, "Y": -PI / 2, "Z": 0}, "BR": {"X": PI / 2, "Y": PI / 2, "Z": 0}, "BO": {"X": -PI / 2, "Y": PI / 2, "Z": 0}, "YG": {"X": 0, "Y": PI / 2, "Z": PI}, "YB": {"X": 0, "Y": -PI / 2, "Z": PI}, "YR": {"X": PI, "Y": 0, "Z": 0}, "YO": {"X": 0, "Y": 0, "Z": PI}, "WhiteCenter": {"X": 0, "Y": 0, "Z": 0}, "OrangeCenter": {"X": 0, "Y": 0, "Z": PI / 2}, "GreenCenter": {"X": PI / 2, "Y": 0, "Z": 0}, "RedCenter": {"X": -PI / 2, "Y": -PI / 2, "Z": 0}, "BlueCenter": {"X": -PI / 2, "Y": 0, "Z": 0}, "YellowCenter": {"X": 0, "Y": 0, "Z": 0}, "CORE": {"X": 0, "Y": 0, "Z": 0}}
 # CURRENTLY_ROTATING_LAYER keeps track of what layer is currently being turned. 
 var CURRENTLY_ROTATING_LAYER
+# This variable will tell the process how much each moving piece needs to be rotated for the current turn being made.
+var AMOUNT_TO_TURN
 # This variable is the absolute value of the degrees to rotate. It is used to calculate the turn speed. This is needed because if the DEGREES_TO_ROTATE is negative then it will not work correctly. Basically, if DEGREES_TO_ROTATE is -270, then this will be +90 since it is a 90 degree turn and using -270 to calculate the turning speed would break everything.
 #var ABSOLUTE_VALUE_DEGREES_TO_ROTATE = 90
 # TURN_TIMER_MULTIPLIER alters how fast the cube will turn. (A higher number means a faster turn and a lower number means a slower turn. If you change TIME_TO_TURN, then this will probably need to be changed too because the cube won't be moving fast enough to complete turns in time.)
@@ -42,25 +45,34 @@ func _ready():
 func _process(delta):
 	if Input.is_action_just_released("ui_accept"):
 		U()
+		for piece in CURRENTLY_MOVING_PIECES:
+			RADIANS_TO_ROTATE[piece.name]["Y"] += AMOUNT_TO_TURN
+			piece.global_transform.basis = global_transform.basis.rotated(Vector3(0, 1, 0), AMOUNT_TO_TURN)
 	
 				
 	elif Input.is_action_just_released("ui_text_caret_down"):
 		R()
+		for piece in CURRENTLY_MOVING_PIECES:
+			RADIANS_TO_ROTATE[piece.name]["X"] += AMOUNT_TO_TURN
+			piece.global_transform.basis = global_transform.basis.rotated(Vector3(1, 0, 0), AMOUNT_TO_TURN)
 	
 	# Have the cube continue to rotate if the timer is running.
-	if ELAPSED_TIME < TIME_TO_TURN:
-		# Add the time that has passed since the last frame to the ELAPSED_TIME variable.
-		ELAPSED_TIME += delta
-		# Iterate through all the pieces that need to be turned.
-		for piece in CURRENTLY_MOVING_PIECES:
-			# Rotate the pieces based on the axis rotational velocities. 
-			print(piece)
-			if CURRENT_AXIS_OF_ROTATION == "Y":
-				piece.global_rotation.y = lerp_angle(piece.global_rotation.y, RADIANS_TO_ROTATE[CURRENTLY_ROTATING_LAYER], delta * TURN_TIMER_MULTIPLIER)
-			elif CURRENT_AXIS_OF_ROTATION == "X":
-				piece.global_rotation.x = lerp_angle(piece.global_rotation.x, RADIANS_TO_ROTATE[CURRENTLY_ROTATING_LAYER], delta * TURN_TIMER_MULTIPLIER)
-			elif CURRENT_AXIS_OF_ROTATION == "Z":
-				piece.global_rotation.z = lerp_angle(piece.global_rotation.z, RADIANS_TO_ROTATE[CURRENTLY_ROTATING_LAYER], delta * TURN_TIMER_MULTIPLIER)
+	#if ELAPSED_TIME < TIME_TO_TURN:
+	#	# Add the time that has passed since the last frame to the ELAPSED_TIME variable.
+	#	ELAPSED_TIME += delta
+	#	# Iterate through all the pieces that need to be turned.
+	#	for piece in CURRENTLY_MOVING_PIECES:
+	#		# Rotate the pieces based on the axis rotational velocities. 
+	#		print(piece)
+	#		if CURRENT_AXIS_OF_ROTATION == "Y":
+	#			RADIANS_TO_ROTATE[piece.name]["Y"] += AMOUNT_TO_TURN
+	#			piece.global_transform.basis = global_transform.basis.rotated(Vector3(0, 1, 0), RADIANS_TO_ROTATE[piece.name]["Y"])
+	#		elif CURRENT_AXIS_OF_ROTATION == "X":
+	#			RADIANS_TO_ROTATE[piece.name]["X"] += AMOUNT_TO_TURN
+	#			piece.global_transform.basis = global_transform.basis.rotated(Vector3(1, 0, 0), RADIANS_TO_ROTATE[piece.name]["X"])
+	#		elif CURRENT_AXIS_OF_ROTATION == "Z":
+	#			RADIANS_TO_ROTATE[piece.name]["Z"] += AMOUNT_TO_TURN
+	#			piece.global_transform.basis = global_transform.basis.rotated(Vector3(0, 0, 1), RADIANS_TO_ROTATE[piece.name]["Z"])
 			
 
 # This function currently isn't being used. I decided to have cube logic do this instead since I couldn't make this one work correctly.
@@ -173,15 +185,15 @@ func _process(delta):
 # The following lines are code for each individual turn/rotation the cube can make.
 
 # Turn the top face clockwise.
-func U(): 
+func U():
 	# Only do this if the cube isn't currently turning already.
 	if ELAPSED_TIME >= TIME_TO_TURN:
 		# Update cube logic.
 		$CubeLogic.U()
 		# Change the currently rotating layer to match the turn being made.
 		CURRENTLY_ROTATING_LAYER = "U"
-		# Change RADIANS_TO_TURN by -90 degrees. (For some reason counterclockwise turns are considered +90 degree turns and clockwise turns are -90 degree turns.)
-		RADIANS_TO_ROTATE["U"] -= PI / 2
+		# Change AMOUNT_TO_TURN by to -90 degrees. (For some reason counterclockwise turns are considered +90 degree turns and clockwise turns are -90 degree turns.)
+		AMOUNT_TO_TURN = -PI / 2
 		# Update the axis that the pieces will be turning around.
 		change_axis("Y")
 		# Change the ELAPSED_TIME to be 0 since it is restarting for a new turn. (This makes it so that another turn won't start while this turn is still going.)
@@ -324,7 +336,7 @@ func R():
 		# Change the currently rotating layer to match the turn being made.
 		CURRENTLY_ROTATING_LAYER = "R"
 		# Change RADIANS_TO_TURN by -90 degrees.
-		RADIANS_TO_ROTATE["R"] -= PI / 2
+		AMOUNT_TO_TURN = -PI / 2
 		# Update the axis that the pieces will be turning around.
 		change_axis("X")
 		# Change the ELAPSED_TIME to be 0 since it is restarting for a new turn. (This makes it so that another turn won't start while this turn is still going.)

@@ -8,6 +8,8 @@ var time_to_turn = .5
 var place_to_rotate_to = 0
 var place_to_rotate_to2 = 0
 var place_to_rotate_to3 = - PI / 2
+var a_dictionary = {"ItalianCorner": {"X": 1, "Y": 2, "Z": 0}, "IrishCorner": {"X": 4, "Y": 5, "Z": 6}}
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	piece = $Node3D
@@ -37,6 +39,9 @@ func _process(delta):
 		piece.rotation.y = lerp_angle(piece.rotation.y, place_to_rotate_to3, .1)
 		#print(iterator)
 		iterator += delta
+		
+	for entry in a_dictionary:
+		print(a_dictionary[entry]["X"])
 
 
 func _on_tester_timer_timeout():
@@ -65,6 +70,8 @@ func F():
 	if iterator >= time_to_turn:
 		iterator = 0.0
 		place_to_rotate_to3 += PI / 2
+		
+
 # Have the cube continue to rotate if the timer is running.
 	#if $HowLongToTurn90Degrees.is_stopped() == false:
 		# Iterate through all the pieces that need to be turned.

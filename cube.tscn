@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://ch0okutfb546s"]
+[gd_scene load_steps=32 format=3 uid="uid://ch0okutfb546s"]
 
 [ext_resource type="ArrayMesh" uid="uid://lt8v6pyqonss" path="res://Assets/CubeParts/Other/Core.res" id="1_amloi"]
 [ext_resource type="Script" path="res://cube.gd" id="1_ojui8"]
@@ -6,6 +6,7 @@
 [ext_resource type="ArrayMesh" uid="uid://g27c0byef4ke" path="res://Assets/CubeParts/Centers/CenterYellow.res" id="2_xlkhm"]
 [ext_resource type="ArrayMesh" uid="uid://wvawrts0s0le" path="res://Assets/CubeParts/Corners/CornerWhiteBlueOrange.res" id="3_0hpic"]
 [ext_resource type="ArrayMesh" uid="uid://788k6h132v61" path="res://Assets/CubeParts/Centers/CenterWhite.res" id="3_sj76a"]
+[ext_resource type="PackedScene" uid="uid://djq3ielctwa5x" path="res://cubie.tscn" id="3_v8wb3"]
 [ext_resource type="ArrayMesh" uid="uid://bxb6m2ypbvohb" path="res://Assets/CubeParts/Centers/CenterGreen.res" id="4_32ebc"]
 [ext_resource type="ArrayMesh" uid="uid://cjqrduuv2kw3b" path="res://Assets/CubeParts/Corners/CornerWhiteGreenRed.res" id="4_rr6s2"]
 [ext_resource type="ArrayMesh" uid="uid://coxxp5lx5em2w" path="res://Assets/CubeParts/Corners/CornerWhiteGreenOrange.res" id="5_6tju5"]
@@ -48,74 +49,35 @@ autostart = true
 
 [node name="Corners" type="Node3D" parent="."]
 
-[node name="ItalianCorner" type="Node3D" parent="Corners"]
-
-[node name="CornerWhiteGreenRed" type="Area3D" parent="Corners/ItalianCorner"]
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Corners/ItalianCorner/CornerWhiteGreenRed"]
+[node name="ItalianCorner" parent="Corners" instance=ExtResource("3_v8wb3")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 3, 3, 3)
 mesh = ExtResource("4_rr6s2")
 
-[node name="IrishCorner" type="Node3D" parent="Corners"]
-metadata/_edit_group_ = true
-
-[node name="CornerWhiteGreenOrange" type="Area3D" parent="Corners/IrishCorner"]
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Corners/IrishCorner/CornerWhiteGreenOrange"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -3, 3, 3)
+[node name="IrishCorner" parent="Corners" instance=ExtResource("3_v8wb3")]
+transform = Transform3D(-1, 8.74228e-08, 0, 8.74228e-08, 1, 8.74228e-08, 7.64274e-15, 8.74228e-08, -1, -3, 3, 3)
 mesh = ExtResource("5_6tju5")
 
-[node name="USACorner" type="Node3D" parent="Corners"]
-metadata/_edit_group_ = true
-
-[node name="CornerWhiteBlueRed" type="Area3D" parent="Corners/USACorner"]
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Corners/USACorner/CornerWhiteBlueRed"]
+[node name="USACorner" parent="Corners" instance=ExtResource("3_v8wb3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 3, -3)
 mesh = ExtResource("2_4qxpc")
 
-[node name="NetherlandsCorner" type="Node3D" parent="Corners"]
-metadata/_edit_group_ = true
-
-[node name="CornerWhiteBlueOrange" type="Area3D" parent="Corners/NetherlandsCorner"]
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Corners/NetherlandsCorner/CornerWhiteBlueOrange"]
+[node name="NetherlandsCorner" parent="Corners" instance=ExtResource("3_v8wb3")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3, 3, -3)
 mesh = ExtResource("3_0hpic")
 
-[node name="BobMarleyCorner" type="Node3D" parent="Corners"]
-metadata/_edit_group_ = true
-
-[node name="CornerYellowGreenRed" type="Area3D" parent="Corners/BobMarleyCorner"]
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Corners/BobMarleyCorner/CornerYellowGreenRed"]
+[node name="BobMarleyCorner" parent="Corners" instance=ExtResource("3_v8wb3")]
 transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 3, -3, 3)
 mesh = ExtResource("8_us6gn")
 
-[node name="SpriteCorner" type="Node3D" parent="Corners"]
-metadata/_edit_group_ = true
-
-[node name="CornerYellowGreenOrange" type="Area3D" parent="Corners/SpriteCorner"]
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Corners/SpriteCorner/CornerYellowGreenOrange"]
+[node name="SpriteCorner" parent="Corners" instance=ExtResource("3_v8wb3")]
 transform = Transform3D(-4.37114e-08, 8.74228e-08, 1, 0, -1, 8.74228e-08, 1, 3.82137e-15, 4.37114e-08, -3, -3, 3)
 mesh = ExtResource("9_i4vcj")
 
-[node name="PrimaryCorner" type="Node3D" parent="Corners"]
-metadata/_edit_group_ = true
-
-[node name="CornerYellowBlueRed" type="Area3D" parent="Corners/PrimaryCorner"]
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Corners/PrimaryCorner/CornerYellowBlueRed"]
+[node name="PrimaryCorner" parent="Corners" instance=ExtResource("3_v8wb3")]
 transform = Transform3D(-4.37114e-08, -8.74228e-08, -1, 0, -1, 8.74228e-08, -1, 3.82137e-15, 4.37114e-08, 3, -3, -3)
 mesh = ExtResource("10_fie52")
 
-[node name="NerfCorner" type="Node3D" parent="Corners"]
-metadata/_edit_group_ = true
-
-[node name="CornerYellowBlueOrange" type="Area3D" parent="Corners/NerfCorner"]
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Corners/NerfCorner/CornerYellowBlueOrange"]
+[node name="NerfCorner" parent="Corners" instance=ExtResource("3_v8wb3")]
 transform = Transform3D(-1, 7.64274e-15, 8.74228e-08, 0, -1, 8.74228e-08, 8.74228e-08, 8.74228e-08, 1, -3, -3, -3)
 mesh = ExtResource("11_fl8b4")
 
