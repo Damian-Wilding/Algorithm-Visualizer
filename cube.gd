@@ -53,7 +53,7 @@ func _process(delta):
 		ELAPSED_TIME += delta
 		# Iterate through all the pieces that need to be turned.
 		for piece in CURRENTLY_MOVING_PIECES:
-			# Rotate the pieces based on the axis rotational velocities.
+			# Rotate the pieces based on the axis rotational velocities. 
 			print(piece)
 			if CURRENT_AXIS_OF_ROTATION == "Y":
 				piece.global_rotation.y = lerp_angle(piece.global_rotation.y, RADIANS_TO_ROTATE[CURRENTLY_ROTATING_LAYER], delta * TURN_TIMER_MULTIPLIER)
@@ -173,7 +173,7 @@ func _process(delta):
 # The following lines are code for each individual turn/rotation the cube can make.
 
 # Turn the top face clockwise.
-func U():
+func U(): 
 	# Only do this if the cube isn't currently turning already.
 	if ELAPSED_TIME >= TIME_TO_TURN:
 		# Update cube logic.
