@@ -1,23 +1,25 @@
-[gd_scene load_steps=5 format=3 uid="uid://bhavddjcw5tpt"]
+[gd_scene load_steps=6 format=3 uid="uid://bhavddjcw5tpt"]
 
 [ext_resource type="Script" path="res://Testing.gd" id="1_mwamw"]
 [ext_resource type="ArrayMesh" uid="uid://bx4ix71vno2rg" path="res://Assets/CubeParts/Other/testpart.res" id="2_5p0w2"]
-[ext_resource type="ArrayMesh" uid="uid://lt8v6pyqonss" path="res://Assets/CubeParts/Other/Core.res" id="3_52kqv"]
-[ext_resource type="PackedScene" uid="uid://e6qlek6fmdfc" path="res://test_cubit.tscn" id="4_ifbdu"]
+[ext_resource type="PackedScene" uid="uid://djq3ielctwa5x" path="res://cubie.tscn" id="3_60ttf"]
+
+[sub_resource type="Curve3D" id="Curve3D_3r1m6"]
+_data = {
+"points": PackedVector3Array(-1.49375, 0, 1.54959, 1.49375, 0, -1.54959, 0.00179005, 0, 0.0138104, -1.46583, 0, -1.49375, 1.46583, 0, 1.49375, 6.0047, 0, -0.0420303, 1.47979, 0, -1.46583, -1.47979, 0, 1.46583, 6.0047, 0, 5.94692, 1.52167, 0, 1.49375, -1.52167, 0, -1.49375, 0.015749, 0, 5.97484, -1.47979, 0, 1.45187, 1.47979, 0, -1.45187, 0.00179005, 0, -0.000149727, -1.49375, 0, 1.54959, 1.49375, 0, -1.54959, 0.00179005, 0, 0.0138104),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0)
+}
+point_count = 6
+
+[sub_resource type="Curve3D" id="Curve3D_3gnqj"]
+_data = {
+"points": PackedVector3Array(0, 1.31226, -1.43791, 0, -1.31226, 1.43791, 0, 2.88978, 2.40046, 0, 1.52167, 1.80087, 0, -1.52167, -1.80087, 0, -2.75016, 2.21898, 0, -1.14474, 0.991178, 0, 1.14474, -0.991178, 0, -2.48492, -2.84859, 0, -1.14474, -1.10286, 0, 1.14474, 1.10286, 0, 2.83394, -2.62523, 0, 1.04702, -1.13078, 0, -1.04702, 1.13078, 0, 2.90374, 2.3865),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0)
+}
+point_count = 5
 
 [node name="Testing" type="Node3D"]
 script = ExtResource("1_mwamw")
-
-[node name="Node3D" type="Node3D" parent="."]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 3, 3, 3)
-visible = false
-metadata/_edit_group_ = true
-
-[node name="Area3D" type="Area3D" parent="Node3D"]
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D/Area3D"]
-transform = Transform3D(1000, 0, 0, 0, 1000, 0, 0, 0, 1000, 0, 0, 0)
-mesh = ExtResource("2_5p0w2")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(-0.698171, -0.315448, 0.64269, -0.0218244, 0.906658, 0.421302, -0.715599, 0.280114, -0.639886, 5.96827, 4.89691, -5.35932)
@@ -29,10 +31,24 @@ transform = Transform3D(0.830858, 0.492707, 0.258677, 0, -0.464842, 0.885394, 0.
 wait_time = 0.147
 autostart = true
 
-[node name="Core" type="MeshInstance3D" parent="."]
-mesh = ExtResource("3_52kqv")
+[node name="Path3D" type="Path3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.99767, 0, -2.96711)
+curve = SubResource("Curve3D_3r1m6")
 
-[node name="TestCubit" parent="." instance=ExtResource("4_ifbdu")]
-transform = Transform3D(1000, 0, 0, 0, 1001.28, 0, 0, 0, 1001.28, 3, 3, 3)
+[node name="PathFollow3D" type="PathFollow3D" parent="Path3D"]
+transform = Transform3D(-0.511518, -0.139387, 0.847876, -0.0928147, -0.972001, -0.215787, 0.854234, -0.189075, 0.484265, -0.679271, 3.66524, -0.39119)
+progress = 0.824584
+
+[node name="Cubie" parent="Path3D/PathFollow3D" instance=ExtResource("3_60ttf")]
+transform = Transform3D(851.229, 96.4826, -515.86, -196.946, 969.852, -143.591, 486.45, 223.825, 844.561, 0.320836, 3.4176, 1.54999)
+top_level = false
+mesh = ExtResource("2_5p0w2")
+skeleton = NodePath("../../..")
+
+[node name="Path3D2" type="Path3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 0)
+curve = SubResource("Curve3D_3gnqj")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="Path3D2"]
 
 [connection signal="timeout" from="TesterTimer" to="." method="_on_tester_timer_timeout"]

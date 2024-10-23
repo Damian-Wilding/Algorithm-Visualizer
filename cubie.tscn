@@ -3,4 +3,5 @@
 [ext_resource type="Script" path="res://Cubie.gd" id="1_3hfrs"]
 
 [node name="Cubie" type="MeshInstance3D"]
+top_level = true
 script = ExtResource("1_3hfrs")

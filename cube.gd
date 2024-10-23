@@ -2,7 +2,7 @@ extends Node3D
 
 # RADIANS_TO_ROTATE is a dictionary that keeps track of the rotation of each of the 6 layers. (During a normal move, only one of these values will change by 90, 180, or -90 degrees.)
 #var RADIANS_TO_ROTATE = {"U": 0, "L": 0, "F": 0, "R": 0, "B": 0, "D": 0}		Replaced this dictionary but I'm keeping it as a comment in case I need it.
-var RADIANS_TO_ROTATE = {"ItalianCorner": {"X": 0, "Y": -PI / 2, "Z": 0}, "IrishCorner": {"X": 0, "Y": PI, "Z": 0}, "USACorner": {"X": 0, "Y": 0, "Z": 0}, "NetherlandsCorner": {"X": 0, "Y": PI / 2, "Z": 0}, "BobMarleyCorner": {"X": PI, "Y": 0, "Z": 0}, "SpriteCorner": {"X": 0, "Y": PI / 2, "Z": PI}, "PrimaryCorner": {"X": 0, "Y": -PI / 2, "Z": PI}, "NerfCorner": {"X": 0, "Y": 0, "Z": PI}, "WG": {"X": 0, "Y": -PI / 2, "Z": 0}, "WB": {"X": 0, "Y": PI / 2, "Z": 0}, "WR": {"X": 0, "Y": 0, "Z": 0}, "WO": {"X": 0, "Y": PI, "Z": 0}, "GR": {"X": -PI / 2, "Y": -PI / 2, "Z": 0}, "GO": {"X": PI / 2, "Y": -PI / 2, "Z": 0}, "BR": {"X": PI / 2, "Y": PI / 2, "Z": 0}, "BO": {"X": -PI / 2, "Y": PI / 2, "Z": 0}, "YG": {"X": 0, "Y": PI / 2, "Z": PI}, "YB": {"X": 0, "Y": -PI / 2, "Z": PI}, "YR": {"X": PI, "Y": 0, "Z": 0}, "YO": {"X": 0, "Y": 0, "Z": PI}, "WhiteCenter": {"X": 0, "Y": 0, "Z": 0}, "OrangeCenter": {"X": 0, "Y": 0, "Z": PI / 2}, "GreenCenter": {"X": PI / 2, "Y": 0, "Z": 0}, "RedCenter": {"X": -PI / 2, "Y": -PI / 2, "Z": 0}, "BlueCenter": {"X": -PI / 2, "Y": 0, "Z": 0}, "YellowCenter": {"X": 0, "Y": 0, "Z": 0}, "CORE": {"X": 0, "Y": 0, "Z": 0}}
+var RADIANS_TO_ROTATE = {"ItalianCorner": {"X": 0, "Y": 0, "Z": 0}, "IrishCorner": {"X": 0, "Y": 0, "Z": 0}, "USACorner": {"X": 0, "Y": 0, "Z": 0}, "NetherlandsCorner": {"X": 0, "Y": 0, "Z": 0}, "BobMarleyCorner": {"X": 0, "Y": 0, "Z": 0}, "SpriteCorner": {"X": 0, "Y": 0, "Z": 0}, "PrimaryCorner": {"X": 0, "Y": 0, "Z": 0}, "NerfCorner": {"X": 0, "Y": 0, "Z": 0}, "WG": {"X": 0, "Y": 0, "Z": 0}, "WB": {"X": 0, "Y": 0, "Z": 0}, "WR": {"X": 0, "Y": 0, "Z": 0}, "WO": {"X": 0, "Y": 0, "Z": 0}, "GR": {"X": 0, "Y": 0, "Z": 0}, "GO": {"X": 0, "Y": 0, "Z": 0}, "BR": {"X": 0, "Y": 0, "Z": 0}, "BO": {"X": 0, "Y": 0, "Z": 0}, "YG": {"X": 0, "Y": 0, "Z": 0}, "YB": {"X": 0, "Y": 0, "Z": 0}, "YR": {"X": 0, "Y": 0, "Z": 0}, "YO": {"X": 0, "Y": 0, "Z": 0}, "WhiteCenter": {"X": 0, "Y": 0, "Z": 0}, "OrangeCenter": {"X": 0, "Y": 0, "Z": 0}, "GreenCenter": {"X": 0, "Y": 0, "Z": 0}, "RedCenter": {"X": 0, "Y": 0, "Z": 0}, "BlueCenter": {"X": 0, "Y": 0, "Z": 0}, "YellowCenter": {"X": 0, "Y": 0, "Z": 0}, "Core": {"X": 0, "Y": 0, "Z": 0}}
 # CURRENTLY_ROTATING_LAYER keeps track of what layer is currently being turned. 
 var CURRENTLY_ROTATING_LAYER
 # This variable will tell the process how much each moving piece needs to be rotated for the current turn being made.
@@ -30,24 +30,24 @@ func _ready():
 	# Make a list with every piece of the cube in it. (This is used for debugging and cube rotations.)
 	# First add the corners to the list.
 	for corner in $Corners.get_children():
-		ALL_PIECES_LIST.append(corner.get_child(0).get_child(0))
+		ALL_PIECES_LIST.append(corner)
 	# Then add the edges.
 	for edge in $Edges.get_children():
-		ALL_PIECES_LIST.append(edge.get_child(0).get_child(0))
+		ALL_PIECES_LIST.append(edge)
 	# Then add the centers.
 	for center in $Centers.get_children():
-		ALL_PIECES_LIST.append(center.get_child(0).get_child(0))
+		ALL_PIECES_LIST.append(center)
 	# Finally, add the core.
-	ALL_PIECES_LIST.append($Core/MeshInstance3D)
+	ALL_PIECES_LIST.append($Core)
 	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if Input.is_action_just_released("ui_accept"):
 		U()
-		for piece in CURRENTLY_MOVING_PIECES:
+		for piece in ALL_PIECES_LIST:
 			RADIANS_TO_ROTATE[piece.name]["Y"] += AMOUNT_TO_TURN
-			piece.global_transform.basis = global_transform.basis.rotated(Vector3(0, 1, 0), AMOUNT_TO_TURN)
+			piece.global_transform.basis = piece.global_transform.basis.rotated(Vector3(0, 1, 0), AMOUNT_TO_TURN)
 	
 				
 	elif Input.is_action_just_released("ui_text_caret_down"):
