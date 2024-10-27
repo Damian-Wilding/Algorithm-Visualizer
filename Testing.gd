@@ -1,6 +1,7 @@
 extends Node3D
 
 var piece
+var piece2
 var iterator = 10.0
 #var rotation_speed = 2
 var location
@@ -20,8 +21,11 @@ func _ready():
 	#location = piece.rotation.x 
 	print(location)
 	#piece.position = Vector3(2,2,2)
-	piece.get_parent().remove_child(piece)
-	$MovementPath/PathFollow3D.add_child(piece)
+	#piece.get_parent().remove_child(piece)
+	#$MovementPath/PathFollow3D.add_child(piece)
+	piece2 = $Cubie2
+	remove_child(piece2)
+	$MovementPath/PathFollow3D.add_child(piece2)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -32,7 +36,7 @@ func _process(delta):
 	#	#current_rotation += PI/2
 	#	#piece.rotation.y = current_rotation
 	#	current_rotation.rotated(Vector3(0, 1, 0), PI / 2)
-	
+	piece2.get_parent().progress_ratio += delta * speed_multiplier
 	piece.get_parent().progress += delta * speed_multiplier
 		
 	
@@ -46,7 +50,8 @@ func _process(delta):
 			$Path3D2/PathFollow3D.add_child(piece)
 			piece = $Path3D2/PathFollow3D/Cubie
 	
-	
+	print($MovementPath.get_child(0).get_child(0))
+			
 	
 	
 	
