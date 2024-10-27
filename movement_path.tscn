@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://oqf7gtdpo7vt"]
+
+[ext_resource type="Script" path="res://MovementPath.gd" id="1_c7ymk"]
+
+[sub_resource type="Curve3D" id="Curve3D_ww7oh"]
+
+[node name="MovementPath" type="Path3D"]
+curve = SubResource("Curve3D_ww7oh")
+script = ExtResource("1_c7ymk")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="."]

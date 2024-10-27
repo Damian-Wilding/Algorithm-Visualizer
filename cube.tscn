@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://ch0okutfb546s"]
+[gd_scene load_steps=32 format=3 uid="uid://ch0okutfb546s"]
 
 [ext_resource type="ArrayMesh" uid="uid://lt8v6pyqonss" path="res://Assets/CubeParts/Other/Core.res" id="1_amloi"]
 [ext_resource type="Script" path="res://cube.gd" id="1_ojui8"]
@@ -30,6 +30,8 @@
 [ext_resource type="ArrayMesh" uid="uid://co8142203wgid" path="res://Assets/CubeParts/Edges/EdgeYellowRed.res" id="26_3eplq"]
 [ext_resource type="ArrayMesh" uid="uid://d3skodbj7uy06" path="res://Assets/CubeParts/Edges/EdgeYellowOrange.res" id="27_cb1w1"]
 [ext_resource type="PackedScene" uid="uid://q8nwaondv4gi" path="res://cube_logic.tscn" id="29_kddsc"]
+
+[sub_resource type="Curve3D" id="Curve3D_de301"]
 
 [node name="Cube" type="Node3D"]
 script = ExtResource("1_ojui8")
@@ -157,3 +159,6 @@ mesh = ExtResource("7_j4huu")
 
 [node name="Core" parent="." instance=ExtResource("3_v8wb3")]
 mesh = ExtResource("1_amloi")
+
+[node name="Path3D" type="Path3D" parent="."]
+curve = SubResource("Curve3D_de301")

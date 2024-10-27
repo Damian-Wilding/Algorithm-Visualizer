@@ -20,6 +20,8 @@ func _ready():
 	#location = piece.rotation.x 
 	print(location)
 	#piece.position = Vector3(2,2,2)
+	piece.get_parent().remove_child(piece)
+	$MovementPath/PathFollow3D.add_child(piece)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
