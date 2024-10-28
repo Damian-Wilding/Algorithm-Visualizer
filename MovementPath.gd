@@ -21,9 +21,9 @@ func _ready():
 	rotation_curve.add_point(rotation_curve.get_point_position(0))
 	# Make the rotation_curve this Nodes curve.
 	curve = rotation_curve
-		
+	print(curve)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
+	pass # $PathFollow3D.progress += delta * 10

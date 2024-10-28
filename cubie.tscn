@@ -5,6 +5,5 @@
 
 [node name="Cubie" type="MeshInstance3D"]
 transform = Transform3D(1000, 0, 0, 0, 1000, 0, 0, 0, 1000, 0, 0, 0)
-top_level = true
 mesh = ExtResource("1_i0pqy")
 script = ExtResource("1_3hfrs")

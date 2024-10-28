@@ -41,7 +41,6 @@ progress = 0.824584
 
 [node name="Cubie" parent="Path3D/PathFollow3D" instance=ExtResource("3_60ttf")]
 transform = Transform3D(851.229, 96.4826, -515.86, -196.946, 969.852, -143.591, 486.45, 223.825, 844.561, 0.320836, 3.4176, 1.54999)
-top_level = false
 skeleton = NodePath("../../..")
 
 [node name="Path3D2" type="Path3D" parent="."]
@@ -54,7 +53,7 @@ transform = Transform3D(-1, 5.89315e-08, -6.45742e-08, 0, 0.738643, 0.674097, 8.
 [node name="MovementPath" parent="." instance=ExtResource("3_wipv7")]
 
 [node name="Cubie2" parent="." instance=ExtResource("3_60ttf")]
-transform = Transform3D(1000, 0, 0, 0, 1000, 0, 0, 0, 1000, -5.67034, -1.38949, 0.809303)
+transform = Transform3D(1000, 0, 0, 0, 1000, 0, 0, 0, 1000, 4.95963, 0.00944233, 0.246912)
 skeleton = NodePath("../MovementPath")
 
 [connection signal="timeout" from="TesterTimer" to="." method="_on_tester_timer_timeout"]

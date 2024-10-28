@@ -15,14 +15,7 @@ var a_dictionary = {"ItalianCorner": {"X": 1, "Y": 2, "Z": 0}, "IrishCorner": {"
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	piece = $Path3D/PathFollow3D/Cubie
-	#var iterator = 0
-	#piece.rotation = Vector3(3,2,3)
-	#print(piece.position)
-	#location = piece.rotation.x 
-	print(location)
-	#piece.position = Vector3(2,2,2)
-	#piece.get_parent().remove_child(piece)
-	#$MovementPath/PathFollow3D.add_child(piece)
+
 	piece2 = $Cubie2
 	remove_child(piece2)
 	$MovementPath/PathFollow3D.add_child(piece2)
@@ -30,13 +23,9 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	#piece.global_rotate(Vector3(0,2,0), PI / 20)
-	#if Input.is_action_just_released("ui_accept"):
-	#	var current_rotation = piece.global_transform.origin
-	#	#current_rotation += PI/2
-	#	#piece.rotation.y = current_rotation
-	#	current_rotation.rotated(Vector3(0, 1, 0), PI / 2)
-	piece2.get_parent().progress_ratio += delta * speed_multiplier
+
+	piece2.get_parent().progress += delta * speed_multiplier
+	wrapf(piece2.get_parent().progress, 0, 1)
 	piece.get_parent().progress += delta * speed_multiplier
 		
 	
@@ -49,28 +38,16 @@ func _process(delta):
 			piece.get_parent().remove_child(piece)
 			$Path3D2/PathFollow3D.add_child(piece)
 			piece = $Path3D2/PathFollow3D/Cubie
-	
-	print($MovementPath.get_child(0).get_child(0))
 			
+	print(piece2.get_parent().progress_ratio)
 	
-	
-	
-	
-	
-	#if iterator < time_to_turn:
-	#	piece.global_rotation.x = lerp_angle(piece.global_rotation.x, place_to_rotate_to, .1)
-	#	piece.rotation.z = lerp_angle(piece.rotation.z, place_to_rotate_to2, .1)
-	#	piece.rotation.y = lerp_angle(piece.rotation.y, place_to_rotate_to3, .1)
-	#	#print(iterator)
-	#	iterator += delta
-	#	
-	#for entry in a_dictionary:
-	#	print(a_dictionary[entry]["X"])
+
 
 
 func _on_tester_timer_timeout():
 	#$Node3D/Area3D/MeshInstance3D.position = Vector3(1,2,3)ss
-	print(piece.rotation.x)
+	#print(piece.rotation.x)
+	pass
 	
 	
 	
