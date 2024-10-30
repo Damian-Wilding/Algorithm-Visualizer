@@ -1,0 +1,61 @@
+[gd_scene load_steps=4 format=3 uid="uid://0q23lugd17j5"]
+
+[ext_resource type="PackedScene" uid="uid://djq3ielctwa5x" path="res://cubie.tscn" id="1_38knt"]
+[ext_resource type="ArrayMesh" uid="uid://cjqrduuv2kw3b" path="res://Assets/CubeParts/Corners/CornerWhiteGreenRed.res" id="2_gjgcf"]
+[ext_resource type="PackedScene" uid="uid://ld5onebbeds" path="res://tiny_path.tscn" id="3_ys3hy"]
+
+[node name="Paths" type="Node3D"]
+
+[node name="ItalianCorner" parent="." groups=["Corners"] instance=ExtResource("1_38knt")]
+transform = Transform3D(-2.18557e-08, 0, -0.5, 0, 0.5, 0, 0.5, 0, -2.18557e-08, 3, 3, 3)
+mesh = ExtResource("2_gjgcf")
+X_ROTATION_PROGRESS = 0.125
+Y_ROTATION_PROGRESS = 0.125
+Z_ROTATION_PROGRESS = 0.375
+
+[node name="BC2LC" parent="." instance=ExtResource("3_ys3hy")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="FC2RC" parent="." instance=ExtResource("3_ys3hy")]
+
+[node name="RC2BC" parent="." instance=ExtResource("3_ys3hy")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+
+[node name="LC2FC" parent="." instance=ExtResource("3_ys3hy")]
+transform = Transform3D(1.19249e-08, 0, -1, 0, 1, 0, 1, 0, 1.19249e-08, 0, 0, 0)
+
+[node name="BC2RC" parent="." instance=ExtResource("3_ys3hy")]
+transform = Transform3D(1, -8.74228e-08, -1.50996e-07, -8.74228e-08, -1, 0, -1.50996e-07, 1.32005e-14, -1, 0, 0, 0)
+
+[node name="FC2LC" parent="." instance=ExtResource("3_ys3hy")]
+transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="RC2FC" parent="." instance=ExtResource("3_ys3hy")]
+transform = Transform3D(4.37114e-08, -3.82137e-15, 1, -8.74228e-08, -1, 0, 1, -8.74228e-08, -4.37114e-08, 0, 0, 0)
+
+[node name="LC2BC" parent="." instance=ExtResource("3_ys3hy")]
+transform = Transform3D(4.37114e-08, -3.82137e-15, -1, -8.74228e-08, -1, 0, -1, 8.74228e-08, -4.37114e-08, 0, 0, 0)
+
+[node name="BC2UC" parent="." instance=ExtResource("3_ys3hy")]
+transform = Transform3D(4.37114e-08, 1, -1.50996e-07, 1, -4.37114e-08, 0, -6.60024e-15, -1.50996e-07, -1, 0, 0, 0)
+
+[node name="FC2UC" parent="." instance=ExtResource("3_ys3hy")]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="RC2UC" parent="." instance=ExtResource("3_ys3hy")]
+transform = Transform3D(1.91069e-15, 4.37114e-08, 1, 1, -4.37114e-08, 0, 4.37114e-08, 1, -4.37114e-08, 0, 0, 0)
+
+[node name="LC2UC" parent="." instance=ExtResource("3_ys3hy")]
+transform = Transform3D(1.91069e-15, 4.37114e-08, -1, 1, -4.37114e-08, 0, -4.37114e-08, -1, -4.37114e-08, 0, 0, 0)
+
+[node name="DC2BC" parent="." instance=ExtResource("3_ys3hy")]
+transform = Transform3D(-1.07284e-07, 1, 6.60024e-15, -4.37114e-08, 1.91069e-15, -1, -1, -1.07284e-07, 4.37114e-08, 0, 0, 0)
+
+[node name="DC2FC" parent="." instance=ExtResource("3_ys3hy")]
+transform = Transform3D(-4.37114e-08, -1, 0, -4.37114e-08, 1.91069e-15, -1, 1, -4.37114e-08, -4.37114e-08, 0, 0, 0)
+
+[node name="DC2RC" parent="." instance=ExtResource("3_ys3hy")]
+transform = Transform3D(1, 0, -4.37114e-08, -4.37114e-08, 1.91069e-15, -1, 0, 1, 1.91069e-15, 0, 0, 0)
+
+[node name="DC2LC" parent="." instance=ExtResource("3_ys3hy")]
+transform = Transform3D(-1, 8.74228e-08, 4.37114e-08, -4.37114e-08, 1.91069e-15, -1, -8.74228e-08, -1, 1.91069e-15, 0, 0, 0)

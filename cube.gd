@@ -9,6 +9,10 @@ var CURRENTLY_ROTATING_LAYER
 var AMOUNT_TO_TURN
 # This variable is the absolute value of the degrees to rotate. It is used to calculate the turn speed. This is needed because if the DEGREES_TO_ROTATE is negative then it will not work correctly. Basically, if DEGREES_TO_ROTATE is -270, then this will be +90 since it is a 90 degree turn and using -270 to calculate the turning speed would break everything.
 #var ABSOLUTE_VALUE_DEGREES_TO_ROTATE = 90
+# This variable represents the amount of progress that needs to be added to the currently moving pieces to complete the current turn being made.
+var PROGRESS_TO_BE_ADDED = 0
+# This variable is the amount of progress that needs to be added to the turn since the last frame.
+var PROGRESS_TO_BE_ADDED_SINCE_LAST_FRAME = 0
 # TURN_TIMER_MULTIPLIER alters how fast the cube will turn. (A higher number means a faster turn and a lower number means a slower turn. If you change TIME_TO_TURN, then this will probably need to be changed too because the cube won't be moving fast enough to complete turns in time.)
 var TURN_TIMER_MULTIPLIER = 10
 # This controls how long the cube can't be turned for while a turn is being made. (Time in seconds.)
@@ -29,13 +33,13 @@ var CURRENT_AXIS_OF_ROTATION
 func _ready():
 	# Make a list with every piece of the cube in it. (This is used for debugging and cube rotations.)
 	# First add the corners to the list.
-	for corner in $Corners.get_children():
+	for corner in get_tree().get_nodes_in_group("Corners"):
 		ALL_PIECES_LIST.append(corner)
 	# Then add the edges.
-	for edge in $Edges.get_children():
+	for edge in get_tree().get_nodes_in_group("Edges"):
 		ALL_PIECES_LIST.append(edge)
 	# Then add the centers.
-	for center in $Centers.get_children():
+	for center in get_tree().get_nodes_in_group("Centers"):
 		ALL_PIECES_LIST.append(center)
 	# Finally, add the core.
 	ALL_PIECES_LIST.append($Core)
@@ -43,36 +47,47 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if Input.is_action_just_released("ui_accept"):
-		U()
-		for piece in ALL_PIECES_LIST:
-			RADIANS_TO_ROTATE[piece.name]["Y"] += AMOUNT_TO_TURN
-			piece.global_transform.basis = piece.global_transform.basis.rotated(Vector3(0, 1, 0), AMOUNT_TO_TURN)
+	if Input.is_action_just_released("ui_accept") and ELAPSED_TIME >= TIME_TO_TURN:
+		pass
+		#for piece in ALL_PIECES_LIST:
+			#RADIANS_TO_ROTATE[piece.name]["Y"] += AMOUNT_TO_TURN
+			#piece.global_transform.basis = piece.global_transform.basis.rotated(Vector3(0, 1, 0), AMOUNT_TO_TURN)
 	
 				
-	elif Input.is_action_just_released("ui_text_caret_down"):
+	elif Input.is_action_just_released("ui_text_caret_down") and ELAPSED_TIME >= TIME_TO_TURN:
 		R()
-		for piece in CURRENTLY_MOVING_PIECES:
-			RADIANS_TO_ROTATE[piece.name]["X"] += AMOUNT_TO_TURN
-			piece.global_transform.basis = global_transform.basis.rotated(Vector3(1, 0, 0), AMOUNT_TO_TURN)
+		#for piece in CURRENTLY_MOVING_PIECES:
+			#RADIANS_TO_ROTATE[piece.name]["X"] += AMOUNT_TO_TURN
+			#piece.global_transform.basis = global_transform.basis.rotated(Vector3(1, 0, 0), AMOUNT_TO_TURN)
+	
+	
 	
 	# Have the cube continue to rotate if the timer is running.
-	#if ELAPSED_TIME < TIME_TO_TURN:
+	if ELAPSED_TIME < TIME_TO_TURN + delta:
 	#	# Add the time that has passed since the last frame to the ELAPSED_TIME variable.
-	#	ELAPSED_TIME += delta
+		ELAPSED_TIME += delta
+		
+		# Calculate the PROGRESS_TO_BE_ADDED_SINCE_LAST_FRAME variable.
+		subtract_progress_made(delta)
+		# Calculate how much progress should be made based on long it's been since the last frame (the delta).
+		PROGRESS_TO_BE_ADDED_SINCE_LAST_FRAME = delta * PROGRESS_TO_BE_ADDED * TIME_TO_TURN
+		
 	#	# Iterate through all the pieces that need to be turned.
-	#	for piece in CURRENTLY_MOVING_PIECES:
+		for piece in CURRENTLY_MOVING_PIECES:
 	#		# Rotate the pieces based on the axis rotational velocities. 
-	#		print(piece)
-	#		if CURRENT_AXIS_OF_ROTATION == "Y":
-	#			RADIANS_TO_ROTATE[piece.name]["Y"] += AMOUNT_TO_TURN
-	#			piece.global_transform.basis = global_transform.basis.rotated(Vector3(0, 1, 0), RADIANS_TO_ROTATE[piece.name]["Y"])
-	#		elif CURRENT_AXIS_OF_ROTATION == "X":
-	#			RADIANS_TO_ROTATE[piece.name]["X"] += AMOUNT_TO_TURN
-	#			piece.global_transform.basis = global_transform.basis.rotated(Vector3(1, 0, 0), RADIANS_TO_ROTATE[piece.name]["X"])
-	#		elif CURRENT_AXIS_OF_ROTATION == "Z":
-	#			RADIANS_TO_ROTATE[piece.name]["Z"] += AMOUNT_TO_TURN
-	#			piece.global_transform.basis = global_transform.basis.rotated(Vector3(0, 0, 1), RADIANS_TO_ROTATE[piece.name]["Z"])
+			print(piece)
+			if CURRENT_AXIS_OF_ROTATION == "Y":
+				add_progress(piece, PROGRESS_TO_BE_ADDED_SINCE_LAST_FRAME, "Y")
+				#RADIANS_TO_ROTATE[piece.name]["Y"] += AMOUNT_TO_TURN
+				#piece.global_transform.basis = global_transform.basis.rotated(Vector3(0, 1, 0), RADIANS_TO_ROTATE[piece.name]["Y"])
+			elif CURRENT_AXIS_OF_ROTATION == "X":
+				add_progress(piece, PROGRESS_TO_BE_ADDED_SINCE_LAST_FRAME, "X")
+			#	RADIANS_TO_ROTATE[piece.name]["X"] += AMOUNT_TO_TURN
+				#piece.global_transform.basis = global_transform.basis.rotated(Vector3(1, 0, 0), RADIANS_TO_ROTATE[piece.name]["X"])
+			elif CURRENT_AXIS_OF_ROTATION == "Z":
+				add_progress(piece, PROGRESS_TO_BE_ADDED_SINCE_LAST_FRAME, "Z")
+				#RADIANS_TO_ROTATE[piece.name]["Z"] += AMOUNT_TO_TURN
+				#piece.global_transform.basis = global_transform.basis.rotated(Vector3(0, 0, 1), RADIANS_TO_ROTATE[piece.name]["Z"])
 			
 
 # This function currently isn't being used. I decided to have cube logic do this instead since I couldn't make this one work correctly.
@@ -331,12 +346,15 @@ func B2():
 func R():
 	# Only do this if the cube isn't currently turning already.
 	if ELAPSED_TIME >= TIME_TO_TURN:
-		# Update cube logic.
-		$CubeLogic.R()
 		# Change the currently rotating layer to match the turn being made.
-		CURRENTLY_ROTATING_LAYER = "R"
+		#CURRENTLY_ROTATING_LAYER = "R"
 		# Change RADIANS_TO_TURN by -90 degrees.
-		AMOUNT_TO_TURN = -PI / 2
+		# Update the PROGRESS_TO_BE_ADDED and PROGRESS_TO_BE_ADDED_SINCE_LAST_FRAME variables.
+		PROGRESS_TO_BE_ADDED = -0.25
+		PROGRESS_TO_BE_ADDED_SINCE_LAST_FRAME = -0.25
+		#AMOUNT_TO_TURN = -PI / 2
+		# Remove all pieces from the 3 paths.
+		empty_paths()
 		# Update the axis that the pieces will be turning around.
 		change_axis("X")
 		# Change the ELAPSED_TIME to be 0 since it is restarting for a new turn. (This makes it so that another turn won't start while this turn is still going.)
@@ -345,13 +363,19 @@ func R():
 		CURRENTLY_MOVING_PIECES.clear()
 		# Find all the pieces on the top face and add them to the currently moving parts list.
 		CURRENTLY_MOVING_PIECES = $CubeLogic.find_pieces_in_layer("R")
+		for piece in CURRENTLY_MOVING_PIECES:
+			print(piece.name)
+		# Add the moving pieces to the Y axis movement path.
+		add_pieces_to_axis_path(CURRENTLY_MOVING_PIECES, "X")
+		# Update cube logic.
+		$CubeLogic.R()
 
 # Turn the right face counter clockwise.
 func R_CCW():
-	# Update cube logic.
+	# Update cube logic."mesh"
 	$CubeLogic.R_CCW()
 
-# Turn the right face 180 degrees.
+# Turn the right face 180 degrees.4
 func R2():
 	# Update cube logic.
 	$CubeLogic.R2()
@@ -432,11 +456,71 @@ func Z2():
 	$CubeLogic.Z2()
 
 
-#func TestingTimer_on_timer_timeout():
-	#U()
-#	pass
+# This function removes all pieces from the movement paths they may or may not be on.
+func empty_paths():
+	# Call the empty path function on each of the 3 paths.
+	$XMovementPath.empty_path()
+	$XMovementPath.empty_path()
+	$XMovementPath.empty_path()
 
 
 # This function will change the axis that all the moving pieces will be moving around.
 func change_axis(axis):
 	CURRENT_AXIS_OF_ROTATION = axis
+
+
+# This function adds the pieces it's given to the movement path that it recieves.
+func add_pieces_to_axis_path(pieces_list, axis):
+	# First, check if the axis is the X axis.
+	if axis.contains("X"):
+		# Go through each piece and add it to the X movement path.
+		for piece in pieces_list:
+			$XMovementPath.add_path_follower(piece, piece.X_ROTATION_PROGRESS)
+	# Check if the axis is the Y axis.
+	elif axis.contains("Y"):
+		# Go through each piece and add it to the Y movement path.
+		for piece in pieces_list:
+			$YMovementPath.add_path_follower(piece, piece.Y_ROTATION_PROGRESS)
+	# Check if the axis is the Z axis.
+	elif axis.contains("Z"):
+		# Go through each piece and add it to the Z movement path.
+		for piece in pieces_list:
+			$ZMovementPath.add_path_follower(piece, piece.Z_ROTATION_PROGRESS)
+			
+
+# This function adds some progress to a piece. Arguements are the piece, the amount of progress that is going to be added, and the axis movement path that the progress is going to be added to.
+func add_progress(piece, progress_to_add, axis):
+	# First, check if the axis is the X axis.
+	if axis.contains("X"):
+		# Update the pieces progress variable.
+		piece.X_ROTATION_PROGRESS += progress_to_add
+		# Then set that to be the progress of the path follower (the piece's parent).
+		piece.get_parent().progress = piece.X_ROTATION_PROGRESS
+	# Check if the axis is the Y axis.
+	elif axis.contains("Y"):
+		# Update the pieces progress variable.
+		piece.Y_ROTATION_PROGRESS += progress_to_add
+		# Then set that to be the progress of the path follower (the piece's parent).
+		piece.get_parent().progress = piece.Y_ROTATION_PROGRESS
+	# Check if the axis is the Z axis.
+	elif axis.contains("Z"):
+		# Update the pieces progress variable.
+		piece.Z_ROTATION_PROGRESS += progress_to_add
+		# Then set that to be the progress of the path follower (the piece's parent).
+		piece.get_parent().progress = piece.Z_ROTATION_PROGRESS
+		
+		
+# This function will subtract the progress that has been made from the progress that needs to be made. 
+func subtract_progress_made(time_since_last_frame):
+	# Check to see if PROGRESS_TO_BE_ADDED is positive or negative.
+	if PROGRESS_TO_BE_ADDED > 0:
+		# If it's positive, then subtract the time that has passed since the last frame from it.
+		PROGRESS_TO_BE_ADDED -= time_since_last_frame
+	elif PROGRESS_TO_BE_ADDED < 0:
+		# If it's negative, then add the time that has passed since the last frame to it.
+		PROGRESS_TO_BE_ADDED += time_since_last_frame
+	else:
+		# PROGRESS_TO_BE_ADDED = 0. That means that the most recent turn has been completed.
+		pass
+		
+	

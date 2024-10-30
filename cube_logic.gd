@@ -8,11 +8,11 @@ var PREVIOUS_STICKER_VALUES = {"A":"", "B":"", "C":"", "D":"", "E":"", "F":"", "
 var LOCATION_LIST = [[["A", "B", "C", "D"], ["a", "b", "c", "d"], "UC"], [["E", "F", "G", "H"], ["e", "f", "g", "h"], "LC"], [["I", "J", "K", "L"], ["i", "j", "k", "l"], "FC"], [["M", "N", "O", "P"], ["m", "n", "o", "p"], "RC"], [["Q", "R", "S", "T"], ["q", "r", "s", "t"], "BC"], [["U", "V", "W", "X"], ["u", "v", "w", "x"], "DC"]]
 # This Dictionary will keep track of each pieces rotation on each axis. They are stored as progression percentages for each axis.
 #var PIECE_ROTATION_PROGRESSION_PERCENTAGES = {"ItalianCorner":{"X":, "Y":, "Z":}, "IrishCorner":{"X":, "Y":, "Z":}, "USACorner":{"X":, "Y":, "Z":}, "NetherlandsCorner":{"X":, "Y":, "Z":}, "BobMarleyCorner":{"X":, "Y":, "Z":}, "SpriteCorner":{"X":, "Y":, "Z":}, "PrimaryCorner":{"X":, "Y":, "Z":}, "NerfCorner":{"X":, "Y":, "Z":}, "WG":{"X":, "Y":, "Z":}, "WB":{"X":, "Y":, "Z":}, "WR":{"X":, "Y":, "Z":}, "WO":{"X":, "Y":, "Z":}, "GR":{"X":, "Y":, "Z":}, "GO":{"X":, "Y":, "Z":}, "BR":{"X":, "Y":, "Z":}, "BO":{"X":, "Y":, "Z":}, "YG":{"X":, "Y":, "Z":}, "YB":{"X":, "Y":, "Z":}, "YR":{"X":, "Y":, "Z":}, "YO":{"X":, "Y":, "Z":}, "UC":{"X":, "Y":, "Z":}, "LC":{"X":, "Y":, "Z":}, "FC":{"X":, "Y":, "Z":}, "RC":{"X":, "Y":, "Z":}, "BC":{"X":, "Y":, "Z":}, "DC":{"X":, "Y":, "Z":}, "Core":{"X":, "Y":, "Z":}}
-# The following 4 variables are shortcuts to the edges, corners, centers, and core child nodes of the cube. They are siblings to this node (cube logic).
-var edges
-var corners
-var centers
-var core
+# The following 4 variables are shortcuts to the edges, corners, centers, and core child nodes of the cube.
+var EDGES
+var CORNERS
+var CENTERS
+var CORE
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -30,14 +30,14 @@ func _ready():
 	# Orange side stickers.						
 	set_sides_colors("L", "O", "O", "O", "O", "O", "O", "O", "O", "O")
 	
-	# This is a shortened name for the $Edges node that is a sibling node to this node (cube logic).
-	edges = get_parent().get_node("Edges")
-	# This is a shortened name for the $Corners node that is a sibling node to this node (cube logic).
-	corners = get_parent().get_node("Corners")
-	# This is a shortened name for the $Center node that is a sibling node to this node (cube logic).
-	centers = get_parent().get_node("Centers")
-	# This is a shortened name for the $Core node that is a sibling node to this node (cube logic).
-	core = get_parent().get_node("Core")
+	# Make a list of all the corners in the scene tree.
+	CORNERS = get_tree().get_nodes_in_group("Corners")
+	# Make a list of all the edges in the scene tree.
+	EDGES = get_tree().get_nodes_in_group("Edges")
+	# Make a list of all the centers in the scene tree.
+	CENTERS = get_tree().get_nodes_in_group("Centers")
+	# Make a variable that holds the core of the cube.
+	CORE = get_tree().get_first_node_in_group("Core")
 	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -658,18 +658,18 @@ func organize_corner_colors(letters):
 			# Third, check to see if the corner if from the right side layer.
 			if letters.contains("R"):
 				# The corner is the italian (white, green, and red corner).
-				return get_parent().get_node("Corners").get_node("ItalianCorner")
+				return find_piece_node("ItalianCorner")
 			# The corner is the irish corner (white, green, orange).
 			else:
-				return get_parent().get_node("Corners").get_node("IrishCorner")
+				return find_piece_node("IrishCorner")
 		# The corner contains white and blue. Check to see if the third color is red or orange.
 		else:
 			if letters.contains("R"):
 				# The corner is the usa corner (white, blue, red).
-				return get_parent().get_node("Corners").get_node("USACorner")
+				return find_piece_node("USACorner")
 			# The corner is the netherlands corner (white, blue, orange).
 			else:
-				return get_parent().get_node("Corners").get_node("NetherlandsCorner")
+				return find_piece_node("NetherlandsCorner")
 	# The corner is from the bottom layer (contains yellow).
 	else:
 		# Second, check to see if the corner is from the front layer.
@@ -677,18 +677,18 @@ func organize_corner_colors(letters):
 			# Third, check to see if the corner if from the right side layer.
 			if letters.contains("R"):
 				# The corner is the bob marley corner (yellow, green, and red corner).
-				return get_parent().get_node("Corners").get_node("BobMarleyCorner")
+				return find_piece_node("BobMarleyCorner")
 			# The corner is the sprite corner (yellow, green, orange).
 			else:
-				return get_parent().get_node("Corners").get_node("SpriteCorner")
+				return find_piece_node("SpriteCorner")
 		# The corner contains yellow and blue. Check to see if the third color is red or orange.
 		else:
 			if letters.contains("R"):
 				# The corner is the primary corner (yellow, blue, red).
-				return get_parent().get_node("Corners").get_node("PrimaryCorner")
+				return find_piece_node("PrimaryCorner")
 			# The corner is the nerf corner (yellow, blue, orange).
 			else:
-				return get_parent().get_node("Corners").get_node("NerfCorner")
+				return find_piece_node("NerfCorner")
 
 # This function will find the name of the edge at the edge location you give it. The argument is just one of the edge sticker locations. (It will return the name of the entire edge that is at that sticker location.)
 func find_edge_identity(location):
@@ -723,16 +723,16 @@ func find_edge_identity(location):
 	# Now check if the string is formatted correctly. (Correct format is "W" or "Y" as the first letter. If there is no "W" or "Y", then "G" or "B" should be first.)
 	if colors[0] == "W" or colors[0] == "Y":
 		# The first letter is "W" or "Y" so the string is formatted correctly and the colors string can be returned.
-		return(edges.get_node(colors))
+		return find_piece_node(colors)
 	elif colors[1] == "W" or colors[1] == "Y":
 		# The second letter is "W" or "Y" so the first and second letter will be swapped so that the string is formatted correctly. Then the string will be returned.
-		return(edges.get_node(reverse_string(colors)))
+		return find_piece_node(reverse_string(colors))
 	elif colors[0] == "G" or colors[0] == "B":
 		# The string does not contain "W" or "Y". It has "G" or "B" as the first letter, so it is formatted correctly. The string will be returned.
-		return(edges.get_node(colors))
+		return find_piece_node(colors)
 	elif colors[1] == "G" or colors[1] == "B":
 		# The string does not contain "W" or "Y". It has "G" or "B" as the second letter so the string will be reversed and then returned.
-		return(edges.get_node(reverse_string(colors)))
+		return find_piece_node(reverse_string(colors))
 	else:
 		# this should never happen. If it does, I"m in trouble...
 		print("This is an error that should never happen... Check the find_edge_identity() function in cube logic.")
@@ -746,22 +746,22 @@ func find_center_identity(location):
 	match color:
 		"W":
 			# The color is white, so return the white center node.
-			return(get_parent().get_node("Centers").get_node("WhiteCenter"))
+			return find_piece_node("WhiteCenter")
 		"O":
 			# The color is orange, so return the orange center node.
-			return(get_parent().get_node("Centers").get_node("OrangeCenter"))
+			return find_piece_node("OrangeCenter")
 		"G":
 			# The color is green, so return the green center node.
-			return(get_parent().get_node("Centers").get_node("GreenCenter"))
+			return find_piece_node("GreenCenter")
 		"R":
 			# The color is red, so return the red center node.
-			return(get_parent().get_node("Centers").get_node("RedCenter"))
+			return find_piece_node("RedCenter")
 		"B":
 			# The color is blue, so return the blue center node.
-			return(get_parent().get_node("Centers").get_node("BlueCenter"))
+			return find_piece_node("BlueCenter")
 		"Y":
 			# The color is yellow, so return the yellow center node.
-			return(get_parent().get_node("Centers").get_node("YellowCenter"))
+			return find_piece_node("YellowCenter")
 		_:
 			print("find center identity error")
 		
@@ -841,3 +841,39 @@ func reverse_string(word):
 	word[1] = temporary_char_holder
 	# Now the first 2 characters have been swapped. Return the result.
 	return(word)
+
+
+# Since the pieces are now going to be moving around the scene tree, I'm making a function that will find the piece that you're looking for and will return the Node. (Argument is the name of the piece.)
+func find_piece_node(piece_name):
+	# If the name has the word "Corner" in it, then it's a corner node and the corners node group will be searched. 
+	if piece_name.contains("Corner"):
+		for corner in CORNERS:
+			# If the name of the corner we're searching for is not the same as the name of the corner that we're currently looking at in CORNERS, then don't do anything.
+			if corner.name != piece_name:
+				pass
+			# If the name of the corner we're looking at is the same as the name of the corner that we're searching for, then return that corner node.
+			else:
+				return(corner) 
+	# If the name has the word "Center" in it, then it's a center node and the centers node group will be searched.
+	elif piece_name.contains("Center"):
+		for center in CENTERS:
+			# If the name of the center we're searching for is not the same as the name of the center that we're currently looking at in CENTERS, then don't do anything.
+			if center.name != piece_name:
+				pass
+			# If the name of the center we're looking at is the same as the name of the center that we're searching for, then return that center node.
+			else:
+				return(center)
+	# If the piece is the core, then return the core node.
+	elif piece_name == "Core":
+		return CORE
+	# If none of the other if/elif statements activated, then the piece has to be an edge. Search EDGES for the correct edge.
+	else:
+		for edge in EDGES:
+			# If the name of the edge we're searching for is not the same as the name of the edge that we're currently looking at in EDGES, then don't do anything.
+			if edge.name != piece_name:
+				pass
+			# If the name of the edge we're looking at is the same as the name of the edge that we're searching for, then return that edge node.
+			else:
+				return edge
+			
+	

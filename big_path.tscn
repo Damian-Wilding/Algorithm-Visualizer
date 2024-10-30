@@ -1,7 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://bqwbo6po5hqv5"]
+[gd_scene load_steps=4 format=3 uid="uid://drruotq030mng"]
 
-[ext_resource type="Script" path="res://MovementPath.gd" id="1_c7ymk"]
-[ext_resource type="PackedScene" uid="uid://djq3ielctwa5x" path="res://cubie.tscn" id="2_7g6md"]
+[ext_resource type="Script" path="res://MovementPath.gd" id="1_e8wk3"]
+[ext_resource type="PackedScene" uid="uid://djq3ielctwa5x" path="res://cubie.tscn" id="2_acrmo"]
 
 [sub_resource type="Curve3D" id="Curve3D_ww7oh"]
 _data = {
@@ -10,15 +10,15 @@ _data = {
 }
 point_count = 3
 
-[node name="MovementPath" type="Path3D"]
+[node name="BigPath" type="Path3D"]
 curve = SubResource("Curve3D_ww7oh")
-script = ExtResource("1_c7ymk")
+script = ExtResource("1_e8wk3")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="."]
 transform = Transform3D(-4.37111e-08, 0, -0.999993, 0, 1, 0, 0.999993, 0, -4.37111e-08, 0, 0, 3)
 
-[node name="Start" parent="." instance=ExtResource("2_7g6md")]
+[node name="Start" parent="." instance=ExtResource("2_acrmo")]
 transform = Transform3D(250, 0, 0, 0, 250, 0, 0, 0, 250, 0, 0, 3)
 
-[node name="Start2" parent="." instance=ExtResource("2_7g6md")]
+[node name="Start2" parent="." instance=ExtResource("2_acrmo")]
 transform = Transform3D(-100, 0, -1.50996e-05, 0, 100, 0, 1.50996e-05, 0, -100, 0, 0, -3)

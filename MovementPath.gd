@@ -1,29 +1,40 @@
 extends Path3D
 
-# This is the radius of the path.
-var RADIUS = 3
-# How many points are going to be on the circular path. (The more there are, the smoother it will move.)
-var POINTS_IN_CIRCLE = 360
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	# Create a curve that will be the path.
-	var rotation_curve = Curve3D.new()
-	# Draw a point for the path in a circle. iterate through each number in the number of points chosen from 1-POINTS_IN_CIRCLE.
-	for number in range(POINTS_IN_CIRCLE):
-		var angle = TAU * number / POINTS_IN_CIRCLE # TAU is a built in constant that is 2 * PI
-		# Get the X and Y value of the point by finding the SIN and COS of the angle calculated above.
-		var x = RADIUS * cos(angle)
-		var y = RADIUS * sin(angle)
-		# Add the point to the curve that is being made.
-		rotation_curve.add_point(Vector3(x, y, 0))
-	# Add the last point to the curve. It should be the same as the first point.
-	rotation_curve.add_point(rotation_curve.get_point_position(0))
-	# Make the rotation_curve this Nodes curve.
-	curve = rotation_curve
-	print(curve)
+	# Remove all children from the path. (This should just remove the PathFollow3D that is instantiated with this path.
+	empty_path()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass # $PathFollow3D.progress += delta * 10
+	pass
+
+
+# This removes all child nodes from the path.
+func empty_path():
+	# Go through all children and remove them.
+	for node in get_children():
+		remove_child(node)
+
+
+# This will reset the progress of the PathFollow3D child(ren) of this path.
+func reset_path():
+	# Go through all children of the path and reset their progress to 0.
+	for follower in get_children():
+		follower.progress = 0
+
+
+# Create a new PathFollow3D child for this movement path and adds the provided piece to it as a child.
+func add_path_follower(piece, given_progress):
+	# Create a new path follower node to use as the parent to the piece. 
+	var follower = PathFollow3D.new()
+	follower.name = piece.name
+	# Then add its progress which has also been provided as an arguement.
+	follower.progress = given_progress
+	# Remove the piece from its parent if it has one.
+	piece.get_parent().remove_child(piece)
+	# Add the piece as a child to the new path follower. Then add that path follower as a child to the movement path instance that is calling this function. (self)	
+	follower.add_child(piece)
+	add_child(follower)
