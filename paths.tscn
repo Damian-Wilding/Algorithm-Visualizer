@@ -1,61 +1,549 @@
-[gd_scene load_steps=4 format=3 uid="uid://0q23lugd17j5"]
+[gd_scene load_steps=6 format=3 uid="uid://0q23lugd17j5"]
 
 [ext_resource type="PackedScene" uid="uid://djq3ielctwa5x" path="res://cubie.tscn" id="1_38knt"]
 [ext_resource type="ArrayMesh" uid="uid://cjqrduuv2kw3b" path="res://Assets/CubeParts/Corners/CornerWhiteGreenRed.res" id="2_gjgcf"]
 [ext_resource type="PackedScene" uid="uid://ld5onebbeds" path="res://tiny_path.tscn" id="3_ys3hy"]
+[ext_resource type="PackedScene" uid="uid://drruotq030mng" path="res://big_path.tscn" id="4_yaqkc"]
+[ext_resource type="PackedScene" uid="uid://cpuajb8pbme0h" path="res://tiny_corner_path.tscn" id="5_ylw5y"]
 
 [node name="Paths" type="Node3D"]
 
 [node name="ItalianCorner" parent="." groups=["Corners"] instance=ExtResource("1_38knt")]
 transform = Transform3D(-2.18557e-08, 0, -0.5, 0, 0.5, 0, 0.5, 0, -2.18557e-08, 3, 3, 3)
+visible = false
 mesh = ExtResource("2_gjgcf")
 X_ROTATION_PROGRESS = 0.125
 Y_ROTATION_PROGRESS = 0.125
 Z_ROTATION_PROGRESS = 0.375
 
-[node name="BC2LC" parent="." instance=ExtResource("3_ys3hy")]
+[node name="CenterPaths" type="Node3D" parent="."]
+visible = false
+
+[node name="90DegreePaths" type="Node3D" parent="CenterPaths"]
+
+[node name="BC2LC" parent="CenterPaths/90DegreePaths" instance=ExtResource("3_ys3hy")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
 
-[node name="FC2RC" parent="." instance=ExtResource("3_ys3hy")]
+[node name="FC2RC" parent="CenterPaths/90DegreePaths" instance=ExtResource("3_ys3hy")]
 
-[node name="RC2BC" parent="." instance=ExtResource("3_ys3hy")]
+[node name="RC2BC" parent="CenterPaths/90DegreePaths" instance=ExtResource("3_ys3hy")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
 
-[node name="LC2FC" parent="." instance=ExtResource("3_ys3hy")]
+[node name="LC2FC" parent="CenterPaths/90DegreePaths" instance=ExtResource("3_ys3hy")]
 transform = Transform3D(1.19249e-08, 0, -1, 0, 1, 0, 1, 0, 1.19249e-08, 0, 0, 0)
 
-[node name="BC2RC" parent="." instance=ExtResource("3_ys3hy")]
+[node name="BC2RC" parent="CenterPaths/90DegreePaths" instance=ExtResource("3_ys3hy")]
 transform = Transform3D(1, -8.74228e-08, -1.50996e-07, -8.74228e-08, -1, 0, -1.50996e-07, 1.32005e-14, -1, 0, 0, 0)
 
-[node name="FC2LC" parent="." instance=ExtResource("3_ys3hy")]
+[node name="FC2LC" parent="CenterPaths/90DegreePaths" instance=ExtResource("3_ys3hy")]
 transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, 0, 0, 0)
 
-[node name="RC2FC" parent="." instance=ExtResource("3_ys3hy")]
+[node name="RC2FC" parent="CenterPaths/90DegreePaths" instance=ExtResource("3_ys3hy")]
 transform = Transform3D(4.37114e-08, -3.82137e-15, 1, -8.74228e-08, -1, 0, 1, -8.74228e-08, -4.37114e-08, 0, 0, 0)
 
-[node name="LC2BC" parent="." instance=ExtResource("3_ys3hy")]
+[node name="LC2BC" parent="CenterPaths/90DegreePaths" instance=ExtResource("3_ys3hy")]
 transform = Transform3D(4.37114e-08, -3.82137e-15, -1, -8.74228e-08, -1, 0, -1, 8.74228e-08, -4.37114e-08, 0, 0, 0)
 
-[node name="BC2UC" parent="." instance=ExtResource("3_ys3hy")]
+[node name="BC2UC" parent="CenterPaths/90DegreePaths" instance=ExtResource("3_ys3hy")]
 transform = Transform3D(4.37114e-08, 1, -1.50996e-07, 1, -4.37114e-08, 0, -6.60024e-15, -1.50996e-07, -1, 0, 0, 0)
 
-[node name="FC2UC" parent="." instance=ExtResource("3_ys3hy")]
+[node name="FC2UC" parent="CenterPaths/90DegreePaths" instance=ExtResource("3_ys3hy")]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
 
-[node name="RC2UC" parent="." instance=ExtResource("3_ys3hy")]
+[node name="RC2UC" parent="CenterPaths/90DegreePaths" instance=ExtResource("3_ys3hy")]
 transform = Transform3D(1.91069e-15, 4.37114e-08, 1, 1, -4.37114e-08, 0, 4.37114e-08, 1, -4.37114e-08, 0, 0, 0)
 
-[node name="LC2UC" parent="." instance=ExtResource("3_ys3hy")]
+[node name="LC2UC" parent="CenterPaths/90DegreePaths" instance=ExtResource("3_ys3hy")]
 transform = Transform3D(1.91069e-15, 4.37114e-08, -1, 1, -4.37114e-08, 0, -4.37114e-08, -1, -4.37114e-08, 0, 0, 0)
 
-[node name="DC2BC" parent="." instance=ExtResource("3_ys3hy")]
+[node name="DC2BC" parent="CenterPaths/90DegreePaths" instance=ExtResource("3_ys3hy")]
 transform = Transform3D(-1.07284e-07, 1, 6.60024e-15, -4.37114e-08, 1.91069e-15, -1, -1, -1.07284e-07, 4.37114e-08, 0, 0, 0)
 
-[node name="DC2FC" parent="." instance=ExtResource("3_ys3hy")]
+[node name="DC2FC" parent="CenterPaths/90DegreePaths" instance=ExtResource("3_ys3hy")]
 transform = Transform3D(-4.37114e-08, -1, 0, -4.37114e-08, 1.91069e-15, -1, 1, -4.37114e-08, -4.37114e-08, 0, 0, 0)
 
-[node name="DC2RC" parent="." instance=ExtResource("3_ys3hy")]
+[node name="DC2RC" parent="CenterPaths/90DegreePaths" instance=ExtResource("3_ys3hy")]
 transform = Transform3D(1, 0, -4.37114e-08, -4.37114e-08, 1.91069e-15, -1, 0, 1, 1.91069e-15, 0, 0, 0)
 
-[node name="DC2LC" parent="." instance=ExtResource("3_ys3hy")]
+[node name="DC2LC" parent="CenterPaths/90DegreePaths" instance=ExtResource("3_ys3hy")]
 transform = Transform3D(-1, 8.74228e-08, 4.37114e-08, -4.37114e-08, 1.91069e-15, -1, -8.74228e-08, -1, 1.91069e-15, 0, 0, 0)
+
+[node name="BC2DC" parent="CenterPaths/90DegreePaths" instance=ExtResource("3_ys3hy")]
+transform = Transform3D(-4.37114e-08, -1, 0, -1, 4.37114e-08, 8.74228e-08, -8.74228e-08, 3.82137e-15, -1, 0, 0, 0)
+
+[node name="UC2FC" parent="CenterPaths/90DegreePaths" instance=ExtResource("3_ys3hy")]
+transform = Transform3D(-4.37114e-08, 1, 4.37114e-08, 0, -4.37114e-08, 1, 1, 4.37114e-08, 1.91069e-15, 0, 0, 0)
+
+[node name="UC2BC" parent="CenterPaths/90DegreePaths" instance=ExtResource("3_ys3hy")]
+transform = Transform3D(-4.37114e-08, -1, 0, -4.37114e-08, 1.91069e-15, 1, -1, 4.37114e-08, -4.37114e-08, 0, 0, 0)
+
+[node name="RC2DC" parent="CenterPaths/90DegreePaths" instance=ExtResource("3_ys3hy")]
+transform = Transform3D(1.91069e-15, -4.37114e-08, 1, -1, -4.37114e-08, 0, 4.37114e-08, -1, -4.37114e-08, 0, 0, 0)
+
+[node name="LC2DC" parent="CenterPaths/90DegreePaths" instance=ExtResource("3_ys3hy")]
+transform = Transform3D(1.91069e-15, -4.37114e-08, -1, -1, -4.37114e-08, 0, -4.37114e-08, 1, -4.37114e-08, 0, 0, 0)
+
+[node name="FC2DC" parent="CenterPaths/90DegreePaths" instance=ExtResource("3_ys3hy")]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="UC2RC" parent="CenterPaths/90DegreePaths" instance=ExtResource("3_ys3hy")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+
+[node name="UC2LC" parent="CenterPaths/90DegreePaths" instance=ExtResource("3_ys3hy")]
+transform = Transform3D(-1, 8.74228e-08, 3.82137e-15, 0, -4.37114e-08, 1, 8.74228e-08, 1, 4.37114e-08, 0, 0, 0)
+
+[node name="180DegreePaths" type="Node3D" parent="CenterPaths"]
+
+[node name="FC2RC2BC" parent="CenterPaths/180DegreePaths" instance=ExtResource("4_yaqkc")]
+visible = false
+
+[node name="BC2LC2FC" parent="CenterPaths/180DegreePaths" instance=ExtResource("4_yaqkc")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+visible = false
+
+[node name="RC2FC2LC" parent="CenterPaths/180DegreePaths" instance=ExtResource("4_yaqkc")]
+transform = Transform3D(-7.54979e-08, 1.20906e-09, 1, -8.74228e-08, -1, 1.20905e-09, 1, -8.74228e-08, 7.54979e-08, 0, 0, 0)
+visible = false
+
+[node name="LC2BC2RC" parent="CenterPaths/180DegreePaths" instance=ExtResource("4_yaqkc")]
+transform = Transform3D(-7.54979e-08, -1.20904e-09, -1, -8.74228e-08, -1, 1.20905e-09, -1, 8.74228e-08, 7.54979e-08, 0, 0, 0)
+visible = false
+
+[node name="DC2FC2UC" parent="CenterPaths/180DegreePaths" instance=ExtResource("4_yaqkc")]
+transform = Transform3D(-4.37114e-08, -1, 4.37114e-08, 0, -4.37114e-08, -1, 1, -4.37114e-08, 1.91069e-15, 0, 0, 0)
+visible = false
+
+[node name="UC2BC2DC" parent="CenterPaths/180DegreePaths" instance=ExtResource("4_yaqkc")]
+transform = Transform3D(-4.37114e-08, -1, -4.37114e-08, 0, -4.37114e-08, 1, -1, 4.37114e-08, 1.91069e-15, 0, 0, 0)
+visible = false
+
+[node name="FC2UC2BC" parent="CenterPaths/180DegreePaths" instance=ExtResource("4_yaqkc")]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+visible = false
+
+[node name="BC2DC2FC" parent="CenterPaths/180DegreePaths" instance=ExtResource("4_yaqkc")]
+transform = Transform3D(4.37114e-08, -1, -8.74228e-08, -1, -4.37114e-08, 0, -3.82137e-15, 8.74228e-08, -1, 0, 0, 0)
+visible = false
+
+[node name="LC2UC2RC" parent="CenterPaths/180DegreePaths" instance=ExtResource("4_yaqkc")]
+transform = Transform3D(-7.32884e-08, 4.37114e-08, -1, 1, -4.37114e-08, -7.32884e-08, -4.37114e-08, -1, -4.37114e-08, 0, 0, 0)
+visible = false
+
+[node name="RC2DC2LC" parent="CenterPaths/180DegreePaths" instance=ExtResource("4_yaqkc")]
+transform = Transform3D(1.91069e-15, -4.37114e-08, 1, -1, -4.37114e-08, 0, 4.37114e-08, -1, -4.37114e-08, 0, 0, 0)
+visible = false
+
+[node name="DC2LC2UC" parent="CenterPaths/180DegreePaths" instance=ExtResource("4_yaqkc")]
+transform = Transform3D(-1, -8.74228e-08, 3.82137e-15, 0, -4.37114e-08, -1, 8.74228e-08, -1, 4.37114e-08, 0, 0, 0)
+
+[node name="UC2RC2DC" parent="CenterPaths/180DegreePaths" instance=ExtResource("4_yaqkc")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+
+[node name="EdgePaths" type="Node3D" parent="."]
+visible = false
+
+[node name="90DegreePaths" type="Node3D" parent="EdgePaths"]
+
+[node name="A2D" parent="EdgePaths/90DegreePaths" instance=ExtResource("3_ys3hy")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 3, 0)
+
+[node name="C2B" parent="EdgePaths/90DegreePaths" instance=ExtResource("3_ys3hy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+
+[node name="B2A" parent="EdgePaths/90DegreePaths" instance=ExtResource("3_ys3hy")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 3, 0)
+
+[node name="D2C" parent="EdgePaths/90DegreePaths" instance=ExtResource("3_ys3hy")]
+transform = Transform3D(1.19249e-08, 0, -1, 0, 1, 0, 1, 0, 1.19249e-08, 0, 3, 0)
+
+[node name="A2B" parent="EdgePaths/90DegreePaths" instance=ExtResource("3_ys3hy")]
+transform = Transform3D(1, -8.74228e-08, -1.50996e-07, -8.74228e-08, -1, 0, -1.50996e-07, 1.32005e-14, -1, 0, 3, 0)
+
+[node name="C2D" parent="EdgePaths/90DegreePaths" instance=ExtResource("3_ys3hy")]
+transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, 0, 3, 0)
+
+[node name="B2C" parent="EdgePaths/90DegreePaths" instance=ExtResource("3_ys3hy")]
+transform = Transform3D(4.37114e-08, -3.82137e-15, 1, -8.74228e-08, -1, 0, 1, -8.74228e-08, -4.37114e-08, 0, 3, 0)
+
+[node name="D2A" parent="EdgePaths/90DegreePaths" instance=ExtResource("3_ys3hy")]
+transform = Transform3D(4.37114e-08, -3.82137e-15, -1, -8.74228e-08, -1, 0, -1, 8.74228e-08, -4.37114e-08, 0, 3, 0)
+
+[node name="T2B" parent="EdgePaths/90DegreePaths" instance=ExtResource("3_ys3hy")]
+transform = Transform3D(4.37114e-08, 1, -1.50996e-07, 1, -4.37114e-08, 6.35275e-21, -6.60023e-15, -1.50996e-07, -1, 3, 0, 0)
+
+[node name="J2B" parent="EdgePaths/90DegreePaths" instance=ExtResource("3_ys3hy")]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 3, 0, 0)
+
+[node name="P2C" parent="EdgePaths/90DegreePaths" instance=ExtResource("3_ys3hy")]
+transform = Transform3D(1.91069e-15, 4.37114e-08, 1, 1, -4.37114e-08, -3.59989e-21, 4.37114e-08, 1, -4.37114e-08, 0, 0, 3)
+
+[node name="F2C" parent="EdgePaths/90DegreePaths" instance=ExtResource("3_ys3hy")]
+transform = Transform3D(1.91069e-15, 4.37114e-08, -1, 1, -4.37114e-08, 3.59989e-21, -4.37114e-08, -1, -4.37114e-08, 0, 0, 3)
+
+[node name="U2P" parent="EdgePaths/90DegreePaths" instance=ExtResource("3_ys3hy")]
+transform = Transform3D(1, 0, -4.37114e-08, -4.37114e-08, 1.91069e-15, -1, 0, 1, 1.91069e-15, 0, 0, 3)
+
+[node name="U2F" parent="EdgePaths/90DegreePaths" instance=ExtResource("3_ys3hy")]
+transform = Transform3D(-1, 8.74228e-08, 4.37114e-08, -4.37114e-08, 1.91069e-15, -1, -8.74228e-08, -1, 1.91069e-15, 0, 0, 3)
+
+[node name="P2U" parent="EdgePaths/90DegreePaths" instance=ExtResource("3_ys3hy")]
+transform = Transform3D(1.91069e-15, -4.37114e-08, 1, -1, -4.37114e-08, 0, 4.37114e-08, -1, -4.37114e-08, 0, 0, 3)
+
+[node name="F2U" parent="EdgePaths/90DegreePaths" instance=ExtResource("3_ys3hy")]
+transform = Transform3D(1.91069e-15, -4.37114e-08, -1, -1, -4.37114e-08, 0, -4.37114e-08, 1, -4.37114e-08, 0, 0, 3)
+
+[node name="C2P" parent="EdgePaths/90DegreePaths" instance=ExtResource("3_ys3hy")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 3)
+
+[node name="C2F" parent="EdgePaths/90DegreePaths" instance=ExtResource("3_ys3hy")]
+transform = Transform3D(-1, 8.74228e-08, 3.82137e-15, 0, -4.37114e-08, 1, 8.74228e-08, 1, 4.37114e-08, 0, 0, 3)
+
+[node name="V2T" parent="EdgePaths/90DegreePaths" instance=ExtResource("3_ys3hy")]
+transform = Transform3D(-1.07284e-07, 1, 6.60024e-15, -4.37114e-08, 1.91069e-15, -1, -1, -1.07284e-07, 4.37114e-08, 3, 0, 0)
+
+[node name="V2J" parent="EdgePaths/90DegreePaths" instance=ExtResource("3_ys3hy")]
+transform = Transform3D(-4.37114e-08, -1, 0, -4.37114e-08, 1.91069e-15, -1, 1, -4.37114e-08, -4.37114e-08, 3, 0, 0)
+
+[node name="T2V" parent="EdgePaths/90DegreePaths" instance=ExtResource("3_ys3hy")]
+transform = Transform3D(-4.37114e-08, -1, 0, -1, 4.37114e-08, 8.74228e-08, -8.74228e-08, 3.82137e-15, -1, 3, 0, 0)
+
+[node name="B2J" parent="EdgePaths/90DegreePaths" instance=ExtResource("3_ys3hy")]
+transform = Transform3D(-4.37114e-08, 1, 4.37114e-08, 0, -4.37114e-08, 1, 1, 4.37114e-08, 1.91069e-15, 3, 0, 0)
+
+[node name="B2T" parent="EdgePaths/90DegreePaths" instance=ExtResource("3_ys3hy")]
+transform = Transform3D(-4.37114e-08, -1, 0, -4.37114e-08, 1.91069e-15, 1, -1, 4.37114e-08, -4.37114e-08, 3, 0, 0)
+
+[node name="J2V" parent="EdgePaths/90DegreePaths" instance=ExtResource("3_ys3hy")]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 3, 0, 0)
+
+[node name="W2X" parent="EdgePaths/90DegreePaths" instance=ExtResource("3_ys3hy")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, -3, 0)
+
+[node name="U2V" parent="EdgePaths/90DegreePaths" instance=ExtResource("3_ys3hy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3, 0)
+
+[node name="V2W" parent="EdgePaths/90DegreePaths" instance=ExtResource("3_ys3hy")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, -3, 0)
+
+[node name="X2U" parent="EdgePaths/90DegreePaths" instance=ExtResource("3_ys3hy")]
+transform = Transform3D(1.19249e-08, 0, -1, 0, 1, 0, 1, 0, 1.19249e-08, 0, -3, 0)
+
+[node name="W2V" parent="EdgePaths/90DegreePaths" instance=ExtResource("3_ys3hy")]
+transform = Transform3D(1, -8.74228e-08, -1.50996e-07, -8.74228e-08, -1, 0, -1.50996e-07, 1.32005e-14, -1, 0, -3, 0)
+
+[node name="U2X" parent="EdgePaths/90DegreePaths" instance=ExtResource("3_ys3hy")]
+transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, 0, -3, 0)
+
+[node name="V2U" parent="EdgePaths/90DegreePaths" instance=ExtResource("3_ys3hy")]
+transform = Transform3D(4.37114e-08, -3.82137e-15, 1, -8.74228e-08, -1, 0, 1, -8.74228e-08, -4.37114e-08, 0, -3, 0)
+
+[node name="X2W" parent="EdgePaths/90DegreePaths" instance=ExtResource("3_ys3hy")]
+transform = Transform3D(4.37114e-08, -3.82137e-15, -1, -8.74228e-08, -1, 0, -1, 8.74228e-08, -4.37114e-08, 0, -3, 0)
+
+[node name="R2D" parent="EdgePaths/90DegreePaths" instance=ExtResource("3_ys3hy")]
+transform = Transform3D(4.37114e-08, 1, -1.50996e-07, 1, -4.37114e-08, 6.35275e-21, -6.60023e-15, -1.50996e-07, -1, -3, 0, 0)
+
+[node name="L2D" parent="EdgePaths/90DegreePaths" instance=ExtResource("3_ys3hy")]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -3, 0, 0)
+
+[node name="X2R" parent="EdgePaths/90DegreePaths" instance=ExtResource("3_ys3hy")]
+transform = Transform3D(-1.07284e-07, 1, 6.60024e-15, -4.37114e-08, 1.91069e-15, -1, -1, -1.07284e-07, 4.37114e-08, -3, 0, 0)
+
+[node name="X2L" parent="EdgePaths/90DegreePaths" instance=ExtResource("3_ys3hy")]
+transform = Transform3D(-4.37114e-08, -1, 0, -4.37114e-08, 1.91069e-15, -1, 1, -4.37114e-08, -4.37114e-08, -3, 0, 0)
+
+[node name="R2X" parent="EdgePaths/90DegreePaths" instance=ExtResource("3_ys3hy")]
+transform = Transform3D(-4.37114e-08, -1, 0, -1, 4.37114e-08, 8.74228e-08, -8.74228e-08, 3.82137e-15, -1, -3, 0, 0)
+
+[node name="D2L" parent="EdgePaths/90DegreePaths" instance=ExtResource("3_ys3hy")]
+transform = Transform3D(-4.37114e-08, 1, 4.37114e-08, 0, -4.37114e-08, 1, 1, 4.37114e-08, 1.91069e-15, -3, 0, 0)
+
+[node name="D2R" parent="EdgePaths/90DegreePaths" instance=ExtResource("3_ys3hy")]
+transform = Transform3D(-4.37114e-08, -1, 0, -4.37114e-08, 1.91069e-15, 1, -1, 4.37114e-08, -4.37114e-08, -3, 0, 0)
+
+[node name="L2X" parent="EdgePaths/90DegreePaths" instance=ExtResource("3_ys3hy")]
+transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, -3, 0, 0)
+
+[node name="N2A" parent="EdgePaths/90DegreePaths" instance=ExtResource("3_ys3hy")]
+transform = Transform3D(1.91069e-15, 4.37114e-08, 1, 1, -4.37114e-08, -3.59989e-21, 4.37114e-08, 1, -4.37114e-08, 0, 0, -3)
+
+[node name="H2A" parent="EdgePaths/90DegreePaths" instance=ExtResource("3_ys3hy")]
+transform = Transform3D(1.91069e-15, 4.37114e-08, -1, 1, -4.37114e-08, 3.59989e-21, -4.37114e-08, -1, -4.37114e-08, 0, 0, -3)
+
+[node name="W2N" parent="EdgePaths/90DegreePaths" instance=ExtResource("3_ys3hy")]
+transform = Transform3D(1, 0, -4.37114e-08, -4.37114e-08, 1.91069e-15, -1, 0, 1, 1.91069e-15, 0, 0, -3)
+
+[node name="W2H" parent="EdgePaths/90DegreePaths" instance=ExtResource("3_ys3hy")]
+transform = Transform3D(-1, 8.74228e-08, 4.37114e-08, -4.37114e-08, 1.91069e-15, -1, -8.74228e-08, -1, 1.91069e-15, 0, 0, -3)
+
+[node name="N2W" parent="EdgePaths/90DegreePaths" instance=ExtResource("3_ys3hy")]
+transform = Transform3D(1.91069e-15, -4.37114e-08, 1, -1, -4.37114e-08, 0, 4.37114e-08, -1, -4.37114e-08, 0, 0, -3)
+
+[node name="H2W" parent="EdgePaths/90DegreePaths" instance=ExtResource("3_ys3hy")]
+transform = Transform3D(1.91069e-15, -4.37114e-08, -1, -1, -4.37114e-08, 0, -4.37114e-08, 1, -4.37114e-08, 0, 0, -3)
+
+[node name="A2N" parent="EdgePaths/90DegreePaths" instance=ExtResource("3_ys3hy")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, -3)
+
+[node name="A2H" parent="EdgePaths/90DegreePaths" instance=ExtResource("3_ys3hy")]
+transform = Transform3D(-1, 8.74228e-08, 3.82137e-15, 0, -4.37114e-08, 1, 8.74228e-08, 1, 4.37114e-08, 0, 0, -3)
+
+[node name="180DegreePaths" type="Node3D" parent="EdgePaths"]
+
+[node name="A2B2C" parent="EdgePaths/180DegreePaths" instance=ExtResource("4_yaqkc")]
+transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 3, 0)
+
+[node name="C2D2A" parent="EdgePaths/180DegreePaths" instance=ExtResource("4_yaqkc")]
+transform = Transform3D(-1, 1.32005e-14, 1.50996e-07, 0, -1, 8.74228e-08, 1.50996e-07, 8.74228e-08, 1, 0, 3, 0)
+
+[node name="D2A2B" parent="EdgePaths/180DegreePaths" instance=ExtResource("4_yaqkc")]
+transform = Transform3D(-4.37114e-08, -1.50996e-07, -1, 0, -1, 1.50996e-07, -1, 6.60024e-15, 4.37114e-08, 0, 3, 0)
+
+[node name="B2C2D" parent="EdgePaths/180DegreePaths" instance=ExtResource("4_yaqkc")]
+transform = Transform3D(4.37114e-08, 8.74228e-08, 1, -8.74228e-08, -1, 8.74228e-08, 1, -8.74228e-08, -4.37114e-08, 0, 3, 0)
+
+[node name="U2X2W" parent="EdgePaths/180DegreePaths" instance=ExtResource("4_yaqkc")]
+transform = Transform3D(-1, 1.32005e-14, 1.50996e-07, 0, -1, 8.74228e-08, 1.50996e-07, 8.74228e-08, 1, 0, -3, 0)
+
+[node name="X2W2V" parent="EdgePaths/180DegreePaths" instance=ExtResource("4_yaqkc")]
+transform = Transform3D(-4.37114e-08, -1.50996e-07, -1, 0, -1, 1.50996e-07, -1, 6.60024e-15, 4.37114e-08, 0, -3, 0)
+
+[node name="V2U2X" parent="EdgePaths/180DegreePaths" instance=ExtResource("4_yaqkc")]
+transform = Transform3D(4.37114e-08, 8.74228e-08, 1, -8.74228e-08, -1, 8.74228e-08, 1, -8.74228e-08, -4.37114e-08, 0, -3, 0)
+
+[node name="W2V2U" parent="EdgePaths/180DegreePaths" instance=ExtResource("4_yaqkc")]
+transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, -3, 0)
+
+[node name="J2F2R" parent="EdgePaths/180DegreePaths" instance=ExtResource("4_yaqkc")]
+transform = Transform3D(-0.707107, 1.23634e-07, 0.707107, -8.74228e-08, -1, 8.74228e-08, 0.707107, 0, 0.707107, 0, 0, 0)
+
+[node name="R2N2J" parent="EdgePaths/180DegreePaths" instance=ExtResource("4_yaqkc")]
+transform = Transform3D(0.707107, -6.18172e-08, -0.707107, -8.74228e-08, -1, 0, -0.707107, 6.18172e-08, -0.707107, 0, 0, 0)
+
+[node name="T2P2L" parent="EdgePaths/180DegreePaths" instance=ExtResource("4_yaqkc")]
+transform = Transform3D(0.707107, -4.49529e-08, 0.707107, -1.50996e-07, -1, 8.74228e-08, 0.707107, -1.68587e-07, -0.707107, 0, 0, 0)
+
+[node name="L2H2T" parent="EdgePaths/180DegreePaths" instance=ExtResource("4_yaqkc")]
+transform = Transform3D(-0.707107, -1.0677e-07, -0.707107, 0, -1, 1.50996e-07, -0.707107, 1.0677e-07, 0.707107, 0, 0, 0)
+
+[node name="A2S2U" parent="EdgePaths/180DegreePaths" instance=ExtResource("4_yaqkc")]
+transform = Transform3D(1.50482e-07, -1, 1.0677e-07, -0.707107, -3.09086e-08, 0.707107, -0.707107, -1.81904e-07, -0.707107, 0, 0, 0)
+
+[node name="S2I2A" parent="EdgePaths/180DegreePaths" instance=ExtResource("4_yaqkc")]
+transform = Transform3D(-4.37114e-08, -1, 0, 0.707107, -3.09086e-08, -0.707107, 0.707107, -3.09086e-08, 0.707107, 0, 0, 0)
+
+[node name="C2Q2W" parent="EdgePaths/180DegreePaths" instance=ExtResource("4_yaqkc")]
+transform = Transform3D(8.95967e-08, -1, 1.0511e-07, 0.707107, 1.37679e-07, 0.707107, -0.707107, 1.09699e-08, 0.707107, 0, 0, 0)
+
+[node name="W2K2C" parent="EdgePaths/180DegreePaths" instance=ExtResource("4_yaqkc")]
+transform = Transform3D(1.05529e-07, -1, -6.18172e-08, -0.707107, -3.09086e-08, -0.707107, 0.707107, 1.18331e-07, -0.707107, 0, 0, 0)
+
+[node name="B2T2V" parent="EdgePaths/180DegreePaths" instance=ExtResource("4_yaqkc")]
+transform = Transform3D(-4.37114e-08, -1, 0, -4.37114e-08, 1.91069e-15, 1, -1, 4.37114e-08, -4.37114e-08, 3, 0, 0)
+
+[node name="V2J2B" parent="EdgePaths/180DegreePaths" instance=ExtResource("4_yaqkc")]
+transform = Transform3D(1.31134e-07, -1, 3.82137e-15, 4.37114e-08, 1.91069e-15, -1, 1, 1.31134e-07, 4.37114e-08, 3, 0, 0)
+
+[node name="T2V2J" parent="EdgePaths/180DegreePaths" instance=ExtResource("4_yaqkc")]
+transform = Transform3D(-4.37114e-08, -1, 0, -1, 4.37114e-08, 8.74228e-08, -8.74228e-08, 3.82137e-15, -1, 3, 0, 0)
+
+[node name="J2B2T" parent="EdgePaths/180DegreePaths" instance=ExtResource("4_yaqkc")]
+transform = Transform3D(4.37114e-08, -1, -8.74228e-08, 1, 4.37114e-08, 8.74228e-08, -8.74228e-08, -8.74228e-08, 1, 3, 0, 0)
+
+[node name="D2R2X" parent="EdgePaths/180DegreePaths" instance=ExtResource("4_yaqkc")]
+transform = Transform3D(-4.37114e-08, -1, 0, -4.37114e-08, 1.91069e-15, 1, -1, 4.37114e-08, -4.37114e-08, -3, 0, 0)
+
+[node name="X2L2D" parent="EdgePaths/180DegreePaths" instance=ExtResource("4_yaqkc")]
+transform = Transform3D(1.31134e-07, -1, 3.82137e-15, 4.37114e-08, 1.91069e-15, -1, 1, 1.31134e-07, 4.37114e-08, -3, 0, 0)
+
+[node name="R2X2L" parent="EdgePaths/180DegreePaths" instance=ExtResource("4_yaqkc")]
+transform = Transform3D(-4.37114e-08, -1, 0, -1, 4.37114e-08, 8.74228e-08, -8.74228e-08, 3.82137e-15, -1, -3, 0, 0)
+
+[node name="L2D2R" parent="EdgePaths/180DegreePaths" instance=ExtResource("4_yaqkc")]
+transform = Transform3D(4.37114e-08, -1, -8.74228e-08, 1, 4.37114e-08, 8.74228e-08, -8.74228e-08, -8.74228e-08, 1, -3, 0, 0)
+
+[node name="A2N2W" parent="EdgePaths/180DegreePaths" instance=ExtResource("4_yaqkc")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, -3)
+
+[node name="W2H2A" parent="EdgePaths/180DegreePaths" instance=ExtResource("4_yaqkc")]
+transform = Transform3D(-1, -1.50996e-07, 6.60024e-15, 0, -4.37114e-08, -1, 1.50996e-07, -1, 4.37114e-08, 0, 0, -3)
+
+[node name="N2W2H" parent="EdgePaths/180DegreePaths" instance=ExtResource("4_yaqkc")]
+transform = Transform3D(1.91069e-15, -4.37114e-08, 1, -1, -4.37114e-08, 0, 4.37114e-08, -1, -4.37114e-08, 0, 0, -3)
+
+[node name="H2A2N" parent="EdgePaths/180DegreePaths" instance=ExtResource("4_yaqkc")]
+transform = Transform3D(1.47e-14, -7.54979e-08, -1, 1, 1.94707e-07, 0, 1.94707e-07, -1, 7.54979e-08, 0, 0, -3)
+
+[node name="V2G2D" parent="EdgePaths/180DegreePaths" instance=ExtResource("4_yaqkc")]
+transform = Transform3D(-0.707107, -7.462e-08, 0.707107, -0.707107, -3.09086e-08, -0.707107, 7.462e-08, -1, -3.09086e-08, 0, 0, 0)
+
+[node name="D2M2V" parent="EdgePaths/180DegreePaths" instance=ExtResource("4_yaqkc")]
+transform = Transform3D(0.707107, 1.28028e-08, -0.707107, 0.707107, -3.09086e-08, 0.707107, -1.28028e-08, -1, -3.09086e-08, 0, 0, 0)
+
+[node name="X2E2B" parent="EdgePaths/180DegreePaths" instance=ExtResource("4_yaqkc")]
+transform = Transform3D(-0.707107, 7.462e-08, -0.707107, 0.707107, -3.09086e-08, -0.707107, -7.462e-08, -1, -3.09086e-08, 0, 0, 0)
+
+[node name="B2O2X" parent="EdgePaths/180DegreePaths" instance=ExtResource("4_yaqkc")]
+transform = Transform3D(0.707107, -1.28028e-08, 0.707107, -0.707107, -3.09086e-08, 0.707107, 1.28028e-08, -1, -3.09086e-08, 0, 0, 0)
+
+[node name="C2P2U" parent="EdgePaths/180DegreePaths" instance=ExtResource("4_yaqkc")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 3)
+
+[node name="U2F2C" parent="EdgePaths/180DegreePaths" instance=ExtResource("4_yaqkc")]
+transform = Transform3D(-1, -1.50996e-07, 6.60024e-15, 0, -4.37114e-08, -1, 1.50996e-07, -1, 4.37114e-08, 0, 0, 3)
+
+[node name="P2U2F" parent="EdgePaths/180DegreePaths" instance=ExtResource("4_yaqkc")]
+transform = Transform3D(1.91069e-15, -4.37114e-08, 1, -1, -4.37114e-08, 0, 4.37114e-08, -1, -4.37114e-08, 0, 0, 3)
+
+[node name="F2C2P" parent="EdgePaths/180DegreePaths" instance=ExtResource("4_yaqkc")]
+transform = Transform3D(1.47e-14, -7.54979e-08, -1, 1, 1.94707e-07, 0, 1.94707e-07, -1, 7.54979e-08, 0, 0, 3)
+
+[node name="CornerPaths" type="Node3D" parent="."]
+
+[node name="90DegreePaths" type="Node3D" parent="CornerPaths"]
+
+[node name="C2B" parent="CornerPaths/90DegreePaths" instance=ExtResource("5_ylw5y")]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0, 3, 0)
+
+[node name="B2A" parent="CornerPaths/90DegreePaths" instance=ExtResource("5_ylw5y")]
+transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, 0, 3, 0)
+
+[node name="A2D" parent="CornerPaths/90DegreePaths" instance=ExtResource("5_ylw5y")]
+transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, 0, 3, 0)
+
+[node name="D2C" parent="CornerPaths/90DegreePaths" instance=ExtResource("5_ylw5y")]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 0, 3, 0)
+
+[node name="D2A" parent="CornerPaths/90DegreePaths" instance=ExtResource("5_ylw5y")]
+transform = Transform3D(-0.707115, 6.18179e-08, -0.707099, -8.74228e-08, -1, 0, -0.707099, 6.18165e-08, 0.707115, 0, 3, 0)
+
+[node name="A2B" parent="CornerPaths/90DegreePaths" instance=ExtResource("5_ylw5y")]
+transform = Transform3D(0.707115, -6.18179e-08, -0.707099, -8.74228e-08, -1, 0, -0.707099, 6.18165e-08, -0.707115, 0, 3, 0)
+
+[node name="B2C" parent="CornerPaths/90DegreePaths" instance=ExtResource("5_ylw5y")]
+transform = Transform3D(0.707115, -6.18179e-08, 0.707099, -8.74228e-08, -1, 0, 0.707099, -6.18165e-08, -0.707115, 0, 3, 0)
+
+[node name="C2D" parent="CornerPaths/90DegreePaths" instance=ExtResource("5_ylw5y")]
+transform = Transform3D(-0.707115, 6.18179e-08, 0.707099, -8.74228e-08, -1, 0, 0.707099, -6.18165e-08, 0.707115, 0, 3, 0)
+
+[node name="V2W" parent="CornerPaths/90DegreePaths" instance=ExtResource("5_ylw5y")]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0, -3, 0)
+
+[node name="W2X" parent="CornerPaths/90DegreePaths" instance=ExtResource("5_ylw5y")]
+transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, 0, -3, 0)
+
+[node name="X2U" parent="CornerPaths/90DegreePaths" instance=ExtResource("5_ylw5y")]
+transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, 0, -3, 0)
+
+[node name="U2V" parent="CornerPaths/90DegreePaths" instance=ExtResource("5_ylw5y")]
+transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 0, -3, 0)
+
+[node name="U2X" parent="CornerPaths/90DegreePaths" instance=ExtResource("5_ylw5y")]
+transform = Transform3D(-0.707115, 6.18179e-08, -0.707099, -8.74228e-08, -1, 0, -0.707099, 6.18165e-08, 0.707115, 0, -3, 0)
+
+[node name="X2W" parent="CornerPaths/90DegreePaths" instance=ExtResource("5_ylw5y")]
+transform = Transform3D(0.707115, -6.18179e-08, -0.707099, -8.74228e-08, -1, 0, -0.707099, 6.18165e-08, -0.707115, 0, -3, 0)
+
+[node name="W2V" parent="CornerPaths/90DegreePaths" instance=ExtResource("5_ylw5y")]
+transform = Transform3D(0.707115, -6.18179e-08, 0.707099, -8.74228e-08, -1, 0, 0.707099, -6.18165e-08, -0.707115, 0, -3, 0)
+
+[node name="V2U" parent="CornerPaths/90DegreePaths" instance=ExtResource("5_ylw5y")]
+transform = Transform3D(-0.707115, 6.18179e-08, 0.707099, -8.74228e-08, -1, 0, 0.707099, -6.18165e-08, 0.707115, 0, -3, 0)
+
+[node name="P2O" parent="CornerPaths/90DegreePaths" instance=ExtResource("5_ylw5y")]
+transform = Transform3D(-0.000382573, 1, -0.000382556, -0.707107, -0.000541028, -0.707107, -0.707107, -1.24564e-08, 0.707107, 3, 0, 0)
+
+[node name="O2N" parent="CornerPaths/90DegreePaths" instance=ExtResource("5_ylw5y")]
+transform = Transform3D(0.000382497, 1, -0.000382632, 0.707107, -0.000541028, -0.707107, -0.707107, -9.48785e-08, -0.707107, 3, 0, 0)
+
+[node name="N2M" parent="CornerPaths/90DegreePaths" instance=ExtResource("5_ylw5y")]
+transform = Transform3D(0.000382497, 1, 0.000382632, 0.707107, -0.000541028, 0.707107, 0.707107, 9.48785e-08, -0.707107, 3, 0, 0)
+
+[node name="M2P" parent="CornerPaths/90DegreePaths" instance=ExtResource("5_ylw5y")]
+transform = Transform3D(-0.000382573, 1, 0.000382556, -0.707107, -0.000541028, 0.707107, 0.707107, 1.234e-08, 0.707107, 3, 0, 0)
+
+[node name="M2N" parent="CornerPaths/90DegreePaths" instance=ExtResource("5_ylw5y")]
+transform = Transform3D(0.000382499, -1, 0.000382551, 0.707115, 0.000540972, 0.707099, -0.707099, 4.31901e-08, 0.707115, 3, 0, 0)
+
+[node name="N2O" parent="CornerPaths/90DegreePaths" instance=ExtResource("5_ylw5y")]
+transform = Transform3D(-0.000382702, -1, 0.000382468, -0.707115, 0.000541057, 0.707099, -0.707099, 1.5978e-07, -0.707115, 3, 0, 0)
+
+[node name="O2P" parent="CornerPaths/90DegreePaths" instance=ExtResource("5_ylw5y")]
+transform = Transform3D(-0.000382702, -1, -0.000382467, -0.707115, 0.000541056, -0.707099, 0.707099, -1.59896e-07, -0.707115, 3, 0, 0)
+
+[node name="P2M" parent="CornerPaths/90DegreePaths" instance=ExtResource("5_ylw5y")]
+transform = Transform3D(0.000382499, -1, -0.000382552, 0.707115, 0.000540972, -0.707099, 0.707099, -4.33647e-08, 0.707115, 3, 0, 0)
+
+[node name="G2H" parent="CornerPaths/90DegreePaths" instance=ExtResource("5_ylw5y")]
+transform = Transform3D(-0.000382573, 1, -0.000382556, -0.707107, -0.000541028, -0.707107, -0.707107, -1.24564e-08, 0.707107, -3, 0, 0)
+
+[node name="H2E" parent="CornerPaths/90DegreePaths" instance=ExtResource("5_ylw5y")]
+transform = Transform3D(0.000382497, 1, -0.000382632, 0.707107, -0.000541028, -0.707107, -0.707107, -9.48785e-08, -0.707107, -3, 0, 0)
+
+[node name="E2F" parent="CornerPaths/90DegreePaths" instance=ExtResource("5_ylw5y")]
+transform = Transform3D(0.000382497, 1, 0.000382632, 0.707107, -0.000541028, 0.707107, 0.707107, 9.48785e-08, -0.707107, -3, 0, 0)
+
+[node name="F2G" parent="CornerPaths/90DegreePaths" instance=ExtResource("5_ylw5y")]
+transform = Transform3D(-0.000382573, 1, 0.000382556, -0.707107, -0.000541028, 0.707107, 0.707107, 1.234e-08, 0.707107, -3, 0, 0)
+
+[node name="F2E" parent="CornerPaths/90DegreePaths" instance=ExtResource("5_ylw5y")]
+transform = Transform3D(0.000382499, -1, 0.000382551, 0.707115, 0.000540972, 0.707099, -0.707099, 4.31319e-08, 0.707115, -3, 0, 0)
+
+[node name="E2H" parent="CornerPaths/90DegreePaths" instance=ExtResource("5_ylw5y")]
+transform = Transform3D(-0.000382702, -1, 0.000382467, -0.707115, 0.000541056, 0.707099, -0.707099, 1.59838e-07, -0.707115, -3, 0, 0)
+
+[node name="H2G" parent="CornerPaths/90DegreePaths" instance=ExtResource("5_ylw5y")]
+transform = Transform3D(-0.000382702, -1, -0.000382467, -0.707115, 0.000541056, -0.707099, 0.707099, -1.59896e-07, -0.707115, -3, 0, 0)
+
+[node name="G2F" parent="CornerPaths/90DegreePaths" instance=ExtResource("5_ylw5y")]
+transform = Transform3D(0.000382499, -1, -0.000382552, 0.707115, 0.000540972, -0.707099, 0.707099, -4.33647e-08, 0.707115, -3, 0, 0)
+
+[node name="L2K" parent="CornerPaths/90DegreePaths" instance=ExtResource("5_ylw5y")]
+transform = Transform3D(0.707107, 0.000540984, -0.707107, -0.707107, -0.000541028, -0.707107, -0.000765098, 1, -3.09086e-08, 0, 0, 3)
+
+[node name="K2J" parent="CornerPaths/90DegreePaths" instance=ExtResource("5_ylw5y")]
+transform = Transform3D(0.707107, 1.28028e-08, 0.707107, 0.707107, -3.09086e-08, -0.707107, 1.28028e-08, 1, -3.09086e-08, 0, 0, 3)
+
+[node name="J2K" parent="CornerPaths/90DegreePaths" instance=ExtResource("5_ylw5y")]
+transform = Transform3D(0.707107, -1.28028e-08, 0.707107, -0.707107, -3.09086e-08, 0.707107, 1.28028e-08, -1, -3.09086e-08, 0, 0, 3)
+
+[node name="I2L" parent="CornerPaths/90DegreePaths" instance=ExtResource("5_ylw5y")]
+transform = Transform3D(-0.707107, -0.000541072, -0.707107, -0.707107, -0.000541028, 0.707107, -0.00076516, 1, -3.09086e-08, 0, 0, 3)
+
+[node name="I2J" parent="CornerPaths/90DegreePaths" instance=ExtResource("5_ylw5y")]
+transform = Transform3D(0.707098, 0.000541003, -0.707115, 0.707115, 0.000540972, 0.707099, 0.000765072, -1, -3.0909e-08, 0, 0, 3)
+
+[node name="K2L" parent="CornerPaths/90DegreePaths" instance=ExtResource("5_ylw5y")]
+transform = Transform3D(-0.707107, -7.462e-08, 0.707107, -0.707107, -3.09086e-08, -0.707107, 7.462e-08, -1, -3.09086e-08, 0, 0, 3)
+
+[node name="J2I" parent="CornerPaths/90DegreePaths" instance=ExtResource("5_ylw5y")]
+transform = Transform3D(-0.707107, 7.462e-08, 0.707107, 0.707107, -3.09086e-08, 0.707107, 7.462e-08, 1, -3.09086e-08, 0, 0, 3)
+
+[node name="L2I" parent="CornerPaths/90DegreePaths" instance=ExtResource("5_ylw5y")]
+transform = Transform3D(-0.707099, -0.000540916, -0.707115, 0.707115, 0.000540972, -0.707099, 0.000765011, -1, -3.0909e-08, 0, 0, 3)
+
+[node name="S2T" parent="CornerPaths/90DegreePaths" instance=ExtResource("5_ylw5y")]
+transform = Transform3D(0.707107, 0.000540984, -0.707107, -0.707107, -0.000541028, -0.707107, -0.000765098, 1, -3.09086e-08, 0, 0, -3)
+
+[node name="T2Q" parent="CornerPaths/90DegreePaths" instance=ExtResource("5_ylw5y")]
+transform = Transform3D(0.707107, 1.28028e-08, 0.707107, 0.707107, -3.09086e-08, -0.707107, 1.28028e-08, 1, -3.09086e-08, 0, 0, -3)
+
+[node name="Q2T" parent="CornerPaths/90DegreePaths" instance=ExtResource("5_ylw5y")]
+transform = Transform3D(0.707107, -1.28028e-08, 0.707107, -0.707107, -3.09086e-08, 0.707107, 1.28028e-08, -1, -3.09086e-08, 0, 0, -3)
+
+[node name="R2S" parent="CornerPaths/90DegreePaths" instance=ExtResource("5_ylw5y")]
+transform = Transform3D(-0.707107, -0.000541072, -0.707107, -0.707107, -0.000541028, 0.707107, -0.00076516, 1, -3.09086e-08, 0, 0, -3)
+
+[node name="R2Q" parent="CornerPaths/90DegreePaths" instance=ExtResource("5_ylw5y")]
+transform = Transform3D(0.707098, 0.000541003, -0.707115, 0.707115, 0.000540972, 0.707099, 0.000765072, -1, -3.0909e-08, 0, 0, -3)
+
+[node name="T2S" parent="CornerPaths/90DegreePaths" instance=ExtResource("5_ylw5y")]
+transform = Transform3D(-0.707107, -7.462e-08, 0.707107, -0.707107, -3.09086e-08, -0.707107, 7.462e-08, -1, -3.09086e-08, 0, 0, -3)
+
+[node name="Q2R" parent="CornerPaths/90DegreePaths" instance=ExtResource("5_ylw5y")]
+transform = Transform3D(-0.707107, 7.462e-08, 0.707107, 0.707107, -3.09086e-08, 0.707107, 7.462e-08, 1, -3.09086e-08, 0, 0, -3)
+
+[node name="S2R" parent="CornerPaths/90DegreePaths" instance=ExtResource("5_ylw5y")]
+transform = Transform3D(-0.707099, -0.000540916, -0.707115, 0.707115, 0.000540972, -0.707099, 0.000765011, -1, -3.0909e-08, 0, 0, -3)
+
+[node name="180DegreePaths" type="Node3D" parent="CornerPaths"]

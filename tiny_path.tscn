@@ -13,6 +13,7 @@ point_count = 2
 [node name="TinyPath" type="Path3D"]
 curve = SubResource("Curve3D_ww7oh")
 script = ExtResource("1_v64k2")
+metadata/_edit_group_ = true
 
 [node name="PathFollow3D" type="PathFollow3D" parent="."]
 transform = Transform3D(-4.37111e-08, 0, -0.999993, 0, 1, 0, 0.999993, 0, -4.37111e-08, 0, 0, 3)

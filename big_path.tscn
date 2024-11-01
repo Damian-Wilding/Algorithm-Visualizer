@@ -13,6 +13,7 @@ point_count = 3
 [node name="BigPath" type="Path3D"]
 curve = SubResource("Curve3D_ww7oh")
 script = ExtResource("1_e8wk3")
+metadata/_edit_group_ = true
 
 [node name="PathFollow3D" type="PathFollow3D" parent="."]
 transform = Transform3D(-4.37111e-08, 0, -0.999993, 0, 1, 0, 0.999993, 0, -4.37111e-08, 0, 0, 3)
