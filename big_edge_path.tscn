@@ -1,16 +1,13 @@
-[gd_scene load_steps=4 format=3 uid="uid://drruotq030mng"]
+[gd_scene load_steps=5 format=3 uid="uid://drruotq030mng"]
 
 [ext_resource type="Script" path="res://MovementPath.gd" id="1_e8wk3"]
 [ext_resource type="PackedScene" uid="uid://djq3ielctwa5x" path="res://cubie.tscn" id="2_acrmo"]
 
 [sub_resource type="Curve3D" id="Curve3D_ww7oh"]
-_data = {
-"points": PackedVector3Array(-1.49872, 0, -0.00721264, 1.5, 0, 0, 0, 0, 3, 0, 0, 1.5, 0, 0, -1.5, 3, 0, 0, 1.5, 0, 0, 0, 0, 0, 0, 0, -3),
-"tilts": PackedFloat32Array(0, 0, 0)
-}
-point_count = 3
 
-[node name="BigPath" type="Path3D"]
+[sub_resource type="SphereShape3D" id="SphereShape3D_5hcco"]
+
+[node name="BigEdgePath" type="Path3D"]
 curve = SubResource("Curve3D_ww7oh")
 script = ExtResource("1_e8wk3")
 metadata/_edit_group_ = true
@@ -23,3 +20,8 @@ transform = Transform3D(250, 0, 0, 0, 250, 0, 0, 0, 250, 0, 0, 3)
 
 [node name="Start2" parent="." instance=ExtResource("2_acrmo")]
 transform = Transform3D(-100, 0, -1.50996e-05, 0, 100, 0, 1.50996e-05, 0, -100, 0, 0, -3)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(8.485, 0, 0, 0, 8.485, 0, 0, 0, 8.485, 0, 0, 0)
+visible = false
+shape = SubResource("SphereShape3D_5hcco")

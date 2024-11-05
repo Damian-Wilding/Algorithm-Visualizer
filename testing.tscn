@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://bhavddjcw5tpt"]
+[gd_scene load_steps=7 format=3 uid="uid://bhavddjcw5tpt"]
 
 [ext_resource type="Script" path="res://Testing.gd" id="1_mwamw"]
 [ext_resource type="PackedScene" uid="uid://djq3ielctwa5x" path="res://cubie.tscn" id="3_60ttf"]
 [ext_resource type="PackedScene" uid="uid://bqwbo6po5hqv5" path="res://movement_path.tscn" id="3_wipv7"]
+[ext_resource type="PackedScene" uid="uid://ch0okutfb546s" path="res://cube.tscn" id="4_m3lbv"]
 
 [sub_resource type="Curve3D" id="Curve3D_3r1m6"]
 _data = {
@@ -22,17 +23,20 @@ point_count = 5
 script = ExtResource("1_mwamw")
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(-0.676647, -0.150738, 0.720712, 0.0249849, 0.973556, 0.227078, -0.735883, 0.171659, -0.654988, 7.45763, 4.89691, -9.29458)
+transform = Transform3D(-0.753243, -0.38965, 0.529903, -0.0691905, 0.84811, 0.525282, -0.654093, 0.359001, -0.665794, 11.3198, 9.48952, -10.6722)
+fov = 68.2
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.830858, 0.492707, 0.258677, 0, -0.464842, 0.885394, 0.556484, -0.735637, -0.386218, 2.02466, 3.95161, -4.51309)
 
 [node name="TesterTimer" type="Timer" parent="."]
-wait_time = 0.147
+wait_time = 0.47
+one_shot = true
 autostart = true
 
 [node name="Path3D" type="Path3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.4914, 0, 3.73729)
+visible = false
 curve = SubResource("Curve3D_3r1m6")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="Path3D"]
@@ -40,20 +44,26 @@ transform = Transform3D(0.532349, 0, -0.846509, 0, 0.999982, 0, 0.846514, 0, 0.5
 progress = 0.824584
 
 [node name="Cubie" parent="Path3D/PathFollow3D" instance=ExtResource("3_60ttf")]
-transform = Transform3D(851.229, 96.4826, -515.86, -196.946, 969.852, -143.591, 486.45, 223.825, 844.561, 0.320836, 3.4176, 1.54999)
+transform = Transform3D(1000, 0, 0, 0, 1000, 0, 0, 0, 1000, 0, 0, 10)
+top_level = true
 skeleton = NodePath("../../..")
 
 [node name="Path3D2" type="Path3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 7.71278)
+visible = false
 curve = SubResource("Curve3D_3gnqj")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="Path3D2"]
 transform = Transform3D(-1, 5.89315e-08, -6.45742e-08, 0, 0.738643, 0.674097, 8.74228e-08, 0.674097, -0.738643, 0, 2.88978, 2.40046)
 
 [node name="MovementPath" parent="." instance=ExtResource("3_wipv7")]
+visible = false
 
 [node name="Cubie2" parent="." instance=ExtResource("3_60ttf")]
-transform = Transform3D(1000, 0, 0, 0, 1000, 0, 0, 0, 1000, 4.95963, 0.00944233, 0.246912)
+transform = Transform3D(1000, 0, 0, 0, 1000, 0, 0, 0, 1000, 3, 3, 3)
+visible = false
 skeleton = NodePath("../MovementPath")
+
+[node name="Cube" parent="." instance=ExtResource("4_m3lbv")]
 
 [connection signal="timeout" from="TesterTimer" to="." method="_on_tester_timer_timeout"]

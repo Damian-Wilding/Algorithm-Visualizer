@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://0fumeivvcdni"]
+
+[ext_resource type="PackedScene" uid="uid://djq3ielctwa5x" path="res://cubie.tscn" id="1_pde7k"]
+
+[sub_resource type="Curve3D" id="Curve3D_yuypt"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 2.35, 0, 0, 0, 0, 4.243, 0, 0, 2.35, 0, 0, 0, 4.243, 0, 0),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_sost4"]
+
+[node name="TinySliceEdgePath" type="Path3D"]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, 0.707107, 0, 0, 0)
+curve = SubResource("Curve3D_yuypt")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(8.485, 0, 0, 0, 8.485, 0, 0, 0, 8.485, 0, 0, 0)
+visible = false
+shape = SubResource("SphereShape3D_sost4")
+
+[node name="Start" parent="." instance=ExtResource("1_pde7k")]
+transform = Transform3D(-2.28882e-05, 0, -250, 0, 250, 0, 250, 0, -2.28882e-05, 0, 0, 4.243)
+
+[node name="Start2" parent="." instance=ExtResource("1_pde7k")]
+transform = Transform3D(0, 0, 100, 0, 100, 0, -100, 0, 0, 4.243, 0, 0)

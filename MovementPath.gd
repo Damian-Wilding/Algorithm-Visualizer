@@ -1,10 +1,11 @@
 extends Path3D
-
+@export var follower = ""
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	# Remove all children from the path. (This should just remove the PathFollow3D that is instantiated with this path.
-	empty_path()
+	##empty_path()
+	pass
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
