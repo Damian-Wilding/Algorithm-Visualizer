@@ -2,7 +2,9 @@ extends Node3D
 
 # RADIANS_TO_ROTATE is a dictionary that keeps track of the rotation of each of the 6 layers. (During a normal move, only one of these values will change by 90, 180, or -90 degrees.)
 #var RADIANS_TO_ROTATE = {"U": 0, "L": 0, "F": 0, "R": 0, "B": 0, "D": 0}		Replaced this dictionary but I'm keeping it as a comment in case I need it.
-var RADIANS_TO_ROTATE = {"ItalianCorner": {"X": 0, "Y": 0, "Z": 0}, "IrishCorner": {"X": 0, "Y": 0, "Z": 0}, "USACorner": {"X": 0, "Y": 0, "Z": 0}, "NetherlandsCorner": {"X": 0, "Y": 0, "Z": 0}, "BobMarleyCorner": {"X": 0, "Y": 0, "Z": 0}, "SpriteCorner": {"X": 0, "Y": 0, "Z": 0}, "PrimaryCorner": {"X": 0, "Y": 0, "Z": 0}, "NerfCorner": {"X": 0, "Y": 0, "Z": 0}, "WG": {"X": 0, "Y": 0, "Z": 0}, "WB": {"X": 0, "Y": 0, "Z": 0}, "WR": {"X": 0, "Y": 0, "Z": 0}, "WO": {"X": 0, "Y": 0, "Z": 0}, "GR": {"X": 0, "Y": 0, "Z": 0}, "GO": {"X": 0, "Y": 0, "Z": 0}, "BR": {"X": 0, "Y": 0, "Z": 0}, "BO": {"X": 0, "Y": 0, "Z": 0}, "YG": {"X": 0, "Y": 0, "Z": 0}, "YB": {"X": 0, "Y": 0, "Z": 0}, "YR": {"X": 0, "Y": 0, "Z": 0}, "YO": {"X": 0, "Y": 0, "Z": 0}, "WhiteCenter": {"X": 0, "Y": 0, "Z": 0}, "OrangeCenter": {"X": 0, "Y": 0, "Z": 0}, "GreenCenter": {"X": 0, "Y": 0, "Z": 0}, "RedCenter": {"X": 0, "Y": 0, "Z": 0}, "BlueCenter": {"X": 0, "Y": 0, "Z": 0}, "YellowCenter": {"X": 0, "Y": 0, "Z": 0}, "Core": {"X": 0, "Y": 0, "Z": 0}}
+#var RADIANS_TO_ROTATE = {"ItalianCorner": {"X": 0, "Y": 0, "Z": 0}, "IrishCorner": {"X": 0, "Y": 0, "Z": 0}, "USACorner": {"X": 0, "Y": 0, "Z": 0}, "NetherlandsCorner": {"X": 0, "Y": 0, "Z": 0}, "BobMarleyCorner": {"X": 0, "Y": 0, "Z": 0}, "SpriteCorner": {"X": 0, "Y": 0, "Z": 0}, "PrimaryCorner": {"X": 0, "Y": 0, "Z": 0}, "NerfCorner": {"X": 0, "Y": 0, "Z": 0}, "WG": {"X": 0, "Y": 0, "Z": 0}, "WB": {"X": 0, "Y": 0, "Z": 0}, "WR": {"X": 0, "Y": 0, "Z": 0}, "WO": {"X": 0, "Y": 0, "Z": 0}, "GR": {"X": 0, "Y": 0, "Z": 0}, "GO": {"X": 0, "Y": 0, "Z": 0}, "BR": {"X": 0, "Y": 0, "Z": 0}, "BO": {"X": 0, "Y": 0, "Z": 0}, "YG": {"X": 0, "Y": 0, "Z": 0}, "YB": {"X": 0, "Y": 0, "Z": 0}, "YR": {"X": 0, "Y": 0, "Z": 0}, "YO": {"X": 0, "Y": 0, "Z": 0}, "WhiteCenter": {"X": 0, "Y": 0, "Z": 0}, "OrangeCenter": {"X": 0, "Y": 0, "Z": 0}, "GreenCenter": {"X": 0, "Y": 0, "Z": 0}, "RedCenter": {"X": 0, "Y": 0, "Z": 0}, "BlueCenter": {"X": 0, "Y": 0, "Z": 0}, "YellowCenter": {"X": 0, "Y": 0, "Z": 0}, "Core": {"X": 0, "Y": 0, "Z": 0}}
+# This variable represents how many radians the current rotation is. (Positive is counter clockwise and negative is counter clockwise.)
+var RADIANS_TO_ROTATE = 0
 # CURRENTLY_ROTATING_LAYER keeps track of what layer is currently being turned. 
 var CURRENTLY_ROTATING_LAYER
 # This variable will tell the process how much each moving piece needs to be rotated for the current turn being made.
@@ -15,7 +17,7 @@ var PROGRESS_TO_BE_ADDED = 0
 var PROGRESS_TO_BE_ADDED_SINCE_LAST_FRAME = 0
 # TURN_TIMER_MULTIPLIER alters how fast the cube will turn. (A higher number means a faster turn and a lower number means a slower turn. If you change TIME_TO_TURN, then this will probably need to be changed too because the cube won't be moving fast enough to complete turns in time.)
 var TURN_TIMER_MULTIPLIER = 10
-# This controls how long the cube can't be turned for while a turn is being made. (Time in seconds.)
+# This controls how long the cube turns take/ how long the cube can't be turned for while a turn is being made. (Time in seconds.)
 var TIME_TO_TURN = 0.50
 # This number keeps track of how much time has passed since the current turn started. (It starts off at 10 so you can make turns immediately.)
 var ELAPSED_TIME = 10.0
@@ -27,22 +29,16 @@ var CURRENTLY_MOVING_PIECES = []
 #var ABLE_TO_BE_TURNED = true
 # This variable will tell the cube which axis to rotate on. ( U() would be "Y", D() would be "-Y", F() would be "Z", B() would be "-Z", etc...)
 var CURRENT_AXIS_OF_ROTATION
+# This variable keeps track of whether the current turn being made is clockwise or counter clockwise. (Rotation is around the X, Y, and Z axises when looking at them from the right, top, and front sides.)
+var IS_TURN_CLOCKWISE
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	# Make a list with every piece of the cube in it. (This is used for debugging and cube rotations.)
-	# First add the corners to the list.
-	for corner in get_tree().get_nodes_in_group("Corners"):
-		ALL_PIECES_LIST.append(corner)
-	# Then add the edges.
-	for edge in get_tree().get_nodes_in_group("Edges"):
-		ALL_PIECES_LIST.append(edge)
-	# Then add the centers.
-	for center in get_tree().get_nodes_in_group("Centers"):
-		ALL_PIECES_LIST.append(center)
-	# Finally, add the core.
-	ALL_PIECES_LIST.append($Core)
+	# First add all the pieces to the list.
+	for piece in get_tree().get_nodes_in_group("Pieces"):
+		ALL_PIECES_LIST.append(piece)
 	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -68,24 +64,27 @@ func _process(delta):
 		ELAPSED_TIME += delta
 		
 		# Calculate the PROGRESS_TO_BE_ADDED_SINCE_LAST_FRAME variable.
-		subtract_progress_made(delta)
+		#subtract_progress_made(delta)
 		# Calculate how much progress should be made based on long it's been since the last frame (the delta).
-		PROGRESS_TO_BE_ADDED_SINCE_LAST_FRAME = delta * PROGRESS_TO_BE_ADDED * TIME_TO_TURN
+		PROGRESS_TO_BE_ADDED_SINCE_LAST_FRAME = delta * RADIANS_TO_ROTATE * TIME_TO_TURN
 		
 	#	# Iterate through all the pieces that need to be turned.
 		for piece in CURRENTLY_MOVING_PIECES:
 	#		# Rotate the pieces based on the axis rotational velocities. 
 			print(piece)
 			if CURRENT_AXIS_OF_ROTATION == "Y":
-				add_progress(piece, PROGRESS_TO_BE_ADDED_SINCE_LAST_FRAME, "Y")
+				$TurningSide.rotation.y += PROGRESS_TO_BE_ADDED_SINCE_LAST_FRAME
+				#add_progress(piece, PROGRESS_TO_BE_ADDED_SINCE_LAST_FRAME, "Y")
 				#RADIANS_TO_ROTATE[piece.name]["Y"] += AMOUNT_TO_TURN
 				#piece.global_transform.basis = global_transform.basis.rotated(Vector3(0, 1, 0), RADIANS_TO_ROTATE[piece.name]["Y"])
 			elif CURRENT_AXIS_OF_ROTATION == "X":
-				add_progress(piece, PROGRESS_TO_BE_ADDED_SINCE_LAST_FRAME, "X")
+				$TurningSide.rotation.x += PROGRESS_TO_BE_ADDED_SINCE_LAST_FRAME
+				#add_progress(piece, PROGRESS_TO_BE_ADDED_SINCE_LAST_FRAME, "X")
 			#	RADIANS_TO_ROTATE[piece.name]["X"] += AMOUNT_TO_TURN
 				#piece.global_transform.basis = global_transform.basis.rotated(Vector3(1, 0, 0), RADIANS_TO_ROTATE[piece.name]["X"])
 			elif CURRENT_AXIS_OF_ROTATION == "Z":
-				add_progress(piece, PROGRESS_TO_BE_ADDED_SINCE_LAST_FRAME, "Z")
+				$TurningSide.rotation.z += PROGRESS_TO_BE_ADDED_SINCE_LAST_FRAME
+				#add_progress(piece, PROGRESS_TO_BE_ADDED_SINCE_LAST_FRAME, "Z")
 				#RADIANS_TO_ROTATE[piece.name]["Z"] += AMOUNT_TO_TURN
 				#piece.global_transform.basis = global_transform.basis.rotated(Vector3(0, 0, 1), RADIANS_TO_ROTATE[piece.name]["Z"])
 			

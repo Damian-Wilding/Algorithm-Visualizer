@@ -36,6 +36,8 @@ script = ExtResource("1_ojui8")
 
 [node name="CubeLogic" parent="." instance=ExtResource("29_kddsc")]
 
+[node name="TurningSide" type="Node3D" parent="."]
+
 [node name="TurnTimer" type="Timer" parent="."]
 one_shot = true
 
@@ -45,174 +47,174 @@ autostart = true
 
 [node name="HowLongToTurn90Degrees" type="Timer" parent="."]
 
-[node name="ItalianCorner" parent="." groups=["Corners"] instance=ExtResource("3_v8wb3")]
+[node name="ItalianCorner" parent="." groups=["Corners", "Pieces"] instance=ExtResource("3_v8wb3")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 3, 3, 3)
 mesh = ExtResource("4_rr6s2")
 X_ROTATION_PROGRESS = 0.125
 Y_ROTATION_PROGRESS = 0.125
 Z_ROTATION_PROGRESS = 0.375
 
-[node name="IrishCorner" parent="." groups=["Corners"] instance=ExtResource("3_v8wb3")]
+[node name="IrishCorner" parent="." groups=["Corners", "Pieces"] instance=ExtResource("3_v8wb3")]
 transform = Transform3D(-1, 8.74228e-08, 0, 8.74228e-08, 1, 8.74228e-08, 7.64274e-15, 8.74228e-08, -1, -3, 3, 3)
 mesh = ExtResource("5_6tju5")
 X_ROTATION_PROGRESS = 0.125
 Y_ROTATION_PROGRESS = 0.875
 Z_ROTATION_PROGRESS = 0.625
 
-[node name="USACorner" parent="." groups=["Corners"] instance=ExtResource("3_v8wb3")]
+[node name="USACorner" parent="." groups=["Corners", "Pieces"] instance=ExtResource("3_v8wb3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 3, -3)
 mesh = ExtResource("2_4qxpc")
 X_ROTATION_PROGRESS = 0.375
 Y_ROTATION_PROGRESS = 0.375
 Z_ROTATION_PROGRESS = 0.375
 
-[node name="NetherlandsCorner" parent="." groups=["Corners"] instance=ExtResource("3_v8wb3")]
+[node name="NetherlandsCorner" parent="." groups=["Corners", "Pieces"] instance=ExtResource("3_v8wb3")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3, 3, -3)
 mesh = ExtResource("3_0hpic")
 X_ROTATION_PROGRESS = 0.375
 Y_ROTATION_PROGRESS = 0.625
 Z_ROTATION_PROGRESS = 0.625
 
-[node name="BobMarleyCorner" parent="." groups=["Corners"] instance=ExtResource("3_v8wb3")]
+[node name="BobMarleyCorner" parent="." groups=["Corners", "Pieces"] instance=ExtResource("3_v8wb3")]
 transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 3, -3, 3)
 mesh = ExtResource("8_us6gn")
 X_ROTATION_PROGRESS = 0.875
 Y_ROTATION_PROGRESS = 0.125
 Z_ROTATION_PROGRESS = 0.125
 
-[node name="SpriteCorner" parent="." groups=["Corners"] instance=ExtResource("3_v8wb3")]
+[node name="SpriteCorner" parent="." groups=["Corners", "Pieces"] instance=ExtResource("3_v8wb3")]
 transform = Transform3D(-4.37114e-08, 8.74228e-08, 1, 0, -1, 8.74228e-08, 1, 3.82137e-15, 4.37114e-08, -3, -3, 3)
 mesh = ExtResource("9_i4vcj")
 X_ROTATION_PROGRESS = 0.875
 Y_ROTATION_PROGRESS = 0.875
 Z_ROTATION_PROGRESS = 0.875
 
-[node name="PrimaryCorner" parent="." groups=["Corners"] instance=ExtResource("3_v8wb3")]
+[node name="PrimaryCorner" parent="." groups=["Corners", "Pieces"] instance=ExtResource("3_v8wb3")]
 transform = Transform3D(-4.37114e-08, -8.74228e-08, -1, 0, -1, 8.74228e-08, -1, 3.82137e-15, 4.37114e-08, 3, -3, -3)
 mesh = ExtResource("10_fie52")
 X_ROTATION_PROGRESS = 0.625
 Y_ROTATION_PROGRESS = 0.375
 Z_ROTATION_PROGRESS = 0.125
 
-[node name="NerfCorner" parent="." groups=["Corners"] instance=ExtResource("3_v8wb3")]
+[node name="NerfCorner" parent="." groups=["Corners", "Pieces"] instance=ExtResource("3_v8wb3")]
 transform = Transform3D(-1, 7.64274e-15, 8.74228e-08, 0, -1, 8.74228e-08, 8.74228e-08, 8.74228e-08, 1, -3, -3, -3)
 mesh = ExtResource("11_fl8b4")
 X_ROTATION_PROGRESS = 0.625
 Y_ROTATION_PROGRESS = 0.625
 Z_ROTATION_PROGRESS = 0.875
 
-[node name="WG" parent="." groups=["Edges"] instance=ExtResource("3_v8wb3")]
+[node name="WG" parent="." groups=["Edges", "Pieces"] instance=ExtResource("3_v8wb3")]
 transform = Transform3D(4.37114e-08, -3.82137e-15, 1, -8.74228e-08, -1, 0, 1, -8.74228e-08, -4.37114e-08, 0, 3, 3)
 mesh = ExtResource("6_25okw")
 X_ROTATION_PROGRESS = 0.125
 Z_ROTATION_PROGRESS = 0.5
 
-[node name="WB" parent="." groups=["Edges"] instance=ExtResource("3_v8wb3")]
+[node name="WB" parent="." groups=["Edges", "Pieces"] instance=ExtResource("3_v8wb3")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 3, -3)
 mesh = ExtResource("7_gwk8t")
 X_ROTATION_PROGRESS = 0.375
 Y_ROTATION_PROGRESS = 0.5
 Z_ROTATION_PROGRESS = 0.5
 
-[node name="WR" parent="." groups=["Edges"] instance=ExtResource("3_v8wb3")]
+[node name="WR" parent="." groups=["Edges", "Pieces"] instance=ExtResource("3_v8wb3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 3, 0)
 mesh = ExtResource("8_bt8s4")
 X_ROTATION_PROGRESS = 0.25
 Y_ROTATION_PROGRESS = 0.25
 Z_ROTATION_PROGRESS = 0.375
 
-[node name="WO" parent="." groups=["Edges"] instance=ExtResource("3_v8wb3")]
+[node name="WO" parent="." groups=["Edges", "Pieces"] instance=ExtResource("3_v8wb3")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -3, 3, 0)
 mesh = ExtResource("9_mvqjn")
 X_ROTATION_PROGRESS = 0.25
 Y_ROTATION_PROGRESS = 0.75
 Z_ROTATION_PROGRESS = 0.625
 
-[node name="GR" parent="." groups=["Edges"] instance=ExtResource("3_v8wb3")]
+[node name="GR" parent="." groups=["Edges", "Pieces"] instance=ExtResource("3_v8wb3")]
 transform = Transform3D(-4.37114e-08, 1, 4.37114e-08, 0, -4.37114e-08, 1, 1, 4.37114e-08, 1.91069e-15, 3, 0, 3)
 mesh = ExtResource("15_n8qur")
 Y_ROTATION_PROGRESS = 0.125
 Z_ROTATION_PROGRESS = 0.25
 
-[node name="BR" parent="." groups=["Edges"] instance=ExtResource("3_v8wb3")]
+[node name="BR" parent="." groups=["Edges", "Pieces"] instance=ExtResource("3_v8wb3")]
 transform = Transform3D(-4.37114e-08, 1, 0, 4.37114e-08, 1.91069e-15, -1, -1, -4.37114e-08, -4.37114e-08, 3, 0, -3)
 mesh = ExtResource("17_qlnw0")
 X_ROTATION_PROGRESS = 0.5
 Y_ROTATION_PROGRESS = 0.375
 Z_ROTATION_PROGRESS = 0.25
 
-[node name="GO" parent="." groups=["Edges"] instance=ExtResource("3_v8wb3")]
+[node name="GO" parent="." groups=["Edges", "Pieces"] instance=ExtResource("3_v8wb3")]
 transform = Transform3D(-4.37114e-08, -1, 4.37114e-08, 0, -4.37114e-08, -1, 1, -4.37114e-08, 1.91069e-15, -3, 0, 3)
 mesh = ExtResource("16_imdtd")
 Y_ROTATION_PROGRESS = 0.875
 Z_ROTATION_PROGRESS = 0.75
 
-[node name="BO" parent="." groups=["Edges"] instance=ExtResource("3_v8wb3")]
+[node name="BO" parent="." groups=["Edges", "Pieces"] instance=ExtResource("3_v8wb3")]
 transform = Transform3D(-4.37114e-08, -1, 0, -4.37114e-08, 1.91069e-15, 1, -1, 4.37114e-08, -4.37114e-08, -3, 0, -3)
 mesh = ExtResource("18_c8dn6")
 X_ROTATION_PROGRESS = 0.5
 Y_ROTATION_PROGRESS = 0.625
 Z_ROTATION_PROGRESS = 0.75
 
-[node name="YG" parent="." groups=["Edges"] instance=ExtResource("3_v8wb3")]
+[node name="YG" parent="." groups=["Edges", "Pieces"] instance=ExtResource("3_v8wb3")]
 transform = Transform3D(4.37114e-08, 3.82137e-15, 1, 8.74228e-08, -1, 0, 1, 8.74228e-08, -4.37114e-08, 0, -3, 3)
 mesh = ExtResource("12_8cwgl")
 X_ROTATION_PROGRESS = 0.875
 
-[node name="YB" parent="." groups=["Edges"] instance=ExtResource("3_v8wb3")]
+[node name="YB" parent="." groups=["Edges", "Pieces"] instance=ExtResource("3_v8wb3")]
 transform = Transform3D(4.37114e-08, -3.82137e-15, -1, -8.74228e-08, -1, 0, -1, 8.74228e-08, -4.37114e-08, 0, -3, -3)
 mesh = ExtResource("13_wisdp")
 X_ROTATION_PROGRESS = 0.625
 Y_ROTATION_PROGRESS = 0.5
 
-[node name="YR" parent="." groups=["Edges"] instance=ExtResource("3_v8wb3")]
+[node name="YR" parent="." groups=["Edges", "Pieces"] instance=ExtResource("3_v8wb3")]
 transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 3, -3, 0)
 mesh = ExtResource("26_3eplq")
 X_ROTATION_PROGRESS = 0.75
 Y_ROTATION_PROGRESS = 0.25
 Z_ROTATION_PROGRESS = 0.125
 
-[node name="YO" parent="." groups=["Edges"] instance=ExtResource("3_v8wb3")]
+[node name="YO" parent="." groups=["Edges", "Pieces"] instance=ExtResource("3_v8wb3")]
 transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, -3, -3, 0)
 mesh = ExtResource("27_cb1w1")
 X_ROTATION_PROGRESS = 0.75
 Y_ROTATION_PROGRESS = 0.75
 Z_ROTATION_PROGRESS = 0.875
 
-[node name="WhiteCenter" parent="." groups=["Centers"] instance=ExtResource("3_v8wb3")]
+[node name="WhiteCenter" parent="." groups=["Centers", "Pieces"] instance=ExtResource("3_v8wb3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
 mesh = ExtResource("3_sj76a")
 X_ROTATION_PROGRESS = 0.25
 Z_ROTATION_PROGRESS = 0.5
 
-[node name="YellowCenter" parent="." groups=["Centers"] instance=ExtResource("3_v8wb3")]
+[node name="YellowCenter" parent="." groups=["Centers", "Pieces"] instance=ExtResource("3_v8wb3")]
 transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, -3, 0)
 mesh = ExtResource("2_xlkhm")
 X_ROTATION_PROGRESS = 0.75
 
-[node name="GreenCenter" parent="." groups=["Centers"] instance=ExtResource("3_v8wb3")]
+[node name="GreenCenter" parent="." groups=["Centers", "Pieces"] instance=ExtResource("3_v8wb3")]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 3)
 mesh = ExtResource("4_32ebc")
 
-[node name="BlueCenter" parent="." groups=["Centers"] instance=ExtResource("3_v8wb3")]
+[node name="BlueCenter" parent="." groups=["Centers", "Pieces"] instance=ExtResource("3_v8wb3")]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, -3)
 mesh = ExtResource("5_pv0k1")
 X_ROTATION_PROGRESS = 0.5
 Y_ROTATION_PROGRESS = 0.5
 
-[node name="RedCenter" parent="." groups=["Centers"] instance=ExtResource("3_v8wb3")]
+[node name="RedCenter" parent="." groups=["Centers", "Pieces"] instance=ExtResource("3_v8wb3")]
 transform = Transform3D(-4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0, 1, 3, 0, 0)
 mesh = ExtResource("6_ud6ra")
 Y_ROTATION_PROGRESS = 0.25
 Z_ROTATION_PROGRESS = 0.25
 
-[node name="OrangeCenter" parent="." groups=["Centers"] instance=ExtResource("3_v8wb3")]
+[node name="OrangeCenter" parent="." groups=["Centers", "Pieces"] instance=ExtResource("3_v8wb3")]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -3, 0, 0)
 mesh = ExtResource("7_j4huu")
 Y_ROTATION_PROGRESS = 0.75
 Z_ROTATION_PROGRESS = 0.75
 
-[node name="Core" parent="." groups=["Core"] instance=ExtResource("3_v8wb3")]
+[node name="Core" parent="." groups=["Core", "Pieces"] instance=ExtResource("3_v8wb3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 mesh = ExtResource("1_amloi")
 
@@ -221,5 +223,3 @@ transform = Transform3D(0.934224, -0.138993, 0.328491, 0.0119287, 0.932611, 0.36
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.764966, -0.562716, 0.313332, 0, 0.486488, 0.873687, -0.64407, -0.668341, 0.372147, 5.6825, 11.1453, 10.7101)
-
-[node name="TurningSide" type="Node3D" parent="."]

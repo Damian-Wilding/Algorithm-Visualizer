@@ -43,7 +43,7 @@ func _process(delta):
 	#wrapf(piece2.get_parent().progress, 0, 1)
 	#piece.get_parent().progress += delta * speed_multiplier
 	#print("Progress: %0.2f" % $MovementPath/follower.progress_ratio)
-	print(piece.global_position)
+	#print(piece.global_position)
 	if $TesterTimer.is_stopped() != true:
 		
 		$Cube/TurningSide.rotation.y += .01
@@ -64,7 +64,7 @@ func _process(delta):
 		$Cube/TurningSide.rotation.x += 0.01		
 	#print(piece2.get_parent().progress_ratio)
 	#
-#
+	
 
 
 func _on_tester_timer_timeout():
