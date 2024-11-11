@@ -2,10 +2,7 @@ extends MeshInstance3D
 
 # This variable keeps track of what sides the cubie is currently on. (Edges will have 2 sides, corners will have 3, centers will have one, and the core will have 0.)
 @export var ON_SIDES = ""
-# These 3 variables keep track of how far along the piece is along the X, Y, and Z rotation paths. (Values will range from 0 to 1.)
-@export var X_ROTATION_PROGRESS = 0.0
-@export var Y_ROTATION_PROGRESS = 0.0
-@export var Z_ROTATION_PROGRESS = 0.0
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

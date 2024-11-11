@@ -27,11 +27,11 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if Input.is_action_just_released("ui_accept") and ELAPSED_TIME >= TIME_TO_TURN:
-		U()
+		Z2()
 	
 				
 	elif Input.is_action_just_released("ui_text_caret_down") and ELAPSED_TIME >= TIME_TO_TURN:
-		R()
+		Z_CCW()
 		
 	
 	# Have the cube rotate if the timer is running (and by running, I mean less than the time allowed for each turn.
@@ -459,43 +459,171 @@ func X():
 	
 # Rotate the entire cube counter clockwise along the X axis.
 func X_CCW():
-	# Update cube logic.
-	$CubeLogic.X_CCW()
+	# Only do this if the cube isn't currently turning already.
+	if ELAPSED_TIME >= TIME_TO_TURN:
+		# Change RADIANS_TO_ROTATE to 90 degrees. (For some reason counterclockwise turns are considered +90 degree turns and clockwise turns are -90 degree turns. At least on the front, right, and top layers/faces.)
+		RADIANS_TO_ROTATE = PI / 2
+		# Update the axis that the pieces will be turning around.
+		change_axis("X")
+		# Remove all previous pieces from the currently turning layer(s).
+		reset_turning_layer()
+		# Cube rotations (where you rotate the cube to face another side without turning any pieces) move all pieces so add every piece to the turning side node.
+		for piece in ALL_PIECES_LIST:
+			remove_child(piece)
+			$TurningSide.add_child(piece)	
+		# Change is_a_turn_happening_or_is_it_the_first_frame_after_a_turn_has_finished to be true since a turn is now underway.
+		is_a_turn_happening_or_is_it_the_first_frame_after_a_turn_has_finished = true
+		# Update cube logic.
+		$CubeLogic.X_CCW()  					# This line probably won't be used anymore since I'm now planning on finding pieces by their global positions if cube logic doesn't work for some reason.
+		# Change the ELAPSED_TIME to be 0 since it is restarting for a new turn. (This makes it so that another turn won't start while this turn is still going.)
+		ELAPSED_TIME = 0.0
 	
 # Rotate the entire cube 180 degrees along the x axis.
 func X2():
-	# Update cube logic.
-	$CubeLogic.X2()
+	# Only do this if the cube isn't currently turning already.
+	if ELAPSED_TIME >= TIME_TO_TURN:
+		# Change RADIANS_TO_ROTATE to -180 degrees. (For some reason counterclockwise turns are considered + degree turns and clockwise turns are - degree turns. At least on the front, right, and top layers/faces.)
+		RADIANS_TO_ROTATE = -PI
+		# Update the axis that the pieces will be turning around.
+		change_axis("X")
+		# Remove all previous pieces from the currently turning layer(s).
+		reset_turning_layer()
+		# Cube rotations (where you rotate the cube to face another side without turning any pieces) move all pieces so add every piece to the turning side node.
+		for piece in ALL_PIECES_LIST:
+			remove_child(piece)
+			$TurningSide.add_child(piece)	
+		# Change is_a_turn_happening_or_is_it_the_first_frame_after_a_turn_has_finished to be true since a turn is now underway.
+		is_a_turn_happening_or_is_it_the_first_frame_after_a_turn_has_finished = true
+		# Update cube logic.
+		$CubeLogic.X2()  					# This line probably won't be used anymore since I'm now planning on finding pieces by their global positions if cube logic doesn't work for some reason.
+		# Change the ELAPSED_TIME to be 0 since it is restarting for a new turn. (This makes it so that another turn won't start while this turn is still going.)
+		ELAPSED_TIME = 0.0
 	
 # Rotate the entire cube clockwise along the y axis.
 func Y():
-	# Update cube logic.
-	$CubeLogic.Y()
+	# Only do this if the cube isn't currently turning already.
+	if ELAPSED_TIME >= TIME_TO_TURN:
+		# Change RADIANS_TO_ROTATE to -90 degrees. (For some reason counterclockwise turns are considered +90 degree turns and clockwise turns are -90 degree turns. At least on the front, right, and top layers/faces.)
+		RADIANS_TO_ROTATE = -PI / 2
+		# Update the axis that the pieces will be turning around.
+		change_axis("Y")
+		# Remove all previous pieces from the currently turning layer(s).
+		reset_turning_layer()
+		# Cube rotations (where you rotate the cube to face another side without turning any pieces) move all pieces so add every piece to the turning side node.
+		for piece in ALL_PIECES_LIST:
+			remove_child(piece)
+			$TurningSide.add_child(piece)	
+		# Change is_a_turn_happening_or_is_it_the_first_frame_after_a_turn_has_finished to be true since a turn is now underway.
+		is_a_turn_happening_or_is_it_the_first_frame_after_a_turn_has_finished = true
+		# Update cube logic.
+		$CubeLogic.Y()  					# This line probably won't be used anymore since I'm now planning on finding pieces by their global positions if cube logic doesn't work for some reason.
+		# Change the ELAPSED_TIME to be 0 since it is restarting for a new turn. (This makes it so that another turn won't start while this turn is still going.)
+		ELAPSED_TIME = 0.0
 	
 # Rotate the entire cube counter clockwise along the y axis.
 func Y_CCW():
-	# Update cube logic.
-	$CubeLogic.Y_CCW()
+	# Only do this if the cube isn't currently turning already.
+	if ELAPSED_TIME >= TIME_TO_TURN:
+		# Change RADIANS_TO_ROTATE to 90 degrees. (For some reason counterclockwise turns are considered +90 degree turns and clockwise turns are -90 degree turns. At least on the front, right, and top layers/faces.)
+		RADIANS_TO_ROTATE = PI / 2
+		# Update the axis that the pieces will be turning around.
+		change_axis("Y")
+		# Remove all previous pieces from the currently turning layer(s).
+		reset_turning_layer()
+		# Cube rotations (where you rotate the cube to face another side without turning any pieces) move all pieces so add every piece to the turning side node.
+		for piece in ALL_PIECES_LIST:
+			remove_child(piece)
+			$TurningSide.add_child(piece)	
+		# Change is_a_turn_happening_or_is_it_the_first_frame_after_a_turn_has_finished to be true since a turn is now underway.
+		is_a_turn_happening_or_is_it_the_first_frame_after_a_turn_has_finished = true
+		# Update cube logic.
+		$CubeLogic.Y_CCW()  					# This line probably won't be used anymore since I'm now planning on finding pieces by their global positions if cube logic doesn't work for some reason.
+		# Change the ELAPSED_TIME to be 0 since it is restarting for a new turn. (This makes it so that another turn won't start while this turn is still going.)
+		ELAPSED_TIME = 0.0
 	
 # Rotate the entire cube 180 degrees along the y axis.
 func Y2():
-	# Update cube logic.
-	$CubeLogic.Y2()
+	# Only do this if the cube isn't currently turning already.
+	if ELAPSED_TIME >= TIME_TO_TURN:
+		# Change RADIANS_TO_ROTATE to -180 degrees. (For some reason counterclockwise turns are considered + degree turns and clockwise turns are - degree turns. At least on the front, right, and top layers/faces.)
+		RADIANS_TO_ROTATE = -PI
+		# Update the axis that the pieces will be turning around.
+		change_axis("Y")
+		# Remove all previous pieces from the currently turning layer(s).
+		reset_turning_layer()
+		# Cube rotations (where you rotate the cube to face another side without turning any pieces) move all pieces so add every piece to the turning side node.
+		for piece in ALL_PIECES_LIST:
+			remove_child(piece)
+			$TurningSide.add_child(piece)	
+		# Change is_a_turn_happening_or_is_it_the_first_frame_after_a_turn_has_finished to be true since a turn is now underway.
+		is_a_turn_happening_or_is_it_the_first_frame_after_a_turn_has_finished = true
+		# Update cube logic.
+		$CubeLogic.Y2()  					# This line probably won't be used anymore since I'm now planning on finding pieces by their global positions if cube logic doesn't work for some reason.
+		# Change the ELAPSED_TIME to be 0 since it is restarting for a new turn. (This makes it so that another turn won't start while this turn is still going.)
+		ELAPSED_TIME = 0.0
 	
 # Rotate the entire cube clockwise along the z axis.
 func Z():
-	# Update cube logic.
-	$CubeLogic.Z()
+	# Only do this if the cube isn't currently turning already.
+	if ELAPSED_TIME >= TIME_TO_TURN:
+		# Change RADIANS_TO_ROTATE to -90 degrees. (For some reason counterclockwise turns are considered +90 degree turns and clockwise turns are -90 degree turns. At least on the front, right, and top layers/faces.)
+		RADIANS_TO_ROTATE = -PI / 2
+		# Update the axis that the pieces will be turning around.
+		change_axis("Z")
+		# Remove all previous pieces from the currently turning layer(s).
+		reset_turning_layer()
+		# Cube rotations (where you rotate the cube to face another side without turning any pieces) move all pieces so add every piece to the turning side node.
+		for piece in ALL_PIECES_LIST:
+			remove_child(piece)
+			$TurningSide.add_child(piece)	
+		# Change is_a_turn_happening_or_is_it_the_first_frame_after_a_turn_has_finished to be true since a turn is now underway.
+		is_a_turn_happening_or_is_it_the_first_frame_after_a_turn_has_finished = true
+		# Update cube logic.
+		$CubeLogic.Z()  					# This line probably won't be used anymore since I'm now planning on finding pieces by their global positions if cube logic doesn't work for some reason.
+		# Change the ELAPSED_TIME to be 0 since it is restarting for a new turn. (This makes it so that another turn won't start while this turn is still going.)
+		ELAPSED_TIME = 0.0
 	
 # Rotate the entire cube counter clockwise along the z axis.
 func Z_CCW():
-	# Update cube logic.
-	$CubeLogic.Z_CCW()
+	# Only do this if the cube isn't currently turning already.
+	if ELAPSED_TIME >= TIME_TO_TURN:
+		# Change RADIANS_TO_ROTATE to 90 degrees. (For some reason counterclockwise turns are considered +90 degree turns and clockwise turns are -90 degree turns. At least on the front, right, and top layers/faces.)
+		RADIANS_TO_ROTATE = PI / 2
+		# Update the axis that the pieces will be turning around.
+		change_axis("Z")
+		# Remove all previous pieces from the currently turning layer(s).
+		reset_turning_layer()
+		# Cube rotations (where you rotate the cube to face another side without turning any pieces) move all pieces so add every piece to the turning side node.
+		for piece in ALL_PIECES_LIST:
+			remove_child(piece)
+			$TurningSide.add_child(piece)	
+		# Change is_a_turn_happening_or_is_it_the_first_frame_after_a_turn_has_finished to be true since a turn is now underway.
+		is_a_turn_happening_or_is_it_the_first_frame_after_a_turn_has_finished = true
+		# Update cube logic.
+		$CubeLogic.Z_CCW()  					# This line probably won't be used anymore since I'm now planning on finding pieces by their global positions if cube logic doesn't work for some reason.
+		# Change the ELAPSED_TIME to be 0 since it is restarting for a new turn. (This makes it so that another turn won't start while this turn is still going.)
+		ELAPSED_TIME = 0.0
 	
 # Rotate the entire cube 180 degrees along the z axis.
 func Z2():
-	# Update cube logic.
-	$CubeLogic.Z2()
+	# Only do this if the cube isn't currently turning already.
+	if ELAPSED_TIME >= TIME_TO_TURN:
+		# Change RADIANS_TO_ROTATE to -180 degrees. (For some reason counterclockwise turns are considered + degree turns and clockwise turns are - degree turns. At least on the front, right, and top layers/faces.)
+		RADIANS_TO_ROTATE = -PI
+		# Update the axis that the pieces will be turning around.
+		change_axis("Z")
+		# Remove all previous pieces from the currently turning layer(s).
+		reset_turning_layer()
+		# Cube rotations (where you rotate the cube to face another side without turning any pieces) move all pieces so add every piece to the turning side node.
+		for piece in ALL_PIECES_LIST:
+			remove_child(piece)
+			$TurningSide.add_child(piece)	
+		# Change is_a_turn_happening_or_is_it_the_first_frame_after_a_turn_has_finished to be true since a turn is now underway.
+		is_a_turn_happening_or_is_it_the_first_frame_after_a_turn_has_finished = true
+		# Update cube logic.
+		$CubeLogic.Z2()  					# This line probably won't be used anymore since I'm now planning on finding pieces by their global positions if cube logic doesn't work for some reason.
+		# Change the ELAPSED_TIME to be 0 since it is restarting for a new turn. (This makes it so that another turn won't start while this turn is still going.)
+		ELAPSED_TIME = 0.0
 
 
 # This function will change the axis that all the moving pieces will be moving around.

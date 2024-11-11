@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://q8nwaondv4gi"]
 
-[ext_resource type="Script" path="res://cube_logic.gd" id="1_8qrdl"]
-[ext_resource type="PackedScene" uid="uid://cjhm0nyng58hr" path="res://sticker.tscn" id="1_y4cpg"]
+[ext_resource type="Script" path="res://Scripts/cube_logic.gd" id="1_8qrdl"]
+[ext_resource type="PackedScene" uid="uid://cjhm0nyng58hr" path="res://Scenes/sticker.tscn" id="1_y4cpg"]
 
 [node name="CubeLogic" type="Node3D"]
 script = ExtResource("1_8qrdl")

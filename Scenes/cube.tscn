@@ -6,7 +6,7 @@
 [ext_resource type="ArrayMesh" uid="uid://g27c0byef4ke" path="res://Assets/CubeParts/Centers/CenterYellow.res" id="2_xlkhm"]
 [ext_resource type="ArrayMesh" uid="uid://wvawrts0s0le" path="res://Assets/CubeParts/Corners/CornerWhiteBlueOrange.res" id="3_0hpic"]
 [ext_resource type="ArrayMesh" uid="uid://788k6h132v61" path="res://Assets/CubeParts/Centers/CenterWhite.res" id="3_sj76a"]
-[ext_resource type="PackedScene" uid="uid://djq3ielctwa5x" path="res://cubie.tscn" id="3_v8wb3"]
+[ext_resource type="PackedScene" uid="uid://djq3ielctwa5x" path="res://Scenes/cubie.tscn" id="3_v8wb3"]
 [ext_resource type="ArrayMesh" uid="uid://bxb6m2ypbvohb" path="res://Assets/CubeParts/Centers/CenterGreen.res" id="4_32ebc"]
 [ext_resource type="ArrayMesh" uid="uid://cjqrduuv2kw3b" path="res://Assets/CubeParts/Corners/CornerWhiteGreenRed.res" id="4_rr6s2"]
 [ext_resource type="ArrayMesh" uid="uid://coxxp5lx5em2w" path="res://Assets/CubeParts/Corners/CornerWhiteGreenOrange.res" id="5_6tju5"]
@@ -29,7 +29,7 @@
 [ext_resource type="ArrayMesh" uid="uid://cwuc2wajearb4" path="res://Assets/CubeParts/Edges/EdgeBlueOrange.res" id="18_c8dn6"]
 [ext_resource type="ArrayMesh" uid="uid://co8142203wgid" path="res://Assets/CubeParts/Edges/EdgeYellowRed.res" id="26_3eplq"]
 [ext_resource type="ArrayMesh" uid="uid://d3skodbj7uy06" path="res://Assets/CubeParts/Edges/EdgeYellowOrange.res" id="27_cb1w1"]
-[ext_resource type="PackedScene" uid="uid://q8nwaondv4gi" path="res://cube_logic.tscn" id="29_kddsc"]
+[ext_resource type="PackedScene" uid="uid://q8nwaondv4gi" path="res://Scenes/cube_logic.tscn" id="29_kddsc"]
 
 [node name="Cube" type="Node3D"]
 script = ExtResource("1_ojui8")
