@@ -28,7 +28,7 @@ func _ready():
 func _process(delta):
 	
 	
-	
+	 
 	if Input.is_action_just_released("ui_accept") and ELAPSED_TIME >= TIME_TO_TURN:
 		U()
 	
