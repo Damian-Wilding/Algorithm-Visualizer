@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://b0ng6llo3v1fb"]
+
+[ext_resource type="Script" path="res://Scripts/CubeController.gd" id="1_t8jd7"]
+
+[node name="CubeController" type="Node3D"]
+script = ExtResource("1_t8jd7")
+
+[node name="TurnTimer" type="Timer" parent="."]
+one_shot = true

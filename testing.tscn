@@ -1,70 +1,36 @@
-[gd_scene load_steps=7 format=3 uid="uid://bhavddjcw5tpt"]
+[gd_scene load_steps=5 format=3 uid="uid://bhavddjcw5tpt"]
 
 [ext_resource type="Script" path="res://Testing.gd" id="1_mwamw"]
 [ext_resource type="PackedScene" uid="uid://djq3ielctwa5x" path="res://cubie.tscn" id="3_60ttf"]
-[ext_resource type="PackedScene" uid="uid://bqwbo6po5hqv5" path="res://movement_path.tscn" id="3_wipv7"]
 [ext_resource type="PackedScene" uid="uid://ch0okutfb546s" path="res://cube.tscn" id="4_m3lbv"]
-
-[sub_resource type="Curve3D" id="Curve3D_3r1m6"]
-_data = {
-"points": PackedVector3Array(-1.49375, 0, 1.54959, 1.49375, 0, -1.54959, 0.00179005, 0, 0.0138104, -1.46583, 0, -1.49375, 1.46583, 0, 1.49375, 6.0047, 0, -0.0420303, 1.47979, 0, -1.46583, -1.47979, 0, 1.46583, 6.0047, 0, 5.94692, 1.52167, 0, 1.49375, -1.52167, 0, -1.49375, 0.015749, 0, 5.97484, -1.47979, 0, 1.45187, 1.47979, 0, -1.45187, 0.00179005, 0, -0.000149727, -1.49375, 0, 1.54959, 1.49375, 0, -1.54959, 0.00179005, 0, 0.0138104),
-"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0)
-}
-point_count = 6
-
-[sub_resource type="Curve3D" id="Curve3D_3gnqj"]
-_data = {
-"points": PackedVector3Array(0, 1.31226, -1.43791, 0, -1.31226, 1.43791, 0, 2.88978, 2.40046, 0, 1.52167, 1.80087, 0, -1.52167, -1.80087, 0, -2.75016, 2.21898, 0, -1.14474, 0.991178, 0, 1.14474, -0.991178, 0, -2.48492, -2.84859, 0, -1.14474, -1.10286, 0, 1.14474, 1.10286, 0, 2.83394, -2.62523, 0, 1.04702, -1.13078, 0, -1.04702, 1.13078, 0, 2.90374, 2.3865),
-"tilts": PackedFloat32Array(0, 0, 0, 0, 0)
-}
-point_count = 5
+[ext_resource type="PackedScene" uid="uid://b0ng6llo3v1fb" path="res://Scenes/cube_controller.tscn" id="4_o2lsl"]
 
 [node name="Testing" type="Node3D"]
 script = ExtResource("1_mwamw")
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(-0.753243, -0.38965, 0.529903, -0.0691905, 0.84811, 0.525282, -0.654093, 0.359001, -0.665794, 11.3198, 9.48952, -10.6722)
+transform = Transform3D(0.782637, -0.280366, 0.555764, 0.0105725, 0.898683, 0.438471, -0.622388, -0.337288, 0.706307, 13.6467, 9.48952, 15.5127)
 fov = 68.2
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.830858, 0.492707, 0.258677, 0, -0.464842, 0.885394, 0.556484, -0.735637, -0.386218, 2.02466, 3.95161, -4.51309)
-visible = false
+transform = Transform3D(-0.32248, 0.838092, 0.440008, 1.23808e-08, -0.464842, 0.885394, 0.946576, 0.285522, 0.149902, 2.02466, 8.95161, 9.48691)
 
 [node name="TesterTimer" type="Timer" parent="."]
-wait_time = 0.47
-one_shot = true
+wait_time = 0.25
 autostart = true
-
-[node name="Path3D" type="Path3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.4914, 0, 3.73729)
-visible = false
-curve = SubResource("Curve3D_3r1m6")
-
-[node name="PathFollow3D" type="PathFollow3D" parent="Path3D"]
-transform = Transform3D(0.532349, 0, -0.846509, 0, 0.999982, 0, 0.846514, 0, 0.532346, 0.641669, 0, -0.503094)
-progress = 0.824584
-
-[node name="Cubie" parent="Path3D/PathFollow3D" instance=ExtResource("3_60ttf")]
-transform = Transform3D(1000, 0, 0, 0, 1000, 0, 0, 0, 1000, 0, 0, 10)
-top_level = true
-skeleton = NodePath("../../..")
-
-[node name="Path3D2" type="Path3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0, 7.71278)
-visible = false
-curve = SubResource("Curve3D_3gnqj")
-
-[node name="PathFollow3D" type="PathFollow3D" parent="Path3D2"]
-transform = Transform3D(-1, 5.89315e-08, -6.45742e-08, 0, 0.738643, 0.674097, 8.74228e-08, 0.674097, -0.738643, 0, 2.88978, 2.40046)
-
-[node name="MovementPath" parent="." instance=ExtResource("3_wipv7")]
-visible = false
 
 [node name="Cubie2" parent="." instance=ExtResource("3_60ttf")]
 transform = Transform3D(1000, 0, 0, 0, 1000, 0, 0, 0, 1000, 3, 3, 3)
 visible = false
-skeleton = NodePath("../MovementPath")
+skeleton = NodePath("")
 
-[node name="Cube" parent="." instance=ExtResource("4_m3lbv")]
+[node name="RightCube" parent="." instance=ExtResource("4_m3lbv")]
+
+[node name="LeftCube" parent="." instance=ExtResource("4_m3lbv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.3928, 0, 4.30857)
+
+[node name="LeftCubeController" parent="." instance=ExtResource("4_o2lsl")]
+
+[node name="RightCubeController" parent="." instance=ExtResource("4_o2lsl")]
 
 [connection signal="timeout" from="TesterTimer" to="." method="_on_tester_timer_timeout"]

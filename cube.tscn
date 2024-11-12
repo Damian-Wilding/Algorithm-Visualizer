@@ -214,6 +214,8 @@ mesh = ExtResource("1_amloi")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(0.934224, -0.138993, 0.328491, 0.0119287, 0.932611, 0.360687, -0.356487, -0.333044, 0.872926, 7.70154, 5.56944, 17.7892)
+visible = false
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.764966, -0.562716, 0.313332, 0, 0.486488, 0.873687, -0.64407, -0.668341, 0.372147, 5.6825, 11.1453, 10.7101)
+visible = false
