@@ -28,7 +28,6 @@ func _ready():
 func _process(delta):
 	
 	
-	 
 	if Input.is_action_just_released("ui_accept") and ELAPSED_TIME >= TIME_TO_TURN:
 		U()
 	
@@ -642,7 +641,6 @@ func Z2():
 		$CubeLogic.Z2()  					# This line probably won't be used anymore since I'm now planning on finding pieces by their global positions if cube logic doesn't work for some reason.
 		# Change the ELAPSED_TIME to be 0 since it is restarting for a new turn. (This makes it so that another turn won't start while this turn is still going.)
 		ELAPSED_TIME = 0.0
-
 
 # This function will pretend to do a turn but nothing will actually move for the duration of the "turn". This will be used to pause the cube's movement for however long you tell it to.
 func Nothing(amount_of_seconds_to_do_nothing):
