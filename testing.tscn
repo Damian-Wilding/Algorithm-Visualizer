@@ -28,6 +28,7 @@ fov = 68.2
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.830858, 0.492707, 0.258677, 0, -0.464842, 0.885394, 0.556484, -0.735637, -0.386218, 2.02466, 3.95161, -4.51309)
+visible = false
 
 [node name="TesterTimer" type="Timer" parent="."]
 wait_time = 0.47
