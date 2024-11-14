@@ -6,40 +6,36 @@ var STICKER_VALUES = {"A":"", "B":"", "C":"", "D":"", "E":"", "F":"", "G":"", "H
 var PREVIOUS_STICKER_VALUES = {"A":"", "B":"", "C":"", "D":"", "E":"", "F":"", "G":"", "H":"", "I":"", "J":"", "K":"", "L":"", "M":"", "N":"", "O":"", "P":"", "Q":"", "R":"", "S":"", "T":"", "U":"", "V":"", "W":"", "X":"", "a":"", "b":"", "c":"", "d":"", "e":"", "f":"", "g":"", "h":"", "i":"", "j":"", "k":"", "l":"", "m":"", "n":"", "o":"", "p":"", "q":"", "r":"", "s":"", "t":"", "u":"", "v":"", "w":"", "x":"", "UC":"","LC":"", "FC":"", "RC":"", "BC":"", "DC":""}
 # This list just holds all the individual location names in it. There are 6 lists in this list (one for each side) that contain 4 corner locations, 4 edge locations, and 1 center location. (The locations are keys in the sticker_values dictionary.) (each of the 6 lists starts with the 4 corner values together in a list, then the edge values together in a list, and last, the center value that's not in a list.) (ex: [[corner1, corner2, corner3, corner4], [edge1, edge2, edge3, edge4], center] )
 var LOCATION_LIST = [[["A", "B", "C", "D"], ["a", "b", "c", "d"], "UC"], [["E", "F", "G", "H"], ["e", "f", "g", "h"], "LC"], [["I", "J", "K", "L"], ["i", "j", "k", "l"], "FC"], [["M", "N", "O", "P"], ["m", "n", "o", "p"], "RC"], [["Q", "R", "S", "T"], ["q", "r", "s", "t"], "BC"], [["U", "V", "W", "X"], ["u", "v", "w", "x"], "DC"]]
-# This Dictionary will keep track of each pieces rotation on each axis. They are stored as progression percentages for each axis.
-#var PIECE_ROTATION_PROGRESSION_PERCENTAGES = {"ItalianCorner":{"X":, "Y":, "Z":}, "IrishCorner":{"X":, "Y":, "Z":}, "USACorner":{"X":, "Y":, "Z":}, "NetherlandsCorner":{"X":, "Y":, "Z":}, "BobMarleyCorner":{"X":, "Y":, "Z":}, "SpriteCorner":{"X":, "Y":, "Z":}, "PrimaryCorner":{"X":, "Y":, "Z":}, "NerfCorner":{"X":, "Y":, "Z":}, "WG":{"X":, "Y":, "Z":}, "WB":{"X":, "Y":, "Z":}, "WR":{"X":, "Y":, "Z":}, "WO":{"X":, "Y":, "Z":}, "GR":{"X":, "Y":, "Z":}, "GO":{"X":, "Y":, "Z":}, "BR":{"X":, "Y":, "Z":}, "BO":{"X":, "Y":, "Z":}, "YG":{"X":, "Y":, "Z":}, "YB":{"X":, "Y":, "Z":}, "YR":{"X":, "Y":, "Z":}, "YO":{"X":, "Y":, "Z":}, "UC":{"X":, "Y":, "Z":}, "LC":{"X":, "Y":, "Z":}, "FC":{"X":, "Y":, "Z":}, "RC":{"X":, "Y":, "Z":}, "BC":{"X":, "Y":, "Z":}, "DC":{"X":, "Y":, "Z":}, "Core":{"X":, "Y":, "Z":}}
-# The following 4 variables are shortcuts to the edges, corners, centers, and core child nodes of the cube.
-var EDGES
-var CORNERS
-var CENTERS
-var CORE
+# The following 4 variables are shortcuts to all the pieces, edges, corners, centers, and the core child nodes of the cube.
+var PIECES = []
+var EDGES = []
+var CORNERS = []
+var CENTERS = []
+var CORE = []
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	# Assign the right colors to all of the stickers. (Always starts with the white side on top and the green side in the front.)
-	# White side stickers.
-	set_sides_colors("U", "W", "W", "W", "W", "W", "W", "W", "W", "W")
-	# Yellow side stickers.						
-	set_sides_colors("D", "Y", "Y", "Y", "Y", "Y", "Y", "Y", "Y", "Y")
-	# Green side stickers.						
-	set_sides_colors("F", "G", "G", "G", "G", "G", "G", "G", "G", "G")
-	# Blue side stickers.						
-	set_sides_colors("B", "B", "B", "B", "B", "B", "B", "B", "B", "B")	
-	# Red side stickers.						
-	set_sides_colors("R", "R", "R", "R", "R", "R", "R", "R", "R", "R")
-	# Orange side stickers.						
-	set_sides_colors("L", "O", "O", "O", "O", "O", "O", "O", "O", "O")
+	# Assign the right colors to all of the stickers. 
+	reset_all_stickers()
 	
-	# Make a list of all the corners in the scene tree.
-	CORNERS = get_tree().get_nodes_in_group("Corners")
-	# Make a list of all the edges in the scene tree.
-	EDGES = get_tree().get_nodes_in_group("Edges")
-	# Make a list of all the centers in the scene tree.
-	CENTERS = get_tree().get_nodes_in_group("Centers")
-	# Make a variable that holds the core of the cube.
-	CORE = get_tree().get_first_node_in_group("Core")
+	# Go through all the children of the parent/cube node and put them into the pieces list if they have the piece group attribute.
+	for child_node in get_parent().get_children():
+		if child_node.is_in_group("Pieces"):
+			PIECES.append(child_node)
+			# Now find out what type of piece they are and add them to the correct list based on what type of piece they are.
+			if child_node.is_in_group("Edges"):
+				EDGES.append(child_node)
+			elif child_node.is_in_group("Corners"):
+				CORNERS.append(child_node)
+			elif child_node.is_in_group("Centers"):
+				CENTERS.append(child_node)
+			elif child_node.is_in_group("Core"):
+				CORE.append(child_node)
+			else:
+				print("Something went wrong adding a specific piece to the correct list in cube logic. Most likely error is a non-piece node being put in the pieces group. (Check cube_logic.gd -> _ready())")
+	# We now have lists named PIECES, EDGES, CORNERS, CENTERS, and CORE. They all have the corresponding pieces in them.
 	
-
+	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
@@ -876,4 +872,19 @@ func find_piece_node(piece_name):
 			else:
 				return edge
 			
-	
+
+# This function resets all the sticker colors to make the cube solved again.
+func reset_all_stickers():
+	# Go through all sides and set the sticker colors on it. (Always starts with the white side on top and the green side in the front.)
+	# White side stickers.
+	set_sides_colors("U", "W", "W", "W", "W", "W", "W", "W", "W", "W")
+	# Yellow side stickers.						
+	set_sides_colors("D", "Y", "Y", "Y", "Y", "Y", "Y", "Y", "Y", "Y")
+	# Green side stickers.						
+	set_sides_colors("F", "G", "G", "G", "G", "G", "G", "G", "G", "G")
+	# Blue side stickers.						
+	set_sides_colors("B", "B", "B", "B", "B", "B", "B", "B", "B", "B")	
+	# Red side stickers.						
+	set_sides_colors("R", "R", "R", "R", "R", "R", "R", "R", "R", "R")
+	# Orange side stickers.						
+	set_sides_colors("L", "O", "O", "O", "O", "O", "O", "O", "O", "O")

@@ -1,8 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://bhavddjcw5tpt"]
+[gd_scene load_steps=4 format=3 uid="uid://bhavddjcw5tpt"]
 
 [ext_resource type="Script" path="res://Testing.gd" id="1_mwamw"]
 [ext_resource type="PackedScene" uid="uid://djq3ielctwa5x" path="res://cubie.tscn" id="3_60ttf"]
-[ext_resource type="PackedScene" uid="uid://ch0okutfb546s" path="res://cube.tscn" id="4_m3lbv"]
 [ext_resource type="PackedScene" uid="uid://b0ng6llo3v1fb" path="res://Scenes/cube_controller.tscn" id="4_o2lsl"]
 
 [node name="Testing" type="Node3D"]
@@ -24,13 +23,12 @@ transform = Transform3D(1000, 0, 0, 0, 1000, 0, 0, 0, 1000, 3, 3, 3)
 visible = false
 skeleton = NodePath("")
 
-[node name="RightCube" parent="." instance=ExtResource("4_m3lbv")]
-
-[node name="LeftCube" parent="." instance=ExtResource("4_m3lbv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.3928, 0, 4.30857)
-
 [node name="LeftCubeController" parent="." instance=ExtResource("4_o2lsl")]
+transform = Transform3D(0.888072, 0, 0.459704, 0, 1, 0, -0.459704, 0, 0.888072, -13.6902, 0, 5.37124)
+TIME_PER_TURN = 0.4
 
 [node name="RightCubeController" parent="." instance=ExtResource("4_o2lsl")]
+transform = Transform3D(0.975584, 0, -0.219625, 0, 1, 0, 0.219625, 0, 0.975584, 0.527758, 0, -6.62866)
+TIME_PER_TURN = 0.4
 
 [connection signal="timeout" from="TesterTimer" to="." method="_on_tester_timer_timeout"]
