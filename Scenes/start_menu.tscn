@@ -1,6 +1,14 @@
-[gd_scene load_steps=2 format=3 uid="uid://c1d8vx8alp53o"]
+[gd_scene load_steps=5 format=3 uid="uid://c1d8vx8alp53o"]
 
+[ext_resource type="Script" path="res://Scripts/start_menu.gd" id="1_7pmmx"]
 [ext_resource type="FontFile" uid="uid://mh0471bkk7ti" path="res://Assets/Fonts/Digital.ttf" id="2_rtjhg"]
+
+[sub_resource type="Theme" id="Theme_pjrim"]
+default_font = ExtResource("2_rtjhg")
+default_font_size = 20
+
+[sub_resource type="FontVariation" id="FontVariation_p4kb6"]
+base_font = ExtResource("2_rtjhg")
 
 [node name="StartMenu" type="Control"]
 layout_mode = 3
@@ -11,27 +19,105 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 0
 size_flags_vertical = 8
+script = ExtResource("1_7pmmx")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
 layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
+anchors_preset = 15
+anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 4.0
-offset_top = -115.0
-offset_right = 229.0
-grow_vertical = 0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
 
-[node name="ResumeButton" type="Button" parent="VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2
-theme_override_colors/font_pressed_color = Color(0, 1, 0, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 11
-theme_override_fonts/font = ExtResource("2_rtjhg")
-theme_override_font_sizes/font_size = 24
-text = "Resume"
+offset_right = 227.0
+offset_bottom = 54.0
 
-[node name="SettingsButton" type="Button" parent="VBoxContainer"]
+[node name="MenuContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+offset_right = 1152.0
+offset_bottom = 648.0
+
+[node name="Steps" type="HBoxContainer" parent="MenuContainer"]
+clip_contents = true
+custom_minimum_size = Vector2(0, 572)
+layout_mode = 2
+
+[node name="F2LButton" type="Button" parent="MenuContainer/Steps"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = SubResource("Theme_pjrim")
+theme_type_variation = &"first theme?"
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 7
+theme_override_fonts/font = SubResource("FontVariation_p4kb6")
+theme_override_font_sizes/font_size = 20
+text = "First 2 Layers
+(F2L)"
+
+[node name="OLLButton1" type="Button" parent="MenuContainer/Steps"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme = SubResource("Theme_pjrim")
+theme_type_variation = &"first theme?"
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_hover_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 7
+theme_override_fonts/font = ExtResource("2_rtjhg")
+theme_override_font_sizes/font_size = 20
+text = "First 2 Layers         
+(F2L)"
+
+[node name="OLLButton2" type="Button" parent="MenuContainer/Steps"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme = SubResource("Theme_pjrim")
+theme_type_variation = &"first theme?"
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_hover_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 7
+theme_override_fonts/font = ExtResource("2_rtjhg")
+theme_override_font_sizes/font_size = 20
+text = "First 2 Layers         
+(F2L)"
+
+[node name="PLLButton1" type="Button" parent="MenuContainer/Steps"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme = SubResource("Theme_pjrim")
+theme_type_variation = &"first theme?"
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_hover_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 7
+theme_override_fonts/font = ExtResource("2_rtjhg")
+theme_override_font_sizes/font_size = 20
+text = "First 2 Layers         
+(F2L)"
+
+[node name="PLLButton2" type="Button" parent="MenuContainer/Steps"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme = SubResource("Theme_pjrim")
+theme_type_variation = &"first theme?"
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_colors/icon_hover_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 7
+theme_override_fonts/font = ExtResource("2_rtjhg")
+theme_override_font_sizes/font_size = 20
+text = "First 2 Layers         
+(F2L)"
+
+[node name="Options" type="VBoxContainer" parent="MenuContainer"]
+layout_mode = 2
+
+[node name="SettingsButton" type="Button" parent="MenuContainer/Options"]
 layout_mode = 2
 theme_override_colors/font_pressed_color = Color(0, 1, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
@@ -40,7 +126,7 @@ theme_override_fonts/font = ExtResource("2_rtjhg")
 theme_override_font_sizes/font_size = 24
 text = "Settings"
 
-[node name="QuitButton" type="Button" parent="VBoxContainer"]
+[node name="QuitButton" type="Button" parent="MenuContainer/Options"]
 layout_mode = 2
 theme_override_colors/font_pressed_color = Color(0, 1, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
@@ -49,5 +135,4 @@ theme_override_fonts/font = ExtResource("2_rtjhg")
 theme_override_font_sizes/font_size = 24
 text = "Quit"
 
-[connection signal="pressed" from="VBoxContainer/ResumeButton" to="." method="_on_resume_button_pressed" flags=18]
-[connection signal="pressed" from="VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed" flags=18]
+[connection signal="pressed" from="MenuContainer/Options/QuitButton" to="." method="_on_quit_button_pressed"]

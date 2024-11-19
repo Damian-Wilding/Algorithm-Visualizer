@@ -15,7 +15,7 @@ script = ExtResource("1_sx1jd")
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 0
 offset_left = 5.0
-offset_top = 496.0
+offset_top = 495.0
 offset_right = 230.0
 offset_bottom = 648.0
 
@@ -28,14 +28,14 @@ theme_override_fonts/font = ExtResource("2_3m7ep")
 theme_override_font_sizes/font_size = 24
 text = "Resume"
 
-[node name="ChangeStepButton" type="Button" parent="VBoxContainer"]
+[node name="HomeButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
 theme_override_colors/font_pressed_color = Color(0, 1, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 11
 theme_override_fonts/font = ExtResource("2_3m7ep")
 theme_override_font_sizes/font_size = 24
-text = "Change Step"
+text = "Home Menu"
 
 [node name="SettingsButton" type="Button" parent="VBoxContainer"]
 layout_mode = 2
@@ -56,4 +56,5 @@ theme_override_font_sizes/font_size = 24
 text = "Quit"
 
 [connection signal="pressed" from="VBoxContainer/ResumeButton" to="." method="_on_resume_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/HomeButton" to="." method="_on_home_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]

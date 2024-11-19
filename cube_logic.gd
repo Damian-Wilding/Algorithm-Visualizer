@@ -767,8 +767,13 @@ func find_pieces_in_layer(layer):
 	var pieces = []
 	# Figure out what layer is being used by using a match statement.
 	match layer:
+		"ALL":
+			# The layer is the entire cube. This is usually used for cube rotations and not turns. 
+			# All we need to do is return the PIECES list since it was already made in _ready().
+			return PIECES
 		"U":
 			# The layer is the top layer. Go through all the locations on the top side and add those pieces to the list.
+			# First find the corners and add them to the list.
 			for location in LOCATION_LIST[0][0]:
 				pieces.append(find_corner_identity(location))
 			# Then, find go through all the edges and add them to the list.
@@ -778,6 +783,7 @@ func find_pieces_in_layer(layer):
 			pieces.append(find_center_identity(LOCATION_LIST[0][2]))
 		"L":
 			# The layer is the left layer. Go through all the locations on the left side and add those pieces to the list.
+			# First find the corners and add them to the list.# First find the corners and add them to the list.
 			for location in LOCATION_LIST[1][0]:
 				pieces.append(find_corner_identity(location))
 			# Then, find go through all the edges and add them to the list.
@@ -787,6 +793,7 @@ func find_pieces_in_layer(layer):
 			pieces.append(find_center_identity(LOCATION_LIST[1][2]))
 		"F":
 			# The layer is the front layer. Go through all the locations on the front side and add those pieces to the list.
+			# First find the corners and add them to the list.
 			for location in LOCATION_LIST[2][0]:
 				pieces.append(find_corner_identity(location))
 			# Then, find go through all the edges and add them to the list.
@@ -796,6 +803,7 @@ func find_pieces_in_layer(layer):
 			pieces.append(find_center_identity(LOCATION_LIST[2][2]))
 		"R":
 			# The layer is the right layer. Go through all the locations on the right side and add those pieces to the list.
+			# First find the corners and add them to the list.
 			for location in LOCATION_LIST[3][0]:
 				pieces.append(find_corner_identity(location))
 			# Then, find go through all the edges and add them to the list.
@@ -805,6 +813,7 @@ func find_pieces_in_layer(layer):
 			pieces.append(find_center_identity(LOCATION_LIST[3][2]))
 		"B":
 			# The layer is the back layer. Go through all the locations on the back side and add those pieces to the list.
+			# First find the corners and add them to the list.
 			for location in LOCATION_LIST[4][0]:
 				pieces.append(find_corner_identity(location))
 			# Then, find go through all the edges and add them to the list.
@@ -814,6 +823,7 @@ func find_pieces_in_layer(layer):
 			pieces.append(find_center_identity(LOCATION_LIST[4][2]))
 		"D":
 			# The layer is the bottom layer. Go through all the locations on the bottom side and add those pieces to the list.
+			# First find the corners and add them to the list.
 			for location in LOCATION_LIST[5][0]:
 				pieces.append(find_corner_identity(location))
 			# Then, find go through all the edges and add them to the list.
