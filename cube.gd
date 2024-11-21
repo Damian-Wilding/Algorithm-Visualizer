@@ -32,7 +32,7 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	# Have the cube rotate if the timer is running and the IS_CUBE_ACTIVE bool is true. (and by running, I mean less than the time allowed for each turn.)
-	if ELAPSED_TIME < TIME_TO_TURN:
+	if ELAPSED_TIME < TIME_TO_TURN and IS_CUBE_ACTIVE == true:
 	#	# Add the time that has passed since the last frame to the ELAPSED_TIME variable.
 		ELAPSED_TIME += delta
 		# Calculate how much progress should be made based on long it's been since the last frame (the delta).
@@ -210,7 +210,12 @@ func Z_CCW():
 func Z2():
 	# Use the turn() function to make the turn by giving it the correct arguements.
 	Turn(-PI, "Z", "ALL", "Z2")
-
+	
+# Turn the d layers clockwise.
+func d():
+	# Use the turn() function to make the turn by giving it the correct arguements.
+	Turn(PI/2, "Y", "d", "d")
+	
 # This function will pretend to do a turn but nothing will actually move for the duration of the "turn". This will be used to pause the cube's movement for however long you tell it to.
 func Nothing(amount_of_seconds_to_do_nothing):
 	# Only do this if the cube isn't currently turning already.

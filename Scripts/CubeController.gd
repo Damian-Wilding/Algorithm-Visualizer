@@ -3,7 +3,7 @@ extends Node3D
 # This list will hold the list of moves that the cube will be doing.
 @export var ALGORITHM = []
 # This number will be how long (in seconds) each turn will take to make. It can be changed in the settings UI.
-@export var TIME_PER_TURN = 1.0
+@export var TIME_PER_TURN = 0.44
 # This variable will store the path of the cube that is being controlled by this node.
 var CONNECTED_CUBE
 # This bool keeps track of whether the cube is simulating an algorithm or remaining stagnant.
@@ -19,20 +19,26 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	# If the controller is running and the timer is not running, then it's time to start a new turn and the timer again.
 	if IS_CONTROLLER_RUNNING == true and $TurnTimer.is_stopped() == true:
 		start_next_turn()
 		$TurnTimer.start(TIME_PER_TURN + 0.1)
 
 
-# This function is used to start the cubes turning simulation.
+# This function is used to start/unpause the cube's turning simulation.
 func start_simulation():
 	# Change the bool to indicate the the cube is now simulating an algorithm.
 	IS_CONTROLLER_RUNNING = true
 
 
-# This function starts a new turn.
+# This function is used to stop/pause the cube's turning simulation.
+func stop_simulation():
+	# Change the bool to indicate the cube is no longer simulating an algorithm.
+	IS_CONTROLLER_RUNNING = false
+
+
+# This function starts a new turn.			# Next order of business is making it so there is an option for the cube animation to do the same alg over and over without resetting the cube.
 func start_next_turn():
 	# Check to see if the last move was the last move in the algorithm.
 	if MOVE_NUMBER >= ALGORITHM.size():

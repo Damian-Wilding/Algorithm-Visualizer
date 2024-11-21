@@ -1,11 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://c1d8vx8alp53o"]
+[gd_scene load_steps=4 format=3 uid="uid://c1d8vx8alp53o"]
 
 [ext_resource type="Script" path="res://Scripts/start_menu.gd" id="1_7pmmx"]
 [ext_resource type="FontFile" uid="uid://mh0471bkk7ti" path="res://Assets/Fonts/Digital.ttf" id="2_rtjhg"]
-
-[sub_resource type="Theme" id="Theme_pjrim"]
-default_font = ExtResource("2_rtjhg")
-default_font_size = 20
 
 [sub_resource type="FontVariation" id="FontVariation_p4kb6"]
 base_font = ExtResource("2_rtjhg")
@@ -49,7 +45,6 @@ layout_mode = 2
 [node name="F2LButton" type="Button" parent="MenuContainer/Steps"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme = SubResource("Theme_pjrim")
 theme_type_variation = &"first theme?"
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 7
@@ -62,57 +57,53 @@ text = "First 2 Layers
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 size_flags_horizontal = 3
-theme = SubResource("Theme_pjrim")
 theme_type_variation = &"first theme?"
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_colors/icon_hover_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 7
 theme_override_fonts/font = ExtResource("2_rtjhg")
 theme_override_font_sizes/font_size = 20
-text = "First 2 Layers         
-(F2L)"
+text = "Orient Top Edges
+(2 Look OLL pt.1)"
 
 [node name="OLLButton2" type="Button" parent="MenuContainer/Steps"]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 size_flags_horizontal = 3
-theme = SubResource("Theme_pjrim")
 theme_type_variation = &"first theme?"
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_colors/icon_hover_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 7
 theme_override_fonts/font = ExtResource("2_rtjhg")
 theme_override_font_sizes/font_size = 20
-text = "First 2 Layers         
-(F2L)"
+text = "Orient Top Corners
+(2 Look OLL pt.2)"
 
 [node name="PLLButton1" type="Button" parent="MenuContainer/Steps"]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 size_flags_horizontal = 3
-theme = SubResource("Theme_pjrim")
 theme_type_variation = &"first theme?"
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_colors/icon_hover_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 7
 theme_override_fonts/font = ExtResource("2_rtjhg")
 theme_override_font_sizes/font_size = 20
-text = "First 2 Layers         
-(F2L)"
+text = "Permute Top Corners
+(2 Look PLL pt.1)"
 
 [node name="PLLButton2" type="Button" parent="MenuContainer/Steps"]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 size_flags_horizontal = 3
-theme = SubResource("Theme_pjrim")
 theme_type_variation = &"first theme?"
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_colors/icon_hover_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 7
 theme_override_fonts/font = ExtResource("2_rtjhg")
 theme_override_font_sizes/font_size = 20
-text = "First 2 Layers         
-(F2L)"
+text = "Permute Top Edges
+(2 Look PLL pt.2)"
 
 [node name="Options" type="VBoxContainer" parent="MenuContainer"]
 layout_mode = 2
@@ -135,4 +126,24 @@ theme_override_fonts/font = ExtResource("2_rtjhg")
 theme_override_font_sizes/font_size = 24
 text = "Quit"
 
+[connection signal="focus_entered" from="MenuContainer/Steps/F2LButton" to="." method="_on_f2l_button_active"]
+[connection signal="focus_exited" from="MenuContainer/Steps/F2LButton" to="." method="_on_f2l_button_inactive"]
+[connection signal="mouse_entered" from="MenuContainer/Steps/F2LButton" to="." method="_on_f2l_button_active"]
+[connection signal="mouse_exited" from="MenuContainer/Steps/F2LButton" to="." method="_on_f2l_button_inactive"]
+[connection signal="focus_entered" from="MenuContainer/Steps/OLLButton1" to="." method="_on_oll_button1_active"]
+[connection signal="focus_exited" from="MenuContainer/Steps/OLLButton1" to="." method="_on_oll_button1_inactive"]
+[connection signal="mouse_entered" from="MenuContainer/Steps/OLLButton1" to="." method="_on_oll_button1_active"]
+[connection signal="mouse_exited" from="MenuContainer/Steps/OLLButton1" to="." method="_on_oll_button1_inactive"]
+[connection signal="focus_entered" from="MenuContainer/Steps/OLLButton2" to="." method="_on_oll_button2_active"]
+[connection signal="focus_exited" from="MenuContainer/Steps/OLLButton2" to="." method="_on_oll_button2_inactive"]
+[connection signal="mouse_entered" from="MenuContainer/Steps/OLLButton2" to="." method="_on_oll_button2_active"]
+[connection signal="mouse_exited" from="MenuContainer/Steps/OLLButton2" to="." method="_on_oll_button2_inactive"]
+[connection signal="focus_entered" from="MenuContainer/Steps/PLLButton1" to="." method="_on_pll_button1_active"]
+[connection signal="focus_exited" from="MenuContainer/Steps/PLLButton1" to="." method="_on_pll_button1_inactive"]
+[connection signal="mouse_entered" from="MenuContainer/Steps/PLLButton1" to="." method="_on_pll_button1_active"]
+[connection signal="mouse_exited" from="MenuContainer/Steps/PLLButton1" to="." method="_on_pll_button1_inactive"]
+[connection signal="focus_entered" from="MenuContainer/Steps/PLLButton2" to="." method="_on_pll_button2_active"]
+[connection signal="focus_exited" from="MenuContainer/Steps/PLLButton2" to="." method="_on_pll_button2_inactive"]
+[connection signal="mouse_entered" from="MenuContainer/Steps/PLLButton2" to="." method="_on_pll_button2_active"]
+[connection signal="mouse_exited" from="MenuContainer/Steps/PLLButton2" to="." method="_on_pll_button2_inactive"]
 [connection signal="pressed" from="MenuContainer/Options/QuitButton" to="." method="_on_quit_button_pressed"]

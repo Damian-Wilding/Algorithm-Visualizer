@@ -6,6 +6,8 @@ var STICKER_VALUES = {"A":"", "B":"", "C":"", "D":"", "E":"", "F":"", "G":"", "H
 var PREVIOUS_STICKER_VALUES = {"A":"", "B":"", "C":"", "D":"", "E":"", "F":"", "G":"", "H":"", "I":"", "J":"", "K":"", "L":"", "M":"", "N":"", "O":"", "P":"", "Q":"", "R":"", "S":"", "T":"", "U":"", "V":"", "W":"", "X":"", "a":"", "b":"", "c":"", "d":"", "e":"", "f":"", "g":"", "h":"", "i":"", "j":"", "k":"", "l":"", "m":"", "n":"", "o":"", "p":"", "q":"", "r":"", "s":"", "t":"", "u":"", "v":"", "w":"", "x":"", "UC":"","LC":"", "FC":"", "RC":"", "BC":"", "DC":""}
 # This list just holds all the individual location names in it. There are 6 lists in this list (one for each side) that contain 4 corner locations, 4 edge locations, and 1 center location. (The locations are keys in the sticker_values dictionary.) (each of the 6 lists starts with the 4 corner values together in a list, then the edge values together in a list, and last, the center value that's not in a list.) (ex: [[corner1, corner2, corner3, corner4], [edge1, edge2, edge3, edge4], center] )
 var LOCATION_LIST = [[["A", "B", "C", "D"], ["a", "b", "c", "d"], "UC"], [["E", "F", "G", "H"], ["e", "f", "g", "h"], "LC"], [["I", "J", "K", "L"], ["i", "j", "k", "l"], "FC"], [["M", "N", "O", "P"], ["m", "n", "o", "p"], "RC"], [["Q", "R", "S", "T"], ["q", "r", "s", "t"], "BC"], [["U", "V", "W", "X"], ["u", "v", "w", "x"], "DC"]]
+# This list holds all the individual locations in all 3 slice layers. There are 3 lists in this list (one for each slice) that contain 4 edge locations and 4 center locations. Each list has 2 lists in it. The first one is all 4 edge locations and the second one is all center locations.
+var SLICE_LOCATION_LIST = [[["a", "c", "u", "w"], ["UC", "FC", "DC", "BC"]], [["b", "d", "v", "x"], ["UC", "RC", "DC", "LC"]], [["j", "l", "r", "t"], ["FC", "RC", "BC", "LC"]]]
 # The following 4 variables are shortcuts to all the pieces, edges, corners, centers, and the core child nodes of the cube.
 var PIECES = []
 var EDGES = []
@@ -37,7 +39,7 @@ func _ready():
 	
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	pass
 	
 	
@@ -620,6 +622,10 @@ func Z2():
 	change_selected_stickers({"Q":"S", "R":"T", "S":"Q", "T":"R", "q":"s", "r":"t", "s":"q", "t":"r"})
 	# Update the bottom face stickers.
 	change_selected_stickers({"U":"C", "V":"D", "W":"A", "X":"B", "u":"c", "v":"d", "w":"a", "x":"b", "DC":"UC"})
+	
+# Turn the d layers clockwise by changing every sticker that will change values due to the turn.
+func d():
+	pass # I'm not coding this one right now since it isn't needed for any algorithms. I can do it if the situation arises.
 
 
 # This function will tell you the name of the corner that is at the specified location you give it. The argument is the location of a sticker on that corner piece location.
@@ -831,7 +837,21 @@ func find_pieces_in_layer(layer):
 				pieces.append(find_edge_identity(location))
 			# Finally, add the center to the list.
 			pieces.append(find_center_identity(LOCATION_LIST[5][2]))
-			
+		"d":
+			# The layer is the D layer and the layer in between the D and u layer. Go through all the pieces in those layers and add them to the list.
+			# First find the corners and add them to the list.
+			for location in LOCATION_LIST[5][0]:
+				pieces.append(find_corner_identity(location))
+			# Then, find go through all the edges and add them to the list. The D layer edges will be added first, then the e layer edges.
+			for location in LOCATION_LIST[5][1]:
+				pieces.append(find_edge_identity(location))
+			for location in SLICE_LOCATION_LIST[2][0]:
+				pieces.append(find_edge_identity(location))
+			# Then, find the centers and add them to the list.
+			for location in SLICE_LOCATION_LIST[2][1]:
+				pieces.append(find_center_identity(location))
+			# Finally, add the core to the list.
+			pieces.append(CORE[0])
 	# Now return the list of parts that has been made.
 	return(pieces)
 	
