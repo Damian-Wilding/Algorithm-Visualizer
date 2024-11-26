@@ -11,7 +11,6 @@ var IS_CONTROLLER_RUNNING: bool = false
 # This number keeps track of what move we're on in the algorithm. It resets to 0 when a new cycle starts.
 var MOVE_NUMBER = 0
 
-
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	# Set the cube path up.
@@ -30,12 +29,14 @@ func _process(_delta):
 func start_simulation():
 	# Change the bool to indicate the the cube is now simulating an algorithm.
 	IS_CONTROLLER_RUNNING = true
+	$TurnTimer.paused = false
 
 
 # This function is used to stop/pause the cube's turning simulation.
 func stop_simulation():
 	# Change the bool to indicate the cube is no longer simulating an algorithm.
 	IS_CONTROLLER_RUNNING = false
+	$TurnTimer.paused = true
 
 
 # This function starts a new turn.			# Next order of business is making it so there is an option for the cube animation to do the same alg over and over without resetting the cube.
