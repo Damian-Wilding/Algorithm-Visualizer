@@ -1,0 +1,77 @@
+[gd_scene load_steps=4 format=3 uid="uid://culql3dgn2hd0"]
+
+[ext_resource type="Script" path="res://Scenes/Templates/screen_template_4_cubes.gd" id="1_agn44"]
+[ext_resource type="PackedScene" uid="uid://b0ng6llo3v1fb" path="res://Scenes/cube_controller.tscn" id="2_bq5e5"]
+[ext_resource type="FontFile" uid="uid://mh0471bkk7ti" path="res://Assets/Fonts/Digital.ttf" id="3_i6c84"]
+
+[node name="ScreenTemplate4Cubes" type="Node3D"]
+script = ExtResource("1_agn44")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.884581, 0.466387, 0, -0.466387, 0.884581, 0, 0, 0)
+fov = 52.2
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Camera3D"]
+light_energy = 0.895
+
+[node name="CubeController1" parent="." groups=["Controllers"] instance=ExtResource("2_bq5e5")]
+transform = Transform3D(0.993231, -0.0206824, -0.114308, 0.00867873, 0.994484, -0.104529, 0.115839, 0.102829, 0.987931, -17.567, -10.3, -34.261)
+
+[node name="Algorithm1" type="Label" parent="."]
+offset_top = 7.0
+offset_right = 1152.0
+offset_bottom = 648.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("3_i6c84")
+theme_override_font_sizes/font_size = 45
+text = "R U R' U'"
+
+[node name="CubeController2" parent="." groups=["Controllers"] instance=ExtResource("2_bq5e5")]
+transform = Transform3D(0.652862, -0.185955, -0.734297, 0.131095, 0.982508, -0.132256, 0.746047, -0.00991721, 0.66582, 16.064, -10.3, -34.843)
+
+[node name="Algorithm2" type="Label" parent="."]
+offset_top = 7.0
+offset_right = 1152.0
+offset_bottom = 648.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("3_i6c84")
+theme_override_font_sizes/font_size = 45
+text = "R U R' U'"
+horizontal_alignment = 2
+
+[node name="CubeController3" parent="." groups=["Controllers"] instance=ExtResource("2_bq5e5")]
+transform = Transform3D(0.983631, -0.0128401, -0.179736, 0.0430212, 0.985347, 0.165048, 0.174983, -0.170078, 0.969771, -19.09, -23.4, -27.488)
+
+[node name="Algorithm3" type="Label" parent="."]
+anchors_preset = -1
+anchor_top = 0.476852
+anchor_bottom = 0.476852
+offset_top = 7.0
+offset_right = 1152.0
+offset_bottom = 648.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("3_i6c84")
+theme_override_font_sizes/font_size = 45
+text = "R U R' U'"
+metadata/_edit_use_anchors_ = true
+
+[node name="CubeController4" parent="." groups=["Controllers"] instance=ExtResource("2_bq5e5")]
+transform = Transform3D(0.641103, -0.151214, -0.752411, 0.233444, 0.972364, 0.00349065, 0.731089, -0.177884, 0.658686, 17.29, -24.715, -28.228)
+
+[node name="Algorithm4" type="Label" parent="."]
+anchors_preset = -1
+anchor_top = 0.476852
+anchor_bottom = 0.476852
+offset_top = 7.0
+offset_right = 1152.0
+offset_bottom = 648.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("3_i6c84")
+theme_override_font_sizes/font_size = 45
+text = "R U R' U'"
+horizontal_alignment = 2
+metadata/_edit_use_anchors_ = true

@@ -12,7 +12,6 @@ func _ready():
 		CONTROLLERS.append(controller)
 	# Give the cube controllers default algorithms.
 	$CubeController1.ALGORITHM = ["R", "U", "R_CCW", "U_CCW"]
-	$CubeController2.ALGORITHM = ["R", "U", "R_CCW", "U_CCW"]
 	# Start all the cube controllers.
 	for controller in CONTROLLERS:
 		controller.start_simulation()
@@ -47,3 +46,9 @@ func toggle_pause_simulation():
 		for controller in CONTROLLERS:
 			controller.start_simulation()
 
+
+
+# oll1 3 cubes
+# oll2 1 cube -> 7ish cubes
+# pll1 2 cubes
+# pll2 4 cubes

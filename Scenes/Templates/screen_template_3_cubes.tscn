@@ -1,0 +1,56 @@
+[gd_scene load_steps=4 format=3 uid="uid://dttivf2qr4udl"]
+
+[ext_resource type="Script" path="res://Scenes/Templates/screen_template_3_cubes.gd" id="1_28loo"]
+[ext_resource type="PackedScene" uid="uid://b0ng6llo3v1fb" path="res://Scenes/cube_controller.tscn" id="2_m603y"]
+[ext_resource type="FontFile" uid="uid://mh0471bkk7ti" path="res://Assets/Fonts/Digital.ttf" id="3_2ckub"]
+
+[node name="ScreenTemplate3Cubes" type="Node3D"]
+script = ExtResource("1_28loo")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.884581, 0.466387, 0, -0.466387, 0.884581, 0, 0, 0)
+fov = 52.2
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Camera3D"]
+light_energy = 0.895
+
+[node name="CubeController1" parent="." groups=["Controllers"] instance=ExtResource("2_m603y")]
+transform = Transform3D(0.977784, 0, -0.209619, 0, 1, 0, 0.209619, 0, 0.977784, -16.287, -12.48, -27.566)
+
+[node name="Algorithm1" type="Label" parent="."]
+offset_top = 7.0
+offset_right = 1152.0
+offset_bottom = 648.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("3_2ckub")
+theme_override_font_sizes/font_size = 45
+text = "R U R' U'"
+
+[node name="CubeController2" parent="." groups=["Controllers"] instance=ExtResource("2_m603y")]
+transform = Transform3D(0.843392, 0, -0.5373, 0, 1, 0, 0.5373, 0, 0.843392, 0.459, -14, -25.628)
+
+[node name="Algorithm2" type="Label" parent="."]
+offset_top = 7.0
+offset_right = 1152.0
+offset_bottom = 648.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("3_2ckub")
+theme_override_font_sizes/font_size = 45
+text = "R U R' U'"
+horizontal_alignment = 1
+
+[node name="CubeController3" parent="." groups=["Controllers"] instance=ExtResource("2_m603y")]
+transform = Transform3D(0.643245, -0.284573, -0.710813, 0.203738, 0.958511, -0.199368, 0.738056, -0.0165769, 0.674536, 17.29, -14.3, -28.228)
+
+[node name="Algorithm3" type="Label" parent="."]
+offset_top = 7.0
+offset_right = 1152.0
+offset_bottom = 648.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("3_2ckub")
+theme_override_font_sizes/font_size = 45
+text = "R U R' U'"
+horizontal_alignment = 2

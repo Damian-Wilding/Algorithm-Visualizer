@@ -1,0 +1,68 @@
+[gd_scene load_steps=6 format=3 uid="uid://c2q4hexjtoaei"]
+
+[ext_resource type="Script" path="res://Scripts/Tutorial_Screens/f2l_tutorial_scene.gd" id="1_mt5a4"]
+[ext_resource type="PackedScene" uid="uid://b0ng6llo3v1fb" path="res://Scenes/cube_controller.tscn" id="2_xgtv6"]
+[ext_resource type="FontFile" uid="uid://mh0471bkk7ti" path="res://Assets/Fonts/Digital.ttf" id="3_ruixj"]
+[ext_resource type="PackedScene" uid="uid://yx7ylw287uyf" path="res://Scenes/Static_Cubes/f2l_left_alg_cube.tscn" id="4_pkh3w"]
+[ext_resource type="PackedScene" uid="uid://fi813wbjhaab" path="res://Scenes/Static_Cubes/f2l_right_alg_cube.tscn" id="5_aagwf"]
+
+[node name="F2LTutorialScene" type="Node3D"]
+script = ExtResource("1_mt5a4")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.884581, 0.466387, 0, -0.466387, 0.884581, 0, 0, 0)
+fov = 52.2
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Camera3D"]
+light_energy = 0.895
+
+[node name="Algorithm1" type="Label" parent="."]
+offset_top = 7.0
+offset_right = 1152.0
+offset_bottom = 648.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("3_ruixj")
+theme_override_font_sizes/font_size = 45
+text = " U' L' U L U F U' F'"
+
+[node name="Algorithm2" type="Label" parent="."]
+offset_top = 7.0
+offset_right = 1152.0
+offset_bottom = 648.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("3_ruixj")
+theme_override_font_sizes/font_size = 45
+text = "U R U' R' U' F' U F "
+horizontal_alignment = 2
+
+[node name="F2LLabel" type="Label" parent="."]
+offset_top = 7.0
+offset_right = 1152.0
+offset_bottom = 648.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("3_ruixj")
+theme_override_font_sizes/font_size = 45
+text = "Second Layer"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="CubeController1" parent="." groups=["Controllers"] instance=ExtResource("2_xgtv6")]
+transform = Transform3D(0.963172, 0, -0.268887, 0, 1, 0, 0.268887, 0, 0.963172, -7.371, -8, -17)
+
+[node name="CubeController2" parent="." groups=["Controllers"] instance=ExtResource("2_xgtv6")]
+transform = Transform3D(0.62534, -0.236067, -0.74379, 0.119206, 0.970857, -0.207912, 0.771194, 0.0413512, 0.635256, 8.158, -8, -17)
+
+[node name="F2LLeftAlgCube" parent="." instance=ExtResource("4_pkh3w")]
+
+[node name="F2LRightAlgCube" parent="." instance=ExtResource("5_aagwf")]
+
+[node name="MiniCubes" type="Node3D" parent="."]
+
+[node name="MiniLeftAlgCube" parent="MiniCubes" instance=ExtResource("4_pkh3w")]
+transform = Transform3D(0.499909, 0.196884, 0.843402, -0.206773, 0.972789, -0.104528, -0.841033, -0.122138, 0.527016, -52.125, -57.46, -52.905)
+
+[node name="MiniRightAlgCube" parent="MiniCubes" instance=ExtResource("5_aagwf")]
+transform = Transform3D(0.374066, -0.256918, -0.891105, 0.330951, 0.934577, -0.130526, 0.866341, -0.246087, 0.434621, 56.437, -61.152, -55.444)

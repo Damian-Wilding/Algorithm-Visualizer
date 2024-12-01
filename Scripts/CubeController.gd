@@ -55,3 +55,13 @@ func start_next_turn():
 		# Increase the move count by 1.
 		MOVE_NUMBER += 1
 		
+
+# This function changes the cube that the cube controller is controlling. (Used when you don't want a standard cube.)
+func change_cube(new_cube):
+	# Disconnect and delete the current cube first.
+	CONNECTED_CUBE.queue_free()
+	# Remove the given cube from its parent then add it as a child to this controller.
+	new_cube.get_parent().remove_child(new_cube)
+	add_child(new_cube)
+	# Now set the CONNECTED_CUBE to be the new cube.
+	CONNECTED_CUBE = new_cube
