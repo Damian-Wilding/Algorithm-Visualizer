@@ -1,0 +1,45 @@
+[gd_scene load_steps=4 format=3 uid="uid://bsh74c0danmi"]
+
+[ext_resource type="Script" path="res://Scenes/Templates/ScreenTemplate.gd" id="1_bp1dc"]
+[ext_resource type="PackedScene" uid="uid://b0ng6llo3v1fb" path="res://Scenes/cube_controller.tscn" id="2_7rscd"]
+[ext_resource type="FontFile" uid="uid://mh0471bkk7ti" path="res://Assets/Fonts/Digital.ttf" id="3_y5al7"]
+
+[node name="ScreenTemplate2Cubes" type="Node3D"]
+script = ExtResource("1_bp1dc")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.884581, 0.466387, 0, -0.466387, 0.884581, 0, 0, 0)
+fov = 52.2
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Camera3D"]
+light_energy = 0.895
+
+[node name="CubeController1" parent="." groups=["Controllers"] instance=ExtResource("2_7rscd")]
+transform = Transform3D(0.963172, 0, -0.268887, 0, 1, 0, 0.268887, 0, 0.963172, -7.371, -8, -17)
+
+[node name="Algorithm1" type="Label" parent="."]
+offset_left = 283.0
+offset_top = 7.0
+offset_right = 1435.0
+offset_bottom = 648.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("3_y5al7")
+theme_override_font_sizes/font_size = 45
+text = "R U R' U'"
+horizontal_alignment = 1
+
+[node name="CubeController2" parent="." groups=["Controllers"] instance=ExtResource("2_7rscd")]
+transform = Transform3D(0.507539, 0, -0.86163, 0, 1, 0, 0.86163, 0, 0.507539, 8.158, -8, -17)
+
+[node name="Algorithm2" type="Label" parent="."]
+offset_left = -317.0
+offset_top = 7.0
+offset_right = 835.0
+offset_bottom = 648.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("3_y5al7")
+theme_override_font_sizes/font_size = 45
+text = "R U R' U'"
+horizontal_alignment = 1

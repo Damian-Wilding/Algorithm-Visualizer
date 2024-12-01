@@ -29,6 +29,7 @@ func _process(_delta):
 func start_simulation():
 	# Change the bool to indicate the the cube is now simulating an algorithm.
 	IS_CONTROLLER_RUNNING = true
+	# Start/restart the turn timer.
 	$TurnTimer.paused = false
 
 
@@ -36,6 +37,7 @@ func start_simulation():
 func stop_simulation():
 	# Change the bool to indicate the cube is no longer simulating an algorithm.
 	IS_CONTROLLER_RUNNING = false
+	# Pause/stop the turn timer.
 	$TurnTimer.paused = true
 
 

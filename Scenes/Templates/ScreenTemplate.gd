@@ -1,13 +1,21 @@
 extends Node3D
 
+# This list contains all the controllers in it.
+var CONTROLLERS = []
 # This bool keeps track of whether the pause menu is open or not.
 var IS_PAUSE_MENU_ACTIVE: bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	# Give the cube controller a default algorithm.
-	$CubeController.ALGORITHM = ["R", "U", "R_CCW", "U_CCW"]
-	$CubeController.start_simulation()
+	# Add all the cube controllers to the cube controllers list.
+	for controller in get_tree().get_nodes_in_group("Controllers"):
+		CONTROLLERS.append(controller)
+	# Give the cube controllers default algorithms.
+	$CubeController1.ALGORITHM = ["R", "U", "R_CCW", "U_CCW"]
+	$CubeController2.ALGORITHM = ["R", "U", "R_CCW", "U_CCW"]
+	# Start all the cube controllers.
+	for controller in CONTROLLERS:
+		controller.start_simulation()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -27,10 +35,15 @@ func toggle_pause_simulation():
 		add_child(pause_menu_instance)
 		# Toggle IS_PAUSE_MENU_ACTIVE.
 		IS_PAUSE_MENU_ACTIVE = true
-		# Pause the cube controller.
-		$CubeController.stop_simulation()
+		# Pause all the cube controllers.
+		for controller in CONTROLLERS:
+			controller.stop_simulation()
 	else:	
 		# The pause menu is already active so remove it.
 		$PauseMenu.queue_free()
 		# Toggle IS_PAUSE_MENU_ACTIVE.
 		IS_PAUSE_MENU_ACTIVE = false
+		# Unpause all the cube controllers.
+		for controller in CONTROLLERS:
+			controller.start_simulation()
+

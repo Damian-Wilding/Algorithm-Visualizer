@@ -14,7 +14,7 @@ fov = 52.2
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Camera3D"]
 light_energy = 0.895
 
-[node name="CubeController" parent="." instance=ExtResource("1_rclih")]
+[node name="CubeController" parent="." groups=["Controllers"] instance=ExtResource("1_rclih")]
 transform = Transform3D(0.788011, 0, -0.615662, 0, 1, 0, 0.615662, 0, 0.788011, 0, -7.5, -15)
 
 [node name="Algorithm" type="Label" parent="."]
