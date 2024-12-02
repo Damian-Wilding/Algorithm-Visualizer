@@ -17,6 +17,18 @@ light_energy = 0.895
 [node name="CubeController1" parent="." groups=["Controllers"] instance=ExtResource("1_rclih")]
 transform = Transform3D(0.788011, 0, -0.615662, 0, 1, 0, 0.615662, 0, 0.788011, 0, -7.5, -15)
 
+[node name="StepName" type="Label" parent="."]
+offset_top = 7.0
+offset_right = 1152.0
+offset_bottom = 648.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("2_pcxp2")
+theme_override_font_sizes/font_size = 45
+text = "Step name"
+horizontal_alignment = 1
+vertical_alignment = 2
+
 [node name="Algorithm" type="Label" parent="."]
 offset_top = 7.0
 offset_right = 1152.0

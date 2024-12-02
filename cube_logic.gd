@@ -623,6 +623,32 @@ func Z2():
 	# Update the bottom face stickers.
 	change_selected_stickers({"U":"C", "V":"D", "W":"A", "X":"B", "u":"c", "v":"d", "w":"a", "x":"b", "DC":"UC"})
 	
+# Turn the M slice (Layer between the right and left sides) counter clockwise (when facing the right side) by changing every sticker that will change values due to the turn.
+func M():
+	# Updating the previous value for every sticker on the cube.
+	update_all_stickers()
+	# Update the top face stickers.
+	change_selected_stickers({"a":"s", "c":"q", "UC":"BC"})
+	# Update the front face stickers.
+	change_selected_stickers({"i":"a", "k":"c", "FC":"UC"})
+	# Update the back face stickers.
+	change_selected_stickers({"q":"w", "s":"u", "BC":"DC"})
+	# Update the bottom face stickers.
+	change_selected_stickers({"u":"i", "w":"k", "DC":"FC"})
+	
+# Turn the M slice (Layer between the right and left sides) clockwise (when facing the right side) by changing every sticker that will change values due to the turn.
+func M_CCW():
+	# I just realized that I could just do M() 3 times to do an M'. I'm 93 hours into this project....
+	M()
+	M()
+	M()
+	
+# Turn the M slice (Layer between the right and left sides) 180 degrees by changing every sticker that will change values due to the turn.
+func M2():
+	# Call M() twice. (saves me lots of code by not making me program all the individual sticker changes.
+	M()
+	M()
+	
 # Turn the d layers clockwise by changing every sticker that will change values due to the turn.
 func d():
 	pass # I'm not coding this one right now since it isn't needed for any algorithms. I can do it if the situation arises.
@@ -849,6 +875,16 @@ func find_pieces_in_layer(layer):
 				pieces.append(find_edge_identity(location))
 			# Then, find the centers and add them to the list.
 			for location in SLICE_LOCATION_LIST[2][1]:
+				pieces.append(find_center_identity(location))
+			# Finally, add the core to the list.
+			pieces.append(CORE[0])
+		"M":
+			# The layer (slice) is the M slice. Go through all the pieces in the slice and add those pieces to the list.
+			# First find the edges and add them to the list.
+			for location in SLICE_LOCATION_LIST[0][0]:
+				pieces.append(find_edge_identity(location))
+			# Then find the centers and add them to the list.
+			for location in SLICE_LOCATION_LIST[0][1]:
 				pieces.append(find_center_identity(location))
 			# Finally, add the core to the list.
 			pieces.append(CORE[0])

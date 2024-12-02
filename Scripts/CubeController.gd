@@ -41,7 +41,7 @@ func stop_simulation():
 	$TurnTimer.paused = true
 
 
-# This function starts a new turn.			# Next order of business is making it so there is an option for the cube animation to do the same alg over and over without resetting the cube.
+# This function starts a new turn.
 func start_next_turn():
 	# Check to see if the last move was the last move in the algorithm.
 	if MOVE_NUMBER >= ALGORITHM.size():
@@ -65,3 +65,5 @@ func change_cube(new_cube):
 	add_child(new_cube)
 	# Now set the CONNECTED_CUBE to be the new cube.
 	CONNECTED_CUBE = new_cube
+	# Change the name of the connected cube to be "Cube". (Some functions won't work unless this is done.)
+	CONNECTED_CUBE.name = "Cube"

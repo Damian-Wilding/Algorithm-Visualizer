@@ -13,9 +13,10 @@ func _ready():
 	# Change the cubes being used by the cube controllers.
 	change_cubes()
 	# Give the cube controllers default algorithms.
-	$CubeController1.ALGORITHM = ["F", "R", "U", "R_CCW", "U_CCW", "F_CCW"]
-	$CubeController2.ALGORITHM = ["F", "R", "U", "R_CCW", "U_CCW", "F_CCW", "U2", "F", "U", "R", "U_CCW", "R_CCW", "F_CCW"]
-	$CubeController3.ALGORITHM = ["F", "U", "R", "U_CCW", "R_CCW", "F_CCW"]
+	$CubeController1.ALGORITHM = ["R", "U_CCW", "R", "U", "R", "U", "R", "U_CCW", "R_CCW", "U_CCW", "R2"]
+	$CubeController2.ALGORITHM = ["L_CCW", "U", "L_CCW", "U_CCW", "L_CCW", "U_CCW", "L_CCW", "U", "L", "U", "L2"]
+	$CubeController3.ALGORITHM = ["M2", "U", "M2", "U2", "M2", "U", "M2"]
+	$CubeController4.ALGORITHM = ["M2", "U", "M2", "U", "M_CCW", "U2", "M2", "U2", "M_CCW"]
 	# Start all the cube controllers.
 	for controller in CONTROLLERS:
 		controller.start_simulation()
@@ -54,6 +55,8 @@ func toggle_pause_simulation():
 # This function is used to switch the cubes being used in each cube controller. (It will be different in every scene.)
 func change_cubes():
 	# Change each cube for each of the cube controllers.
-	$CubeController1.change_cube($OLL1LeftCube)
-	$CubeController2.change_cube($OLL1CenterCube)
-	$CubeController3.change_cube($OLL1RightCube)
+	$CubeController1.change_cube($PLL2Cube1)
+	$CubeController2.change_cube($PLL2Cube2)
+	$CubeController3.change_cube($PLL2Cube3)
+	$CubeController4.change_cube($PLL2Cube4)
+	

@@ -1,0 +1,68 @@
+[gd_scene load_steps=6 format=3 uid="uid://b8e3nmwirpu1m"]
+
+[ext_resource type="Script" path="res://Scripts/Tutorial_Screens/PLL1TutorialScene.gd" id="1_nwace"]
+[ext_resource type="FontFile" uid="uid://mh0471bkk7ti" path="res://Assets/Fonts/Digital.ttf" id="2_jrcn0"]
+[ext_resource type="PackedScene" uid="uid://dr53q7jjh5s7o" path="res://Scenes/Static_Cubes/pll1_cube_2.tscn" id="4_yp20r"]
+[ext_resource type="PackedScene" uid="uid://b0ng6llo3v1fb" path="res://Scenes/cube_controller.tscn" id="5_hveew"]
+[ext_resource type="PackedScene" uid="uid://clnebks86wpcb" path="res://Scenes/Static_Cubes/pll1_cube_1.tscn" id="6_07gxv"]
+
+[node name="PLL1TutorialScene" type="Node3D"]
+script = ExtResource("1_nwace")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.884581, 0.466387, 0, -0.466387, 0.884581, 0, 0, 0)
+fov = 52.2
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Camera3D"]
+light_energy = 0.895
+
+[node name="PLL1Label" type="Label" parent="."]
+offset_top = 7.0
+offset_right = 1152.0
+offset_bottom = 648.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("2_jrcn0")
+theme_override_font_sizes/font_size = 45
+text = "Permute Top Layer Corners (PLL pt.1)"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="Algorithm1" type="Label" parent="."]
+offset_top = 7.0
+offset_right = 1152.0
+offset_bottom = 648.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("2_jrcn0")
+theme_override_font_sizes/font_size = 28
+text = " R U R' U' R' F R2 U' R' U' R U R' F'"
+
+[node name="Algorithm2" type="Label" parent="."]
+offset_top = 7.0
+offset_right = 1152.0
+offset_bottom = 648.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("2_jrcn0")
+theme_override_font_sizes/font_size = 28
+text = "F R U' R' U' R U R' F' R U R' U' R' F R F' "
+horizontal_alignment = 2
+
+[node name="MiniCubes" type="Node3D" parent="."]
+
+[node name="PLL1Cube1" parent="MiniCubes" instance=ExtResource("6_07gxv")]
+transform = Transform3D(0.382715, 0.178744, 0.906411, -0.206773, 0.972789, -0.104528, -0.90043, -0.147416, 0.40926, -52.125, -57.46, -52.905)
+
+[node name="PLL1Cube2" parent="MiniCubes" instance=ExtResource("4_yp20r")]
+transform = Transform3D(0.414274, -0.143374, -0.898789, 0.333805, 0.942636, 0.00349065, 0.84673, -0.301466, 0.438368, 56.437, -61.152, -55.444)
+
+[node name="CubeController1" parent="." groups=["Controllers"] instance=ExtResource("5_hveew")]
+transform = Transform3D(0.963172, 0, -0.268887, 0, 1, 0, 0.268887, 0, 0.963172, -7.371, -8, -17)
+
+[node name="CubeController2" parent="." groups=["Controllers"] instance=ExtResource("5_hveew")]
+transform = Transform3D(0.62534, -0.236067, -0.74379, 0.119206, 0.970857, -0.207912, 0.771194, 0.0413512, 0.635256, 8.158, -8, -17)
+
+[node name="PLL1Cube1" parent="." instance=ExtResource("6_07gxv")]
+
+[node name="PLL1Cube2" parent="." instance=ExtResource("4_yp20r")]

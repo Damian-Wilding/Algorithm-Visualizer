@@ -1,0 +1,49 @@
+[gd_scene load_steps=5 format=3 uid="uid://ckv534bm62wn0"]
+
+[ext_resource type="Script" path="res://Scripts/Tutorial_Screens/OLL2TutorialScene.gd" id="1_ceopf"]
+[ext_resource type="PackedScene" uid="uid://b0ng6llo3v1fb" path="res://Scenes/cube_controller.tscn" id="2_ggrmg"]
+[ext_resource type="PackedScene" uid="uid://db3428lcntrqh" path="res://Scenes/Static_Cubes/oll2_cube_1.tscn" id="3_7b3x4"]
+[ext_resource type="FontFile" uid="uid://mh0471bkk7ti" path="res://Assets/Fonts/Digital.ttf" id="3_iejf4"]
+
+[node name="OLL2TutorialScene" type="Node3D"]
+script = ExtResource("1_ceopf")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.884581, 0.466387, 0, -0.466387, 0.884581, 0, 0, 0)
+fov = 52.2
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Camera3D"]
+light_energy = 0.895
+
+[node name="CubeController1" parent="." groups=["Controllers"] instance=ExtResource("2_ggrmg")]
+transform = Transform3D(0.788011, 0, -0.615662, 0, 1, 0, 0.615662, 0, 0.788011, 0, -7.5, -15)
+
+[node name="TinyCubes" type="Node3D" parent="."]
+
+[node name="OLL2Cube1" parent="TinyCubes" instance=ExtResource("3_7b3x4")]
+transform = Transform3D(0.559893, -0.223602, -0.797823, 0.199312, 0.97097, -0.132256, 0.804235, -0.0849659, 0.588206, 41.25, -53, -59.25)
+
+[node name="OLL2Label" type="Label" parent="."]
+offset_top = 7.0
+offset_right = 1152.0
+offset_bottom = 648.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("3_iejf4")
+theme_override_font_sizes/font_size = 45
+text = "Orient Top Layer Corners (OLL pt.2)"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="Algorithm" type="Label" parent="."]
+offset_top = 7.0
+offset_right = 1152.0
+offset_bottom = 648.0
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("3_iejf4")
+theme_override_font_sizes/font_size = 45
+text = "R U R' U R U2 R'"
+horizontal_alignment = 1
+
+[node name="OLL2Cube1" parent="." instance=ExtResource("3_7b3x4")]

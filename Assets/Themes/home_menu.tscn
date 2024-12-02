@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://dbsomdfm7ha3v"]
+[gd_scene load_steps=6 format=3 uid="uid://dbsomdfm7ha3v"]
 
 [ext_resource type="Script" path="res://Scripts/home_menu.gd" id="1_dvkqr"]
 [ext_resource type="PackedScene" uid="uid://c1d8vx8alp53o" path="res://Scenes/start_menu.tscn" id="1_e16aw"]
 [ext_resource type="PackedScene" uid="uid://b0ng6llo3v1fb" path="res://Scenes/cube_controller.tscn" id="2_m6iuu"]
 [ext_resource type="PackedScene" uid="uid://djq3ielctwa5x" path="res://cubie.tscn" id="3_vk1tp"]
+[ext_resource type="PackedScene" uid="uid://cfuvtrlm1wavo" path="res://Scenes/Static_Cubes/f2l_cube.tscn" id="5_sjxfm"]
 
 [node name="HomeMenu" type="Node3D"]
 script = ExtResource("1_dvkqr")
@@ -102,19 +103,25 @@ transform = Transform3D(200, 0, 0, 0, 200, 0, 0, 0, 200, 16, 8, -8)
 [node name="Cubie24" parent="Grid" instance=ExtResource("3_vk1tp")]
 transform = Transform3D(200, 0, 0, 0, 200, 0, 0, 0, 200, -16, 8, -8)
 
-[node name="Cubes" type="Node3D" parent="."]
+[node name="CubeControllers" type="Node3D" parent="."]
+visible = false
 
-[node name="CubeControllerF2L" parent="Cubes" instance=ExtResource("2_m6iuu")]
+[node name="SecondaryCubes" type="Node3D" parent="."]
+visible = false
+
+[node name="CubeControllerF2L" parent="." instance=ExtResource("2_m6iuu")]
 transform = Transform3D(0.989272, 0, -0.146083, 0, 1, 0, 0.146083, 0, 0.989272, -38.346, -7, -34.647)
 
-[node name="CubeControllerOLL1" parent="Cubes" instance=ExtResource("2_m6iuu")]
+[node name="CubeControllerOLL1" parent="." instance=ExtResource("2_m6iuu")]
 transform = Transform3D(0.977068, 0, -0.212928, 0, 1, 0, 0.212928, 0, 0.977068, -15.8058, -2, -29.3855)
 
-[node name="CubeControllerOLL2" parent="Cubes" instance=ExtResource("2_m6iuu")]
+[node name="CubeControllerOLL2" parent="." instance=ExtResource("2_m6iuu")]
 transform = Transform3D(0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, 0.707107, 0, -2, -30)
 
-[node name="CubeControllerPLL1" parent="Cubes" instance=ExtResource("2_m6iuu")]
+[node name="CubeControllerPLL1" parent="." instance=ExtResource("2_m6iuu")]
 transform = Transform3D(0.21303, 0, -0.977046, 0, 1, 0, 0.977046, 0, 0.21303, 15.806, -2, -29.386)
 
-[node name="CubeControllerPLL2" parent="Cubes" instance=ExtResource("2_m6iuu")]
+[node name="CubeControllerPLL2" parent="." instance=ExtResource("2_m6iuu")]
 transform = Transform3D(0.146532, 0, -0.989206, 0, 1, 0, 0.989206, 0, 0.146532, 38.346, -7, -34.647)
+
+[node name="F2LCube" parent="." groups=["Cubes"] instance=ExtResource("5_sjxfm")]

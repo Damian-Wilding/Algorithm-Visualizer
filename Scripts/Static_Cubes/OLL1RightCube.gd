@@ -17,7 +17,7 @@ var IS_A_TURN_HAPPENING_OR_IS_IT_THE_FIRST_FRAME_AFTER_A_TURN_HAS_FINISHED: bool
 # This bool will keep track of whether the cube is going to be moving or not. If it is false, the cube will be frozen until it turns to true.
 var IS_CUBE_ACTIVE: bool = true
 # This dictionary contains all of the pieces in the puzzle and their home position/rotations. It will be used to reset all the pieces when the cube needs to be reset/instantly solved.
-var HOME_POSITIONS_AND_ROTATIONS = {"ItalianCorner": [Vector3(3,3,3), Vector3(0,-PI/2,0)], "IrishCorner": [Vector3(-3,3,3), Vector3(0,-PI/2,0)], "USACorner": [Vector3(3,3,-3), Vector3(0,-PI/2,0)], "NetherlandsCorner": [Vector3(-3,3,-3), Vector3(0,-PI/2,0)], "BobMarleyCorner": [Vector3(3,-3,3), Vector3(-PI,PI/2,PI)], "SpriteCorner": [Vector3(-3,-3,3), Vector3(PI,PI/2,PI)], "PrimaryCorner": [Vector3(3,-3,-3), Vector3(PI,PI/2,PI)], "NerfCorner": [Vector3(-3,-3,-3), Vector3(0,-PI/2,0)], "WG": [Vector3(0,3,3), Vector3(0,-PI/2,0)], "WB": [Vector3(0,3,-3), Vector3(0,-PI/2,0)], "WR": [Vector3(3,3,0), Vector3(0,-PI/2,0)], "WO": [Vector3(-3,3,0), Vector3(0,-PI/2,0)], "GR": [Vector3(3,0,3), Vector3(0,-PI/2,0)], "BR": [Vector3(3,0,-3), Vector3(0,-PI/2,0)], "GO": [Vector3(-3,0,3), Vector3(0,-PI/2,0)], "BO": [Vector3(-3,0,-3), Vector3(0,-PI/2,0)], "YG": [Vector3(0,-3,3), Vector3(0,-PI/2,0)], "YB": [Vector3(0,-3,-3), Vector3(0,-PI/2,0)], "YR": [Vector3(3,-3,0), Vector3(0,-PI/2,0)], "YO": [Vector3(-3,-3,0), Vector3(0,-PI/2,0)], "WhiteCenter": [Vector3(0,3,0), Vector3(0,0,0)], "YellowCenter": [Vector3(0,-3,0), Vector3(-PI,0,PI)], "GreenCenter": [Vector3(0,0,3), Vector3(PI/2,-PI/2,0)], "BlueCenter": [Vector3(0,0,-3), Vector3(-PI/2,-PI/2,0)], "RedCenter": [Vector3(3,0,0), Vector3(0,-PI/2,-PI/2)], "OrangeCenter": [Vector3(-3,0,0), Vector3(0,-PI/2,PI/2)], "Core": [Vector3(0,0,0), Vector3(0,0,0)]}
+var HOME_POSITIONS_AND_ROTATIONS = {"ItalianCorner": [Vector3(3,3,3), Vector3(0,-PI/2,0)], "IrishCorner": [Vector3(-3,3,3), Vector3(0,-PI/2,0)], "USACorner": [Vector3(3,3,-3), Vector3(0,-PI/2,0)], "NetherlandsCorner": [Vector3(-3,3,-3), Vector3(0,-PI/2,0)], "BobMarleyCorner": [Vector3(3,-3,3), Vector3(-PI,PI/2,PI)], "SpriteCorner": [Vector3(-3,-3,3), Vector3(PI,PI/2,PI)], "PrimaryCorner": [Vector3(3,-3,-3), Vector3(PI,PI/2,PI)], "NerfCorner": [Vector3(-3,-3,-3), Vector3(0,-PI/2,0)], "WG": [Vector3(0,3,3), Vector3(0,-PI/2,-PI/2)], "WB": [Vector3(0,3,-3), Vector3(0,-PI/2,0)], "WR": [Vector3(3,3,0), Vector3(-PI/2,-PI/2,0)], "WO": [Vector3(-3,3,0), Vector3(0,-PI/2,0)], "GR": [Vector3(3,0,3), Vector3(0,-PI/2,0)], "BR": [Vector3(3,0,-3), Vector3(0,-PI/2,0)], "GO": [Vector3(-3,0,3), Vector3(0,-PI/2,0)], "BO": [Vector3(-3,0,-3), Vector3(0,-PI/2,0)], "YG": [Vector3(0,-3,3), Vector3(0,-PI/2,0)], "YB": [Vector3(0,-3,-3), Vector3(0,-PI/2,0)], "YR": [Vector3(3,-3,0), Vector3(0,-PI/2,0)], "YO": [Vector3(-3,-3,0), Vector3(0,-PI/2,0)], "WhiteCenter": [Vector3(0,3,0), Vector3(0,0,0)], "YellowCenter": [Vector3(0,-3,0), Vector3(-PI,0,PI)], "GreenCenter": [Vector3(0,0,3), Vector3(PI/2,-PI/2,0)], "BlueCenter": [Vector3(0,0,-3), Vector3(-PI/2,-PI/2,0)], "RedCenter": [Vector3(3,0,0), Vector3(0,-PI/2,-PI/2)], "OrangeCenter": [Vector3(-3,0,0), Vector3(0,-PI/2,PI/2)], "Core": [Vector3(0,0,0), Vector3(0,0,0)]}
 
 
 # Called when the node enters the scene tree for the first time.
@@ -216,21 +216,6 @@ func d():
 	# Use the turn() function to make the turn by giving it the correct arguements.
 	Turn(PI/2, "Y", "d", "d")
 	
-# Turn the M slice counter clockwise (When looking at the right side head on).
-func M():
-	# Use the turn() function to make the turn by giving it the correct arguements.
-	Turn(PI/2, "X", "M", "M")
-
-# Turn the M slice clockwise (When looking at the right side head on).
-func M_CCW():
-	# Use the turn() function to make the turn by giving it the correct arguements.
-	Turn(-PI/2, "X", "M", "M_CCW")
-	
-# Turn the M slice 180 degrees.
-func M2():
-	# Use the turn() function to make the turn by giving it the correct arguements.
-	Turn(-PI, "X", "M", "M2")
-
 # This function will pretend to do a turn but nothing will actually move for the duration of the "turn". This will be used to pause the cube's movement for however long you tell it to.
 func Nothing(amount_of_seconds_to_do_nothing):
 	# Only do this if the cube isn't currently turning already.

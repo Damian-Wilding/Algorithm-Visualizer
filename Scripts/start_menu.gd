@@ -6,11 +6,11 @@ var BUTTONS_TO_CUBE_CONTROLLER_CONNECTION_DICTIONARY = {"F2LButton": "CubeContro
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	# Give all the cube controllers algorithms to do when active.
-	get_parent().get_parent().find_child("Cubes").find_child("CubeControllerF2L").ALGORITHM = ["d", "d", "d", "d"]
-	get_parent().get_parent().find_child("Cubes").find_child("CubeControllerOLL1").ALGORITHM = ["U", "U", "U", "U"]
-	get_parent().get_parent().find_child("Cubes").find_child("CubeControllerOLL2").ALGORITHM = ["U", "U", "U", "U"]
-	get_parent().get_parent().find_child("Cubes").find_child("CubeControllerPLL1").ALGORITHM = ["U", "U", "U", "U"]
-	get_parent().get_parent().find_child("Cubes").find_child("CubeControllerPLL2").ALGORITHM = ["U", "U", "U", "U"]
+	get_parent().get_parent().find_child("CubeControllerF2L").ALGORITHM = ["d", "d", "d", "d"]
+	get_parent().get_parent().find_child("CubeControllerOLL1").ALGORITHM = ["U", "U", "U", "U"]
+	get_parent().get_parent().find_child("CubeControllerOLL2").ALGORITHM = ["U", "U", "U", "U"]
+	get_parent().get_parent().find_child("CubeControllerPLL1").ALGORITHM = ["U", "U", "U", "U"]
+	get_parent().get_parent().find_child("CubeControllerPLL2").ALGORITHM = ["U", "U", "U", "U"]
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -26,9 +26,10 @@ func _on_quit_button_pressed():
 # This function will take the given button node and activate it. (Activate justs means that the button is the one in focus and the cube under it is rotating/turning.)
 func activate_button(button):
 	# Go through BUTTONS_TO_CUBE_CONTROLLER_CCONNECTION_DICTIONARY and activate the cube controller value that corresponds to the given button key.
-	get_parent().get_parent().find_child("Cubes").find_child(BUTTONS_TO_CUBE_CONTROLLER_CONNECTION_DICTIONARY[button.name]).find_child("Cube").IS_CUBE_ACTIVE = true
+	print(get_parent().get_parent().find_child(BUTTONS_TO_CUBE_CONTROLLER_CONNECTION_DICTIONARY[button.name]).CONNECTED_CUBE.name)
+	get_parent().get_parent().find_child(BUTTONS_TO_CUBE_CONTROLLER_CONNECTION_DICTIONARY[button.name]).CONNECTED_CUBE.IS_CUBE_ACTIVE = true		#This isn't finding a child of cube controller named cube	find_child("Cube").IS_CUBE_ACTIVE = true
 	# Start the cube controller's simulation.
-	get_parent().get_parent().find_child("Cubes").find_child(BUTTONS_TO_CUBE_CONTROLLER_CONNECTION_DICTIONARY[button.name]).start_simulation()
+	get_parent().get_parent().find_child(BUTTONS_TO_CUBE_CONTROLLER_CONNECTION_DICTIONARY[button.name]).start_simulation()
 	# Now Make the button invisible so that the cube is more visible.
 	button.modulate = Color(1, 1, 1, 0)
 
@@ -63,9 +64,9 @@ func _on_pll_button2_active():
 # This function will take the given button node and deactivate it. (Deactivate justs means that the button is no longer in focus and the cube under it is no longer rotating/turning.)
 func deactivate_button(button):
 	# Go through BUTTONS_TO_CUBE_CONTROLLER_CCONNECTION_DICTIONARY and deactivate the cube controller value that corresponds to the given button key.
-	get_parent().get_parent().find_child("Cubes").find_child(BUTTONS_TO_CUBE_CONTROLLER_CONNECTION_DICTIONARY[button.name]).find_child("Cube").IS_CUBE_ACTIVE = false
+	get_parent().get_parent().find_child("CubeControllers").find_child(BUTTONS_TO_CUBE_CONTROLLER_CONNECTION_DICTIONARY[button.name]).find_child("Cube").IS_CUBE_ACTIVE = false
 	# Stop the cube controller's simulation.
-	get_parent().get_parent().find_child("Cubes").find_child(BUTTONS_TO_CUBE_CONTROLLER_CONNECTION_DICTIONARY[button.name]).stop_simulation()
+	get_parent().get_parent().find_child("CubeControllers").find_child(BUTTONS_TO_CUBE_CONTROLLER_CONNECTION_DICTIONARY[button.name]).stop_simulation()
 	# Now Make the button visible again so that the cube is less visible.
 	button.modulate = Color(1, 1, 1, 1)
 

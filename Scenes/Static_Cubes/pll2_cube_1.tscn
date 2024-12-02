@@ -1,0 +1,221 @@
+[gd_scene load_steps=31 format=3 uid="uid://cm6vtl4k115oe"]
+
+[ext_resource type="Script" path="res://Scripts/Static_Cubes/PLL2Cube1.gd" id="1_yb7oc"]
+[ext_resource type="PackedScene" uid="uid://q8nwaondv4gi" path="res://cube_logic.tscn" id="2_1byal"]
+[ext_resource type="PackedScene" uid="uid://djq3ielctwa5x" path="res://cubie.tscn" id="3_u481y"]
+[ext_resource type="ArrayMesh" uid="uid://wvawrts0s0le" path="res://Assets/CubeParts/Corners/CornerWhiteBlueOrange.res" id="4_ce0ye"]
+[ext_resource type="ArrayMesh" uid="uid://coxxp5lx5em2w" path="res://Assets/CubeParts/Corners/CornerWhiteGreenOrange.res" id="5_g21s7"]
+[ext_resource type="ArrayMesh" uid="uid://cwm34yxg7ehjq" path="res://Assets/CubeParts/Corners/CornerWhiteBlueRed.res" id="6_75pmb"]
+[ext_resource type="ArrayMesh" uid="uid://cjqrduuv2kw3b" path="res://Assets/CubeParts/Corners/CornerWhiteGreenRed.res" id="7_8vgp1"]
+[ext_resource type="ArrayMesh" uid="uid://bn60usrq1ax58" path="res://Assets/CubeParts/Corners/CornerYellowGreenRed.res" id="8_g5lyy"]
+[ext_resource type="ArrayMesh" uid="uid://cm2x10p01wq1o" path="res://Assets/CubeParts/Corners/CornerYellowGreenOrange.res" id="9_1ison"]
+[ext_resource type="ArrayMesh" uid="uid://c456ugewpy8l7" path="res://Assets/CubeParts/Corners/CornerYellowBlueRed.res" id="10_cf3kt"]
+[ext_resource type="ArrayMesh" uid="uid://168jjr2onub7" path="res://Assets/CubeParts/Corners/CornerYellowBlueOrange.res" id="11_ue8jl"]
+[ext_resource type="ArrayMesh" uid="uid://vjsa5xgwmebh" path="res://Assets/CubeParts/Edges/EdgeWhiteRed.res" id="12_1pen5"]
+[ext_resource type="ArrayMesh" uid="uid://788k6h132v61" path="res://Assets/CubeParts/Centers/CenterWhite.res" id="12_7rfry"]
+[ext_resource type="ArrayMesh" uid="uid://dw166n4irtb4v" path="res://Assets/CubeParts/Edges/EdgeGreenRed.res" id="13_26rke"]
+[ext_resource type="ArrayMesh" uid="uid://bvhp2ugdu0o2w" path="res://Assets/CubeParts/Edges/EdgeWhiteBlue.res" id="13_67emp"]
+[ext_resource type="ArrayMesh" uid="uid://b1ov5c1xuyvbe" path="res://Assets/CubeParts/Edges/EdgeBlueRed.res" id="14_25ve4"]
+[ext_resource type="ArrayMesh" uid="uid://cyqdvfrxbxlav" path="res://Assets/CubeParts/Edges/EdgeWhiteOrange.res" id="14_o38yb"]
+[ext_resource type="ArrayMesh" uid="uid://kt2if0coha1o" path="res://Assets/CubeParts/Edges/EdgeWhiteGreen.res" id="15_kl5oy"]
+[ext_resource type="ArrayMesh" uid="uid://caq0q3qk7hnnd" path="res://Assets/CubeParts/Edges/EdgeGreenOrange.res" id="15_ox0g2"]
+[ext_resource type="ArrayMesh" uid="uid://cwuc2wajearb4" path="res://Assets/CubeParts/Edges/EdgeBlueOrange.res" id="16_lvvrb"]
+[ext_resource type="ArrayMesh" uid="uid://dohpobk5t1nh1" path="res://Assets/CubeParts/Edges/EdgeYellowGreen.res" id="17_kpxa0"]
+[ext_resource type="ArrayMesh" uid="uid://ckgwnavs7lktu" path="res://Assets/CubeParts/Edges/EdgeYellowBlue.res" id="18_yngj6"]
+[ext_resource type="ArrayMesh" uid="uid://co8142203wgid" path="res://Assets/CubeParts/Edges/EdgeYellowRed.res" id="19_c2piu"]
+[ext_resource type="ArrayMesh" uid="uid://d3skodbj7uy06" path="res://Assets/CubeParts/Edges/EdgeYellowOrange.res" id="20_fhn7o"]
+[ext_resource type="ArrayMesh" uid="uid://g27c0byef4ke" path="res://Assets/CubeParts/Centers/CenterYellow.res" id="21_rtf5f"]
+[ext_resource type="ArrayMesh" uid="uid://bxb6m2ypbvohb" path="res://Assets/CubeParts/Centers/CenterGreen.res" id="22_k4rtp"]
+[ext_resource type="ArrayMesh" uid="uid://blnwrhr10ex2k" path="res://Assets/CubeParts/Centers/CenterBlue.res" id="23_mburv"]
+[ext_resource type="ArrayMesh" uid="uid://t8wspql1gsax" path="res://Assets/CubeParts/Centers/CenterRed.res" id="24_d27ni"]
+[ext_resource type="ArrayMesh" uid="uid://l3mq15qib0v0" path="res://Assets/CubeParts/Centers/CenterOrange.res" id="25_cgah0"]
+[ext_resource type="ArrayMesh" uid="uid://cdaom40vpimue" path="res://Assets/CubeParts/Other/AllBlackCube.res" id="26_e3gj1"]
+
+[node name="PLL2Cube1" type="Node3D"]
+script = ExtResource("1_yb7oc")
+
+[node name="CubeLogic" parent="." instance=ExtResource("2_1byal")]
+
+[node name="TurningSide" type="Node3D" parent="."]
+
+[node name="AlgorithmTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="ItalianCorner" parent="." groups=["Corners", "Pieces"] instance=ExtResource("3_u481y")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 3, 3, 3)
+mesh = ExtResource("7_8vgp1")
+X_ROTATION_PROGRESS = 0.125
+Y_ROTATION_PROGRESS = 0.125
+Z_ROTATION_PROGRESS = 0.375
+
+[node name="IrishCorner" parent="." groups=["Corners", "Pieces"] instance=ExtResource("3_u481y")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -3, 3, 3)
+mesh = ExtResource("5_g21s7")
+X_ROTATION_PROGRESS = 0.125
+Y_ROTATION_PROGRESS = 0.875
+Z_ROTATION_PROGRESS = 0.625
+
+[node name="USACorner" parent="." groups=["Corners", "Pieces"] instance=ExtResource("3_u481y")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 3, 3, -3)
+mesh = ExtResource("6_75pmb")
+X_ROTATION_PROGRESS = 0.375
+Y_ROTATION_PROGRESS = 0.375
+Z_ROTATION_PROGRESS = 0.375
+
+[node name="NetherlandsCorner" parent="." groups=["Corners", "Pieces"] instance=ExtResource("3_u481y")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -3, 3, -3)
+mesh = ExtResource("4_ce0ye")
+X_ROTATION_PROGRESS = 0.375
+Y_ROTATION_PROGRESS = 0.625
+Z_ROTATION_PROGRESS = 0.625
+
+[node name="BobMarleyCorner" parent="." groups=["Corners", "Pieces"] instance=ExtResource("3_u481y")]
+transform = Transform3D(4.37114e-08, -8.74228e-08, -1, 8.74228e-08, 1, -8.74228e-08, 1, -8.74228e-08, 4.37114e-08, 3, -3, 3)
+mesh = ExtResource("8_g5lyy")
+X_ROTATION_PROGRESS = 0.875
+Y_ROTATION_PROGRESS = 0.125
+Z_ROTATION_PROGRESS = 0.125
+
+[node name="SpriteCorner" parent="." groups=["Corners", "Pieces"] instance=ExtResource("3_u481y")]
+transform = Transform3D(4.37114e-08, 8.74228e-08, -1, 8.74228e-08, 1, 8.74228e-08, 1, -8.74228e-08, 4.37114e-08, -3, -3, 3)
+mesh = ExtResource("9_1ison")
+X_ROTATION_PROGRESS = 0.875
+Y_ROTATION_PROGRESS = 0.875
+Z_ROTATION_PROGRESS = 0.875
+
+[node name="PrimaryCorner" parent="." groups=["Corners", "Pieces"] instance=ExtResource("3_u481y")]
+transform = Transform3D(4.37114e-08, 8.74228e-08, -1, 8.74228e-08, 1, 8.74228e-08, 1, -8.74228e-08, 4.37114e-08, 3, -3, -3)
+mesh = ExtResource("10_cf3kt")
+X_ROTATION_PROGRESS = 0.625
+Y_ROTATION_PROGRESS = 0.375
+Z_ROTATION_PROGRESS = 0.125
+
+[node name="NerfCorner" parent="." groups=["Corners", "Pieces"] instance=ExtResource("3_u481y")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -3, -3, -3)
+mesh = ExtResource("11_ue8jl")
+X_ROTATION_PROGRESS = 0.625
+Y_ROTATION_PROGRESS = 0.625
+Z_ROTATION_PROGRESS = 0.875
+
+[node name="WG" parent="." groups=["Edges", "Pieces"] instance=ExtResource("3_u481y")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 3, 3)
+mesh = ExtResource("12_1pen5")
+X_ROTATION_PROGRESS = 0.125
+Z_ROTATION_PROGRESS = 0.5
+
+[node name="WB" parent="." groups=["Edges", "Pieces"] instance=ExtResource("3_u481y")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 3, -3)
+mesh = ExtResource("13_67emp")
+X_ROTATION_PROGRESS = 0.375
+Y_ROTATION_PROGRESS = 0.5
+Z_ROTATION_PROGRESS = 0.5
+
+[node name="WR" parent="." groups=["Edges", "Pieces"] instance=ExtResource("3_u481y")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 3, 3, 0)
+mesh = ExtResource("14_o38yb")
+X_ROTATION_PROGRESS = 0.25
+Y_ROTATION_PROGRESS = 0.25
+Z_ROTATION_PROGRESS = 0.375
+
+[node name="WO" parent="." groups=["Edges", "Pieces"] instance=ExtResource("3_u481y")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -3, 3, 0)
+mesh = ExtResource("15_kl5oy")
+X_ROTATION_PROGRESS = 0.25
+Y_ROTATION_PROGRESS = 0.75
+Z_ROTATION_PROGRESS = 0.625
+
+[node name="GR" parent="." groups=["Edges", "Pieces"] instance=ExtResource("3_u481y")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 3, 0, 3)
+mesh = ExtResource("13_26rke")
+Y_ROTATION_PROGRESS = 0.125
+Z_ROTATION_PROGRESS = 0.25
+
+[node name="BR" parent="." groups=["Edges", "Pieces"] instance=ExtResource("3_u481y")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 3, 0, -3)
+mesh = ExtResource("14_25ve4")
+X_ROTATION_PROGRESS = 0.5
+Y_ROTATION_PROGRESS = 0.375
+Z_ROTATION_PROGRESS = 0.25
+
+[node name="GO" parent="." groups=["Edges", "Pieces"] instance=ExtResource("3_u481y")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -3, 0, 3)
+mesh = ExtResource("15_ox0g2")
+Y_ROTATION_PROGRESS = 0.875
+Z_ROTATION_PROGRESS = 0.75
+
+[node name="BO" parent="." groups=["Edges", "Pieces"] instance=ExtResource("3_u481y")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -3, 0, -3)
+mesh = ExtResource("16_lvvrb")
+X_ROTATION_PROGRESS = 0.5
+Y_ROTATION_PROGRESS = 0.625
+Z_ROTATION_PROGRESS = 0.75
+
+[node name="YG" parent="." groups=["Edges", "Pieces"] instance=ExtResource("3_u481y")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -3, 3)
+mesh = ExtResource("17_kpxa0")
+X_ROTATION_PROGRESS = 0.875
+
+[node name="YB" parent="." groups=["Edges", "Pieces"] instance=ExtResource("3_u481y")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -3, -3)
+mesh = ExtResource("18_yngj6")
+X_ROTATION_PROGRESS = 0.625
+Y_ROTATION_PROGRESS = 0.5
+
+[node name="YR" parent="." groups=["Edges", "Pieces"] instance=ExtResource("3_u481y")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 3, -3, 0)
+mesh = ExtResource("19_c2piu")
+X_ROTATION_PROGRESS = 0.75
+Y_ROTATION_PROGRESS = 0.25
+Z_ROTATION_PROGRESS = 0.125
+
+[node name="YO" parent="." groups=["Edges", "Pieces"] instance=ExtResource("3_u481y")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -3, -3, 0)
+mesh = ExtResource("20_fhn7o")
+X_ROTATION_PROGRESS = 0.75
+Y_ROTATION_PROGRESS = 0.75
+Z_ROTATION_PROGRESS = 0.875
+
+[node name="WhiteCenter" parent="." groups=["Centers", "Pieces"] instance=ExtResource("3_u481y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+mesh = ExtResource("12_7rfry")
+X_ROTATION_PROGRESS = 0.25
+Z_ROTATION_PROGRESS = 0.5
+
+[node name="YellowCenter" parent="." groups=["Centers", "Pieces"] instance=ExtResource("3_u481y")]
+transform = Transform3D(-1, 8.74228e-08, 0, 8.74228e-08, 1, -8.74228e-08, -7.64274e-15, -8.74228e-08, -1, 0, -3, 0)
+mesh = ExtResource("21_rtf5f")
+X_ROTATION_PROGRESS = 0.75
+
+[node name="GreenCenter" parent="." groups=["Centers", "Pieces"] instance=ExtResource("3_u481y")]
+transform = Transform3D(-4.37114e-08, -1, 4.37114e-08, 0, -4.37114e-08, -1, 1, -4.37114e-08, 1.91069e-15, 0, 0, 3)
+mesh = ExtResource("22_k4rtp")
+
+[node name="BlueCenter" parent="." groups=["Centers", "Pieces"] instance=ExtResource("3_u481y")]
+transform = Transform3D(-4.37114e-08, 1, 4.37114e-08, 0, -4.37114e-08, 1, 1, 4.37114e-08, 1.91069e-15, 0, 0, -3)
+mesh = ExtResource("23_mburv")
+X_ROTATION_PROGRESS = 0.5
+Y_ROTATION_PROGRESS = 0.5
+
+[node name="RedCenter" parent="." groups=["Centers", "Pieces"] instance=ExtResource("3_u481y")]
+transform = Transform3D(1.91069e-15, -4.37114e-08, -1, -1, -4.37114e-08, 0, -4.37114e-08, 1, -4.37114e-08, 3, 0, 0)
+mesh = ExtResource("24_d27ni")
+Y_ROTATION_PROGRESS = 0.25
+Z_ROTATION_PROGRESS = 0.25
+
+[node name="OrangeCenter" parent="." groups=["Centers", "Pieces"] instance=ExtResource("3_u481y")]
+transform = Transform3D(1.91069e-15, 4.37114e-08, -1, 1, -4.37114e-08, 0, -4.37114e-08, -1, -4.37114e-08, -3, 0, 0)
+mesh = ExtResource("25_cgah0")
+Y_ROTATION_PROGRESS = 0.75
+Z_ROTATION_PROGRESS = 0.75
+
+[node name="Core" parent="." groups=["Core", "Pieces"] instance=ExtResource("3_u481y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+mesh = ExtResource("26_e3gj1")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.840276, -0.269527, 0.470417, 0.000658321, 0.86818, 0.49625, -0.542159, -0.416677, 0.729688, 15.9576, 15.9073, 23.0433)
+visible = false
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.764966, -0.562716, 0.313332, 0, 0.486488, 0.873687, -0.64407, -0.668341, 0.372147, 5.6825, 11.1453, 10.7101)
+visible = false

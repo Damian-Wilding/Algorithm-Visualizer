@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://cqd3cj4fiwn4r"]
+[gd_scene load_steps=7 format=3 uid="uid://cqd3cj4fiwn4r"]
 
 [ext_resource type="Script" path="res://Scripts/Tutorial_Screens/OLL1TutorialScene.gd" id="1_agiix"]
 [ext_resource type="PackedScene" uid="uid://7xri88a85mp6" path="res://Scenes/Static_Cubes/oll1_left_cube.tscn" id="2_aqm1i"]
 [ext_resource type="FontFile" uid="uid://mh0471bkk7ti" path="res://Assets/Fonts/Digital.ttf" id="2_qtwjr"]
 [ext_resource type="PackedScene" uid="uid://b0ng6llo3v1fb" path="res://Scenes/cube_controller.tscn" id="3_nwue5"]
 [ext_resource type="PackedScene" uid="uid://lgm0q242c3lh" path="res://Scenes/Static_Cubes/oll1_center_cube.tscn" id="5_k1ifu"]
+[ext_resource type="PackedScene" uid="uid://bhv77lgnq2pi1" path="res://Scenes/Static_Cubes/oll1_right_cube.tscn" id="6_l62tp"]
 
 [node name="OLL1TutorialScene" type="Node3D"]
 script = ExtResource("1_agiix")
@@ -20,6 +21,12 @@ light_energy = 0.895
 
 [node name="MiniLeftCube" parent="MiniCubes" instance=ExtResource("2_aqm1i")]
 transform = Transform3D(0.994522, 0.104528, 0, -0.103511, 0.984843, 0.139173, 0.0145476, -0.138411, 0.990268, -54.725, -55.465, -60.01)
+
+[node name="OLL1CenterCube2" parent="MiniCubes" instance=ExtResource("5_k1ifu")]
+transform = Transform3D(0.788724, -0.022542, -0.614335, 0.131095, 0.982508, 0.132256, 0.600607, -0.18485, 0.777883, -6.095, -53.285, -51.87)
+
+[node name="OLL1RightCube" parent="MiniCubes" instance=ExtResource("6_l62tp")]
+transform = Transform3D(0.426197, -0.250566, -0.869237, 0.284769, 0.949186, -0.133986, 0.85864, -0.190428, 0.475893, 55.21, -57.465, -59.265)
 
 [node name="OLL1Label" type="Label" parent="."]
 offset_top = 7.0
@@ -77,3 +84,5 @@ transform = Transform3D(0.643245, -0.284573, -0.710813, 0.203738, 0.958511, -0.1
 [node name="OLL1LeftCube" parent="." instance=ExtResource("2_aqm1i")]
 
 [node name="OLL1CenterCube" parent="." instance=ExtResource("5_k1ifu")]
+
+[node name="OLL1RightCube" parent="." instance=ExtResource("6_l62tp")]

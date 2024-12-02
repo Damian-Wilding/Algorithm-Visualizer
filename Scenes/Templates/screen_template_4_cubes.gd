@@ -10,6 +10,8 @@ func _ready():
 	# Add all the cube controllers to the cube controllers list.
 	for controller in get_tree().get_nodes_in_group("Controllers"):
 		CONTROLLERS.append(controller)
+	# Change the cubes being used by the cube controllers.
+	change_cubes()
 	# Give the cube controllers default algorithms.
 	$CubeController1.ALGORITHM = ["R", "U", "R_CCW", "U_CCW"]
 	$CubeController2.ALGORITHM = ["R", "U", "R_CCW", "U_CCW"]
@@ -48,3 +50,9 @@ func toggle_pause_simulation():
 		# Unpause all the cube controllers.
 		for controller in CONTROLLERS:
 			controller.start_simulation()
+
+
+# This function is used to switch the cubes being used in each cube controller. (It will be different in every scene.)
+func change_cubes():
+	# Change each cube for each of the cube controllers.
+	pass
