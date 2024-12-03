@@ -37,75 +37,99 @@ visible = false
 
 [node name="Cubie" parent="Grid" instance=ExtResource("3_lkjlo")]
 transform = Transform3D(200, 0, 0, 0, 200, 0, 0, 0, 200, 0, 0, 0)
+mesh = null
 
 [node name="Cubie2" parent="Grid" instance=ExtResource("3_lkjlo")]
 transform = Transform3D(200, 0, 0, 0, 200, 0, 0, 0, 200, 8, 0, -8)
+mesh = null
 
 [node name="Cubie3" parent="Grid" instance=ExtResource("3_lkjlo")]
 transform = Transform3D(200, 0, 0, 0, 200, 0, 0, 0, 200, 8, 0, 0)
+mesh = null
 
 [node name="Cubie4" parent="Grid" instance=ExtResource("3_lkjlo")]
 transform = Transform3D(200, 0, 0, 0, 200, 0, 0, 0, 200, -8, 0, 0)
+mesh = null
 
 [node name="Cubie5" parent="Grid" instance=ExtResource("3_lkjlo")]
 transform = Transform3D(200, 0, 0, 0, 200, 0, 0, 0, 200, -8, 0, -8)
+mesh = null
 
 [node name="Cubie8" parent="Grid" instance=ExtResource("3_lkjlo")]
 transform = Transform3D(200, 0, 0, 0, 200, 0, 0, 0, 200, 0, 0, -16)
+mesh = null
 
 [node name="Cubie6" parent="Grid" instance=ExtResource("3_lkjlo")]
 transform = Transform3D(200, 0, 0, 0, 200, 0, 0, 0, 200, 0, 0, -8)
+mesh = null
 
 [node name="Cubie7" parent="Grid" instance=ExtResource("3_lkjlo")]
 transform = Transform3D(200, 0, 0, 0, 200, 0, 0, 0, 200, 8, 0, -8)
+mesh = null
 
 [node name="Cubie9" parent="Grid" instance=ExtResource("3_lkjlo")]
 transform = Transform3D(200, 0, 0, 0, 200, 0, 0, 0, 200, 8, 0, -16)
+mesh = null
 
 [node name="Cubie10" parent="Grid" instance=ExtResource("3_lkjlo")]
 transform = Transform3D(200, 0, 0, 0, 200, 0, 0, 0, 200, -8, 0, -16)
+mesh = null
 
 [node name="Cubie11" parent="Grid" instance=ExtResource("3_lkjlo")]
 transform = Transform3D(200, 0, 0, 0, 200, 0, 0, 0, 200, 16, 0, -8)
+mesh = null
 
 [node name="Cubie12" parent="Grid" instance=ExtResource("3_lkjlo")]
 transform = Transform3D(200, 0, 0, 0, 200, 0, 0, 0, 200, -16, 0, -8)
+mesh = null
 
 [node name="Cubie13" parent="Grid" instance=ExtResource("3_lkjlo")]
 transform = Transform3D(200, 0, 0, 0, 200, 0, 0, 0, 200, 0, 8, 0)
+mesh = null
 
 [node name="Cubie14" parent="Grid" instance=ExtResource("3_lkjlo")]
 transform = Transform3D(200, 0, 0, 0, 200, 0, 0, 0, 200, 8, 8, -8)
+mesh = null
 
 [node name="Cubie15" parent="Grid" instance=ExtResource("3_lkjlo")]
 transform = Transform3D(200, 0, 0, 0, 200, 0, 0, 0, 200, 8, 8, 0)
+mesh = null
 
 [node name="Cubie16" parent="Grid" instance=ExtResource("3_lkjlo")]
 transform = Transform3D(200, 0, 0, 0, 200, 0, 0, 0, 200, -8, 8, 0)
+mesh = null
 
 [node name="Cubie17" parent="Grid" instance=ExtResource("3_lkjlo")]
 transform = Transform3D(200, 0, 0, 0, 200, 0, 0, 0, 200, -8, 8, -8)
+mesh = null
 
 [node name="Cubie18" parent="Grid" instance=ExtResource("3_lkjlo")]
 transform = Transform3D(200, 0, 0, 0, 200, 0, 0, 0, 200, 0, 8, -16)
+mesh = null
 
 [node name="Cubie19" parent="Grid" instance=ExtResource("3_lkjlo")]
 transform = Transform3D(200, 0, 0, 0, 200, 0, 0, 0, 200, 0, 8, -8)
+mesh = null
 
 [node name="Cubie20" parent="Grid" instance=ExtResource("3_lkjlo")]
 transform = Transform3D(200, 0, 0, 0, 200, 0, 0, 0, 200, 8, 8, -8)
+mesh = null
 
 [node name="Cubie21" parent="Grid" instance=ExtResource("3_lkjlo")]
 transform = Transform3D(200, 0, 0, 0, 200, 0, 0, 0, 200, 8, 8, -16)
+mesh = null
 
 [node name="Cubie22" parent="Grid" instance=ExtResource("3_lkjlo")]
 transform = Transform3D(200, 0, 0, 0, 200, 0, 0, 0, 200, -8, 8, -16)
+mesh = null
 
 [node name="Cubie23" parent="Grid" instance=ExtResource("3_lkjlo")]
 transform = Transform3D(200, 0, 0, 0, 200, 0, 0, 0, 200, 16, 8, -8)
+mesh = null
 
 [node name="Cubie24" parent="Grid" instance=ExtResource("3_lkjlo")]
 transform = Transform3D(200, 0, 0, 0, 200, 0, 0, 0, 200, -16, 8, -8)
+mesh = null
 
 [node name="CubeControllers" type="Node3D" parent="."]
 visible = false

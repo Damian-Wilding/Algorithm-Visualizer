@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://djq3ielctwa5x"]
 
 [ext_resource type="Script" path="res://Cubie.gd" id="1_3hfrs"]
-[ext_resource type="ArrayMesh" uid="uid://bx4ix71vno2rg" path="res://Assets/CubeParts/Other/testpart.res" id="1_i0pqy"]
+[ext_resource type="ArrayMesh" uid="uid://bx4ix71vno2rg" path="res://Assets/CubeParts/Blender_Files/Other/testpart.glb" id="1_i0pqy"]
 
 [node name="Cubie" type="MeshInstance3D"]
 transform = Transform3D(1000, 0, 0, 0, 1000, 0, 0, 0, 1000, 0, 0, 0)
