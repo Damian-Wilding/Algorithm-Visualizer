@@ -1,6 +1,6 @@
 [gd_scene load_steps=31 format=3 uid="uid://ch0okutfb546s"]
 
-[ext_resource type="Script" path="res://cube.gd" id="1_ojui8"]
+[ext_resource type="Script" path="res://Scripts/Static_Cubes/cube.gd" id="1_ojui8"]
 [ext_resource type="ArrayMesh" uid="uid://cwm34yxg7ehjq" path="res://Assets/CubeParts/Meshes/Corners/CornerWhiteBlueRed.res" id="2_4qxpc"]
 [ext_resource type="ArrayMesh" uid="uid://g27c0byef4ke" path="res://Assets/CubeParts/Meshes/Centers/CenterYellow.res" id="2_xlkhm"]
 [ext_resource type="ArrayMesh" uid="uid://wvawrts0s0le" path="res://Assets/CubeParts/Meshes/Corners/CornerWhiteBlueOrange.res" id="3_0hpic"]

@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://b0ng6llo3v1fb"]
 
 [ext_resource type="Script" path="res://Scripts/CubeController.gd" id="1_t8jd7"]
-[ext_resource type="PackedScene" uid="uid://ch0okutfb546s" path="res://cube.tscn" id="2_gu8ie"]
+[ext_resource type="PackedScene" uid="uid://ch0okutfb546s" path="res://Scenes/Static_Cubes/cube.tscn" id="2_gu8ie"]
 
 [node name="CubeController" type="Node3D"]
 script = ExtResource("1_t8jd7")

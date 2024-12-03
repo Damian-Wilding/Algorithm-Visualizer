@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://b8xr3mfiofesk"]
 
-[ext_resource type="PackedScene" uid="uid://ch0okutfb546s" path="res://cube.tscn" id="1_xqvrl"]
+[ext_resource type="PackedScene" uid="uid://ch0okutfb546s" path="res://Scenes/Static_Cubes/cube.tscn" id="1_xqvrl"]
 
 [node name="Main" type="Node3D"]
 
