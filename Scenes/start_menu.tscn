@@ -126,24 +126,109 @@ theme_override_fonts/font = ExtResource("2_rtjhg")
 theme_override_font_sizes/font_size = 24
 text = "Quit"
 
+[node name="SelectedButtonTexts" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="F2LButton" type="Label" parent="SelectedButtonTexts"]
+layout_mode = 0
+offset_left = 50.0
+offset_top = 263.0
+offset_right = 177.0
+offset_bottom = 313.0
+theme_override_colors/font_color = Color(0, 0.843137, 0.843137, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 7
+theme_override_fonts/font = ExtResource("2_rtjhg")
+theme_override_font_sizes/font_size = 20
+text = "First 2 Layers
+(F2L)"
+horizontal_alignment = 1
+
+[node name="OLLButton1" type="Label" parent="SelectedButtonTexts"]
+layout_mode = 0
+offset_left = 266.0
+offset_top = 263.0
+offset_right = 424.0
+offset_bottom = 313.0
+theme_override_colors/font_color = Color(0, 0.843137, 0.843137, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 7
+theme_override_fonts/font = ExtResource("2_rtjhg")
+theme_override_font_sizes/font_size = 20
+text = "Orient Top Edges
+(2 Look OLL pt.1)"
+horizontal_alignment = 1
+
+[node name="OLLButton2" type="Label" parent="SelectedButtonTexts"]
+layout_mode = 0
+offset_left = 490.0
+offset_top = 263.0
+offset_right = 662.0
+offset_bottom = 313.0
+theme_override_colors/font_color = Color(0, 0.843137, 0.843137, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 7
+theme_override_fonts/font = ExtResource("2_rtjhg")
+theme_override_font_sizes/font_size = 20
+text = "Orient Top Corners
+(2 Look OLL pt.2)"
+horizontal_alignment = 1
+
+[node name="PLLButton1" type="Label" parent="SelectedButtonTexts"]
+layout_mode = 0
+offset_left = 709.0
+offset_top = 263.0
+offset_right = 904.0
+offset_bottom = 313.0
+theme_override_colors/font_color = Color(0, 0.843137, 0.843137, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 7
+theme_override_fonts/font = ExtResource("2_rtjhg")
+theme_override_font_sizes/font_size = 20
+text = "Permute Top Corners
+(2 Look PLL pt.1)"
+horizontal_alignment = 1
+
+[node name="PLLButton2" type="Label" parent="SelectedButtonTexts"]
+layout_mode = 0
+offset_left = 947.0
+offset_top = 263.0
+offset_right = 1128.0
+offset_bottom = 313.0
+theme_override_colors/font_color = Color(0, 0.843137, 0.843137, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 7
+theme_override_fonts/font = ExtResource("2_rtjhg")
+theme_override_font_sizes/font_size = 20
+text = "Permute Top Edges
+(2 Look PLL pt.2)"
+horizontal_alignment = 1
+
 [connection signal="focus_entered" from="MenuContainer/Steps/F2LButton" to="." method="_on_f2l_button_active"]
 [connection signal="focus_exited" from="MenuContainer/Steps/F2LButton" to="." method="_on_f2l_button_inactive"]
 [connection signal="mouse_entered" from="MenuContainer/Steps/F2LButton" to="." method="_on_f2l_button_active"]
 [connection signal="mouse_exited" from="MenuContainer/Steps/F2LButton" to="." method="_on_f2l_button_inactive"]
+[connection signal="pressed" from="MenuContainer/Steps/F2LButton" to="." method="_on_scene_button_pressed" binds= ["res://Scenes/Tutorial_Screens/f2l_tutorial_scene.tscn"]]
 [connection signal="focus_entered" from="MenuContainer/Steps/OLLButton1" to="." method="_on_oll_button1_active"]
 [connection signal="focus_exited" from="MenuContainer/Steps/OLLButton1" to="." method="_on_oll_button1_inactive"]
 [connection signal="mouse_entered" from="MenuContainer/Steps/OLLButton1" to="." method="_on_oll_button1_active"]
 [connection signal="mouse_exited" from="MenuContainer/Steps/OLLButton1" to="." method="_on_oll_button1_inactive"]
+[connection signal="pressed" from="MenuContainer/Steps/OLLButton1" to="." method="_on_scene_button_pressed" binds= ["res://Scenes/Tutorial_Screens/oll1_tutorial_scene.tscn"]]
 [connection signal="focus_entered" from="MenuContainer/Steps/OLLButton2" to="." method="_on_oll_button2_active"]
 [connection signal="focus_exited" from="MenuContainer/Steps/OLLButton2" to="." method="_on_oll_button2_inactive"]
 [connection signal="mouse_entered" from="MenuContainer/Steps/OLLButton2" to="." method="_on_oll_button2_active"]
 [connection signal="mouse_exited" from="MenuContainer/Steps/OLLButton2" to="." method="_on_oll_button2_inactive"]
+[connection signal="pressed" from="MenuContainer/Steps/OLLButton2" to="." method="_on_scene_button_pressed" binds= ["res://Scenes/Tutorial_Screens/oll2_tutorial_scene.tscn"]]
 [connection signal="focus_entered" from="MenuContainer/Steps/PLLButton1" to="." method="_on_pll_button1_active"]
 [connection signal="focus_exited" from="MenuContainer/Steps/PLLButton1" to="." method="_on_pll_button1_inactive"]
 [connection signal="mouse_entered" from="MenuContainer/Steps/PLLButton1" to="." method="_on_pll_button1_active"]
 [connection signal="mouse_exited" from="MenuContainer/Steps/PLLButton1" to="." method="_on_pll_button1_inactive"]
+[connection signal="pressed" from="MenuContainer/Steps/PLLButton1" to="." method="_on_scene_button_pressed" binds= ["res://Scenes/Tutorial_Screens/pll1_tutorial_scene.tscn"]]
 [connection signal="focus_entered" from="MenuContainer/Steps/PLLButton2" to="." method="_on_pll_button2_active"]
 [connection signal="focus_exited" from="MenuContainer/Steps/PLLButton2" to="." method="_on_pll_button2_inactive"]
 [connection signal="mouse_entered" from="MenuContainer/Steps/PLLButton2" to="." method="_on_pll_button2_active"]
 [connection signal="mouse_exited" from="MenuContainer/Steps/PLLButton2" to="." method="_on_pll_button2_inactive"]
+[connection signal="pressed" from="MenuContainer/Steps/PLLButton2" to="." method="_on_scene_button_pressed" binds= ["res://Scenes/Tutorial_Screens/pll2_tutorial_scene.tscn"]]
 [connection signal="pressed" from="MenuContainer/Options/QuitButton" to="." method="_on_quit_button_pressed"]

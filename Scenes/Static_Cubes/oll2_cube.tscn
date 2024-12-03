@@ -1,0 +1,213 @@
+[gd_scene load_steps=23 format=3 uid="uid://cxedb0qffv0r5"]
+
+[ext_resource type="Script" path="res://Scripts/Static_Cubes/OLL2Cube.gd" id="1_7hrr5"]
+[ext_resource type="PackedScene" uid="uid://q8nwaondv4gi" path="res://cube_logic.tscn" id="2_bn7fc"]
+[ext_resource type="PackedScene" uid="uid://djq3ielctwa5x" path="res://cubie.tscn" id="3_o5w5d"]
+[ext_resource type="ArrayMesh" uid="uid://788k6h132v61" path="res://Assets/CubeParts/Centers/CenterWhite.res" id="4_rgkec"]
+[ext_resource type="ArrayMesh" uid="uid://bn60usrq1ax58" path="res://Assets/CubeParts/Corners/CornerYellowGreenRed.res" id="5_rxbfl"]
+[ext_resource type="ArrayMesh" uid="uid://cm2x10p01wq1o" path="res://Assets/CubeParts/Corners/CornerYellowGreenOrange.res" id="6_7vbj4"]
+[ext_resource type="ArrayMesh" uid="uid://c456ugewpy8l7" path="res://Assets/CubeParts/Corners/CornerYellowBlueRed.res" id="7_jgmvw"]
+[ext_resource type="ArrayMesh" uid="uid://168jjr2onub7" path="res://Assets/CubeParts/Corners/CornerYellowBlueOrange.res" id="8_8ouhl"]
+[ext_resource type="ArrayMesh" uid="uid://dw166n4irtb4v" path="res://Assets/CubeParts/Edges/EdgeGreenRed.res" id="9_eoq5l"]
+[ext_resource type="ArrayMesh" uid="uid://b1ov5c1xuyvbe" path="res://Assets/CubeParts/Edges/EdgeBlueRed.res" id="10_fdtoe"]
+[ext_resource type="ArrayMesh" uid="uid://caq0q3qk7hnnd" path="res://Assets/CubeParts/Edges/EdgeGreenOrange.res" id="11_20kob"]
+[ext_resource type="ArrayMesh" uid="uid://cwuc2wajearb4" path="res://Assets/CubeParts/Edges/EdgeBlueOrange.res" id="12_kamud"]
+[ext_resource type="ArrayMesh" uid="uid://dohpobk5t1nh1" path="res://Assets/CubeParts/Edges/EdgeYellowGreen.res" id="13_eluo3"]
+[ext_resource type="ArrayMesh" uid="uid://ckgwnavs7lktu" path="res://Assets/CubeParts/Edges/EdgeYellowBlue.res" id="14_tuef7"]
+[ext_resource type="ArrayMesh" uid="uid://co8142203wgid" path="res://Assets/CubeParts/Edges/EdgeYellowRed.res" id="15_n1qf4"]
+[ext_resource type="ArrayMesh" uid="uid://d3skodbj7uy06" path="res://Assets/CubeParts/Edges/EdgeYellowOrange.res" id="16_ebu4d"]
+[ext_resource type="ArrayMesh" uid="uid://g27c0byef4ke" path="res://Assets/CubeParts/Centers/CenterYellow.res" id="17_a23lt"]
+[ext_resource type="ArrayMesh" uid="uid://bxb6m2ypbvohb" path="res://Assets/CubeParts/Centers/CenterGreen.res" id="18_eik60"]
+[ext_resource type="ArrayMesh" uid="uid://blnwrhr10ex2k" path="res://Assets/CubeParts/Centers/CenterBlue.res" id="19_k0wyh"]
+[ext_resource type="ArrayMesh" uid="uid://t8wspql1gsax" path="res://Assets/CubeParts/Centers/CenterRed.res" id="20_pis68"]
+[ext_resource type="ArrayMesh" uid="uid://l3mq15qib0v0" path="res://Assets/CubeParts/Centers/CenterOrange.res" id="21_t5dx7"]
+[ext_resource type="ArrayMesh" uid="uid://cdaom40vpimue" path="res://Assets/CubeParts/Other/AllBlackCube.res" id="22_3n0p7"]
+
+[node name="OLL2Cube" type="Node3D"]
+script = ExtResource("1_7hrr5")
+
+[node name="CubeLogic" parent="." instance=ExtResource("2_bn7fc")]
+
+[node name="TurningSide" type="Node3D" parent="."]
+
+[node name="AlgorithmTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="ItalianCorner" parent="." groups=["Corners", "Pieces"] instance=ExtResource("3_o5w5d")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 3, 3, 3)
+mesh = ExtResource("4_rgkec")
+X_ROTATION_PROGRESS = 0.125
+Y_ROTATION_PROGRESS = 0.125
+Z_ROTATION_PROGRESS = 0.375
+
+[node name="IrishCorner" parent="." groups=["Corners", "Pieces"] instance=ExtResource("3_o5w5d")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -3, 3, 3)
+mesh = ExtResource("4_rgkec")
+X_ROTATION_PROGRESS = 0.125
+Y_ROTATION_PROGRESS = 0.875
+Z_ROTATION_PROGRESS = 0.625
+
+[node name="USACorner" parent="." groups=["Corners", "Pieces"] instance=ExtResource("3_o5w5d")]
+transform = Transform3D(-3.8124e-12, 8.72612e-05, -1, -4.37114e-08, 1, 8.72612e-05, 1, 4.37114e-08, 1.91069e-15, 3, 3, -3)
+mesh = ExtResource("4_rgkec")
+X_ROTATION_PROGRESS = 0.375
+Y_ROTATION_PROGRESS = 0.375
+Z_ROTATION_PROGRESS = 0.375
+
+[node name="NetherlandsCorner" parent="." groups=["Corners", "Pieces"] instance=ExtResource("3_o5w5d")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -3, 3, -3)
+mesh = ExtResource("4_rgkec")
+X_ROTATION_PROGRESS = 0.375
+Y_ROTATION_PROGRESS = 0.625
+Z_ROTATION_PROGRESS = 0.625
+
+[node name="BobMarleyCorner" parent="." groups=["Corners", "Pieces"] instance=ExtResource("3_o5w5d")]
+transform = Transform3D(4.37114e-08, -8.74228e-08, -1, 8.74228e-08, 1, -8.74228e-08, 1, -8.74228e-08, 4.37114e-08, 3, -3, 3)
+mesh = ExtResource("5_rxbfl")
+X_ROTATION_PROGRESS = 0.875
+Y_ROTATION_PROGRESS = 0.125
+Z_ROTATION_PROGRESS = 0.125
+
+[node name="SpriteCorner" parent="." groups=["Corners", "Pieces"] instance=ExtResource("3_o5w5d")]
+transform = Transform3D(4.37114e-08, 8.74228e-08, -1, 8.74228e-08, 1, 8.74228e-08, 1, -8.74228e-08, 4.37114e-08, -3, -3, 3)
+mesh = ExtResource("6_7vbj4")
+X_ROTATION_PROGRESS = 0.875
+Y_ROTATION_PROGRESS = 0.875
+Z_ROTATION_PROGRESS = 0.875
+
+[node name="PrimaryCorner" parent="." groups=["Corners", "Pieces"] instance=ExtResource("3_o5w5d")]
+transform = Transform3D(4.37114e-08, 8.74228e-08, -1, 8.74228e-08, 1, 8.74228e-08, 1, -8.74228e-08, 4.37114e-08, 3, -3, -3)
+mesh = ExtResource("7_jgmvw")
+X_ROTATION_PROGRESS = 0.625
+Y_ROTATION_PROGRESS = 0.375
+Z_ROTATION_PROGRESS = 0.125
+
+[node name="NerfCorner" parent="." groups=["Corners", "Pieces"] instance=ExtResource("3_o5w5d")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -3, -3, -3)
+mesh = ExtResource("8_8ouhl")
+X_ROTATION_PROGRESS = 0.625
+Y_ROTATION_PROGRESS = 0.625
+Z_ROTATION_PROGRESS = 0.875
+
+[node name="WG" parent="." groups=["Edges", "Pieces"] instance=ExtResource("3_o5w5d")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 3, 3)
+mesh = ExtResource("4_rgkec")
+X_ROTATION_PROGRESS = 0.125
+Z_ROTATION_PROGRESS = 0.5
+
+[node name="WB" parent="." groups=["Edges", "Pieces"] instance=ExtResource("3_o5w5d")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 3, -3)
+mesh = ExtResource("4_rgkec")
+X_ROTATION_PROGRESS = 0.375
+Y_ROTATION_PROGRESS = 0.5
+Z_ROTATION_PROGRESS = 0.5
+
+[node name="WR" parent="." groups=["Edges", "Pieces"] instance=ExtResource("3_o5w5d")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 3, 3, 0)
+mesh = ExtResource("4_rgkec")
+X_ROTATION_PROGRESS = 0.25
+Y_ROTATION_PROGRESS = 0.25
+Z_ROTATION_PROGRESS = 0.375
+
+[node name="WO" parent="." groups=["Edges", "Pieces"] instance=ExtResource("3_o5w5d")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -3, 3, 0)
+mesh = ExtResource("4_rgkec")
+X_ROTATION_PROGRESS = 0.25
+Y_ROTATION_PROGRESS = 0.75
+Z_ROTATION_PROGRESS = 0.625
+
+[node name="GR" parent="." groups=["Edges", "Pieces"] instance=ExtResource("3_o5w5d")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 3, 0, 3)
+mesh = ExtResource("9_eoq5l")
+Y_ROTATION_PROGRESS = 0.125
+Z_ROTATION_PROGRESS = 0.25
+
+[node name="BR" parent="." groups=["Edges", "Pieces"] instance=ExtResource("3_o5w5d")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 3, 0, -3)
+mesh = ExtResource("10_fdtoe")
+X_ROTATION_PROGRESS = 0.5
+Y_ROTATION_PROGRESS = 0.375
+Z_ROTATION_PROGRESS = 0.25
+
+[node name="GO" parent="." groups=["Edges", "Pieces"] instance=ExtResource("3_o5w5d")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -3, 0, 3)
+mesh = ExtResource("11_20kob")
+Y_ROTATION_PROGRESS = 0.875
+Z_ROTATION_PROGRESS = 0.75
+
+[node name="BO" parent="." groups=["Edges", "Pieces"] instance=ExtResource("3_o5w5d")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -3, 0, -3)
+mesh = ExtResource("12_kamud")
+X_ROTATION_PROGRESS = 0.5
+Y_ROTATION_PROGRESS = 0.625
+Z_ROTATION_PROGRESS = 0.75
+
+[node name="YG" parent="." groups=["Edges", "Pieces"] instance=ExtResource("3_o5w5d")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -3, 3)
+mesh = ExtResource("13_eluo3")
+X_ROTATION_PROGRESS = 0.875
+
+[node name="YB" parent="." groups=["Edges", "Pieces"] instance=ExtResource("3_o5w5d")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, -3, -3)
+mesh = ExtResource("14_tuef7")
+X_ROTATION_PROGRESS = 0.625
+Y_ROTATION_PROGRESS = 0.5
+
+[node name="YR" parent="." groups=["Edges", "Pieces"] instance=ExtResource("3_o5w5d")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 3, -3, 0)
+mesh = ExtResource("15_n1qf4")
+X_ROTATION_PROGRESS = 0.75
+Y_ROTATION_PROGRESS = 0.25
+Z_ROTATION_PROGRESS = 0.125
+
+[node name="YO" parent="." groups=["Edges", "Pieces"] instance=ExtResource("3_o5w5d")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -3, -3, 0)
+mesh = ExtResource("16_ebu4d")
+X_ROTATION_PROGRESS = 0.75
+Y_ROTATION_PROGRESS = 0.75
+Z_ROTATION_PROGRESS = 0.875
+
+[node name="WhiteCenter" parent="." groups=["Centers", "Pieces"] instance=ExtResource("3_o5w5d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+mesh = ExtResource("4_rgkec")
+X_ROTATION_PROGRESS = 0.25
+Z_ROTATION_PROGRESS = 0.5
+
+[node name="YellowCenter" parent="." groups=["Centers", "Pieces"] instance=ExtResource("3_o5w5d")]
+transform = Transform3D(-1, 8.74228e-08, 0, 8.74228e-08, 1, -8.74228e-08, -7.64274e-15, -8.74228e-08, -1, 0, -3, 0)
+mesh = ExtResource("17_a23lt")
+X_ROTATION_PROGRESS = 0.75
+
+[node name="GreenCenter" parent="." groups=["Centers", "Pieces"] instance=ExtResource("3_o5w5d")]
+transform = Transform3D(-4.37114e-08, -1, 4.37114e-08, 0, -4.37114e-08, -1, 1, -4.37114e-08, 1.91069e-15, 0, 0, 3)
+mesh = ExtResource("18_eik60")
+
+[node name="BlueCenter" parent="." groups=["Centers", "Pieces"] instance=ExtResource("3_o5w5d")]
+transform = Transform3D(-4.37114e-08, 1, 4.37114e-08, 0, -4.37114e-08, 1, 1, 4.37114e-08, 1.91069e-15, 0, 0, -3)
+mesh = ExtResource("19_k0wyh")
+X_ROTATION_PROGRESS = 0.5
+Y_ROTATION_PROGRESS = 0.5
+
+[node name="RedCenter" parent="." groups=["Centers", "Pieces"] instance=ExtResource("3_o5w5d")]
+transform = Transform3D(1.91069e-15, -4.37114e-08, -1, -1, -4.37114e-08, 0, -4.37114e-08, 1, -4.37114e-08, 3, 0, 0)
+mesh = ExtResource("20_pis68")
+Y_ROTATION_PROGRESS = 0.25
+Z_ROTATION_PROGRESS = 0.25
+
+[node name="OrangeCenter" parent="." groups=["Centers", "Pieces"] instance=ExtResource("3_o5w5d")]
+transform = Transform3D(1.91069e-15, 4.37114e-08, -1, 1, -4.37114e-08, 0, -4.37114e-08, -1, -4.37114e-08, -3, 0, 0)
+mesh = ExtResource("21_t5dx7")
+Y_ROTATION_PROGRESS = 0.75
+Z_ROTATION_PROGRESS = 0.75
+
+[node name="Core" parent="." groups=["Core", "Pieces"] instance=ExtResource("3_o5w5d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+mesh = ExtResource("22_3n0p7")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.840276, -0.269527, 0.470417, 0.000658321, 0.86818, 0.49625, -0.542159, -0.416677, 0.729688, 15.9576, 15.9073, 23.0433)
+visible = false
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.764966, -0.562716, 0.313332, 0, 0.486488, 0.873687, -0.64407, -0.668341, 0.372147, 5.6825, 11.1453, 10.7101)
+visible = false

@@ -278,7 +278,13 @@ func fix_desyncs():
 		# It was on the Z axis. Snap the rotation of the turning layer to the nearest multiple of 90 degrees on the Z axis.
 		$TurningSide.rotation.z = deg_to_rad(snappedf(rad_to_deg($TurningSide.rotation.z), 90.00))
 		
-		
+
+# This function sets the cube as active.
+func activate():
+	# Set the IS_CUBE_ACTIVE bool to be true.
+	IS_CUBE_ACTIVE = true
+
+
 # This function resets the cube's piece's positions and rotations to make the cube solved again.
 func reset():
 	# First, reset the cube logic so that it reflects a solved cube.

@@ -14,6 +14,9 @@ func _process(_delta):
 
 # This function just sets different cubes for all the cube controllers to control.
 func swap_cubes():
-	# Go through each cube controller and change its cube out for a cube in $SecondaryCubes.
+	# Go through each cube controller and change its cube out for a secondary cube.
 	$CubeControllerF2L.change_cube($F2LCube)
-	
+	$CubeControllerOLL1.change_cube($OLL1Cube)
+	$CubeControllerOLL2.change_cube($OLL2Cube)
+	$CubeControllerPLL1.change_cube($PLL1Cube1)
+	$CubeControllerPLL2.change_cube($PLL2Cube1)
